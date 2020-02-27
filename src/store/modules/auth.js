@@ -6,7 +6,7 @@ export default {
     login: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Login",
-      VersioneClient: "1.0.2",
+      VersioneClient: "1.0.3",
       Url: window.location.href
     }
   },
