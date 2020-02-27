@@ -6,7 +6,7 @@ export default {
     login: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Login",
-      VersioneClient: "0.9.8",
+      VersioneClient: "1.0.2",
       Url: window.location.href
     }
   },
@@ -17,7 +17,6 @@ export default {
       state.login.JsonRichiesta = JSON.stringify(login);
       state.login.IsMemorizzaPassword = login.IsMemorizzaPassword;
     },
-    // eslint-disable-next-line no-unused-vars
     auth_success(state, token) {
       state.status = "success";
       state.token = token;

@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav" v-if="isLoggedIn">
-      <span> | <a @click="logout">Logout</a></span>
-    </div>
-
     <router-view />
   </div>
 </template>
