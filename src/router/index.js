@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "../views/Home.vue";
+import Amz from "../views/Amz.vue";
 import Login from "@/components/Login.vue";
 import store from "@/store/index.js";
 
@@ -10,7 +10,10 @@ const routes = [
   {
     path: "/",
     name: "Home",
-    component: Home
+    component: Amz,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: "/login",
