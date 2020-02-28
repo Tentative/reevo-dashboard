@@ -1,6 +1,14 @@
 <template>
   <div class="md-alignment-center-center">
     <Table :items="items" :amzdata="amzdata" :loading="loading" />
+    <md-table-pagination
+      :md-size="5"
+      :md-total="amzdata.QtaRecords"
+      md-page="1"
+      :md-page-options="[5, 10, 25, 50]"
+      @pagination="onPagination"
+    >
+    </md-table-pagination>
   </div>
 </template>
 
