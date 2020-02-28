@@ -4,18 +4,22 @@
       <md-button class="md-icon-button" @click="showNavigation = true">
         <md-icon>menu</md-icon>
       </md-button>
-      <span class="md-title">My Title</span>
+      <span class="md-title">Dashboard</span>
     </md-toolbar>
 
     <md-drawer :md-active.sync="showNavigation" md-swipeable>
       <md-toolbar class="md-transparent" md-elevation="0">
-        <span class="md-title">My App name</span>
+        <span class="md-title">Reevo Dashboard</span>
       </md-toolbar>
 
       <md-list>
         <md-list-item>
-          <md-icon>move_to_inbox</md-icon>
-          <span class="md-list-item-text">Inbox</span>
+          <md-icon>trending_up</md-icon>
+          <router-link to="/"
+            ><span class="md-list-item-text"
+              >Amazon Dashboard</span
+            ></router-link
+          >
         </md-list-item>
 
         <md-list-item>
@@ -44,6 +48,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  name: "App",
   created: function() {
     this.$http.interceptors.response.use(undefined, function(err) {
       // eslint-disable-next-line no-unused-vars

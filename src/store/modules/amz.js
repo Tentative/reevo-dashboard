@@ -20,15 +20,20 @@ export default {
       FiltroBuyBox: "Tutti",
       FiltroNegativeReviews: "Tutti"
     },
-    items: {},
-    amzdata: []
+    items: [],
+    amzdata: {}
   },
   mutations: {
     table_request(state, amz) {
       state.status = "loading";
-      state.amz_request.JsonRichiesta = amz;
+      state.amz_request.JsonRichiesta = JSON.stringify(amz);
     },
-    amz_success(state) {
+    amz_success(state, items, amzdata) {
+      state.status = "";
+      state.items = items;
+      state.amzdata = amzdata;
+    },
+    amz_error(state) {
       state.status = "";
     }
   },
@@ -47,21 +52,19 @@ export default {
         })
           .then(res => {
             console.log(res);
-            commit("auth_success", token);
-            const token = jsonRisposta.JsonWebToken;
-            if (jsonRisposta.IsAutorizzato == true) {
-              axios.defaults.headers.common["Authorization"] = token;
-              resolve(res);
-            } else {
-              commit("auth_error");
-              localStorage.removeItem("token");
+            const amzdata = JSON.parse(res.data.JsonRisposta);
+            const lista = amzdata.ListaItems;
+            let items = [];
+            for (const item of lista) {
+              items.push(item);
             }
+            commit("amz_success", items, amzdata);
+            resolve(res);
           })
-
           .catch(err => {
-            commit("auth_error", err);
-            localStorage.removeItem("token");
+            commit("amz_error", err);
             reject(err);
+            console.log(err);
           });
       });
     }

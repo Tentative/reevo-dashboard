@@ -4,5 +4,7 @@ export default {
   isLoggedIn: () =>
     !!localStorage.getItem("token") || !!sessionStorage.getItem("token"),
   authStatus: () => auth.state.status,
-  amz: () => amz.state.amz
+  amz: () => amz.state.amz,
+  items: () => amz.state.items,
+  amzdata: () => amz.state.amzdata
 };

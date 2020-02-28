@@ -17,7 +17,8 @@ export default {
     return {
       items: [],
       amzdata: {},
-      loading: false
+      loading: false,
+      amazon: {}
     };
   },
   computed: {
@@ -28,13 +29,16 @@ export default {
   methods: {
     table_request() {
       this.loading = true;
-      let amz = amz;
+      let amz_request = this.$store.getters.amz;
       this.$store
-        .dispatch("amz_request", {
-          amz
-        })
+        .dispatch("amz_request", amz_request)
+
+        // eslint-disable-next-line no-unused-vars
         .then(res => {
+          console.log("check su amz" + amz_request);
+          console.log(res);
           this.loading = false;
+          this.items = this.$store.getters.amz;
         })
         .catch(err => console.log(err));
     }

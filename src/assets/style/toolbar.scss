@@ -10,5 +10,9 @@
 }
 
 .md-content {
-  padding: 16px;
+  // padding: 16px;
+}
+
+.md-list-item-content {
+  justify-content: inherit !important;
 }

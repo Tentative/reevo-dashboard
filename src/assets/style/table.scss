@@ -1,0 +1,26 @@
+$ok-status: #60ad5e;
+$alert-status: #ff9d3f;
+$error-status: #f05545;
+$error-background: #ff867c;
+$text-on-dark: #fafafa;
+
+.thumb img {
+  height: 54px;
+  width: 54px;
+  vertical-align: middle;
+}
+
+.md-icon.md-theme-default.md-icon-font.ok-status {
+  color: $ok-status;
+}
+.md-icon.md-theme-default.md-icon-font.no-status {
+  color: $error-status;
+}
+.md-icon.md-theme-default.md-icon-font.alert-status {
+  color: $alert-status;
+}
+
+.filtro-alert {
+  background-color: $error-background !important;
+  color: $text-on-dark;
+}
