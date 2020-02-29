@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Amz from "../views/Amz.vue";
-import Login from "@/components/Login.vue";
+import { Amz, Login } from "@/components";
+// import Home from "@/views/Home.vue";
 import store from "@/store/index.js";
 
 Vue.use(Router);
@@ -9,7 +9,7 @@ Vue.use(Router);
 const routes = [
   {
     path: "/",
-    name: "Home",
+    name: "Amz",
     component: Amz,
     meta: {
       requiresAuth: true
@@ -30,10 +30,11 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
+      console.log("porcoddio");
       next();
       return;
     }
-    next("/");
+    next("/login");
   } else {
     next();
   }

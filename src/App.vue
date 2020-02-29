@@ -15,7 +15,7 @@
       <md-list>
         <md-list-item>
           <md-icon>trending_up</md-icon>
-          <router-link to="/"
+          <router-link to="/amz"
             ><span class="md-list-item-text"
               >Amazon Dashboard</span
             ></router-link

@@ -87,7 +87,7 @@ export default {
         // eslint-disable-next-line no-unused-vars
         .then(res => {
           this.loading = false;
-          this.$router.push("/");
+          this.$router.push("/amz");
         })
         .catch(err => console.log(err));
       this.loading = false;

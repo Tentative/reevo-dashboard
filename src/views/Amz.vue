@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Table from "@/components/Table.vue";
+import Table from "@/components/AMZ";
 import { mapGetters } from "vuex";
 export default {
   name: "Amz",
