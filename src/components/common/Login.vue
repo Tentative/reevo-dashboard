@@ -52,7 +52,8 @@ export default {
   name: "Login",
   computed: {
     ...mapGetters({
-      authStatus: "authStatus"
+      authStatus: "authStatus",
+      isLoggedIn: "isLoggedIn"
     })
   },
   components: {},
@@ -84,13 +85,11 @@ export default {
           Password,
           IsMemorizzaPassword
         })
-        // eslint-disable-next-line no-unused-vars
-        .then(res => {
+        .then(() => {
           this.loading = false;
-          this.$router.push("/amz");
+          this.$router.push("/amz", () => {});
         })
         .catch(err => console.log(err));
-      this.loading = false;
     }
   }
 };

@@ -16,6 +16,14 @@ const routes = [
     }
   },
   {
+    path: "/amz",
+    name: "Dashboard",
+    component: Amz,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: "/login",
     name: "Login",
     component: Login
