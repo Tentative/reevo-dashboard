@@ -49,28 +49,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-h1,
-h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-  & li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-}
-a {
-  color: #42b983;
-}
-.pagination {
-  margin: 20px 0;
-  border-top: 1px solid black;
-}
-.page-item.active {
-  border-radius: 3px;
-  position: static !important;
-  background-color: #fafafa !important;
-}
+@import "@/assets/style/pagination.scss";
 </style>

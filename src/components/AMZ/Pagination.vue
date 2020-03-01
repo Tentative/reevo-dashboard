@@ -56,4 +56,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+@import "@/assets/style/pagination.scss";
+</style>
