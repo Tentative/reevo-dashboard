@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import { Amz, Login } from "@/components";
+import { Login } from "@/components";
+import { Amz } from "@/views";
 // import Home from "@/views/Home.vue";
 import store from "@/store/index.js";
 
@@ -10,7 +11,7 @@ const routes = [
   {
     path: "/",
     name: "Amz",
-    component: Amz,
+    // component: Amz,
     meta: {
       requiresAuth: true
     }

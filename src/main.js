@@ -4,6 +4,7 @@ import router from "./router";
 import store from "./store";
 import Axios from "axios";
 import VueMaterial from "vue-material";
+import Paginate from "vuejs-paginate";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
 
@@ -14,8 +15,8 @@ if (token) {
 }
 
 Vue.config.productionTip = false;
-Vue.use(VueMaterial);
-
+Vue.component("paginate", Paginate);
+Vue.use(VueMaterial, Paginate);
 new Vue({
   router,
   store,

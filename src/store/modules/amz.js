@@ -28,7 +28,7 @@ export default {
       state.status = "loading";
       state.amz_request.JsonRichiesta = JSON.stringify(amz);
     },
-    amz_success(state, items, amzdata) {
+    amz_success(state, { items, amzdata }) {
       state.status = "";
       state.items = items;
       state.amzdata = amzdata;
@@ -58,7 +58,8 @@ export default {
             for (const item of lista) {
               items.push(item);
             }
-            commit("amz_success", items, amzdata);
+            commit("amz_success", { items, amzdata });
+            console.log(amzdata);
             resolve(res);
           })
           .catch(err => {

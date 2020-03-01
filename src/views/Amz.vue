@@ -1,43 +1,38 @@
 <template>
   <div class="md-alignment-center-center">
     <Table :items="items" :amzdata="amzdata" :loading="loading" />
-    <md-table-pagination
-      :md-size="5"
-      :md-total="amzdata.QtaRecords"
-      md-page="1"
-      :md-page-options="[5, 10, 25, 50]"
-      @pagination="onPagination"
-    >
-    </md-table-pagination>
+    <Pagination />
   </div>
 </template>
 
 <script>
-import Table from "@/components/AMZ";
+import { Table, Pagination } from "@/components/AMZ/";
 import { mapGetters } from "vuex";
 export default {
-  name: "Amz",
-  components: { Table },
+  name: "Dashboard",
+  components: { Table, Pagination },
   created() {
     this.table_request();
   },
   data() {
     return {
-      items: [],
-      amzdata: {},
+      // items: [],
+      // amzdata: {},
       loading: false,
       amazon: {}
     };
   },
   computed: {
     ...mapGetters({
-      amz: "amz"
+      amz: "amz",
+      items: "items",
+      amzdata: "amzdata"
     })
   },
   methods: {
     table_request() {
       this.loading = true;
-      let amz_request = this.$store.getters.amz;
+      let amz_request = this.amz;
       this.$store
         .dispatch("amz_request", amz_request)
 
@@ -53,5 +48,29 @@ export default {
   }
 };
 </script>
-
-<style></style>
+<style lang="scss" scoped>
+h1,
+h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  & li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+}
+a {
+  color: #42b983;
+}
+.pagination {
+  margin: 20px 0;
+  border-top: 1px solid black;
+}
+.page-item.active {
+  border-radius: 3px;
+  position: static !important;
+  background-color: #fafafa !important;
+}
+</style>

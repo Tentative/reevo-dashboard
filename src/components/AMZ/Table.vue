@@ -80,6 +80,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  name: "Table",
   data() {
     return {
       dialogVisible: false
