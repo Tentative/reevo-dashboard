@@ -1,0 +1,19 @@
+.pagination {
+  margin: 5px 0;
+  padding: 20px 0 0 0;
+  display: inline-block;
+}
+
+.jumper {
+  margin: 0 10px;
+  display: inline-block;
+  & select {
+    margin: 0 5px;
+  }
+  vertical-align: sub;
+  text-align: center;
+}
+
+.pagination-nav {
+  border-top: 1px solid black;
+}

@@ -10,11 +10,12 @@
       :total="totalPages"
       @prev-click="prevPage()"
       @next-click="nextPage()"
-      @current-change="table_request()"
+      @current-change="call_amz()"
     >
     </el-pagination>
   </div>
 </template>
+
 <script>
 import { mapGetters } from "vuex";
 export default {
@@ -43,31 +44,32 @@ export default {
     //   this.$store.commit("update_params", new_data);
     //   this.table_request();
     // },
-    table_request() {
-      let amz_request = this.amz;
-      this.$store
-        .dispatch("amz_request", amz_request)
-
-        // eslint-disable-next-line no-unused-vars
-        .then(res => {
-          console.log("check su amz" + amz_request);
-          console.log(res);
-          this.loading = false;
-          this.items = this.$store.getters.amz;
-        })
-        .catch(err => console.log(err));
+    call_amz() {
+      let amz = {
+        NumeroPagina: this.currentPage,
+        ItemsPerPagina: this.itemsPerPage,
+        Categoria: null,
+        FiltroAlert: "Tutti",
+        FiltroInStock: "Tutti",
+        FiltroFastTrack: "Tutti",
+        FiltroBuyBox: "Tutti",
+        FiltroNegativeReviews: "Tutti"
+      };
+      this.$store.dispatch("amz_request", { amz });
     },
-    nextPage: function() {
+    nextPage() {
       if (this.currentPage != this.totalPages) {
         this.currentPage = this.currentPage + 1;
-
         console.log(this.currentPage);
       }
+    },
+    prevPage() {
+      if (this.currentPage != 1) this.currentPage--;
     }
   }
 };
 </script>
 
 <style lang="scss">
-// @import "@/assets/style/pagination.scss";
+@import "@/assets/style/pagination.scss";
 </style>

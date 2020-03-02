@@ -24,8 +24,16 @@ export default {
     amzdata: {}
   },
   mutations: {
-    table_request(state, amz) {
+    table_request(state, { amz }) {
       state.status = "loading";
+      state.amz.NumeroPagina = amz.NumeroPagina;
+      state.amz.ItemsPerPagina = amz.ItemsPerPagina;
+      state.amz.Categoria = amz.Categoria;
+      state.amz.FiltroAlert = amz.FiltroAlert;
+      state.amz.FiltroInStock = amz.FiltroInStock;
+      state.amz.FiltroFastTrack = amz.FiltroFastTrack;
+      state.amz.FiltroBuyBox = amz.FiltroBuyBox;
+      state.amz.FiltroNegativeReviews = amz.FiltroNegativeReviews;
       state.amz_request.JsonRichiesta = JSON.stringify(amz);
     },
     amz_success(state, { items, amzdata }) {
