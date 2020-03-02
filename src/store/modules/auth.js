@@ -22,8 +22,8 @@ export default {
       state.token = token;
       if (state.login.IsMemorizzaPassword == false) {
         console.log("Disconnesso al primo accesso");
-        sessionStorage.setItem("token", token);
-        state.token = "";
+        // sessionStorage.setItem("token", token);
+        state.token = token;
       } else {
         localStorage.setItem("token", token);
       }
