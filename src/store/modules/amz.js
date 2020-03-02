@@ -35,6 +35,9 @@ export default {
     },
     amz_error(state) {
       state.status = "";
+    },
+    update_params(state, new_data) {
+      state.amzdata.NumeroPagina = new_data.numeroPagina;
     }
   },
   actions: {

@@ -49,5 +49,5 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-@import "@/assets/style/pagination.scss";
+// @import "@/assets/style/pagination.scss";
 </style>

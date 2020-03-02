@@ -5,5 +5,7 @@ export default {
   authStatus: () => auth.state.status,
   amz: () => amz.state.amz,
   items: () => amz.state.items,
-  amzdata: () => amz.state.amzdata
+  amzdata: () => amz.state.amzdata,
+  itemsPerPage: () => amz.state.amzdata.ItemsPerPagina,
+  currentPage: () => amz.state.amz.NumeroPagina
 };
