@@ -5,6 +5,7 @@
         <md-icon>menu</md-icon>
       </md-button>
       <span class="md-title">Dashboard</span>
+      <span v-if="isLoggedIn" @click="logout"> Logout</span>
     </md-toolbar>
 
     <md-drawer :md-active.sync="showNavigation" md-swipeable>
@@ -40,7 +41,7 @@
     </md-drawer>
 
     <md-content>
-      <router-view />
+      <router-view :isLoggedIn="isLoggedIn" />
     </md-content>
   </div>
 </template>
@@ -69,7 +70,7 @@ export default {
   methods: {
     logout: function() {
       this.$store.dispatch("logout").then(() => {
-        this.$router.push("/login");
+        this.$router.push("/login", () => {});
       });
     }
   },

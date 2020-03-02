@@ -33,6 +33,7 @@ export default {
     },
     logout(state) {
       state.status = "";
+      state.token = "";
       localStorage.removeItem("token");
       sessionStorage.removeItem("token");
     }
