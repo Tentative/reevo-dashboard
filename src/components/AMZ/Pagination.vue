@@ -1,18 +1,36 @@
 <template>
-  <div>
-    <v-pagination> cazz </v-pagination>
+  <div class="pagination">
+    <el-pagination
+      background
+      layout="prev, pager, next"
+      :page-size="itemsPerPage"
+      :pager-count="5"
+      :page-count="parseInt(amzdata.QtaPagine)"
+      :current-page.sync="currentPage"
+      :total="totalPages"
+      @prev-click="prevPage()"
+      @next-click="nextPage()"
+      @current-change="table_request()"
+    >
+    </el-pagination>
   </div>
 </template>
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "Pagination",
+  name: "Paginate",
   computed: {
     ...mapGetters({
       amzdata: "amzdata",
       itemsPerPage: "itemsPerPage",
-      currentPage: "currentPage"
+      thisPage: "thisPage",
+      totalPages: "totalPages"
     })
+  },
+  data() {
+    return {
+      currentPage: 1
+    };
   },
   // components: { BootstrapVue, IconsPlugin },
 
@@ -38,6 +56,13 @@ export default {
           this.items = this.$store.getters.amz;
         })
         .catch(err => console.log(err));
+    },
+    nextPage: function() {
+      if (this.currentPage != this.totalPages) {
+        this.currentPage = this.currentPage + 1;
+
+        console.log(this.currentPage);
+      }
     }
   }
 };
