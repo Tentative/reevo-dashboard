@@ -24,3 +24,9 @@ $text-on-dark: #fafafa;
   background-color: $error-background !important;
   color: $text-on-dark;
 }
+
+.filtro-alert,
+.price,
+.discount {
+  cursor: pointer;
+}

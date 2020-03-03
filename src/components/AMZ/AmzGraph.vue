@@ -1,6 +1,6 @@
 <template>
   <div class="md-alignment-center-center login">
-    <md-dialog :md-active.sync="showDialog">
+    <md-dialog :md-active.sync="showGraph">
       <md-dialog-title>Filters</md-dialog-title>
 
       <md-tabs md-dynamic-height>
@@ -47,18 +47,14 @@
         <md-button class="md-primary" @click="saveDialog">Save</md-button>
       </md-dialog-actions>
     </md-dialog>
-
-    <md-button class="login" @click="showDialog = true"
-      ><md-icon>settings</md-icon>Filters</md-button
-    >
   </div>
 </template>
 
 <script>
 export default {
-  name: "Alerts",
+  name: "AmzGraph",
   data: () => ({
-    showDialog: false,
+    showGraph: false,
     amz: {
       NumeroPagina: 1,
       ItemsPerPagina: "20",

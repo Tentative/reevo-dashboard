@@ -1,6 +1,7 @@
 <template>
   <div>
     <Alerts v-if="router == 'Dashboard'" />
+    <AmzGraph :showGraph="showDialog" :md-active.sync="showGraph" />
     <md-table class="amz">
       <md-table-row>
         <md-table-head></md-table-head>
@@ -34,7 +35,9 @@
           ><img :src="item.UrlImmagine"
         /></md-table-cell>
         <md-table-cell class="item">
-          <span>{{ item.NomeItem }} </span>
+          <span
+            ><a @click="showGraph = true">{{ item.NomeItem }} </a></span
+          >
         </md-table-cell>
         <md-table-cell :class="item.IsAlert ? 'filtro-alert' : 'price'">
           <span>{{ item.Prezzo }} €</span>
@@ -81,10 +84,10 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { Alerts } from "@/components/AMZ";
+import { Alerts, AmzGraph } from "@/components/AMZ";
 export default {
   name: "Table",
-  components: { Alerts },
+  components: { Alerts, AmzGraph },
   data() {
     return {
       dialogVisible: false
