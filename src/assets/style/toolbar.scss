@@ -24,10 +24,14 @@
 
 .login {
   flex: 1;
+  text-align: right;
   & a {
     color: #fff !important;
     float: right;
     cursor: pointer;
+  }
+  & button {
+    flex: 1;
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="md-alignment-center-left filters">
+  <div class="md-alignment-center-right login">
     <md-dialog :md-active.sync="showDialog">
       <md-dialog-title>Filters</md-dialog-title>
 
@@ -48,7 +48,7 @@
       </md-dialog-actions>
     </md-dialog>
 
-    <md-button @click="showDialog = true"
+    <md-button class="login" @click="showDialog = true"
       ><md-icon>settings</md-icon>Filters</md-button
     >
   </div>
