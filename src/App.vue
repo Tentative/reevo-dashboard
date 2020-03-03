@@ -50,6 +50,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+
 export default {
   name: "App",
   created: function() {
@@ -81,9 +82,6 @@ export default {
     ...mapGetters({
       isLoggedIn: "isLoggedIn"
     })
-    // isSession() {
-    //   return sessionStorage.getItem("token");
-    // }
   }
 };
 </script>
