@@ -5,7 +5,9 @@
         <md-icon>menu</md-icon>
       </md-button>
       <span class="md-title">Dashboard</span>
-      <span v-if="isLoggedIn" to="/login"><a @click="logout"> Logout</a></span>
+      <span v-if="isLoggedIn" to="/login" class="login " flex
+        ><a @click="logout"> Logout</a></span
+      >
     </md-toolbar>
 
     <md-drawer :md-active.sync="showNavigation" md-swipeable>

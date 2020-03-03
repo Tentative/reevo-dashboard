@@ -21,3 +21,12 @@
 .md-list-item-content {
   justify-content: inherit !important;
 }
+
+.login {
+  flex: 1;
+  & a {
+    color: #fff !important;
+    float: right;
+    cursor: pointer;
+  }
+}
