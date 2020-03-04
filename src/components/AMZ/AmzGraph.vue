@@ -1,6 +1,6 @@
 <template>
   <div>
-    <md-dialog :md-active.sync="amzgraphVisible">
+    <md-dialog :md-active.sync="showAmzGraph">
       <md-dialog-title>Preferences</md-dialog-title>
 
       <md-tabs md-dynamic-height>
@@ -75,8 +75,8 @@
       </md-tabs>
 
       <md-dialog-actions>
-        <md-button class="md-primary" @click="graphClose">Close</md-button>
-        <md-button class="md-primary" @click="graphClose">Save</md-button>
+        <md-button class="md-primary" @click="toggleAmzGraph">Close</md-button>
+        <md-button class="md-primary">Save</md-button>
       </md-dialog-actions>
     </md-dialog>
   </div>
@@ -85,12 +85,7 @@
 <script>
 export default {
   name: "AmzGraph",
-  props: {
-    amzGraphVisible: {
-      type: Boolean,
-      required: true
-    }
-  },
+
   data: () => ({
     amzGraphVisible: false
   }),
@@ -100,14 +95,13 @@ export default {
       this.showDialog = false;
       this.$store.dispatch("amz_request", { amz });
     },
-    graphClose() {
-      this.amzGraphVisible = false;
-      // this.$emit("close-graph");
+    toggleAmzGraph() {
+      this.$store.commit("toggle_amz_graph");
     }
   },
   computed: {
-    amzgraphVisible() {
-      return this.amzGraphVisible;
+    showAmzGraph() {
+      return this.$store.getters.amzGraphVisible;
     }
   }
 };

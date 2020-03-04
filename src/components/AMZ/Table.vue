@@ -1,10 +1,7 @@
 <template>
   <div>
     <Alerts v-if="router == 'Dashboard'" />
-    <AmzGraph
-      @close-graph="amzGraphVisible = false"
-      :amzGraphVisible="amzGraphVisible"
-    />
+    <AmzGraph :amzGraphVisible="amzGraphVisible" />
     <md-table class="amz">
       <md-table-row>
         <md-table-head></md-table-head>
@@ -38,16 +35,20 @@
           ><img :src="item.UrlImmagine"
         /></md-table-cell>
         <md-table-cell class="item">
-          <span
-            ><a @click="amzGraphVisible = true">{{ item.NomeItem }}</a>
-          </span>
+          <span>{{ item.NomeItem }} </span>
         </md-table-cell>
         <md-table-cell :class="item.IsAlert ? 'filtro-alert' : 'price'">
-          <span>{{ item.Prezzo }} €</span>
+          <span
+            ><a @click="store.commit('toggle_amz_graph')"
+              >{{ item.Prezzo }} €</a
+            ></span
+          >
         </md-table-cell>
         <md-table-cell :class="item.IsAlert ? 'filtro-alert' : 'discount'">
-          <span v-if="item.Sconto != '0'">{{ item.Sconto }} %</span>
-          <span v-else>/</span>
+          <a @click="store.commit('toggle_amz_graph')">
+            <span v-if="item.Sconto != '0'">{{ item.Sconto }} %</span>
+            <span v-else>/</span>
+          </a>
         </md-table-cell>
         <md-table-cell class="stock">
           <span v-if="item.InStock == 'No'"
@@ -93,13 +94,13 @@ export default {
   components: { Alerts, AmzGraph },
   data() {
     return {
-      dialogVisible: false,
-      amzGraphVisible: false
+      dialogVisible: false
+      // amzGraphVisible: false
     };
   },
   method: {
-    amzGraphOpen() {
-      this.amzGraphVisible = true;
+    toggleAmzGraph() {
+      this.$store.commit("toggle_amz_graph");
     },
     amzGraphClose() {
       this.amzGraphVisible = false;
@@ -109,10 +110,14 @@ export default {
     ...mapGetters({
       items: "items",
       amzdata: "amzdata",
-      amz: "amz"
+      amz: "amz",
+      amzGraphVisible: "amzGraphVisible"
     }),
     router() {
       return this.$route.name;
+    },
+    store() {
+      return this.$store;
     }
   }
 };
