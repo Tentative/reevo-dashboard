@@ -1,7 +1,10 @@
 <template>
   <div>
     <Alerts v-if="router == 'Dashboard'" />
-    <AmzGraph :showGraph="showDialog" :md-active.sync="showGraph" />
+    <AmzGraph
+      @close-graph="amzGraphVisible = false"
+      :amzGraphVisible="amzGraphVisible"
+    />
     <md-table class="amz">
       <md-table-row>
         <md-table-head></md-table-head>
@@ -36,8 +39,8 @@
         /></md-table-cell>
         <md-table-cell class="item">
           <span
-            ><a @click="showGraph = true">{{ item.NomeItem }} </a></span
-          >
+            ><a @click="amzGraphVisible = true">{{ item.NomeItem }}</a>
+          </span>
         </md-table-cell>
         <md-table-cell :class="item.IsAlert ? 'filtro-alert' : 'price'">
           <span>{{ item.Prezzo }} €</span>
@@ -90,8 +93,17 @@ export default {
   components: { Alerts, AmzGraph },
   data() {
     return {
-      dialogVisible: false
+      dialogVisible: false,
+      amzGraphVisible: false
     };
+  },
+  method: {
+    amzGraphOpen() {
+      this.amzGraphVisible = true;
+    },
+    amzGraphClose() {
+      this.amzGraphVisible = false;
+    }
   },
   computed: {
     ...mapGetters({

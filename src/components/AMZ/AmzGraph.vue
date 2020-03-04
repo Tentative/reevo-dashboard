@@ -1,50 +1,82 @@
 <template>
-  <div class="md-alignment-center-center login">
-    <md-dialog :md-active.sync="showGraph">
-      <md-dialog-title>Filters</md-dialog-title>
+  <div>
+    <md-dialog :md-active.sync="amzgraphVisible">
+      <md-dialog-title>Preferences</md-dialog-title>
 
       <md-tabs md-dynamic-height>
         <md-tab md-label="General">
-          <div>
-            <md-switch
-              v-model="amz.FiltroAlert"
-              true-value="Si"
-              false-value="Tutti"
-              >Filtro Alert</md-switch
-            >
-            <md-switch
-              v-model="amz.FiltroInStock"
-              true-value="No"
-              false-value="Tutti"
-              >Filtro In Stock</md-switch
-            >
-            <md-switch
-              v-model="amz.FiltroFastTrack"
-              true-value="No"
-              false-value="Tutti"
-              >Filtro Fast Track</md-switch
-            >
-            <md-switch
-              v-model="amz.FiltroBuyBox"
-              true-value="No"
-              false-value="Tutti"
-              >Filtro Buy Box</md-switch
-            >
-            <md-switch
-              v-model="amz.FiltroNegativeReviews"
-              true-value="SoloNegative"
-              false-value="Tutti"
-              >Filtro Negative Reviews</md-switch
-            >
-          </div>
-        </md-tab></md-tabs
-      >
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
+            voluptates cupiditate. Neque quae culpa suscipit praesentium
+            inventore ducimus ipsa aut.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
+            voluptates cupiditate. Neque quae culpa suscipit praesentium
+            inventore ducimus ipsa aut.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
+            voluptates cupiditate. Neque quae culpa suscipit praesentium
+            inventore ducimus ipsa aut.
+          </p>
+        </md-tab>
+
+        <md-tab md-label="Activity">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
+            voluptates cupiditate. Neque quae culpa suscipit praesentium
+            inventore ducimus ipsa aut.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
+            voluptates cupiditate. Neque quae culpa suscipit praesentium
+            inventore ducimus ipsa aut.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
+            voluptates cupiditate. Neque quae culpa suscipit praesentium
+            inventore ducimus ipsa aut.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
+            voluptates cupiditate. Neque quae culpa suscipit praesentium
+            inventore ducimus ipsa aut.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
+            voluptates cupiditate. Neque quae culpa suscipit praesentium
+            inventore ducimus ipsa aut.
+          </p>
+        </md-tab>
+
+        <md-tab md-label="Account">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
+            voluptates cupiditate. Neque quae culpa suscipit praesentium
+            inventore ducimus ipsa aut.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
+            voluptates cupiditate. Neque quae culpa suscipit praesentium
+            inventore ducimus ipsa aut.
+          </p>
+        </md-tab>
+      </md-tabs>
 
       <md-dialog-actions>
-        <md-button class="md-primary" @click="showDialog = false"
-          >Close</md-button
-        >
-        <md-button class="md-primary" @click="saveDialog">Save</md-button>
+        <md-button class="md-primary" @click="graphClose">Close</md-button>
+        <md-button class="md-primary" @click="graphClose">Save</md-button>
       </md-dialog-actions>
     </md-dialog>
   </div>
@@ -53,24 +85,29 @@
 <script>
 export default {
   name: "AmzGraph",
-  data: () => ({
-    showGraph: false,
-    amz: {
-      NumeroPagina: 1,
-      ItemsPerPagina: "20",
-      Categoria: null,
-      FiltroAlert: "Tutti",
-      FiltroInStock: "Tutti",
-      FiltroFastTrack: "Tutti",
-      FiltroBuyBox: "Tutti",
-      FiltroNegativeReviews: "Tutti"
+  props: {
+    amzGraphVisible: {
+      type: Boolean,
+      required: true
     }
+  },
+  data: () => ({
+    amzGraphVisible: false
   }),
   methods: {
     saveDialog() {
       let amz = this.amz;
       this.showDialog = false;
       this.$store.dispatch("amz_request", { amz });
+    },
+    graphClose() {
+      this.amzGraphVisible = false;
+      // this.$emit("close-graph");
+    }
+  },
+  computed: {
+    amzgraphVisible() {
+      return this.amzGraphVisible;
     }
   }
 };

@@ -8,5 +8,6 @@ export default {
   amzdata: () => amz.state.amzdata,
   itemsPerPage: () => amz.state.amzdata.ItemsPerPagina,
   thisPage: () => amz.state.amz.NumeroPagina,
-  totalPages: () => amz.state.amz.QtaPagine
+  totalPages: () => amz.state.amz.QtaPagine,
+  amzGraphVisible: () => amz.state.amzGraphVisible
 };

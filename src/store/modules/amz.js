@@ -21,7 +21,8 @@ export default {
       FiltroNegativeReviews: "Tutti"
     },
     items: [],
-    amzdata: {}
+    amzdata: {},
+    amzGraphVisible: false
   },
   mutations: {
     table_request(state, { amz }) {
