@@ -5,7 +5,7 @@
         <div class="md-layout-item md-size-15 thumb-md">
           <img :src="currentItem.UrlImmagine" />
         </div>
-        <div class="md-layout-item md-size-15 thumb-md"></div>
+        <AmzChart :currentItem="currentItem" />
       </div>
 
       <md-dialog-actions>
@@ -16,9 +16,10 @@
 </template>
 
 <script>
+import AmzChart from "@/components/AMZ/AmzChart.vue";
 export default {
   name: "AmzGraph",
-
+  components: { AmzChart },
   data: () => ({
     amzGraphVisible: false
   }),
