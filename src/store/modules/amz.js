@@ -47,9 +47,6 @@ export default {
     },
     update_params(state, new_data) {
       state.amzdata.NumeroPagina = new_data.numeroPagina;
-    },
-    toggle_amz_graph(state) {
-      state.amzGraphVisible = !state.amzGraphVisible;
     }
   },
   actions: {

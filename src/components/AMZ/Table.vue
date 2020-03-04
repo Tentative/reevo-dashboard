@@ -39,7 +39,7 @@
         </md-table-cell>
         <md-table-cell :class="item.IsAlert ? 'filtro-alert' : 'price'">
           <span
-            ><a @click="store.commit('toggle_amz_graph')"
+            ><a @click="store.dispatch('save_graph', { item })"
               >{{ item.Prezzo }} €</a
             ></span
           >

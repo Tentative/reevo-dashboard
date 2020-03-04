@@ -1,82 +1,15 @@
 <template>
   <div>
     <md-dialog :md-active.sync="showAmzGraph">
-      <md-dialog-title>Preferences</md-dialog-title>
-
-      <md-tabs md-dynamic-height>
-        <md-tab md-label="General">
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
-            voluptates cupiditate. Neque quae culpa suscipit praesentium
-            inventore ducimus ipsa aut.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
-            voluptates cupiditate. Neque quae culpa suscipit praesentium
-            inventore ducimus ipsa aut.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
-            voluptates cupiditate. Neque quae culpa suscipit praesentium
-            inventore ducimus ipsa aut.
-          </p>
-        </md-tab>
-
-        <md-tab md-label="Activity">
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
-            voluptates cupiditate. Neque quae culpa suscipit praesentium
-            inventore ducimus ipsa aut.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
-            voluptates cupiditate. Neque quae culpa suscipit praesentium
-            inventore ducimus ipsa aut.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
-            voluptates cupiditate. Neque quae culpa suscipit praesentium
-            inventore ducimus ipsa aut.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
-            voluptates cupiditate. Neque quae culpa suscipit praesentium
-            inventore ducimus ipsa aut.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
-            voluptates cupiditate. Neque quae culpa suscipit praesentium
-            inventore ducimus ipsa aut.
-          </p>
-        </md-tab>
-
-        <md-tab md-label="Account">
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
-            voluptates cupiditate. Neque quae culpa suscipit praesentium
-            inventore ducimus ipsa aut.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-            mollitia dolorum dolores quae commodi impedit possimus qui, atque at
-            voluptates cupiditate. Neque quae culpa suscipit praesentium
-            inventore ducimus ipsa aut.
-          </p>
-        </md-tab>
-      </md-tabs>
+      <div class="md-layout ">
+        <div class="md-layout-item md-size-15 thumb-md">
+          <img :src="currentItem.UrlImmagine" />
+        </div>
+        <div class="md-layout-item md-size-15 thumb-md"></div>
+      </div>
 
       <md-dialog-actions>
         <md-button class="md-primary" @click="toggleAmzGraph">Close</md-button>
-        <md-button class="md-primary">Save</md-button>
       </md-dialog-actions>
     </md-dialog>
   </div>
@@ -102,6 +35,9 @@ export default {
   computed: {
     showAmzGraph() {
       return this.$store.getters.amzGraphVisible;
+    },
+    currentItem() {
+      return this.$store.getters.currentItem;
     }
   }
 };

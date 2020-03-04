@@ -1,5 +1,6 @@
 import auth from "./auth.js";
 import amz from "./amz.js";
+import amzgraph from "./amzgraph.js";
 export default {
   isLoggedIn: () => !!auth.state.token || !!sessionStorage.getItem("token"),
   authStatus: () => auth.state.status,
@@ -9,5 +10,6 @@ export default {
   itemsPerPage: () => amz.state.amzdata.ItemsPerPagina,
   thisPage: () => amz.state.amz.NumeroPagina,
   totalPages: () => amz.state.amz.QtaPagine,
-  amzGraphVisible: () => amz.state.amzGraphVisible
+  amzGraphVisible: () => amzgraph.state.amzGraphVisible,
+  currentItem: () => amzgraph.state.currentItem
 };
