@@ -41,3 +41,8 @@ $text-on-dark: #fafafa;
     text-decoration: none;
   }
 }
+
+.price a:hover,
+.discount a:hover {
+  text-decoration: none;
+}
