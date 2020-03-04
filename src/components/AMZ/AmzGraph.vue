@@ -19,6 +19,7 @@
 import AmzChart from "@/components/AMZ/AmzChart.vue";
 export default {
   name: "AmzGraph",
+
   components: { AmzChart },
   data: () => ({
     amzGraphVisible: false

@@ -3,5 +3,6 @@ import Pagination from "@/components/AMZ/Pagination.vue";
 import Jumper from "@/components/AMZ/Jumper.vue";
 import Alerts from "@/components/AMZ/Alerts.vue";
 import AmzGraph from "@/components/AMZ/AmzGraph.vue";
+import Screenshot from "@/components/AMZ/Screenshot.vue";
 
-export { Table, Pagination, Jumper, Alerts, AmzGraph };
+export { Table, Pagination, Jumper, Alerts, AmzGraph, Screenshot };

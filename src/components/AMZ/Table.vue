@@ -2,6 +2,7 @@
   <div>
     <Alerts v-if="router == 'Dashboard'" />
     <AmzGraph :amzGraphVisible="amzGraphVisible" />
+    <Screenshot :screenshotVisible="screenshotVisible" />
     <md-table class="amz">
       <md-table-row>
         <md-table-head></md-table-head>
@@ -32,10 +33,15 @@
       </md-table-row>
       <md-table-row v-for="(item, index) in items" :key="index">
         <md-table-cell class="thumb"
-          ><img :src="item.UrlImmagine"
-        /></md-table-cell>
+          ><a @click="store.dispatch('save_screen', item)"
+            ><img :src="item.UrlImmagine"/></a
+        ></md-table-cell>
         <md-table-cell class="item">
-          <span>{{ item.NomeItem }} </span>
+          <span
+            ><a @click="store.dispatch('save_screen', item)"
+              >{{ item.NomeItem }}
+            </a></span
+          >
         </md-table-cell>
         <md-table-cell :class="item.IsAlert ? 'filtro-alert' : 'price'">
           <span
@@ -88,10 +94,10 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { Alerts, AmzGraph } from "@/components/AMZ";
+import { Alerts, AmzGraph, Screenshot } from "@/components/AMZ";
 export default {
   name: "Table",
-  components: { Alerts, AmzGraph },
+  components: { Alerts, AmzGraph, Screenshot },
   data() {
     return {
       dialogVisible: false
@@ -111,7 +117,8 @@ export default {
       items: "items",
       amzdata: "amzdata",
       amz: "amz",
-      amzGraphVisible: "amzGraphVisible"
+      amzGraphVisible: "amzGraphVisible",
+      screenshotVisible: "screenshotVisible"
     }),
     router() {
       return this.$route.name;
