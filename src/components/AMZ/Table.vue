@@ -1,7 +1,7 @@
 <template>
   <div>
     <Alerts v-if="router == 'Dashboard'" />
-    <AmzGraph :amzGraphVisible="amzGraphVisible" />
+    <AmzGraph v-if="loaded" :amzGraphVisible="amzGraphVisible" />
     <Screenshot :screenshotVisible="screenshotVisible" />
     <md-table class="amz">
       <md-table-row>
@@ -33,7 +33,7 @@
       </md-table-row>
       <md-table-row v-for="(item, index) in items" :key="index">
         <md-table-cell class="thumb"
-          ><a @click="store.dispatch('save_screen', item)"
+          ><a @click="store.dispatch('amz_graph', item)"
             ><img :src="item.UrlImmagine"/></a
         ></md-table-cell>
         <md-table-cell class="item">
@@ -45,7 +45,7 @@
         </md-table-cell>
         <md-table-cell :class="item.IsAlert ? 'filtro-alert' : 'price'">
           <span
-            ><a @click="store.dispatch('save_graph', { item })"
+            ><a @click="store.dispatch('amz_graph', { item })"
               >{{ item.Prezzo }} €</a
             ></span
           >
@@ -100,7 +100,8 @@ export default {
   components: { Alerts, AmzGraph, Screenshot },
   data() {
     return {
-      dialogVisible: false
+      dialogVisible: false,
+      loaded: false
       // amzGraphVisible: false
     };
   },

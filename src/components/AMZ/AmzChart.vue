@@ -1,8 +1,10 @@
 <script>
 // Importing Line class from the vue-chartjs wrapper
 import { Line, Bar, Scatter } from "vue-chartjs";
+import { mapGetters } from "vuex";
 // Exporting this so it can be used in other components
 export default {
+  name: "Chart",
   extends: Line,
   Bar,
   Scatter,
@@ -10,23 +12,41 @@ export default {
     currentItem: {
       type: Object,
       required: true
+    },
+    graphRes: {
+      type: Object,
+      required: true
     }
   },
+  computed: {
+    ...mapGetters({
+      graph_data: "graph_data",
+      graph_days: "graph_days"
+    })
+  },
   created() {
-    let graph_params = {
-      EAN: this.currentItem.EAN,
-      FiltroGiorni: "30"
-    };
-    this.$store.dispatch("amz_graph", graph_params).then(res => {
-      this.amz_res = res;
+    this.$store.dispatch("amz_graph").then(res => {
+      let amz_res = JSON.parse(res.data.JsonRisposta);
+      let ListaPrezzi = amz_res.ListaPrezzi;
+      // eslint-disable-next-line no-unused-vars
+      for (const [day, index] in ListaPrezzi) {
+        console.log(ListaPrezzi[day].PrezzoGiorno);
+        this.datacollection.datasets[0].data.push(
+          ListaPrezzi[day].PrezzoGiorno
+        );
+        this.datacollection.datasets[1].data.push(day + 1);
+      }
+      this.datacollection.datasets[1].data.push(parseFloat(amz_res.PrezzoMin));
+      this.datacollection.datasets[1].data.push(amz_res.PrezzoMax);
+      this.datacollection.datasets[1].data.push(amz_res.PrezzoMin);
+      this.datacollection.datasets[1].data.push(amz_res.PrezzoMax);
     });
   },
   data() {
     return {
-      amz_res: {},
       datacollection: {
         // Data to be represented on x-axis
-        labels: ["Price A", "Price B"],
+        labels: ["Price", "S.Rank"],
         datasets: [
           {
             label: "Data One",
@@ -35,7 +55,8 @@ export default {
             borderWidth: 1,
             pointBorderColor: "#249EBF",
             // Data to be represented on y-axis
-            data: [Math.floor(Math.random() * 9) + 1, 2, 3, 4, 5, 6, 7]
+            data: [this.graphRes.PrezzoMin, this.graphRes.PrezzoMax],
+            type: "line"
           },
           {
             label: "Data Two",
@@ -44,7 +65,7 @@ export default {
             borderWidth: 1,
             pointBorderColor: "#249EBF",
             // Data to be represented on y-axis
-            data: [Math.floor(Math.random() * 9) + 1, 1, 3, 4]
+            data: []
           },
           {
             label: "Data Three",
@@ -53,7 +74,7 @@ export default {
             borderWidth: 1,
             pointBorderColor: "#249EBF",
             // Data to be represented on y-axis
-            data: [Math.floor(Math.random() * 9) + 1, 1, 3, 4],
+            data: [],
             type: "bar"
           }
         ]

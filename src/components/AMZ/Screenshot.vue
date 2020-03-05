@@ -1,8 +1,8 @@
 <template>
   <div>
     <md-dialog
-      :md-active.sync="screenshotVisible"
       @md-clicked-oustide="toggleScreenshot"
+      :md-active.sync="screenshot"
     >
       <div class="md-layout ">
         <div class="md-layout-item ">
@@ -21,16 +21,12 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "Screenshot",
-  props: {
-    screenshotVisible: {
-      type: Boolean,
-      required: true
-    }
-  },
+
   data: () => ({
-    screenshotVisible: false
+    // screenshotVisible: false
   }),
   methods: {
     toggleScreenshot() {
@@ -38,11 +34,17 @@ export default {
     }
   },
   computed: {
-    showAmzGraph() {
-      return this.$store.getters.screenshotVisible;
-    },
-    currentItem() {
-      return this.$store.getters.currentItem;
+    ...mapGetters({
+      screenshotVisible: "screenshotVisible",
+      currentItem: "currentItem"
+    }),
+    screenshot: {
+      get() {
+        return this.screenshotVisible;
+      },
+      set(newValue) {
+        return newValue;
+      }
     }
   }
 };

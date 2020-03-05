@@ -1,11 +1,11 @@
 <template>
   <div>
-    <md-dialog :md-active.sync="showAmzGraph">
+    <md-dialog :md-active.sync="graph">
       <div class="md-layout ">
         <div class="md-layout-item md-size-15 thumb-md">
           <img :src="currentItem.UrlImmagine" />
         </div>
-        <AmzChart :currentItem="currentItem" />
+        <AmzChart :graphRes="graphRes" :currentItem="currentItem" />
       </div>
 
       <md-dialog-actions>
@@ -17,29 +17,34 @@
 
 <script>
 import AmzChart from "@/components/AMZ/AmzChart.vue";
+import { mapGetters } from "vuex";
 export default {
   name: "AmzGraph",
 
   components: { AmzChart },
-  data: () => ({
-    amzGraphVisible: false
-  }),
+  data: () => ({}),
   methods: {
-    saveDialog() {
-      let amz = this.amz;
-      this.showDialog = false;
-      this.$store.dispatch("amz_request", { amz });
-    },
     toggleAmzGraph() {
       this.$store.commit("toggle_amz_graph");
     }
   },
   computed: {
-    showAmzGraph() {
-      return this.$store.getters.amzGraphVisible;
+    ...mapGetters({
+      amzGraphVisible: "amzGraphVisible"
+    }),
+    graph: {
+      get() {
+        return this.amzGraphVisible;
+      },
+      set(newValue) {
+        return newValue;
+      }
     },
     currentItem() {
       return this.$store.getters.currentItem;
+    },
+    graphRes() {
+      return this.$store.getters.graphRes;
     }
   }
 };
