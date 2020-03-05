@@ -14,7 +14,7 @@ export default {
   amzGraphVisible: () => amzgraph.state.amzGraphVisible,
   currentItem: () => amzgraph.state.currentItem,
   graph_data: () => amzgraph.state.graph_data,
-  graph_days: () => amzgraph.state.graph_days,
-  graphRes: () => amzgraph.state.graph_res,
+  days: () => amzgraph.state.days,
+  minMax: () => amzgraph.state.min_max,
   screenshotVisible: () => screenshot.state.screenshotVisible
 };

@@ -13,8 +13,12 @@ export default {
       type: Object,
       required: true
     },
-    graphRes: {
-      type: Object,
+    days: {
+      type: Array,
+      required: true
+    },
+    minMax: {
+      type: Array,
       required: true
     }
   },
@@ -25,22 +29,22 @@ export default {
     })
   },
   created() {
-    this.$store.dispatch("amz_graph").then(res => {
-      let amz_res = JSON.parse(res.data.JsonRisposta);
-      let ListaPrezzi = amz_res.ListaPrezzi;
-      // eslint-disable-next-line no-unused-vars
-      for (const [day, index] in ListaPrezzi) {
-        console.log(ListaPrezzi[day].PrezzoGiorno);
-        this.datacollection.datasets[0].data.push(
-          ListaPrezzi[day].PrezzoGiorno
-        );
-        this.datacollection.datasets[1].data.push(day + 1);
-      }
-      this.datacollection.datasets[1].data.push(parseFloat(amz_res.PrezzoMin));
-      this.datacollection.datasets[1].data.push(amz_res.PrezzoMax);
-      this.datacollection.datasets[1].data.push(amz_res.PrezzoMin);
-      this.datacollection.datasets[1].data.push(amz_res.PrezzoMax);
-    });
+    // this.$store.dispatch("amz_graph").then(res => {
+    //   let amz_res = JSON.parse(res.data.JsonRisposta);
+    //   let ListaPrezzi = amz_res.ListaPrezzi;
+    //   // eslint-disable-next-line no-unused-vars
+    //   for (const [day, index] in ListaPrezzi) {
+    //     console.log(ListaPrezzi[day].PrezzoGiorno);
+    //     this.datacollection.datasets[0].data.push(
+    //       ListaPrezzi[day].PrezzoGiorno
+    //     );
+    //     this.datacollection.datasets[1].data.push(day + 1);
+    //   }
+    //   this.datacollection.datasets[1].data.push(parseFloat(amz_res.PrezzoMin));
+    //   this.datacollection.datasets[1].data.push(amz_res.PrezzoMax);
+    //   this.datacollection.datasets[1].data.push(amz_res.PrezzoMin);
+    //   this.datacollection.datasets[1].data.push(amz_res.PrezzoMax);
+    // });
   },
   data() {
     return {
@@ -55,8 +59,16 @@ export default {
             borderWidth: 1,
             pointBorderColor: "#249EBF",
             // Data to be represented on y-axis
-            data: [this.graphRes.PrezzoMin, this.graphRes.PrezzoMax],
-            type: "line"
+            data: [
+              {
+                x: this.days[0],
+                y: this.days[1]
+              },
+              this.days[2],
+              this.days[3],
+              this.days[4],
+              this.days[5]
+            ]
           },
           {
             label: "Data Two",
@@ -65,7 +77,8 @@ export default {
             borderWidth: 1,
             pointBorderColor: "#249EBF",
             // Data to be represented on y-axis
-            data: []
+            //qua ci vanno le porcoddio di sales ranks
+            data: ["2", "3", this.minMax[1]]
           },
           {
             label: "Data Three",

@@ -6,6 +6,8 @@ export default {
     graph_res: {},
     graph_days: [],
     currentItem: {},
+    days: [],
+    min_max: [],
     amzgraph_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "AMZGraph",
@@ -27,9 +29,9 @@ export default {
     graph_request(state) {
       state.amzgraph_request.JsonRichiesta = JSON.stringify(state.graph_params);
     },
-    graph_success(state, res) {
-      state.graph_res = JSON.parse(res.data.JsonRisposta);
-      state.graph_days = state.graph_res.ListaPrezzi;
+    graph_success(state, { days, min_max }) {
+      state.days = days;
+      state.min_max = min_max;
     }
   },
   actions: {
@@ -55,15 +57,25 @@ export default {
           params: JSON.stringify(richiesta)
         })
           .then(res => {
-            commit("graph_success", res);
-            commit("toggle_amz_graph");
+            const response = JSON.parse(res.data.JsonRisposta);
+            const total_days = response.ListaPrezzi;
+            let days = [];
+            for (const day in total_days) {
+              days.push(total_days[day].PrezzoGiorno);
+            }
+            let min_max = [response.PrezzoMin, response.PrezzoMax];
+
+            commit("graph_success", { days, min_max });
+
             resolve(res);
+            commit("toggle_amz_graph");
+            console.log("ha finit?");
           })
+
           .catch(err => {
             reject(err);
             console.log(err);
           });
-        console.log(state.graph_data);
       });
     }
   },

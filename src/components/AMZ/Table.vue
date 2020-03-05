@@ -1,7 +1,7 @@
 <template>
   <div>
     <Alerts v-if="router == 'Dashboard'" />
-    <AmzGraph v-if="loaded" :amzGraphVisible="amzGraphVisible" />
+    <AmzGraph :amzGraphVisible="amzGraphVisible" />
     <Screenshot :screenshotVisible="screenshotVisible" />
     <md-table class="amz">
       <md-table-row>

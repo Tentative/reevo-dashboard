@@ -3,9 +3,14 @@
     <md-dialog :md-active.sync="graph">
       <div class="md-layout ">
         <div class="md-layout-item md-size-15 thumb-md">
-          <img :src="currentItem.UrlImmagine" />
+          <img src="" />
         </div>
-        <AmzChart :graphRes="graphRes" :currentItem="currentItem" />
+        <AmzChart
+          :width="1200"
+          :minMax="minMax"
+          :days="days"
+          :currentItem="currentItem"
+        />
       </div>
 
       <md-dialog-actions>
@@ -45,6 +50,12 @@ export default {
     },
     graphRes() {
       return this.$store.getters.graphRes;
+    },
+    minMax() {
+      return this.$store.getters.minMax;
+    },
+    days() {
+      return this.$store.getters.days;
     }
   }
 };
