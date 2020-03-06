@@ -119,7 +119,8 @@ export default {
       amzdata: "amzdata",
       amz: "amz",
       amzGraphVisible: "amzGraphVisible",
-      screenshotVisible: "screenshotVisible"
+      screenshotVisible: "screenshotVisible",
+      graphParams: "graphParams"
     }),
     router() {
       return this.$route.name;

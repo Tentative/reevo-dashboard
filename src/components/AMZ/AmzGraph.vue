@@ -5,11 +5,7 @@
         <div class="md-layout-item md-size-15 thumb-md">
           <img src="" />
         </div>
-        <line-chart
-          :chart-data="chartdata"
-          :dataPrezzo="dataPrezzo"
-          style="width:400px"
-        ></line-chart>
+        <line-chart :chartdata="chartdata" style="width:400px"></line-chart>
       </div>
 
       <md-dialog-actions>
@@ -45,13 +41,6 @@ export default {
     },
     loaded: false
   }),
-  created() {
-    return {
-      dataPrezzo() {
-        this.$store.getters.dataPrezzo;
-      }
-    };
-  },
   async mounted() {
     this.loaded = false;
     let amzgraph_request = {
@@ -59,7 +48,7 @@ export default {
       CodiceRichiesta: "AMZGraph",
       VersioneClient: "1.0.3",
       Url: window.location.href,
-      JsonRichiesta: this.graphParams
+      JsonRichiesta: JSON.stringify(this.graphParams)
     };
     try {
       await axios({
