@@ -1,7 +1,7 @@
 <template>
   <div>
     <Alerts v-if="router == 'Dashboard'" />
-    <AmzGraph :amzGraphVisible="amzGraphVisible" />
+    <AmzGraph :graphParams="graphParams" :amzGraphVisible="amzGraphVisible" />
     <Screenshot :screenshotVisible="screenshotVisible" />
     <md-table class="amz">
       <md-table-row>
@@ -126,6 +126,9 @@ export default {
     },
     store() {
       return this.$store;
+    },
+    graphParams() {
+      return this.$store.getters.graphParams;
     }
   }
 };

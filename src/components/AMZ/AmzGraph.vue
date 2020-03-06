@@ -6,9 +6,9 @@
           <img src="" />
         </div>
         <line-chart
-          steppedLine="true"
-          :chart-data="datacollection"
+          :chart-data="chartdata"
           :dataPrezzo="dataPrezzo"
+          style="width:400px"
         ></line-chart>
       </div>
 
@@ -21,13 +21,29 @@
 
 <script>
 import LineChart from "./LineChart.js";
+import axios from "axios";
 import { mapGetters } from "vuex";
 export default {
   name: "AmzGraph",
-  props: {},
+  props: {
+    graphParams: {
+      type: Object,
+      required: true
+    }
+  },
   components: { LineChart },
   data: () => ({
-    datacollection: null
+    chartdata: {
+      labels: [],
+      datasets: [
+        {
+          label: "Data One",
+          backgroundColor: "#f87979",
+          data: [40, 20]
+        }
+      ]
+    },
+    loaded: false
   }),
   created() {
     return {
@@ -36,8 +52,38 @@ export default {
       }
     };
   },
-  mounted() {
-    this.fillData();
+  async mounted() {
+    this.loaded = false;
+    let amzgraph_request = {
+      CodiceClient: "reevolacerba2020",
+      CodiceRichiesta: "AMZGraph",
+      VersioneClient: "1.0.3",
+      Url: window.location.href,
+      JsonRichiesta: this.graphParams
+    };
+    try {
+      await axios({
+        url: "/",
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        params: JSON.stringify(amzgraph_request)
+      }).then(res => {
+        console.log("porcamadonna" + "" + res);
+        let lista_prezzi = JSON.parse(res.data.JsonRisposta);
+        console.log(lista_prezzi);
+        let lista_giorni = lista_prezzi.ListaPrezzi;
+        let data_prezzi = [];
+        for (const data in lista_giorni) {
+          data_prezzi.push(lista_giorni[data].DataPrezzo);
+        }
+        this.chartdata.labels = data_prezzi;
+      });
+      this.loaded = true;
+    } catch (e) {
+      console.error(e);
+    }
   },
   methods: {
     toggleAmzGraph() {
