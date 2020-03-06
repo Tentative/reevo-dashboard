@@ -29,9 +29,10 @@ export default {
     graph_request(state) {
       state.amzgraph_request.JsonRichiesta = JSON.stringify(state.graph_params);
     },
-    graph_success(state, { days, min_max }) {
+    graph_success(state, { days, min_max, data_prezzo }) {
       state.days = days;
       state.min_max = min_max;
+      state.data_prezzo = data_prezzo;
     }
   },
   actions: {
@@ -58,14 +59,18 @@ export default {
         })
           .then(res => {
             const response = JSON.parse(res.data.JsonRisposta);
+            console.log(response);
             const total_days = response.ListaPrezzi;
             let days = [];
             for (const day in total_days) {
               days.push(total_days[day].PrezzoGiorno);
             }
             let min_max = [response.PrezzoMin, response.PrezzoMax];
-
-            commit("graph_success", { days, min_max });
+            let data_prezzo = [];
+            for (const data in total_days) {
+              data_prezzo.push(total_days[data].DataPrezzo);
+            }
+            commit("graph_success", { days, min_max, data_prezzo });
 
             resolve(res);
             commit("toggle_amz_graph");
