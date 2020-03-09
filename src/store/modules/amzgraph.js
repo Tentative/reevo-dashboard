@@ -12,6 +12,7 @@ export default {
         {
           label: "Prices",
           backgroundColor: "transparent",
+          borderColor: "green",
           data: [],
           order: 1,
           yAxisID: "prices"
@@ -19,13 +20,15 @@ export default {
         {
           label: "Sales Rank",
           backgroundColor: "transparent",
+          borderColor: "orange",
           data: [],
           order: 2,
           yAxisID: "ranks"
         },
         {
           label: "Out of stock",
-          backgroundColor: "red",
+          backgroundColor: "#ff867c",
+          borderColor: "red",
           data: [],
           type: "bar",
           order: 3,
@@ -110,6 +113,7 @@ export default {
           {
             label: "Prices",
             backgroundColor: "transparent",
+            borderColor: "green",
             data: [],
             order: 1,
             yAxisID: "prices"
@@ -117,16 +121,19 @@ export default {
           {
             label: "Sales Rank",
             backgroundColor: "transparent",
+            borderColor: "orange",
             data: [],
             order: 2,
             yAxisID: "ranks"
           },
           {
             label: "Out of stock",
-            backgroundColor: "red",
+            backgroundColor: "#ff867c",
+            borderColor: "red",
             data: [],
             type: "bar",
-            order: 3
+            order: 3,
+            yAxisID: "stock"
           }
         ]
       };
