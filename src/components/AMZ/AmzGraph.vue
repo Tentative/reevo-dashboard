@@ -5,11 +5,7 @@
         <div class="md-layout-item md-size-15 thumb-md">
           <img src="" />mannaggia il cristo
         </div>
-        <line-chart
-          v-on.chart:render="porcoddio()"
-          :chartdata="chartdata"
-          style="width:400px"
-        ></line-chart>
+        <bar-chart :chartdata="chartdata" style="width:400px"></bar-chart>
       </div>
 
       <md-dialog-actions>
@@ -20,7 +16,7 @@
 </template>
 
 <script>
-import LineChart from "./LineChart.js";
+import BarChart from "./LineChart.js";
 import axios from "axios";
 import { mapGetters } from "vuex";
 export default {
@@ -31,23 +27,16 @@ export default {
       required: true
     }
   },
-  components: { LineChart },
+  components: { BarChart },
   data: () => ({
-    chartdata: {
-      labels: [],
-      datasets: [
-        {
-          label: "Data One",
-          backgroundColor: "#f87979",
-          data: [40, 20]
-        }
-      ]
-    },
     loaded: false
   }),
   methods: {
     toggleAmzGraph() {
       this.$store.commit("toggle_amz_graph");
+    },
+    porcamadonna() {
+      this.chartdata = {};
     },
     async porcoddio() {
       console.log("è iniziato il porcodiddio");
@@ -108,7 +97,8 @@ export default {
   computed: {
     ...mapGetters({
       amzGraphVisible: "amzGraphVisible",
-      dataPrezzo: "dataPrezzo"
+      dataPrezzo: "dataPrezzo",
+      chartdata: "chartdata"
     }),
     graph: {
       get() {
@@ -116,6 +106,14 @@ export default {
       },
       set(newValue) {
         return newValue;
+      },
+      chartdata: {
+        get() {
+          return this.chartdata;
+        },
+        set(newValue) {
+          return newValue;
+        }
       }
     },
     currentItem() {

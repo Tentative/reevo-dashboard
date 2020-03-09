@@ -1,7 +1,8 @@
-import { Line } from "vue-chartjs";
+import { Line, Bar } from "vue-chartjs";
 
 export default {
   extends: Line,
+  Bar,
   props: {
     chartdata: {
       type: Object,
@@ -16,5 +17,8 @@ export default {
   mounted() {
     this.renderChart(this.chartdata, this.options);
     this.updateChart();
+  },
+  destroyed() {
+    this.$store.commit("clear_chart");
   }
 };
