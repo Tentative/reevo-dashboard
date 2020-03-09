@@ -5,7 +5,11 @@
         <div class="md-layout-item md-size-15 thumb-md">
           <img src="" />mannaggia il cristo
         </div>
-        <bar-chart :chartdata="chartdata" style="width:400px"></bar-chart>
+        <bar-chart
+          :chartdata="chartdata"
+          :options="options"
+          style="width:400px"
+        ></bar-chart>
       </div>
 
       <md-dialog-actions>
@@ -98,7 +102,8 @@ export default {
     ...mapGetters({
       amzGraphVisible: "amzGraphVisible",
       dataPrezzo: "dataPrezzo",
-      chartdata: "chartdata"
+      chartdata: "chartdata",
+      options: "options"
     }),
     graph: {
       get() {
@@ -110,6 +115,14 @@ export default {
       chartdata: {
         get() {
           return this.chartdata;
+        },
+        set(newValue) {
+          return newValue;
+        }
+      },
+      options: {
+        get() {
+          return this.options;
         },
         set(newValue) {
           return newValue;

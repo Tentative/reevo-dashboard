@@ -12,20 +12,64 @@ export default {
         {
           label: "Prices",
           backgroundColor: "transparent",
-          data: []
+          data: [],
+          order: 1,
+          yAxisID: "prices"
         },
         {
           label: "Sales Rank",
           backgroundColor: "transparent",
-          data: []
+          data: [],
+          order: 2,
+          yAxisID: "ranks"
         },
         {
           label: "Out of stock",
           backgroundColor: "red",
-          data: [9],
-          type: "bar"
+          data: [],
+          type: "bar",
+          order: 3,
+          yAxisID: "stock"
         }
       ]
+    },
+    options: {
+      scales: {
+        yAxes: [
+          {
+            id: "prices",
+            type: "linear",
+            position: "left",
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              display: false
+            }
+          },
+          {
+            id: "ranks",
+            type: "linear",
+            position: "right",
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              display: false
+            }
+          },
+          {
+            id: "stock",
+            type: "linear",
+            gridLines: {
+              display: false
+            },
+            ticks: {
+              display: false
+            }
+          }
+        ]
+      }
     },
     days: [],
     min_max: [],
@@ -50,30 +94,39 @@ export default {
     graph_request(state) {
       state.amzgraph_request.JsonRichiesta = JSON.stringify(state.graph_params);
     },
-    graph_success(state, { labels, sales_rank, prezzo_giorno }) {
+    graph_success(
+      state,
+      { labels, sales_rank, prezzo_giorno, in_stock_giorno }
+    ) {
       state.chartdata.labels = labels;
       state.chartdata.datasets[0].data = prezzo_giorno;
       state.chartdata.datasets[1].data = sales_rank;
-      // state.chartdata.datasets[2].data = in_stock_giorno;
+      state.chartdata.datasets[2].data = in_stock_giorno;
     },
     clear_chart(state) {
       state.chartdata = {
         labels: [],
         datasets: [
           {
-            label: "Price",
+            label: "Prices",
             backgroundColor: "transparent",
-            data: []
+            data: [],
+            order: 1,
+            yAxisID: "prices"
           },
           {
             label: "Sales Rank",
             backgroundColor: "transparent",
-            data: []
+            data: [],
+            order: 2,
+            yAxisID: "ranks"
           },
           {
             label: "Out of stock",
             backgroundColor: "red",
-            data: []
+            data: [],
+            type: "bar",
+            order: 3
           }
         ]
       };
@@ -116,13 +169,19 @@ export default {
               prezzo_giorno.push(total_days[data].PrezzoGiorno);
             }
             for (const data in total_days) {
-              sales_rank.push(total_days[data].SalesRankGiorno);
+              sales_rank.push(total_days[data].SalesRankGiorno / 100);
             }
-            // // for (const data in total_days) {
-            // //   if (total_days[data].InStockGiorno == "No") {
-            // //     in_stock_giorno.push(total_days[data].InStockGiorno);
-            // //   }
-            // }
+
+            let max_price = Math.max.apply(null, prezzo_giorno);
+            let max_rank = Math.max.apply(null, sales_rank);
+            let max = Math.max(max_price, max_rank);
+            for (const data in total_days) {
+              if (total_days[data].InStockGiorno == "No") {
+                in_stock_giorno.push(max);
+              }
+              in_stock_giorno.push("");
+            }
+
             commit("graph_success", {
               labels,
               sales_rank,
