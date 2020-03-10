@@ -27,14 +27,16 @@ $text-on-dark: #fafafa;
 
 .filtro-alert,
 .price,
-.discount {
+.discount,
+.item {
   cursor: pointer;
 }
 
 .price a,
 .discount a,
 .filtro-alert a,
-.discount a {
+.discount a,
+.item a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87) !important;
   & :hover {
