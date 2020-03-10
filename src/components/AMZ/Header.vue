@@ -1,15 +1,28 @@
 <template>
-  <div class="md-alignment-center-center">
-    bla bla bla
-  </div></template
->
+  <div class="md-layout  md-alignment-center-right header ">
+    <div class="md-layout-item item-name md-size-60">
+      <span>{{ currentItem.NomeItem }}</span>
+    </div>
+    <div class="md-layout-item item-date">
+      <span class="item-update"
+        >Aggiornato al {{ currentItem.UltimaData }}</span
+      >
+    </div>
+  </div>
+</template>
 
 <script>
-import { Header } from "@/components/AMZ";
+import { mapGetters } from "vuex";
 export default {
   name: "Header",
-  component: { Header }
+  computed: {
+    ...mapGetters({
+      currentItem: "currentItem"
+    })
+  }
 };
 </script>
 
-<style></style>
+<style lang="scss">
+@import "src/assets/style/header.scss";
+</style>

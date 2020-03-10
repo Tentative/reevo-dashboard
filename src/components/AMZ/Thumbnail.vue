@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="md-layout-item">
     <img :src="currentItem.UrlImmagine" />
   </div>
 </template>

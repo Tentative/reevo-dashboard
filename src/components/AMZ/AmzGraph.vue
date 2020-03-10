@@ -1,21 +1,21 @@
 <template>
   <div>
-    <md-dialog :md-active.sync="graph">
-      <div class="md-layout md-gutter md-alignment-center-right ">
-        <div class="md-layout-item ">
-          <Header />
-        </div>
-      </div>
+    <md-dialog class="graph" :md-active.sync="graph">
+      <Header />
       <div class="md-layout">
-        <div class="md-layout-item md-size-33">
+        <div
+          class="md-layout-item md-size-20 md-alignment-center-center thumbnail"
+        >
           <Thumbnail />
         </div>
+        <div class="md-layout-item md-size-80">
+          <bar-chart
+            :chartdata="chartdata"
+            :options="options"
+            style="width:800px;margin:auto"
+          ></bar-chart>
+        </div>
       </div>
-      <bar-chart
-        :chartdata="chartdata"
-        :options="options"
-        style="width:400px"
-      ></bar-chart>
 
       <md-dialog-actions>
         <md-button class="md-primary" @click="toggleAmzGraph">Close</md-button>
@@ -26,7 +26,8 @@
 
 <script>
 import BarChart from "./LineChart.js";
-import { Thumbnail, Header } from "@/components/AMZ";
+import Thumbnail from "@/components/AMZ/Thumbnail.vue";
+import Header from "@/components/AMZ/Header.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "AmzGraph",
