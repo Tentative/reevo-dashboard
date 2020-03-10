@@ -1,5 +1,5 @@
 <template>
-  <div class="md-layout md-gutter">
+  <div class="md-layout md-gutter tablegraph">
     <div class="md-layout-item md-size-50">
       <md-table>
         <md-table-row>
@@ -76,4 +76,6 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+@import "src/assets/style/tablegraph.scss";
+</style>
