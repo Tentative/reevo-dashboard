@@ -19,6 +19,13 @@
   color: #ff867c;
 }
 .tablegraph {
-  border-top: 1px solid rgba(0, 0, 0, 0.12);
   margin-top: 50px;
+  align-items: center;
+  & tr:nth-child(even) {
+    background-color: #f8f8f8;
+  }
+}
+.first-table,
+.second-table {
+  padding: 0 50px !important;
 }

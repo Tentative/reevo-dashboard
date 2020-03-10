@@ -36,9 +36,12 @@ $text-on-dark: #fafafa;
 .discount a,
 .filtro-alert a,
 .discount a,
-.item a {
+.item a,
+.thumb a,
+.thumb img {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.87) !important;
+  cursor: pointer;
   & :hover {
     text-decoration: none;
   }
