@@ -38,7 +38,7 @@
         ></md-table-cell>
         <md-table-cell class="item">
           <span
-            ><a @click="store.dispatch('save_screen', item)"
+            ><a @click="store.dispatch('amz_screenshot', item)"
               >{{ item.NomeItem }}
             </a></span
           >

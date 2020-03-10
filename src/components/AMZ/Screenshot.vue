@@ -6,7 +6,7 @@
     >
       <div class="md-layout ">
         <div class="md-layout-item ">
-          <img :src="currentItem.UrlImmagine" style="width: 30%" />
+          <img :src="currentScreen.UrlImmagine" style="width: 30%" />
         </div>
         <span> screenshot </span>
       </div>
@@ -25,9 +25,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "Screenshot",
 
-  data: () => ({
-    // screenshotVisible: false
-  }),
+  data: () => ({}),
   methods: {
     toggleScreenshot() {
       this.$store.commit("toggle_screenshot");
@@ -36,7 +34,7 @@ export default {
   computed: {
     ...mapGetters({
       screenshotVisible: "screenshotVisible",
-      currentItem: "currentItem"
+      currentScreen: "currentScreen"
     }),
     screenshot: {
       get() {

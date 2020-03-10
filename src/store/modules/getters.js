@@ -20,5 +20,6 @@ export default {
   options: () => amzgraph.state.options,
   minMax: () => amzgraph.state.min_max,
   dataPrezzo: () => amzgraph.state.data_prezzo,
-  screenshotVisible: () => screenshot.state.screenshotVisible
+  screenshotVisible: () => screenshot.state.screenshotVisible,
+  currentScreen: () => screenshot.state.current
 };
