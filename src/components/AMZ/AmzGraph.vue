@@ -29,7 +29,7 @@
 import BarChart from "./LineChart.js";
 import Thumbnail from "@/components/AMZ/Thumbnail.vue";
 import Header from "@/components/AMZ/Header.vue";
-import TableGraph from "@/components/AMZ/Tablegraph.vue";
+import TableGraph from "@/components/AMZ/TableGraph.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "AmzGraph",
@@ -39,7 +39,7 @@ export default {
       required: true
     }
   },
-  components: { BarChart, Thumbnail, Header },
+  components: { BarChart, Thumbnail, Header, TableGraph },
   data: () => ({
     loaded: false
   }),
