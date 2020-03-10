@@ -99,12 +99,13 @@ export default {
     },
     graph_success(
       state,
-      { labels, sales_rank, prezzo_giorno, in_stock_giorno }
+      { labels, sales_rank, prezzo_giorno, in_stock_giorno, current_item }
     ) {
       state.chartdata.labels = labels;
       state.chartdata.datasets[0].data = prezzo_giorno;
       state.chartdata.datasets[1].data = sales_rank;
       state.chartdata.datasets[2].data = in_stock_giorno;
+      state.currentItem = current_item;
     },
     clear_chart(state) {
       state.chartdata = {
@@ -162,9 +163,9 @@ export default {
           params: JSON.stringify(richiesta)
         })
           .then(res => {
-            const response = JSON.parse(res.data.JsonRisposta);
-            console.log(response);
-            const total_days = response.ListaPrezzi;
+            const current_item = JSON.parse(res.data.JsonRisposta);
+            console.log(current_item);
+            const total_days = current_item.ListaPrezzi;
             let labels = [];
             for (const day in total_days) {
               labels.push(total_days[day].DataPrezzo);
@@ -193,7 +194,8 @@ export default {
               labels,
               sales_rank,
               prezzo_giorno,
-              in_stock_giorno
+              in_stock_giorno,
+              current_item
             });
 
             resolve(res);
