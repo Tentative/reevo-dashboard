@@ -33,7 +33,7 @@
       </md-table-row>
       <md-table-row v-for="(item, index) in items" :key="index">
         <md-table-cell class="thumb"
-          ><a @click="store.dispatch('amz_graph', item)"
+          ><a @click="store.dispatch('amz_screenshot', item)"
             ><img :src="item.UrlImmagine"/></a
         ></md-table-cell>
         <md-table-cell class="item">
