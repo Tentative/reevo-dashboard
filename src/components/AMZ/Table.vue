@@ -51,7 +51,7 @@
           >
         </md-table-cell>
         <md-table-cell :class="item.IsAlert ? 'filtro-alert' : 'discount'">
-          <a @click="store.commit('toggle_amz_graph')">
+          <a @click="store.dispatch('amz_graph', { item })">
             <span v-if="item.Sconto != '0'">{{ item.Sconto }} %</span>
             <span v-else>/</span>
           </a>
