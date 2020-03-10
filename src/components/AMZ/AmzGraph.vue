@@ -1,9 +1,9 @@
 <template>
   <div>
-    <md-dialog @md-opened="porcoddio" :md-active.sync="graph">
+    <md-dialog :md-active.sync="graph">
       <div class="md-layout ">
         <div class="md-layout-item md-size-15 thumb-md">
-          <img src="" />mannaggia il cristo
+          <Thumbnail />
         </div>
         <bar-chart
           :chartdata="chartdata"
@@ -21,7 +21,7 @@
 
 <script>
 import BarChart from "./LineChart.js";
-import axios from "axios";
+import Thumbnail from "@/components/AMZ/Thumbnail.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "AmzGraph",
@@ -31,79 +31,22 @@ export default {
       required: true
     }
   },
-  components: { BarChart },
+  components: { BarChart, Thumbnail },
   data: () => ({
     loaded: false
   }),
   methods: {
     toggleAmzGraph() {
       this.$store.commit("toggle_amz_graph");
-    },
-    porcamadonna() {
-      this.chartdata = {};
-    },
-    async porcoddio() {
-      console.log("è iniziato il porcodiddio");
-      this.loaded = false;
-      let amzgraph_request = {
-        CodiceClient: "reevolacerba2020",
-        CodiceRichiesta: "AMZGraph",
-        VersioneClient: "1.0.3",
-        Url: window.location.href,
-        JsonRichiesta: JSON.stringify(this.graphParams)
-      };
-      try {
-        await axios({
-          url: "/",
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          params: JSON.stringify(amzgraph_request)
-        }).then(res => {
-          console.log("porcamadonna" + "" + res);
-          let lista_prezzi = JSON.parse(res.data.JsonRisposta);
-          console.log(lista_prezzi);
-          let lista_giorni = lista_prezzi.ListaPrezzi;
-          let data_prezzi = [];
-          for (const data in lista_giorni) {
-            data_prezzi.push(lista_giorni[data].DataPrezzo);
-          }
-          this.chartdata.labels = data_prezzi;
-        });
-        this.loaded = true;
-      } catch (e) {
-        console.error(e);
-      }
-    },
-    fillData() {
-      this.datacollection = {
-        labels: [],
-        datasets: [
-          {
-            label: "Price",
-            backgroundColor: "transparent",
-            data: [1, 2, 3, 4, 5, 3, 2, 2, 1]
-          },
-          {
-            label: "Sales Ranks",
-            backgroundColor: "transparent",
-            data: []
-          }
-        ]
-      };
-    },
-    getRandomInt() {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5;
     }
   },
 
   computed: {
     ...mapGetters({
       amzGraphVisible: "amzGraphVisible",
-      dataPrezzo: "dataPrezzo",
       chartdata: "chartdata",
-      options: "options"
+      options: "options",
+      currentItem: "currentItem"
     }),
     graph: {
       get() {
@@ -127,22 +70,15 @@ export default {
         set(newValue) {
           return newValue;
         }
+      },
+      currentItem: {
+        get() {
+          return this.currentItem.UrlImmagine;
+        },
+        set(newValue) {
+          return newValue;
+        }
       }
-    },
-    currentItem() {
-      return this.$store.getters.currentItem;
-    },
-    graphRes() {
-      return this.$store.getters.graphRes;
-    },
-    minMax() {
-      return this.$store.getters.minMax;
-    },
-    days() {
-      return this.$store.getters.days;
-    },
-    dataPrezzo() {
-      return this.$store.getters.dataPrezzo;
     }
   }
 };
