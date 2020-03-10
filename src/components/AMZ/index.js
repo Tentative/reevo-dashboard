@@ -6,6 +6,7 @@ import AmzGraph from "./AmzGraph.vue";
 import Screenshot from "./Screenshot.vue";
 import Thumbnail from "./Thumbnail.vue";
 import Header from "./Header.vue";
+import TableGraph from "./TableGraph.vue";
 
 export {
   Table,
@@ -15,5 +16,6 @@ export {
   AmzGraph,
   Screenshot,
   Thumbnail,
-  Header
+  Header,
+  TableGraph
 };

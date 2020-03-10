@@ -16,6 +16,7 @@
           ></bar-chart>
         </div>
       </div>
+      <TableGraph />
 
       <md-dialog-actions>
         <md-button class="md-primary" @click="toggleAmzGraph">Close</md-button>
@@ -28,6 +29,7 @@
 import BarChart from "./LineChart.js";
 import Thumbnail from "@/components/AMZ/Thumbnail.vue";
 import Header from "@/components/AMZ/Header.vue";
+import TableGraph from "@/components/AMZ/Tablegraph.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "AmzGraph",
