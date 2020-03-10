@@ -6,7 +6,7 @@
     >
       <div class="md-layout ">
         <div class="md-layout-item ">
-          <img :src="currentScreen.UrlImmagine" style="width: 30%" />
+          <img :src="currentScreen.UrlImmagine" />
         </div>
         <span> screenshot </span>
       </div>
