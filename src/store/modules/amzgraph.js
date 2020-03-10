@@ -166,7 +166,7 @@ export default {
         })
           .then(res => {
             const current_item = JSON.parse(res.data.JsonRisposta);
-            console.log(current_item);
+            // console.log(current_item);
             const total_days = current_item.ListaPrezzi;
             let labels = [];
             for (const day in total_days) {
@@ -202,12 +202,12 @@ export default {
 
             resolve(res);
             commit("toggle_amz_graph");
-            console.log("ha finit?");
+            // console.log("ha finit?");
           })
 
           .catch(err => {
             reject(err);
-            console.log(err);
+            // console.log(err);
           });
       });
     }

@@ -21,7 +21,7 @@ export default {
       state.status = "success";
       state.token = token;
       if (state.login.IsMemorizzaPassword == false) {
-        console.log("Disconnesso al primo accesso");
+        // console.log("Disconnesso al primo accesso");
         // sessionStorage.setItem("token", token);
         state.token = token;
       } else {
@@ -52,7 +52,7 @@ export default {
           params: JSON.stringify(richiesta)
         })
           .then(res => {
-            console.log(res);
+            // console.log(res);
             const jsonRisposta = JSON.parse(res.data.JsonRisposta);
             const token = jsonRisposta.JsonWebToken;
             if (jsonRisposta.IsAutorizzato == true) {

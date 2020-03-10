@@ -60,7 +60,6 @@ export default {
     nextPage() {
       if (this.currentPage != this.totalPages) {
         this.currentPage = this.currentPage + 1;
-        console.log(this.currentPage);
       }
     },
     prevPage() {

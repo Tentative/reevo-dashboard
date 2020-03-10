@@ -41,12 +41,12 @@ export default {
 
         // eslint-disable-next-line no-unused-vars
         .then(res => {
-          console.log("check su amz" + { amz });
-          console.log(res);
+          // console.log("check su amz" + { amz });
+          // console.log(res);
           this.loading = false;
           this.items = this.$store.getters.amz;
-        })
-        .catch(err => console.log(err));
+        });
+      // .catch(err => console.log(err));
     }
   }
 };

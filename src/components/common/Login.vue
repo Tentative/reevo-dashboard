@@ -88,8 +88,8 @@ export default {
         .then(() => {
           this.loading = false;
           this.$router.push("/amz", () => {});
-        })
-        .catch(err => console.log(err));
+        });
+      // .catch(err => console.log(err));
     }
   }
 };

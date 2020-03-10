@@ -63,7 +63,7 @@ export default {
           params: JSON.stringify(richiesta)
         })
           .then(res => {
-            console.log(res);
+            // console.log(res);
             const amzdata = JSON.parse(res.data.JsonRisposta);
             const lista = amzdata.ListaItems;
             let items = [];
@@ -71,13 +71,13 @@ export default {
               items.push(item);
             }
             commit("amz_success", { items, amzdata });
-            console.log(amzdata);
+            // console.log(amzdata);
             resolve(res);
           })
           .catch(err => {
             commit("amz_error", err);
             reject(err);
-            console.log(err);
+            // console.log(err);
           });
       });
     }
