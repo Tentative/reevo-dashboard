@@ -81,6 +81,16 @@ export default {
             }
           }
         ]
+      },
+      tooltips: {
+        mode: "index",
+        callbacks: {
+          // eslint-disable-next-line no-unused-vars
+          label: (tooltipItems, chartdata) => {
+            console.log(this);
+            return tooltipItems.yLabel + "€";
+          }
+        }
       }
     },
     days: [],
@@ -176,8 +186,10 @@ export default {
             // console.log(current_item);
             const total_days = current_item.ListaPrezzi;
             let labels = [];
-            for (const day in total_days) {
-              labels.push(total_days[day].DataPrezzo);
+            for (const day of total_days) {
+              // let date = day[day].DataPrezzo.substring(0, 10);
+              let date = day.DataPrezzo.substring(0, 10);
+              labels.push(date);
             }
             let sales_rank = [];
             let prezzo_giorno = [];
