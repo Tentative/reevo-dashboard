@@ -6,9 +6,8 @@
     >
       <div class="md-layout ">
         <div class="md-layout-item ">
-          <img :src="currentScreen.UrlImmagine" />
+          <img :src="currentScreen.UrlImmagine" alt="Screenshot" />
         </div>
-        <span> screenshot </span>
       </div>
 
       <md-dialog-actions>
