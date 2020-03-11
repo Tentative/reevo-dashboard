@@ -67,9 +67,16 @@ export default {
             id: "stock",
             type: "linear",
             gridLines: {
-              display: false
+              display: true
             },
             ticks: {
+              display: false
+            }
+          }
+        ],
+        xAxes: [
+          {
+            gridLines: {
               display: false
             }
           }
