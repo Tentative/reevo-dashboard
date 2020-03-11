@@ -6,7 +6,8 @@ $text-on-dark: #fafafa;
 
 .thumb img {
   height: 54px;
-  width: 54px;
+  max-width: 54px;
+  min-width: 54px;
   vertical-align: middle;
 }
 
