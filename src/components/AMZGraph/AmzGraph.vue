@@ -27,9 +27,9 @@
 
 <script>
 import BarChart from "./LineChart.js";
-import Thumbnail from "@/components/AMZ/Thumbnail.vue";
-import Header from "@/components/AMZ/Header.vue";
-import TableGraph from "@/components/AMZ/TableGraph.vue";
+import Thumbnail from "@/components/AMZGraph/Thumbnail.vue";
+import Header from "@/components/AMZGraph/Header.vue";
+import TableGraph from "@/components/AMZGraph/TableGraph.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "AmzGraph",

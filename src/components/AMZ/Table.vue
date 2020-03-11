@@ -94,7 +94,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { Alerts, AmzGraph, Screenshot } from "@/components/AMZ";
+import { Alerts, AmzGraph, Screenshot } from "@/components/AMZGraph";
 export default {
   name: "Table",
   components: { Alerts, AmzGraph, Screenshot },
