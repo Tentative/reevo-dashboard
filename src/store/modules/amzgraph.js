@@ -85,10 +85,13 @@ export default {
       tooltips: {
         mode: "index",
         callbacks: {
-          // eslint-disable-next-line no-unused-vars
-          label: (tooltipItems, chartdata) => {
+          title: tooltipItems => {
+            return "Variazione del " + tooltipItems[0].xLabel;
+          },
+
+          label: tooltipItems => {
             console.log(this);
-            return tooltipItems.yLabel + "€";
+            return tooltipItems.yLabel + " €";
           }
         }
       }
@@ -187,7 +190,6 @@ export default {
             const total_days = current_item.ListaPrezzi;
             let labels = [];
             for (const day of total_days) {
-              // let date = day[day].DataPrezzo.substring(0, 10);
               let date = day.DataPrezzo.substring(0, 10);
               labels.push(date);
             }
