@@ -1,6 +1,6 @@
 <template>
   <div class="page-container md-layout-column">
-    <md-toolbar class="md-primary">
+    <md-toolbar class="md-primary" v-show="router != 'Login'">
       <md-button class="md-icon-button" @click="showNavigation = true">
         <md-icon>menu</md-icon>
       </md-button>
@@ -81,7 +81,15 @@ export default {
   computed: {
     ...mapGetters({
       isLoggedIn: "isLoggedIn"
-    })
+    }),
+    router: {
+      get() {
+        return this.$route.name;
+      },
+      set(newValue) {
+        return newValue;
+      }
+    }
   }
 };
 </script>
