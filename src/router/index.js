@@ -13,7 +13,14 @@ const routes = [
     name: "Amz",
     component: Amz,
     meta: {
-      requiresAuth: true
+      title: "Homepage",
+      requiresAuth: true,
+      metaTags: [
+        {
+          name: "description",
+          content: "Homepage"
+        }
+      ]
     }
   },
   {
@@ -21,13 +28,29 @@ const routes = [
     name: "Dashboard",
     component: Amz,
     meta: {
-      requiresAuth: true
+      requiresAuth: true,
+      title: "Homepage",
+      metaTags: [
+        {
+          name: "description",
+          content: "Homepage"
+        }
+      ]
     }
   },
   {
     path: "/login",
     name: "Login",
-    component: Login
+    component: Login,
+    meta: {
+      title: "Reevo Login",
+      metaTags: [
+        {
+          name: "description",
+          content: "Reevo dashboard login page"
+        }
+      ]
+    }
   }
 ];
 
