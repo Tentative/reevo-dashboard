@@ -43,7 +43,7 @@ const routes = [
     name: "Login",
     component: Login,
     meta: {
-      title: "Reevo Login",
+      title: "Login",
       metaTags: [
         {
           name: "description",
@@ -60,6 +60,7 @@ const router = new Router({
   routes
 });
 router.beforeEach((to, from, next) => {
+  document.title = "Reevo |" + " " + to.meta.title;
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
       next();
