@@ -90,7 +90,6 @@ export default {
           },
 
           label: tooltipItems => {
-            console.log(this);
             return tooltipItems.yLabel + " €";
           }
         }
