@@ -19,8 +19,8 @@
           </md-field>
         </div>
 
-        <div class="actions md-layout md-alignment-center-center">
-          <md-checkbox v-model="login.IsMemorizzaPassword"
+        <div class="actions  md-layout md-alignment-center-center">
+          <md-checkbox class="md-primary" v-model="login.IsMemorizzaPassword"
             >Keep logged in</md-checkbox
           >
           <center>
