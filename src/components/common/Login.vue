@@ -27,7 +27,7 @@
             <span class="errors md-body-1" v-html="errors"></span>
           </center>
           <md-button
-            class="md-raised md-primary md-alignment-center-space-between"
+            class="md-raised login-button md-primary md-alignment-center-space-between"
             @click="login_request"
             >Log in</md-button
           >
