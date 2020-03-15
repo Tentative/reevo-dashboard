@@ -47,3 +47,8 @@
 .md-drawer.md-theme-default {
   background-color: #fafafa !important;
 }
+
+.md-app {
+  max-height: 100vh;
+  border: 1px solid rgba(#000, 0.12);
+}
