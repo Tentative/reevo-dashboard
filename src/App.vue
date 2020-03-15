@@ -1,34 +1,22 @@
 <template>
-  <div class="page-container main-container md-layout-column">
+  <div class="page-container main-container">
     <md-app md-waterfall md-mode="fixed">
       <md-app-toolbar class="md-primary" v-show="router != 'Login'">
-        <md-button class="md-icon-button" @click="toggleNavigation()">
-          <md-icon>menu</md-icon>
-        </md-button>
-        <span class="md-title">Dashboard</span>
+        <span class="md-title">My Title</span>
         <span v-if="isLoggedIn" to="/login" class="login " flex
           ><a @click="logout"> Logout</a></span
         >
       </md-app-toolbar>
 
-      <md-app-drawer
-        v-show="router != 'Login'"
-        :md-active.sync="showNavigation"
-        md-swipeable
-        md-persistent="mini"
-      >
+      <md-app-drawer v-if="router != 'Login'" md-persistent="mini">
         <md-toolbar class="md-transparent" md-elevation="0">
-          <span class="md-title">Reevo Dashboard</span>
+          Navigation
         </md-toolbar>
 
         <md-list>
           <md-list-item>
-            <md-icon>trending_up</md-icon>
-            <router-link to="/amz"
-              ><span class="md-list-item-text"
-                >Amazon Dashboard</span
-              ></router-link
-            >
+            <md-icon>move_to_inbox</md-icon>
+            <span class="md-list-item-text">Inbox</span>
           </md-list-item>
 
           <md-list-item>
@@ -71,21 +59,13 @@ export default {
       });
     });
   },
-  data() {
-    return {
-      showNavigation: false,
-      showSidepanel: false
-    };
-  },
+
   methods: {
     logout: function() {
       sessionStorage.removeItem("token");
       this.$store.dispatch("logout").then(() => {
         this.$router.push("/login", () => {});
       });
-    },
-    toggleNavigation() {
-      this.showNavigation = !this.showNavigation;
     }
   },
   computed: {
