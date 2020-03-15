@@ -2,7 +2,7 @@
   <div class="page-container md-layout-column">
     <md-app>
       <md-app-toolbar class="md-primary" v-show="router != 'Login'">
-        <md-button class="md-icon-button" @click="showNavigation = true">
+        <md-button class="md-icon-button" @click="toggleNavigation()">
           <md-icon>menu</md-icon>
         </md-button>
         <span class="md-title">Dashboard</span>
@@ -83,6 +83,9 @@ export default {
       this.$store.dispatch("logout").then(() => {
         this.$router.push("/login", () => {});
       });
+    },
+    toggleNavigation() {
+      this.showNavigation = !this.showNavigation;
     }
   },
   computed: {
