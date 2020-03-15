@@ -1,50 +1,57 @@
 <template>
   <div class="page-container md-layout-column">
-    <md-toolbar class="md-primary" v-show="router != 'Login'">
-      <md-button class="md-icon-button" @click="showNavigation = true">
-        <md-icon>menu</md-icon>
-      </md-button>
-      <span class="md-title">Dashboard</span>
-      <span v-if="isLoggedIn" to="/login" class="login " flex
-        ><a @click="logout"> Logout</a></span
+    <md-app>
+      <md-app-toolbar class="md-primary" v-show="router != 'Login'">
+        <md-button class="md-icon-button" @click="showNavigation = true">
+          <md-icon>menu</md-icon>
+        </md-button>
+        <span class="md-title">Dashboard</span>
+        <span v-if="isLoggedIn" to="/login" class="login " flex
+          ><a @click="logout"> Logout</a></span
+        >
+      </md-app-toolbar>
+
+      <md-app-drawer
+        v-show="router != 'Login'"
+        :md-active.sync="showNavigation"
+        md-swipeable
+        md-persistent="mini"
       >
-    </md-toolbar>
+        <md-app-toolbar class="md-transparent" md-elevation="0">
+          <span class="md-title">Reevo Dashboard</span>
+        </md-app-toolbar>
 
-    <md-drawer :md-active.sync="showNavigation" md-swipeable>
-      <md-toolbar class="md-transparent" md-elevation="0">
-        <span class="md-title">Reevo Dashboard</span>
-      </md-toolbar>
+        <md-list>
+          <md-list-item>
+            <md-icon>trending_up</md-icon>
+            <router-link to="/amz"
+              ><span class="md-list-item-text"
+                >Amazon Dashboard</span
+              ></router-link
+            >
+          </md-list-item>
 
-      <md-list>
-        <md-list-item>
-          <md-icon>trending_up</md-icon>
-          <router-link to="/amz"
-            ><span class="md-list-item-text"
-              >Amazon Dashboard</span
-            ></router-link
-          >
-        </md-list-item>
+          <md-list-item>
+            <md-icon>send</md-icon>
+            <span class="md-list-item-text">Sent Mail</span>
+          </md-list-item>
 
-        <md-list-item>
-          <md-icon>send</md-icon>
-          <span class="md-list-item-text">Sent Mail</span>
-        </md-list-item>
+          <md-list-item>
+            <md-icon>delete</md-icon>
+            <span class="md-list-item-text">Trash</span>
+          </md-list-item>
 
-        <md-list-item>
-          <md-icon>delete</md-icon>
-          <span class="md-list-item-text">Trash</span>
-        </md-list-item>
+          <md-list-item>
+            <md-icon>error</md-icon>
+            <span class="md-list-item-text">Spam</span>
+          </md-list-item>
+        </md-list>
+      </md-app-drawer>
 
-        <md-list-item>
-          <md-icon>error</md-icon>
-          <span class="md-list-item-text">Spam</span>
-        </md-list-item>
-      </md-list>
-    </md-drawer>
-
-    <md-content>
-      <router-view />
-    </md-content>
+      <md-app-content class="main-login">
+        <router-view />
+      </md-app-content>
+    </md-app>
   </div>
 </template>
 
