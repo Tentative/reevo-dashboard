@@ -1,14 +1,18 @@
 <template>
   <div class="page-container main-container">
     <md-app md-waterfall md-mode="fixed">
-      <md-app-toolbar class="md-primary" v-show="router != 'Login'">
-        <span class="md-title">My Title</span>
+      <md-app-toolbar class="md-primary topbar" v-show="router != 'Login'">
+        <span class="md-title">Dashboard</span>
         <span v-if="isLoggedIn" to="/login" class="login " flex
           ><a @click="logout"> Logout</a></span
         >
       </md-app-toolbar>
 
-      <md-app-drawer v-if="router != 'Login'" md-persistent="mini">
+      <md-app-drawer
+        v-if="router != 'Login'"
+        md-persistent="mini"
+        md-permanent="full"
+      >
         <md-toolbar class="md-transparent" md-elevation="0">
           Navigation
         </md-toolbar>
