@@ -17,9 +17,9 @@
         md-swipeable
         md-persistent="mini"
       >
-        <md-app-toolbar class="md-transparent" md-elevation="0">
+        <md-toolbar class="md-transparent" md-elevation="0">
           <span class="md-title">Reevo Dashboard</span>
-        </md-app-toolbar>
+        </md-toolbar>
 
         <md-list>
           <md-list-item>

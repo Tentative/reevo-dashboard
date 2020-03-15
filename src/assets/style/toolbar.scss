@@ -5,7 +5,7 @@
 }
 
 .md-drawer {
-  width: 230px;
+  width: 120px;
   max-width: calc(100vw - 125px);
 }
 
@@ -55,4 +55,7 @@
 
 .main-container {
   border: none !important;
+}
+.login-container {
+  padding: 0 !important;
 }
