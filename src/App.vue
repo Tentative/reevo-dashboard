@@ -2,7 +2,7 @@
   <div class="page-container main-container">
     <md-app md-waterfall md-mode="fixed">
       <md-app-toolbar class="md-primary topbar" v-show="router != 'Login'">
-        <span class="md-title">Dashboard</span>
+        <span class="md-title logo"><img src="@/assets/img/logo.webp"/></span>
         <span v-if="isLoggedIn" to="/login" class="login " flex
           ><a @click="logout"> Logout</a></span
         >
