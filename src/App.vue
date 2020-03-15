@@ -1,5 +1,5 @@
 <template>
-  <div class="page-container md-layout-column">
+  <div class="page-container main-container md-layout-column">
     <md-app md-waterfall md-mode="fixed">
       <md-app-toolbar class="md-primary" v-show="router != 'Login'">
         <md-button class="md-icon-button" @click="toggleNavigation()">
