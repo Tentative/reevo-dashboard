@@ -58,6 +58,9 @@
           </a>
         </md-table-cell>
         <md-table-cell class="stock">
+          <span v-if="item.InStock == 'Si'">
+            <md-icon class="ok-status">check</md-icon>
+          </span>
           <span v-if="item.InStock == 'No'"
             ><md-icon class="no-status">cancel</md-icon></span
           >
