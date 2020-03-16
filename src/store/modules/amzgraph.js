@@ -12,7 +12,8 @@ export default {
         {
           label: "Prices",
           backgroundColor: "transparent",
-          borderColor: "green",
+          borderColor: "#409EFF",
+          borderWidth: 3,
           data: [],
           order: 1,
           yAxisID: "prices"
@@ -20,14 +21,15 @@ export default {
         {
           label: "Sales Rank",
           backgroundColor: "transparent",
-          borderColor: "orange",
+          borderColor: "red",
+          borderWidth: 0.5,
           data: [],
           order: 2,
           yAxisID: "ranks"
         },
         {
           label: "Out of stock",
-          backgroundColor: "#ff867c",
+          backgroundColor: "#ffb8ab",
           borderColor: "red",
           data: [],
           type: "bar",
