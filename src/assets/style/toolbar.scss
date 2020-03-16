@@ -87,7 +87,16 @@
 }
 
 .amz {
-  & tr:nth-child(even) {
-    background-color: #fafafa !important;
+  & .md-table-row:hover {
+    transition: none;
   }
+  & tr:hover {
+    background-color: none !important;
+  }
+  & tr:nth-child(even) {
+    background-color: #fafafa;
+  }
+}
+.md-table-row:hover:not(.filtro-alert) .md-table-cell:not(.filtro-alert) {
+  background-color: transparent !important;
 }
