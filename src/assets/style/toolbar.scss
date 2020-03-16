@@ -85,3 +85,9 @@
   background-color: #e1e2e1 !important;
   padding-left: 0 !important;
 }
+
+.amz {
+  & tr:nth-child(even) {
+    background-color: #fafafa !important;
+  }
+}
