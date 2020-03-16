@@ -3,6 +3,7 @@ $alert-status: #ff9d3f;
 $error-status: #f05545;
 $error-background: #ff867c;
 $text-on-dark: #fafafa;
+$icon-size: 1.3rem;
 
 .thumb img {
   height: 54px;
@@ -13,12 +14,15 @@ $text-on-dark: #fafafa;
 
 .md-icon.md-theme-default.md-icon-font.ok-status {
   color: $ok-status;
+  font-size: $icon-size !important;
 }
 .md-icon.md-theme-default.md-icon-font.no-status {
   color: $error-status;
+  font-size: $icon-size !important;
 }
 .md-icon.md-theme-default.md-icon-font.alert-status {
   color: $alert-status;
+  font-size: $icon-size !important;
 }
 
 .filtro-alert {
