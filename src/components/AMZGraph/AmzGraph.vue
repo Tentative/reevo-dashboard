@@ -1,6 +1,10 @@
 <template>
   <div>
-    <md-dialog class="graph" :md-active.sync="graph">
+    <md-dialog
+      class="graph"
+      :md-active.sync="graph"
+      @md-clicked-outside="toggleAmzGraph"
+    >
       <Header />
       <div class="md-layout">
         <div
