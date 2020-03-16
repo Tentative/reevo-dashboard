@@ -2,6 +2,17 @@
   <div class="page-container main-container">
     <md-app md-waterfall md-mode="fixed">
       <md-app-toolbar class="md-primary topbar" v-show="router != 'Login'">
+        <md-menu md-size="auto">
+          <md-button md-menu-trigger
+            ><md-icon class="hamburger-menu">menu</md-icon></md-button
+          >
+
+          <md-menu-content>
+            <md-menu-item>Pagina 1</md-menu-item>
+            <md-menu-item>Pagina 2</md-menu-item>
+            <md-menu-item>Pagina 3 - Titolo più lungo </md-menu-item>
+          </md-menu-content>
+        </md-menu>
         <span class="md-title logo"><img src="@/assets/img/logo.webp"/></span>
         <span v-if="isLoggedIn" to="/login" class="login " flex
           ><a @click="logout"> Logout</a></span
