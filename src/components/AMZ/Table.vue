@@ -11,25 +11,25 @@
           Name
         </md-table-head>
         <md-table-head class="cost">
-          AMZ Price
+          Prezzo
         </md-table-head>
         <md-table-head class="cheap">
-          Discount
+          Sconto
         </md-table-head>
         <md-table-head class="oos">
-          In stock
+          Stock
         </md-table-head>
         <md-table-head class="rank">
-          Rank
+          Sales Rank
         </md-table-head>
         <md-table-head class="track">
-          FT
+          Fast Track
         </md-table-head>
         <md-table-head class="buybox">
-          BB
+          Acquistabile
         </md-table-head>
         <md-table-head class="reviews">
-          Neg. reviews
+          Recensioni Negative
         </md-table-head>
       </md-table-row>
       <md-table-row v-for="(item, index) in items" :key="index">
