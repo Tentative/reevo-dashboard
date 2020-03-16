@@ -33,6 +33,12 @@ $text-on-dark: #fafafa;
   cursor: pointer;
 }
 
+.price,
+.filtro-alert,
+.discount {
+  text-align: right;
+}
+
 .price a,
 .discount a,
 .filtro-alert a,
