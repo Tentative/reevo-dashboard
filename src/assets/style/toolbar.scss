@@ -100,3 +100,44 @@
 .md-table-row:hover:not(.filtro-alert) .md-table-cell:not(.filtro-alert) {
   background-color: transparent !important;
 }
+.md-dialog.graph {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 80%;
+  max-height: 90%;
+  transform: translate(-50%, -50%);
+}
+.md-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+}
+.md-scrollbar::-webkit-scrollbar-button {
+  display: none;
+}
+.md-scrollbar.md-theme-default::-webkit-scrollbar-corner,
+.md-scrollbar.md-theme-default::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  background: var(
+    --md-theme-default-scrollbar-background-on-background-variant,
+    #e1e1e1
+  );
+}
+.md-scrollbar.md-theme-default::-webkit-scrollbar-thumb {
+  background: #757575;
+  background: var(--md-theme-default-scrollbar-on-background-variant, #757575);
+}
+.md-scrollbar::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+}
+.md-scrollbar.md-theme-default::-webkit-scrollbar-corner,
+.md-scrollbar.md-theme-default::-webkit-scrollbar-track {
+  background: #e1e1e1;
+  background: var(
+    --md-theme-default-scrollbar-background-on-background-variant,
+    #e1e1e1
+  );
+}

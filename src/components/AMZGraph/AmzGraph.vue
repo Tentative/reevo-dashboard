@@ -1,9 +1,9 @@
 <template>
   <div>
     <md-dialog
-      class="graph"
       :md-active.sync="graph"
       @md-clicked-outside="toggleAmzGraph"
+      class="graph md-scrollbar"
     >
       <Header />
       <div class="md-layout">
