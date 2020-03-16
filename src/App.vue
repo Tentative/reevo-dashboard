@@ -40,7 +40,7 @@
         </md-list>
       </md-app-drawer>
 
-      <md-app-content :class="router == 'Login' ? 'main-login' : ''">
+      <md-app-content :class="router == 'Login' ? 'main-login' : 'table'">
         <router-view />
       </md-app-content>
     </md-app>
