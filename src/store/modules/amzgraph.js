@@ -137,7 +137,8 @@ export default {
           {
             label: "Prices",
             backgroundColor: "transparent",
-            borderColor: "green",
+            borderColor: "#409EFF",
+            borderWidth: 3,
             data: [],
             order: 1,
             yAxisID: "prices"
@@ -145,7 +146,8 @@ export default {
           {
             label: "Sales Rank",
             backgroundColor: "transparent",
-            borderColor: "orange",
+            borderColor: "red",
+            borderWidth: 0.5,
             data: [],
             order: 2,
             yAxisID: "ranks"
@@ -194,6 +196,7 @@ export default {
               let date = day.DataPrezzo.substring(0, 10);
               labels.push(date);
             }
+            labels.reverse();
             let sales_rank = [];
             let prezzo_giorno = [];
             let in_stock_giorno = [];
@@ -203,6 +206,7 @@ export default {
             for (const data in total_days) {
               sales_rank.push(total_days[data].SalesRankGiorno / 100);
             }
+            sales_rank.reverse();
 
             let max_price = Math.max.apply(null, prezzo_giorno);
             let max_rank = Math.max.apply(null, sales_rank);
