@@ -74,7 +74,7 @@ export default {
             id: "stock",
             type: "linear",
             gridLines: {
-              display: true
+              display: false
             },
             ticks: {
               display: false
@@ -88,7 +88,7 @@ export default {
               min: "",
               max: ""
             },
-            bounds: "ticks",
+            bounds: "data",
             distribution: "linear",
             time: {
               displayFormats: {
@@ -98,7 +98,7 @@ export default {
               unit: "day"
             },
             gridLines: {
-              display: false
+              display: true
             }
           }
         ]
@@ -142,7 +142,7 @@ export default {
     graph_success(
       state,
       {
-        labels,
+        // labels,
         sales_rank,
         prezzo_giorno,
         in_stock_giorno,
@@ -151,7 +151,7 @@ export default {
         fullMax
       }
     ) {
-      state.chartdata.labels = labels;
+      // state.chartdata.labels = labels;
       state.chartdata.datasets[0].data = prezzo_giorno;
       state.chartdata.datasets[1].data = sales_rank;
       state.chartdata.datasets[2].data = in_stock_giorno;
