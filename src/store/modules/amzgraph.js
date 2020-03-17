@@ -1,6 +1,7 @@
 import axios from "axios";
 export default {
   state: {
+    months: ["Gen", "Feb", "Mar", "Apr"],
     amzGraphVisible: false,
     graph_params: {},
     graph_res: {},
@@ -15,8 +16,11 @@ export default {
           borderColor: "#409EFF",
           borderWidth: 3,
           data: [],
+          type: "line",
+          lineTension: 0,
           order: 1,
-          yAxisID: "prices"
+          yAxisID: "prices",
+          steppedLine: "before"
         },
         {
           label: "Sales Rank",
@@ -51,7 +55,8 @@ export default {
               display: false
             },
             ticks: {
-              display: false
+              display: false,
+              source: "labels"
             }
           },
           {
@@ -78,6 +83,20 @@ export default {
         ],
         xAxes: [
           {
+            type: "time",
+            ticks: {
+              min: "",
+              max: ""
+            },
+            bounds: "ticks",
+            distribution: "linear",
+            time: {
+              displayFormats: {
+                day: "D MMM"
+              },
+              stepSize: 3,
+              unit: "day"
+            },
             gridLines: {
               display: false
             }
@@ -122,13 +141,23 @@ export default {
     },
     graph_success(
       state,
-      { labels, sales_rank, prezzo_giorno, in_stock_giorno, current_item }
+      {
+        labels,
+        sales_rank,
+        prezzo_giorno,
+        in_stock_giorno,
+        current_item,
+        fullMin,
+        fullMax
+      }
     ) {
       state.chartdata.labels = labels;
       state.chartdata.datasets[0].data = prezzo_giorno;
       state.chartdata.datasets[1].data = sales_rank;
       state.chartdata.datasets[2].data = in_stock_giorno;
       state.currentItem = current_item;
+      state.options.scales.xAxes[0].ticks.min = fullMin;
+      state.options.scales.xAxes[0].ticks.max = fullMax;
     },
     clear_chart(state) {
       state.chartdata = {
@@ -140,8 +169,11 @@ export default {
             borderColor: "#409EFF",
             borderWidth: 3,
             data: [],
+            type: "line",
+            lineTension: 0,
             order: 1,
-            yAxisID: "prices"
+            yAxisID: "prices",
+            steppedLine: "before"
           },
           {
             label: "Sales Rank",
@@ -154,7 +186,7 @@ export default {
           },
           {
             label: "Out of stock",
-            backgroundColor: "#ff867c",
+            backgroundColor: "#ffb8ab",
             borderColor: "red",
             data: [],
             type: "bar",
@@ -188,6 +220,19 @@ export default {
           params: JSON.stringify(richiesta)
         })
           .then(res => {
+            let min = new Date();
+            let maxIndex = min.getMonth();
+            let maxNames = state.months[maxIndex] + 1;
+            let maxDay = min.getDate();
+            let fullMax = maxDay + " " + maxNames;
+            min.setDate(min.getDate() - 30);
+            min.setMonth(min.getMonth());
+            let minIndex = min.getMonth();
+            let minNames = state.months[minIndex];
+            let minDay = min.getDate();
+            let fullMin = minDay + " " + minNames;
+            min = fullMin;
+            console.log(min);
             const current_item = JSON.parse(res.data.JsonRisposta);
             // console.log(current_item);
             const total_days = current_item.ListaPrezzi;
@@ -223,7 +268,9 @@ export default {
               sales_rank,
               prezzo_giorno,
               in_stock_giorno,
-              current_item
+              current_item,
+              fullMin,
+              fullMax
             });
 
             resolve(res);
