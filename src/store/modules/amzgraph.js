@@ -3,6 +3,7 @@ export default {
   state: {
     months: ["Gen", "Feb", "Mar", "Apr"],
     amzGraphVisible: false,
+    currentDate: new Date(),
     graph_params: {},
     graph_res: {},
     graph_days: [],
@@ -20,7 +21,8 @@ export default {
           lineTension: 0,
           order: 1,
           yAxisID: "prices",
-          steppedLine: "before"
+          steppedLine: "before",
+          showLine: true
         },
         {
           label: "Sales Rank",
@@ -45,6 +47,7 @@ export default {
     options: {
       responsive: true,
       maintainAspectRatio: false,
+      showLines: true,
       scales: {
         yAxes: [
           {
@@ -55,8 +58,7 @@ export default {
               display: false
             },
             ticks: {
-              display: false,
-              source: "labels"
+              display: true
             }
           },
           {
@@ -87,14 +89,14 @@ export default {
             ticks: {
               min: "",
               max: ""
+              // source: "data"
             },
-            bounds: "data",
             distribution: "linear",
             time: {
               displayFormats: {
                 day: "D MMM"
               },
-              stepSize: 3,
+              stepSize: 1,
               unit: "day"
             },
             gridLines: {
@@ -142,22 +144,28 @@ export default {
     graph_success(
       state,
       {
-        // labels,
+        labels,
         sales_rank,
         prezzo_giorno,
         in_stock_giorno,
         current_item,
-        fullMin,
-        fullMax
+        // fullMin
+        // fullMax
+        min,
+        maxx
       }
     ) {
-      // state.chartdata.labels = labels;
+      state.chartdata.labels = labels;
       state.chartdata.datasets[0].data = prezzo_giorno;
       state.chartdata.datasets[1].data = sales_rank;
       state.chartdata.datasets[2].data = in_stock_giorno;
       state.currentItem = current_item;
-      state.options.scales.xAxes[0].ticks.min = fullMin;
-      state.options.scales.xAxes[0].ticks.max = fullMax;
+      // state.options.scales.xAxes[0].ticks.min = state.currentDate.setDate(
+      //   state.currentDate.getDate() - 30
+      // );
+
+      state.options.scales.xAxes[0].ticks.max = maxx;
+      state.options.scales.xAxes[0].ticks.min = min;
     },
     clear_chart(state) {
       state.chartdata = {
@@ -220,27 +228,40 @@ export default {
           params: JSON.stringify(richiesta)
         })
           .then(res => {
-            let min = new Date();
-            let maxIndex = min.getMonth();
-            let maxNames = state.months[maxIndex] + 1;
-            let maxDay = min.getDate();
-            let fullMax = maxDay + " " + maxNames;
-            min.setDate(min.getDate() - 30);
-            min.setMonth(min.getMonth());
-            let minIndex = min.getMonth();
-            let minNames = state.months[minIndex];
-            let minDay = min.getDate();
-            let fullMin = minDay + " " + minNames;
-            min = fullMin;
+            let maxx = new Date();
+            let min_temp = new Date().setDate(maxx.getDate() - 30);
+            let min = new Date(min_temp);
+            min.toISOString();
+            // let maxIndex = min.getMonth();
+            // let maxNames = state.months[maxIndex];
+            // let maxDay = min.getDate();
+            // let fullMax = maxDay + " " + maxNames;
+            // min.setDate(min.getDate() - 30);
+            // min.setMonth(min.getMonth());
+            // let minIndex = min.getMonth();
+            // let minNames = state.months[minIndex];
+            // let minDay = min.getDate();
+            // eslint-disable-next-line no-unused-vars
+            // let fullMin = minDay + " " + minNames;
+            // min = fullMin;
             console.log(min);
             const current_item = JSON.parse(res.data.JsonRisposta);
             // console.log(current_item);
             const total_days = current_item.ListaPrezzi;
             let labels = [];
             for (const day of total_days) {
-              let date = day.DataPrezzo.substring(0, 10);
+              let stringa = day.DataPrezzo;
+              stringa = Date.parse(stringa);
+
+              // eslint-disable-next-line no-undef
+              let date = new Date(stringa);
+              date.toISOString();
+              console.log(date);
+              // eslint-disable-next-line no-undef
               labels.push(date);
             }
+            // console.log(min);
+            // console.log(maxx);
             labels.reverse();
             let sales_rank = [];
             let prezzo_giorno = [];
@@ -269,8 +290,8 @@ export default {
               prezzo_giorno,
               in_stock_giorno,
               current_item,
-              fullMin,
-              fullMax
+              min,
+              maxx
             });
 
             resolve(res);
