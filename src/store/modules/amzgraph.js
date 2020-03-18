@@ -244,7 +244,7 @@ export default {
             // eslint-disable-next-line no-unused-vars
             // let fullMin = minDay + " " + minNames;
             // min = fullMin;
-            console.log(min);
+            // console.log(min);
             const current_item = JSON.parse(res.data.JsonRisposta);
             // console.log(current_item);
             const total_days = current_item.ListaPrezzi;
@@ -256,7 +256,7 @@ export default {
               // eslint-disable-next-line no-undef
               let date = new Date(stringa);
               date.toISOString();
-              console.log(date);
+              // console.log(date);
               // eslint-disable-next-line no-undef
               labels.push(date);
             }
