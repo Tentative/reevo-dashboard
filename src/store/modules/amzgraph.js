@@ -1,4 +1,5 @@
 import axios from "axios";
+import moment from "moment";
 export default {
   state: {
     months: ["Gen", "Feb", "Mar", "Apr"],
@@ -22,7 +23,8 @@ export default {
           order: 1,
           yAxisID: "prices",
           steppedLine: "before",
-          showLine: true
+          showLine: true,
+          spanGaps: true
         },
         {
           label: "Sales Rank",
@@ -31,7 +33,10 @@ export default {
           borderWidth: 0.5,
           data: [],
           order: 2,
-          yAxisID: "ranks"
+          yAxisID: "ranks",
+          type: "line",
+          lineTension: 0,
+          steppedLine: "before"
         },
         {
           label: "Out of stock",
@@ -146,17 +151,18 @@ export default {
       {
         labels,
         sales_rank,
-        prezzo_giorno,
+        // prezzo_giorno,
+        stocazzo,
         in_stock_giorno,
-        current_item,
+        current_item
         // fullMin
         // fullMax
-        min,
-        maxx
+        // min,
+        // maxx
       }
     ) {
       state.chartdata.labels = labels;
-      state.chartdata.datasets[0].data = prezzo_giorno;
+      state.chartdata.datasets[0].data = stocazzo;
       state.chartdata.datasets[1].data = sales_rank;
       state.chartdata.datasets[2].data = in_stock_giorno;
       state.currentItem = current_item;
@@ -164,8 +170,8 @@ export default {
       //   state.currentDate.getDate() - 30
       // );
 
-      state.options.scales.xAxes[0].ticks.max = maxx;
-      state.options.scales.xAxes[0].ticks.min = min;
+      // state.options.scales.xAxes[0].ticks.max = maxx;
+      // state.options.scales.xAxes[0].ticks.min = min;
     },
     clear_chart(state) {
       state.chartdata = {
@@ -190,7 +196,10 @@ export default {
             borderWidth: 0.5,
             data: [],
             order: 2,
-            yAxisID: "ranks"
+            yAxisID: "ranks",
+            type: "line",
+            lineTension: 0,
+            steppedLine: "before"
           },
           {
             label: "Out of stock",
@@ -232,45 +241,39 @@ export default {
             let min_temp = new Date().setDate(maxx.getDate() - 30);
             let min = new Date(min_temp);
             min.toISOString();
-            // let maxIndex = min.getMonth();
-            // let maxNames = state.months[maxIndex];
-            // let maxDay = min.getDate();
-            // let fullMax = maxDay + " " + maxNames;
-            // min.setDate(min.getDate() - 30);
-            // min.setMonth(min.getMonth());
-            // let minIndex = min.getMonth();
-            // let minNames = state.months[minIndex];
-            // let minDay = min.getDate();
-            // eslint-disable-next-line no-unused-vars
-            // let fullMin = minDay + " " + minNames;
-            // min = fullMin;
-            // console.log(min);
             const current_item = JSON.parse(res.data.JsonRisposta);
-            // console.log(current_item);
             const total_days = current_item.ListaPrezzi;
-            let labels = [];
-            for (const day of total_days) {
-              let stringa = day.DataPrezzo;
-              stringa = Date.parse(stringa);
-
-              // eslint-disable-next-line no-undef
-              let date = new Date(stringa);
-              date.toISOString();
-              // console.log(date);
-              // eslint-disable-next-line no-undef
-              labels.push(date);
-            }
-            // console.log(min);
-            // console.log(maxx);
+            total_days.reverse();
+            let labels = [...new Array(30)].map((i, idx) =>
+              moment()
+                .startOf("day")
+                .subtract(idx, "days")
+            );
             labels.reverse();
+            let stocazzo = [];
+            let last_price = total_days[0].PrezzoGiorno;
+            for (const datA in labels) {
+              for (const datB in total_days) {
+                let stringa = total_days[datB].DataPrezzo;
+                stringa = Date.parse(stringa);
+                let date = new Date(stringa);
+                date.toISOString();
+                let dataFinale = date.toString().slice(4, 15);
+                let dataControllo = labels[datA].toString().slice(4, 15);
+                console.log(dataControllo);
+                console.log(dataFinale);
+                if (dataControllo == dataFinale) {
+                  last_price = total_days[datB].PrezzoGiorno;
+                }
+              }
+              stocazzo.push(last_price);
+            }
+
             let sales_rank = [];
             let prezzo_giorno = [];
             let in_stock_giorno = [];
             for (const data in total_days) {
-              prezzo_giorno.push(total_days[data].PrezzoGiorno);
-            }
-            for (const data in total_days) {
-              sales_rank.push(total_days[data].SalesRankGiorno / 100);
+              sales_rank.push(total_days[data].SalesRankGiorno);
             }
             sales_rank.reverse();
 
@@ -287,11 +290,12 @@ export default {
             commit("graph_success", {
               labels,
               sales_rank,
-              prezzo_giorno,
+              // prezzo_giorno,
+              stocazzo,
               in_stock_giorno,
-              current_item,
-              min,
-              maxx
+              current_item
+              // min,
+              // maxx
             });
 
             resolve(res);
