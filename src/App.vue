@@ -13,7 +13,9 @@
             <md-menu-item>Pagina 3 - Titolo più lungo </md-menu-item>
           </md-menu-content>
         </md-menu>
-        <span class="md-title logo"><img src="@/assets/img/logo.webp"/></span>
+        <span class="md-title logo"
+          ><img src="@/assets/img/logo.png" alt="logo"
+        /></span>
         <span v-if="isLoggedIn" to="/login" class="login " flex
           ><a @click="logout"> Logout</a></span
         >
