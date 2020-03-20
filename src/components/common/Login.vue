@@ -17,15 +17,16 @@
             <label>Password</label>
             <md-input v-model="login.password" type="password"></md-input>
           </md-field>
+          <center>
+            <span class="errors md-body-1" v-html="errors"></span>
+          </center>
         </div>
 
         <div class="actions  md-layout md-alignment-center-center">
           <md-checkbox class="md-primary" v-model="login.IsMemorizzaPassword"
             >Ricordami</md-checkbox
           >
-          <center>
-            <span class="errors md-body-1" v-html="errors"></span>
-          </center>
+
           <md-button
             class="md-raised login-button md-primary md-alignment-center-space-between"
             @click="login_request"
@@ -73,10 +74,8 @@ export default {
       let NomeUtente = this.login.email;
       let Password = this.login.password;
       let IsMemorizzaPassword = this.login.IsMemorizzaPassword;
-      if (NomeUtente == "") {
-        this.errors = "Username is required!";
-      } else if (Password == "") {
-        this.errors = "Please enter your password";
+      if (NomeUtente == "" || Password == "") {
+        this.errors = "Email / Password necessarie!";
       }
       this.$store
         .dispatch("login", {
