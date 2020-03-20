@@ -22,9 +22,7 @@ export default {
           lineTension: 0,
           order: 1,
           yAxisID: "prices",
-          steppedLine: "before",
-          showLine: true,
-          spanGaps: true
+          steppedLine: "before"
         },
         {
           label: "Sales Rank",
@@ -59,11 +57,13 @@ export default {
             id: "prices",
             type: "linear",
             position: "left",
+            stepSize: 1,
             gridLines: {
               display: false
             },
             ticks: {
-              display: true
+              display: true,
+              beginAtZero: false
             }
           },
           {
@@ -74,7 +74,9 @@ export default {
               display: false
             },
             ticks: {
-              display: false
+              display: true,
+              reverse: true,
+              source: "labels"
             }
           },
           {
@@ -151,8 +153,7 @@ export default {
       {
         labels,
         sales_rank,
-        // prezzo_giorno,
-        stocazzo,
+        prezzo_giorno,
         in_stock_giorno,
         current_item
         // fullMin
@@ -162,7 +163,7 @@ export default {
       }
     ) {
       state.chartdata.labels = labels;
-      state.chartdata.datasets[0].data = stocazzo;
+      state.chartdata.datasets[0].data = prezzo_giorno;
       state.chartdata.datasets[1].data = sales_rank;
       state.chartdata.datasets[2].data = in_stock_giorno;
       state.currentItem = current_item;
@@ -250,7 +251,7 @@ export default {
                 .subtract(idx, "days")
             );
             labels.reverse();
-            let stocazzo = [];
+            let prezzo_giorno = [];
             let last_price = total_days[0].PrezzoGiorno;
             for (const datA in labels) {
               for (const datB in total_days) {
@@ -266,16 +267,26 @@ export default {
                   last_price = total_days[datB].PrezzoGiorno;
                 }
               }
-              stocazzo.push(last_price);
+              prezzo_giorno.push(last_price);
             }
 
             let sales_rank = [];
-            let prezzo_giorno = [];
             let in_stock_giorno = [];
-            for (const data in total_days) {
-              sales_rank.push(total_days[data].SalesRankGiorno);
+            let last_rank = total_days[0].SalesRankGiorno;
+            for (const rankA in labels) {
+              for (const rankB in total_days) {
+                let stringa = total_days[rankB].DataPrezzo;
+                stringa = Date.parse(stringa);
+                let date = new Date(stringa);
+                date.toISOString();
+                let dataFinale = date.toString().slice(4, 15);
+                let dataControllo = labels[rankA].toString().slice(4, 15);
+                if (dataControllo == dataFinale) {
+                  last_rank = total_days[rankB].SalesRankGiorno;
+                }
+              }
+              sales_rank.push(last_rank);
             }
-            sales_rank.reverse();
 
             let max_price = Math.max.apply(null, prezzo_giorno);
             let max_rank = Math.max.apply(null, sales_rank);
@@ -290,8 +301,7 @@ export default {
             commit("graph_success", {
               labels,
               sales_rank,
-              // prezzo_giorno,
-              stocazzo,
+              prezzo_giorno,
               in_stock_giorno,
               current_item
               // min,
