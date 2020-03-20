@@ -21,7 +21,7 @@
 
         <div class="actions  md-layout md-alignment-center-center">
           <md-checkbox class="md-primary" v-model="login.IsMemorizzaPassword"
-            >Keep logged in</md-checkbox
+            >Ricordami</md-checkbox
           >
           <center>
             <span class="errors md-body-1" v-html="errors"></span>
