@@ -58,7 +58,8 @@ export default {
       amzGraphVisible: "amzGraphVisible",
       chartdata: "chartdata",
       options: "options",
-      currentItem: "currentItem"
+      currentItem: "currentItem",
+      value: "value"
     }),
     graph: {
       get() {

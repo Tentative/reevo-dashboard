@@ -67,6 +67,31 @@ export default {
       ]
     },
     options: {
+      annotation: {
+        annotations: [
+          {
+            id: "min-line",
+            mode: "horizontal",
+            type: "line",
+            scaleID: "prices",
+            value: "",
+            borderColor: "rgba(255,0,0,0.4)",
+            borderWidth: 2,
+            borderDash: [2, 2]
+          },
+          {
+            id: "max-line",
+            mode: "horizontal",
+            type: "line",
+            scaleID: "prices",
+            value: "",
+            borderColor: "rgba(0,204,102,0.4)",
+            borderWidth: 2,
+            borderDash: [2, 2]
+          }
+        ],
+        drawTime: "afterDraw"
+      },
       responsive: true,
       maintainAspectRatio: false,
       showLines: true,
@@ -175,7 +200,9 @@ export default {
         sales_rank,
         prezzo_giorno,
         in_stock_giorno,
-        current_item
+        current_item,
+        prezzoMin,
+        prezzoMax
         // fullMin
         // fullMax
         // min,
@@ -187,6 +214,8 @@ export default {
       state.chartdata.datasets[1].data = sales_rank;
       state.chartdata.datasets[2].data = in_stock_giorno;
       state.currentItem = current_item;
+      state.options.annotation.annotations[0].value = prezzoMax;
+      state.options.annotation.annotations[1].value = prezzoMin;
       // state.options.scales.xAxes[0].ticks.min = state.currentDate.setDate(
       //   state.currentDate.getDate() - 30
       // );
@@ -300,14 +329,14 @@ export default {
                 date.toISOString();
                 let dataFinale = date.toString().slice(4, 15);
                 let dataControllo = labels[datA].toString().slice(4, 15);
-                console.log(dataControllo);
-                console.log(dataFinale);
                 if (dataControllo == dataFinale) {
                   last_price = total_days[datB].PrezzoGiorno;
                 }
               }
               prezzo_giorno.push(last_price);
             }
+            let prezzoMax = Math.max.apply(Math, prezzo_giorno);
+            let prezzoMin = Math.min.apply(Math, prezzo_giorno);
 
             let sales_rank = [];
             let in_stock_giorno = [];
@@ -342,7 +371,9 @@ export default {
               sales_rank,
               prezzo_giorno,
               in_stock_giorno,
-              current_item
+              current_item,
+              prezzoMax,
+              prezzoMin
               // min,
               // maxx
             });
