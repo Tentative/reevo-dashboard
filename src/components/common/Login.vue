@@ -4,7 +4,7 @@
       <md-content class="md-elevation-3">
         <div class="title">
           <img src="@/assets/img/logo.png" alt="logo" />
-          <div class="md-body-1">You are not logged in</div>
+          <div class="md-body-1 signup">Accedi</div>
         </div>
 
         <div class="form">
