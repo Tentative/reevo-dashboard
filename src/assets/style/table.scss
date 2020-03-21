@@ -51,7 +51,8 @@ $icon-size: 1.3rem;
 .thumb a,
 .thumb img {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.87) !important;
+  color: rgba(0, 0, 0, 1) !important;
+  font-weight: 400;
   cursor: pointer;
   & :hover {
     text-decoration: none;
@@ -67,7 +68,8 @@ $icon-size: 1.3rem;
 }
 
 .title {
-  color: rgba(0, 0, 0, 0.7) !important;
+  color: rgba(0, 0, 0, 1) !important;
+  font-weight: 300;
 }
 
 .md-table-cell-container {
