@@ -7,6 +7,7 @@ import VueMaterial from "vue-material";
 import { Pagination } from "element-ui";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
+import "@/assets/style/global.scss";
 
 Vue.prototype.$http = Axios;
 const token = localStorage.getItem("token") || sessionStorage.getItem("token");
