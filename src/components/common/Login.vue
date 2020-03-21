@@ -18,7 +18,12 @@
             <md-input v-model="login.password" type="password"></md-input>
           </md-field>
           <center>
-            <span class="errors md-body-1" v-html="errors"></span>
+            <span class="errors md-body-1" v-if="authStatus == 'error'">{{
+              errors
+            }}</span>
+            <span class="errors md-body-1" v-if="authStatus == 'Unauthorized'"
+              >Email o Password errate</span
+            >
           </center>
         </div>
 

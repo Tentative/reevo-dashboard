@@ -12,6 +12,9 @@ export default {
   },
 
   mutations: {
+    unauthorized(state) {
+      state.status = "Unauthorized";
+    },
     auth_request(state, login) {
       state.status = "loading";
       state.login.JsonRichiesta = JSON.stringify(login);
@@ -55,6 +58,15 @@ export default {
             // console.log(res);
             const jsonRisposta = JSON.parse(res.data.JsonRisposta);
             const token = jsonRisposta.JsonWebToken;
+            if (
+              login.NomeUtente != "" &&
+              login.Password != "" &&
+              jsonRisposta.IsAutorizzato == false
+            ) {
+              commit("unauthorized");
+              return;
+            }
+
             if (jsonRisposta.IsAutorizzato == true) {
               commit("auth_success", token);
               axios.defaults.headers.common["Authorization"] = token;
