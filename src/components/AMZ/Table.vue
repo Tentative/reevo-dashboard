@@ -8,7 +8,7 @@
       <md-table-row>
         <md-table-head></md-table-head>
         <md-table-head class="name">
-          Name
+          Articolo
         </md-table-head>
         <md-table-head class="cost">
           Prezzo
