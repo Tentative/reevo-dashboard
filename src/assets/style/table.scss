@@ -72,6 +72,14 @@ $icon-size: 1.3rem;
   font-weight: 300;
 }
 
-.md-table-cell-container {
-  padding: 6px 24px 6px 24px;
+.item {
+  // padding: 6px 24px 6px 24px !important;
+  width: 220px !important;
+  overflow: hidden !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.md-app-scroller.md-layout-column.md-flex.md-theme-default.md-scrollbar {
+  padding-left: 70px !important;
 }
