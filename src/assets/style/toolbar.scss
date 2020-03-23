@@ -87,6 +87,14 @@
   background-color: rgb(244, 246, 251) !important;
 }
 
+.item {
+  // padding: 6px 24px 6px 24px !important;
+  width: 220px !important;
+  overflow: hidden !important;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .amz {
   & .md-table-row:hover {
     transition: none;

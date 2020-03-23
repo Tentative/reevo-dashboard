@@ -141,4 +141,5 @@ export default {
 
 <style lang="scss" scoped>
 @import "src/assets/style/table.scss";
+@import "src/assets/style/toolbar.scss";
 </style>

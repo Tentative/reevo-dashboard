@@ -12,6 +12,9 @@
         <span class="md-title logo"
           ><img src="/assets/img/logo.png" alt="logo"
         /></span>
+        <span class="login" v-if="isLoggedIn"
+          ><a @click="logout">Logout</a></span
+        >
       </md-app-toolbar>
 
       <md-app-drawer
