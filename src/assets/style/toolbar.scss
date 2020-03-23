@@ -5,8 +5,22 @@
 }
 
 .md-drawer {
-  width: 120px;
+  width: 240px !important;
   max-width: calc(100vw - 125px);
+}
+.md-list-item-content.dashboard span {
+  padding: 10px 10px;
+  transition: all 0.3s;
+}
+
+.md-list-item-content > a .md-icon:first-child {
+  margin-right: 32px;
+}
+
+.md-list-item-content > span:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  transition: all 0.4s;
 }
 
 .md-content {

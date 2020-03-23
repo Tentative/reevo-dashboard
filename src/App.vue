@@ -23,7 +23,7 @@
         v-if="router != 'Login'"
       >
         <md-toolbar class="md-transparent" md-elevation="0">
-          <span>Navigation</span>
+          <span>Menu</span>
 
           <div class="md-toolbar-section-end">
             <md-button class="md-icon-button md-dense" @click="toggleMenu">
@@ -33,9 +33,13 @@
         </md-toolbar>
 
         <md-list>
-          <md-list-item>
-            <md-icon>move_to_inbox</md-icon>
-            <span class="md-list-item-text">Inbox</span>
+          <md-list-item class="dashboard">
+            <router-link to="/amz">
+              <md-icon class="dashboard-icon"
+                >move_to_inbox</md-icon
+              ></router-link
+            >
+            <span class="md-list-item-text">Amazon Dashboard</span>
           </md-list-item>
 
           <md-list-item>
