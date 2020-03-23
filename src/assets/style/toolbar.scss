@@ -21,6 +21,20 @@
   cursor: pointer;
 }
 
+.amz-active {
+  background-color: rgb(244, 246, 251) !important;
+  border-left: 3px solid #88b3dd;
+  padding-left: 15px;
+  border-radius: 3px;
+}
+
+a:not(.md-button) {
+  text-decoration: none !important;
+}
+.md-drawer.md-persistent-mini:not(.md-active) .md-list-item-content {
+  padding: 23px 7px !important;
+}
+
 .md-list-item-content > span:hover {
   text-decoration: underline;
   cursor: pointer;

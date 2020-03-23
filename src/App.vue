@@ -33,7 +33,10 @@
         </md-toolbar>
 
         <md-list>
-          <md-list-item class="dashboard">
+          <md-list-item
+            class="dashboard"
+            :class="router == 'Dashboard' ? 'amz-active' : ''"
+          >
             <router-link to="/amz">
               <md-icon class="dashboard-icon"
                 >move_to_inbox</md-icon
