@@ -17,10 +17,18 @@
   margin-right: 32px;
 }
 
+.md-list-item-content > i:hover {
+  cursor: pointer;
+}
+
 .md-list-item-content > span:hover {
   text-decoration: underline;
   cursor: pointer;
   transition: all 0.4s;
+}
+
+.md-list {
+  margin: 120px 0 !important;
 }
 
 .md-content {
