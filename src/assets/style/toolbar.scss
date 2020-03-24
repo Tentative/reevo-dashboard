@@ -135,6 +135,11 @@ a:not(.md-button) {
   & .md-table-row:hover {
     transition: none;
   }
+  & tr {
+    background-color: white !important;
+    border-bottom: 20px solid rgb(244, 246, 251);
+    border-radius: 10px !important;
+  }
   & tr:hover {
     background-color: none !important;
   }
@@ -145,6 +150,7 @@ a:not(.md-button) {
     // background-color: #fafafa;
   }
 }
+
 .md-table-row:hover:not(.filtro-alert) .md-table-cell:not(.filtro-alert) {
   background-color: transparent !important;
 }
@@ -191,4 +197,7 @@ a:not(.md-button) {
     --md-theme-default-scrollbar-background-on-background-variant,
     #e1e1e1
   );
+}
+.md-content.md-table.amz table {
+  background-color: rgb(244, 246, 251) !important;
 }
