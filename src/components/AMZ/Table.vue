@@ -90,7 +90,6 @@
         <md-table-cell class="reviews">
           <span>{{ item.NegativeReviewsPercentuale }} %</span>
         </md-table-cell>
-        <md-table-cell class="select_filter"></md-table-cell>
       </md-table-row>
     </md-table>
   </div>
