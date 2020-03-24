@@ -3,7 +3,7 @@
     <Alerts v-if="router == 'Dashboard'" />
     <AmzGraph :graphParams="graphParams" :amzGraphVisible="amzGraphVisible" />
     <Screenshot :screenshotVisible="screenshotVisible" />
-    <span class="md-title title">Dashboard</span>
+    <span class="md-title title">Amazon Dashboard</span>
     <md-table class="amz">
       <md-table-row>
         <md-table-head></md-table-head>
