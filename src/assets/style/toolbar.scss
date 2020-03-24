@@ -159,6 +159,37 @@ a:not(.md-button) {
   }
 }
 
+.md-table-cell-container .price,
+.md-table-cell-container .filtro-alert,
+.md-table-cell-container .discount {
+  padding: 6px 0 !important;
+  white-space: nowrap !important;
+}
+
+.md-table-cell-container span.filtro-alert,
+.md-table-cell-container span.discount,
+.md-table-cell-container span.price {
+  padding: 20px 20px !important;
+  display: inline-block;
+  width: 85px !important;
+}
+
+.cost .md-table-head-container {
+  padding: 16px 32px 16px 10px;
+  text-align: right;
+}
+
+// .cost .md-table-head-label,
+// .cheap .md-table-head-label {
+//   padding-right: 0 !important;
+//   padding-left: 24px !important;
+// }
+
+.cost .md-table-head-container .md-table-head-label,
+.cheap .md-table-cell-container .md-table-head-label {
+  padding-right: 0 !important;
+}
+
 .md-table-row:hover:not(.filtro-alert) .md-table-cell:not(.filtro-alert) {
   background-color: transparent !important;
 }
@@ -182,6 +213,10 @@ a:not(.md-button) {
 }
 .md-scrollbar::-webkit-scrollbar-button {
   display: none;
+}
+.md-table-cell.fix,
+.md-table-head.fix {
+  text-align: right;
 }
 .md-scrollbar.md-theme-default::-webkit-scrollbar-corner,
 .md-scrollbar.md-theme-default::-webkit-scrollbar-track {

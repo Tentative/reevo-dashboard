@@ -13,7 +13,7 @@
         <md-table-head class="cost">
           Prezzo
         </md-table-head>
-        <md-table-head class="cheap">
+        <md-table-head class="cheap fix">
           Sconto
         </md-table-head>
         <md-table-head class="oos">
@@ -44,17 +44,21 @@
             </a></span
           >
         </md-table-cell>
-        <md-table-cell :class="item.IsAlert ? 'filtro-alert' : 'price'">
-          <span
+        <md-table-cell class="fix">
+          <span :class="item.IsAlert ? 'filtro-alert' : 'price'"
             ><a @click="store.dispatch('amz_graph', { item })"
               >{{ item.Prezzo }} €</a
             ></span
           >
         </md-table-cell>
-        <md-table-cell :class="item.IsAlert ? 'filtro-alert' : 'discount'">
+        <md-table-cell class="fix">
           <a @click="store.dispatch('amz_graph', { item })">
-            <span v-if="item.Sconto != '0'">{{ item.Sconto }} %</span>
-            <span v-else>/</span>
+            <span
+              v-if="item.Sconto != '0'"
+              :class="item.IsAlert ? 'filtro-alert' : 'discount'"
+              >{{ item.Sconto }} %</span
+            >
+            <span v-else class="discount">/</span>
           </a>
         </md-table-cell>
         <md-table-cell class="stock">
