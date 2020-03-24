@@ -71,6 +71,13 @@ a:not(.md-button) {
     flex: 1;
   }
 }
+.md-table-head-label {
+  padding-left: 12px !important;
+}
+
+.md-table-cell-container {
+  padding: 6px 32px 6px 10px !important;
+}
 
 .filters {
   padding: 0 15px;
