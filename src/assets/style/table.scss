@@ -85,7 +85,10 @@ $icon-size: 1.3rem;
   display: inline-block;
   padding: 0 !important;
 }
-
+.rank,
+.reviews {
+  text-align: center;
+}
 // .item {
 //   // padding: 6px 24px 6px 24px !important;
 //   width: 220px !important;
