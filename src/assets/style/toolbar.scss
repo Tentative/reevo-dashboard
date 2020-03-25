@@ -204,7 +204,9 @@ a:not(.md-button) {
 .md-button.setting .md-icon {
   font-size: 20px !important;
 }
-
+.md-tabs.md-theme-default .md-tabs-navigation {
+  display: none !important;
+}
 .md-dialog.graph {
   position: fixed;
   left: 50%;

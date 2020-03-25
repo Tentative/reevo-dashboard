@@ -1,10 +1,10 @@
 <template>
   <div class="md-alignment-center-center settings">
     <md-dialog :md-active.sync="showDialog">
-      <md-dialog-title>Filters</md-dialog-title>
+      <md-dialog-title>Filtri</md-dialog-title>
 
       <md-tabs md-dynamic-height>
-        <md-tab md-label="General">
+        <md-tab>
           <div>
             <md-switch
               v-model="amz.FiltroAlert"
