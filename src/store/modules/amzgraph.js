@@ -106,8 +106,11 @@ export default {
             },
             ticks: {
               display: true,
-              beginAtZero: true,
-              source: "auto"
+              // beginAtZero: true,
+              source: "auto",
+              min: "",
+              max: ""
+              // precision: 5
             }
           },
           {
@@ -202,7 +205,9 @@ export default {
         in_stock_giorno,
         current_item,
         prezzoMin,
-        prezzoMax
+        prezzoMax,
+        min_rank,
+        max_rank
         // fullMin
         // fullMax
         // min,
@@ -216,6 +221,11 @@ export default {
       state.currentItem = current_item;
       state.options.annotation.annotations[0].value = prezzoMax;
       state.options.annotation.annotations[1].value = prezzoMin;
+      state.options.scales.yAxes[0].ticks.min = parseInt(prezzoMin - 2);
+      state.options.scales.yAxes[0].ticks.max = parseInt(prezzoMax + 2);
+      state.options.scales.yAxes[1].ticks.min = parseInt(min_rank - 2);
+      state.options.scales.yAxes[1].ticks.max = parseInt(max_rank + 2);
+
       // state.options.scales.xAxes[0].ticks.min = state.currentDate.setDate(
       //   state.currentDate.getDate() - 30
       // );
@@ -358,6 +368,7 @@ export default {
 
             let max_price = Math.max.apply(null, prezzo_giorno);
             let max_rank = Math.max.apply(null, sales_rank);
+            let min_rank = Math.min.apply(null, sales_rank);
             let max = Math.max(max_price, max_rank);
             for (const data in total_days) {
               if (total_days[data].InStockGiorno == "No") {
@@ -373,7 +384,9 @@ export default {
               in_stock_giorno,
               current_item,
               prezzoMax,
-              prezzoMin
+              prezzoMin,
+              min_rank,
+              max_rank
               // min,
               // maxx
             });
