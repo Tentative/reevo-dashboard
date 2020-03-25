@@ -33,22 +33,24 @@
         </md-table-head>
       </md-table-row>
       <md-table-row v-for="(item, index) in items" :key="index">
-        <md-table-cell class="thumb"
-          ><a @click="store.dispatch('amz_screenshot', item)"
-            ><img :src="item.UrlImmagine"/></a
+        <md-table-cell
+          class="thumb"
+          @click.native="store.dispatch('amz_screenshot', item)"
+          ><a><img :src="item.UrlImmagine"/></a
         ></md-table-cell>
-        <md-table-cell class="item">
-          <span
-            ><a @click="store.dispatch('amz_screenshot', item)"
-              >{{ item.NomeItem }}
-            </a></span
-          >
+        <md-table-cell
+          class="item"
+          @click.native="store.dispatch('amz_screenshot', item)"
+        >
+          <a
+            ><span>{{ item.NomeItem }} </span>
+          </a>
         </md-table-cell>
         <md-table-cell class="fix">
-          <span :class="item.IsAlert ? 'filtro-alert' : 'price'"
-            ><a @click="store.dispatch('amz_graph', { item })"
-              >{{ item.Prezzo }} €</a
-            ></span
+          <span
+            :class="item.IsAlert ? 'filtro-alert' : 'price'"
+            @click="store.dispatch('amz_graph', { item })"
+            ><a>{{ item.Prezzo }} €</a></span
           >
         </md-table-cell>
         <md-table-cell class="fix">
