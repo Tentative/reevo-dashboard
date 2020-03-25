@@ -7,6 +7,7 @@
           <md-tabs md-dynamic-height>
             <md-tab>
               <md-switch
+                class="md-primary"
                 v-model="amz.FiltroAlert"
                 true-value="Si"
                 false-value="Tutti"
@@ -17,6 +18,7 @@
                 }}</md-switch
               >
               <md-switch
+                class="md-primary"
                 v-model="amz.FiltroInStock"
                 true-value="No"
                 false-value="Tutti"
@@ -27,6 +29,7 @@
                 }}</md-switch
               >
               <md-switch
+                class="md-primary"
                 v-model="amz.FiltroFastTrack"
                 true-value="No"
                 false-value="Tutti"
@@ -37,6 +40,7 @@
                 }}</md-switch
               >
               <md-switch
+                class="md-primary"
                 v-model="amz.FiltroBuyBox"
                 true-value="No"
                 false-value="Tutti"
@@ -47,6 +51,7 @@
                 }}</md-switch
               >
               <md-switch
+                class="md-primary"
                 v-model="amz.FiltroNegativeReviews"
                 true-value="SoloNegative"
                 false-value="Tutti"
