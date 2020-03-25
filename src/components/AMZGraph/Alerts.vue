@@ -62,10 +62,16 @@
       </div>
 
       <md-dialog-actions>
-        <md-button class="md-primary" @click="showDialog = false"
-          >Close</md-button
+        <md-button
+          class="md-dense md-secondary ignore-button"
+          @click="showDialog = false"
+          >Ignora</md-button
         >
-        <md-button class="md-primary" @click="saveDialog">Save</md-button>
+        <md-button
+          class="md-raised md-dense md-primary apply-button"
+          @click="saveDialog"
+          >Applica</md-button
+        >
       </md-dialog-actions>
     </md-dialog>
 
