@@ -69,7 +69,7 @@
       <md-dialog-actions>
         <md-button
           class="md-dense md-secondary ignore-button"
-          @click="showDialog = false"
+          @click="ignoreDialog"
           >Ignora</md-button
         >
         <md-button
@@ -109,6 +109,15 @@ export default {
       this.showDialog = false;
       this.$store.dispatch("amz_request", { amz });
     },
+    ignoreDialog() {
+      this.showDialog = false;
+      this.amz.FiltroAlert = "Tutti";
+      this.amz.FiltroInStock = "Tutti";
+      this.amz.FiltroFastTrack = "Tutti";
+      this.amz.FiltroBuyBox = "Tutti";
+      this.amz.FiltroNegativeReviews = "Tutti";
+    },
+
     computedText() {
       if (this.FiltroAlert == "Tutti") {
         this.computedAlert = "Mostra tutti gli articoli";
