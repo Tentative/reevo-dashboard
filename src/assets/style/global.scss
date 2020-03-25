@@ -3,3 +3,12 @@
 body {
   font-family: "Open Sans", sans-serif;
 }
+*::selection {
+  background-color: rgb(50, 124, 224) !important;
+  color: white !important;
+}
+
+*::moz-selection {
+  background-color: rgb(50, 124, 224) !important;
+  color: white !important;
+}
