@@ -200,7 +200,9 @@ a:not(.md-button) {
 .setting {
   min-width: 40px !important;
 }
-
+.md-dialog.filter {
+  width: 25% !important;
+}
 .md-button.setting .md-icon {
   font-size: 20px !important;
 }
