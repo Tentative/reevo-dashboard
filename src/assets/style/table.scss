@@ -12,6 +12,11 @@ $icon-size: 1.3rem;
   min-width: 54px;
   vertical-align: middle;
 }
+.alert-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
 
 .md-icon.md-theme-default.md-icon-font.ok-status {
   color: $ok-status;
@@ -73,6 +78,12 @@ $icon-size: 1.3rem;
   color: rgba(0, 0, 0, 1) !important;
   font-weight: 300;
   font-size: 22px;
+  display: inline-block;
+}
+
+.settings {
+  display: inline-block;
+  padding: 0 !important;
 }
 
 // .item {

@@ -193,9 +193,18 @@ a:not(.md-button) {
 .md-table-row:hover:not(.filtro-alert) .md-table-cell:not(.filtro-alert) {
   background-color: transparent !important;
 }
-.table .md-alignment-center-center {
+.table {
   padding: 0 50px !important;
 }
+
+.setting {
+  min-width: 40px !important;
+}
+
+.md-button.setting .md-icon {
+  font-size: 20px !important;
+}
+
 .md-dialog.graph {
   position: fixed;
   left: 50%;
