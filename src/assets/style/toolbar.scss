@@ -170,6 +170,7 @@ a:not(.md-button) {
   }
   & tr:first-child {
     background-color: rgb(244, 246, 251) !important;
+    border-bottom: 3px solid #f4f6fb;
   }
   & tr:nth-child(even) {
     // background-color: #fafafa;
