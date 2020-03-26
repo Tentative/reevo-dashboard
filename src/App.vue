@@ -32,10 +32,19 @@
           </div>
         </md-toolbar>
 
-        <md-list>
+        <md-content class="main-menu" v-show="menuVisible">
+          <md-list class="main-navigation">
+            <md-list-item><span>F.A.Q</span></md-list-item>
+            <md-list-item><span>Centro Assistenza</span></md-list-item>
+            <md-list-item><span>Import Items</span></md-list-item>
+          </md-list>
+        </md-content>
+        <md-divider></md-divider>
+
+        <md-list :class="menuVisible ? 'quick' : ''">
           <md-list-item
             class="dashboard"
-            :class="router == 'Dashboard' ? 'amz-active' : ''"
+            :class="router == 'Dashboard' ? 'amz-active' : 'quick-navigation'"
           >
             <router-link to="/amz">
               <md-icon class="dashboard-icon"
@@ -45,17 +54,23 @@
             <span class="md-list-item-text">Amazon Dashboard</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item
+            :class="router == '' ? 'amz-active' : 'quick-navigation'"
+          >
             <md-icon>send</md-icon>
             <span class="md-list-item-text">Sent Mail</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item
+            :class="router == '' ? 'amz-active' : 'quick-navigation'"
+          >
             <md-icon>delete</md-icon>
             <span class="md-list-item-text">Trash</span>
           </md-list-item>
 
-          <md-list-item>
+          <md-list-item
+            :class="router == '' ? 'amz-active' : 'quick-navigation'"
+          >
             <md-icon>error</md-icon>
             <span class="md-list-item-text">Spam</span>
           </md-list-item>

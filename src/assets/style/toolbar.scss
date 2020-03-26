@@ -28,6 +28,22 @@
   border-radius: 3px;
 }
 
+.quick-navigation {
+  padding-left: 15px !important;
+}
+
+.md-list.quick {
+  margin-top: 15px !important;
+}
+
+.md-list.main-navigation {
+  margin: 0 !important;
+}
+
+.main-menu span {
+  display: block;
+}
+
 a:not(.md-button) {
   text-decoration: none !important;
 }
