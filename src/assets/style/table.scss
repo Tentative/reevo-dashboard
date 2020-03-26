@@ -17,6 +17,9 @@ $icon-size: 1.3rem;
   display: flex;
   justify-content: flex-start;
   margin-top: 20px;
+  & .md-title.title {
+    font-weight: 400;
+  }
 }
 
 .md-icon.md-theme-default.md-icon-font.ok-status {
