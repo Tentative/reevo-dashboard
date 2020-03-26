@@ -39,7 +39,7 @@
             <md-list-item><span>Import Items</span></md-list-item>
           </md-list>
         </md-content>
-        <md-divider></md-divider>
+        <md-divider v-show="menuVisible"></md-divider>
 
         <md-list :class="menuVisible ? 'quick' : ''">
           <md-list-item
