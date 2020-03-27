@@ -91,7 +91,14 @@ a:not(.md-button) {
   padding-left: 12px !important;
 }
 
+.md-table-head-container:not(.cheap):not(.cost) {
+  text-align: center;
+}
+
 .md-table-cell-container {
+  &:not(.cost):not(.cheap) {
+    text-align: center;
+  }
   padding: 6px 32px 6px 10px !important;
 }
 
@@ -193,9 +200,14 @@ a:not(.md-button) {
   width: 85px !important;
 }
 
-.cost .md-table-head-container {
-  padding: 16px 32px 16px 10px;
+.cost .md-table-head-container,
+.cheap .md-table-head-container {
+  padding: 16px 52px 16px 10px;
   text-align: right;
+}
+
+.cheap .md-table-head-label {
+  padding-right: 0 !important;
 }
 
 // .cost .md-table-head-label,
