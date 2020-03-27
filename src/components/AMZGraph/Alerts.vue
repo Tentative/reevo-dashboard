@@ -11,56 +11,36 @@
                 v-model="amz.FiltroAlert"
                 true-value="Si"
                 false-value="Tutti"
-                >{{
-                  amz.FiltroAlert == "Tutti"
-                    ? "Mostra tutti gli articoli"
-                    : "Mostra solo articoli con Alert"
-                }}</md-switch
-              >
+                >Mostra solo articoli con Alert
+              </md-switch>
               <md-switch
                 class="md-primary"
                 v-model="amz.FiltroInStock"
                 true-value="No"
                 false-value="Tutti"
-                >{{
-                  amz.FiltroInStock == "Tutti"
-                    ? "Mostra tutti gli articoli"
-                    : "Mostra solo articoli Fuori Stock"
-                }}</md-switch
+                >Mostra solo articoli Fuori Stock</md-switch
               >
               <md-switch
                 class="md-primary"
                 v-model="amz.FiltroFastTrack"
                 true-value="No"
                 false-value="Tutti"
-                >{{
-                  amz.FiltroFastTrack == "Tutti"
-                    ? "Mostra tutti gli articoli"
-                    : "Mostra solo articoli non Fast Track"
-                }}</md-switch
+                >Mostra solo articoli non Fast Track</md-switch
               >
               <md-switch
                 class="md-primary"
                 v-model="amz.FiltroBuyBox"
                 true-value="No"
                 false-value="Tutti"
-                >{{
-                  amz.FiltroBuyBox == "Tutti"
-                    ? "Mostra tutti gli articoli"
-                    : "Mostra solo articoli senza BuyBox"
-                }}</md-switch
+                >Mostra solo articoli senza BuyBox</md-switch
               >
               <md-switch
                 class="md-primary"
                 v-model="amz.FiltroNegativeReviews"
                 true-value="SoloNegative"
                 false-value="Tutti"
-                >{{
-                  amz.FiltroNegativeReviews == "Tutti"
-                    ? "Mostra tutti gli articoli"
-                    : "Mostra solo articoli con recensioni negative maggiori del 20%"
-                }}</md-switch
-              >
+                >Mostra solo articoli con recensioni negative maggiori del 20%
+              </md-switch>
             </md-tab></md-tabs
           >
         </div>
