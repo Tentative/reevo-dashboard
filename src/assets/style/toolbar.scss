@@ -102,6 +102,13 @@ a:not(.md-button) {
   padding: 0 32px 0 10px !important;
 }
 
+.md-table-cell.prezzo {
+  padding-right: 0 !important;
+  & span {
+    width: 100% !important;
+  }
+}
+
 .filters {
   padding: 0 15px;
 }
@@ -197,7 +204,7 @@ a:not(.md-button) {
 .md-table-cell-container span.price {
   padding: 20px 20px !important;
   display: inline-block;
-  width: 85px !important;
+  // width: 85px !important;
 }
 
 .cost .md-table-head-container,

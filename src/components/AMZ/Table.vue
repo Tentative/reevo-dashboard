@@ -48,20 +48,20 @@
             ><span>{{ item.NomeItem }} </span>
           </a>
         </md-table-cell>
-        <md-table-cell class="fix">
-          <span
-            :class="item.IsAlert ? 'filtro-alert' : 'price'"
-            @click="store.dispatch('amz_graph', { item })"
+        <md-table-cell
+          class="prezzo fix"
+          :class="item.IsAlert ? 'filtro-alert' : 'price'"
+        >
+          <span @click="store.dispatch('amz_graph', { item })"
             ><a>{{ item.Prezzo }} €</a></span
           >
         </md-table-cell>
-        <md-table-cell class="fix">
+        <md-table-cell
+          class="fix"
+          :class="item.IsAlert ? 'filtro-alert' : 'discount'"
+        >
           <a @click="store.dispatch('amz_graph', { item })">
-            <span
-              v-if="item.Sconto != '0'"
-              :class="item.IsAlert ? 'filtro-alert' : 'discount'"
-              >{{ item.Sconto }} %</span
-            >
+            <span v-if="item.Sconto != '0'">{{ item.Sconto }} %</span>
             <span v-else class="discount">/</span>
           </a>
         </md-table-cell>
