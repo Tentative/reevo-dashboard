@@ -49,18 +49,20 @@
           </a>
         </md-table-cell>
         <md-table-cell
+          @click.native="store.dispatch('amz_graph', { item })"
           class="prezzo fix"
           :class="item.IsAlert ? 'filtro-alert' : 'price'"
         >
-          <span @click="store.dispatch('amz_graph', { item })"
+          <span
             ><a>{{ item.Prezzo }} €</a></span
           >
         </md-table-cell>
         <md-table-cell
+          @click.native="store.dispatch('amz_graph', { item })"
           class="fix"
           :class="item.IsAlert ? 'filtro-alert' : 'discount'"
         >
-          <a @click="store.dispatch('amz_graph', { item })">
+          <a>
             <span v-if="item.Sconto != '0'">{{ item.Sconto }} %</span>
             <span v-else class="discount">/</span>
           </a>
