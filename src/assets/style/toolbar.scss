@@ -240,7 +240,17 @@ a:not(.md-button) {
   margin-right: 0 !important;
 }
 .md-dialog.filter {
-  width: 25% !important;
+  & .md-layout.md-gutter {
+    padding: 20px 0;
+  }
+  & .md-layout-item {
+    margin: 0 auto;
+  }
+  width: 35% !important;
+}
+
+.switches {
+  padding: 50px 8px 8px 24px !important;
 }
 
 .apply-button {

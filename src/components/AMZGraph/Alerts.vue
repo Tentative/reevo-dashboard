@@ -2,8 +2,8 @@
   <div class="md-alignment-center-center settings">
     <md-dialog class="filter" :md-active.sync="showDialog">
       <md-dialog-title>Filtri</md-dialog-title>
-      <div class="md-layout">
-        <div class="md-layout-item ">
+      <div class="md-layout md-gutter">
+        <div class="md-layout-item md-size-75 ">
           <md-tabs md-dynamic-height>
             <md-tab>
               <md-switch
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <md-dialog-actions>
+      <md-dialog-actions class="switches">
         <md-button
           class="md-dense md-secondary ignore-button"
           @click="ignoreDialog"
