@@ -109,6 +109,10 @@ a:not(.md-button) {
   }
 }
 
+.md-table-cell {
+  position: unset !important;
+}
+
 .md-table-cell.item {
   & .md-table-cell-container {
     text-align: left;
