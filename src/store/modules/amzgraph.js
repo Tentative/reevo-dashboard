@@ -123,20 +123,22 @@ export default {
             ticks: {
               display: true,
               reverse: true,
-              stepSize: 1,
+              precision: 0,
               soruce: "auto"
             }
           },
           {
             id: "stock",
-            type: "linear",
+            distribution: "linear",
             gridLines: {
               display: false
             },
             ticks: {
-              display: false
-            },
-            stacked: true
+              display: false,
+              precision: 0,
+              min: "",
+              max: ""
+            }
           }
         ],
         xAxes: [
@@ -208,10 +210,11 @@ export default {
         prezzoMin,
         prezzoMax,
         min_rank,
-        max_rank
+        max_rank,
+        max,
         // fullMin
         // fullMax
-        // min,
+        minimo
         // maxx
       }
     ) {
@@ -226,6 +229,8 @@ export default {
       state.options.scales.yAxes[0].ticks.max = parseInt(prezzoMax + 2);
       state.options.scales.yAxes[1].ticks.min = parseInt(min_rank - 2);
       state.options.scales.yAxes[1].ticks.max = parseInt(max_rank + 2);
+      state.options.scales.yAxes[2].ticks.min = parseInt(minimo);
+      state.options.scales.yAxes[2].ticks.max = parseInt(max);
 
       // state.options.scales.xAxes[0].ticks.min = state.currentDate.setDate(
       //   state.currentDate.getDate() - 30
@@ -372,6 +377,7 @@ export default {
             let max_rank = Math.max.apply(null, temp_rank);
             let min_rank = Math.min.apply(null, temp_rank);
             let max = Math.max(max_price, max_rank);
+            let minimo = Math.min(prezzoMin, min_rank);
             for (const stock in labels) {
               if (total_days[stock]) {
                 if (total_days[stock].InStockGiorno == "No") {
@@ -393,8 +399,9 @@ export default {
               prezzoMax,
               prezzoMin,
               min_rank,
-              max_rank
-              // min,
+              max_rank,
+              max,
+              minimo
               // maxx
             });
 
