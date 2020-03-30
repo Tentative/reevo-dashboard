@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import axios from "axios";
 import moment from "moment";
 export default {
@@ -102,15 +103,27 @@ export default {
             type: "linear",
             position: "left",
             gridLines: {
-              display: false
+              display: false,
             },
             ticks: {
               display: true,
+              // eslint-disable-next-line no-unused-vars
+              callback: function (value, index, values) {
+                return value + " " + "€";
+              },
               // beginAtZero: true,
               source: "auto",
               min: "",
               max: "",
               precision: 0
+            },
+            afterTickToLabelConversion: function (scaleInstance) {
+              // set the first and last tick to null so it does not display
+              // note, ticks[0] is the last tick and ticks[length - 1] is the first
+              scaleInstance.ticks[scaleInstance.ticks.length - 1] = null;
+
+              // need to do the same thing for this similiar array which is used internally
+              scaleInstance.ticksAsNumbers[scaleInstance.ticksAsNumbers.length - 1] = null;
             }
           },
           {
@@ -118,7 +131,10 @@ export default {
             type: "linear",
             position: "right",
             gridLines: {
-              display: false
+              display: true,
+              drawBorder: true,
+              lineWidth: 1,
+              zeroLineWidth: 1,
             },
             ticks: {
               display: false,
@@ -159,7 +175,8 @@ export default {
             },
             gridLines: {
               display: true,
-              drawTicks: false
+              drawTicks: false,
+              zeroLineWidth: 1
             }
           }
         ]
