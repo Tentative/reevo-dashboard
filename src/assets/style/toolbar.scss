@@ -92,7 +92,7 @@ a:not(.md-button) {
 }
 
 .md-table-head-container:not(.cheap):not(.cost) {
-  text-align: center;
+  text-align: left;
 }
 
 .md-table-cell-container {
@@ -106,6 +106,12 @@ a:not(.md-button) {
   padding-right: 0 !important;
   & span {
     width: 100% !important;
+  }
+}
+
+.md-table-cell.item {
+  & .md-table-cell-container {
+    text-align: left;
   }
 }
 
