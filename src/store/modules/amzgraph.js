@@ -109,8 +109,8 @@ export default {
               // beginAtZero: true,
               source: "auto",
               min: "",
-              max: ""
-              // precision: 5
+              max: "",
+              precision: 0
             }
           },
           {
@@ -135,7 +135,8 @@ export default {
             },
             ticks: {
               display: false
-            }
+            },
+            stacked: true
           }
         ],
         xAxes: [
@@ -367,14 +368,20 @@ export default {
             }
 
             let max_price = Math.max.apply(null, prezzo_giorno);
-            let max_rank = Math.max.apply(null, sales_rank);
-            let min_rank = Math.min.apply(null, sales_rank);
+            let temp_rank = sales_rank.reverse();
+            let max_rank = Math.max.apply(null, temp_rank);
+            let min_rank = Math.min.apply(null, temp_rank);
             let max = Math.max(max_price, max_rank);
-            for (const data in total_days) {
-              if (total_days[data].InStockGiorno == "No") {
-                in_stock_giorno.push(max);
+            for (const stock in labels) {
+              if (total_days[stock]) {
+                if (total_days[stock].InStockGiorno == "No") {
+                  in_stock_giorno.push(max + 2);
+                } else {
+                  in_stock_giorno.push("");
+                }
+              } else {
+                in_stock_giorno.push("");
               }
-              in_stock_giorno.push("");
             }
 
             commit("graph_success", {
