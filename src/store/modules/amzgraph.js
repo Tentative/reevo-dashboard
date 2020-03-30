@@ -68,6 +68,17 @@ export default {
       ]
     },
     options: {
+      legend: {
+        labels: {
+          boxWidth: 10,
+          usePointStyle: true,
+          // eslint-disable-next-line no-unused-vars
+          filter: function (item, chart) {
+            // Logic to remove a particular legend item goes here
+            return !item.text.includes('Out of stock');
+          }
+        }
+      },
       annotation: {
         annotations: [
           {
