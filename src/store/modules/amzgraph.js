@@ -121,7 +121,7 @@ export default {
               display: false
             },
             ticks: {
-              display: true,
+              display: false,
               reverse: true,
               precision: 0,
               soruce: "auto"
@@ -158,7 +158,7 @@ export default {
               unit: "day"
             },
             gridLines: {
-              display: false,
+              display: true,
               drawTicks: false
             }
           }
