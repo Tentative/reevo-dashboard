@@ -158,7 +158,8 @@ export default {
               unit: "day"
             },
             gridLines: {
-              display: true
+              display: false,
+              drawTicks: false
             }
           }
         ]
