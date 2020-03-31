@@ -46,6 +46,8 @@
         </div>
       </div>
 
+      <md-divider></md-divider>
+
       <md-dialog-actions class="switches">
         <md-button
           class="md-dense md-secondary ignore-button"
