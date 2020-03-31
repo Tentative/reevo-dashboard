@@ -245,6 +245,11 @@ a:not(.md-button) {
   padding: 0 50px !important;
 }
 
+.md-dialog-title.md-title.alert-title {
+  margin: 0 72px;
+  padding: 24px 20px;
+}
+
 .setting {
   min-width: 40px !important;
   margin-right: 0 !important;

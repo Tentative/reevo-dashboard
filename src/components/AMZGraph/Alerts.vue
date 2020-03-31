@@ -1,7 +1,7 @@
 <template>
   <div class="md-alignment-center-center settings">
     <md-dialog class="filter" :md-active.sync="showDialog">
-      <md-dialog-title>Filtri</md-dialog-title>
+      <md-dialog-title class="alert-title">Filtri</md-dialog-title>
       <div class="md-layout md-gutter">
         <div class="md-layout-item md-size-75 ">
           <md-tabs md-dynamic-height>
