@@ -44,7 +44,9 @@
         <md-list :class="menuVisible ? 'quick' : ''">
           <md-list-item
             class="dashboard"
-            :class="router == 'Dashboard' ? 'amz-active' : 'quick-navigation'"
+            :class="
+              router == 'Dashboard' || 'Amz' ? 'amz-active' : 'quick-navigation'
+            "
           >
             <router-link to="/amz">
               <md-icon class="dashboard-icon"
