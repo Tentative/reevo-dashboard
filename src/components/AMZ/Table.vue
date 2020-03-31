@@ -4,7 +4,7 @@
     <Screenshot :screenshotVisible="screenshotVisible" />
     <div class="alert-wrapper">
       <span class="md-title title">Amazon Dashboard</span>
-      <Alerts v-if="router == 'Dashboard'" />
+      <Alerts v-if="router == 'Dashboard' || 'Amz'" />
     </div>
     <md-table class="amz">
       <md-table-row>
