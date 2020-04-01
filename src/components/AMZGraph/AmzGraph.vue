@@ -21,10 +21,6 @@
         </div>
       </div>
       <TableGraph />
-
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="toggleAmzGraph">Close</md-button>
-      </md-dialog-actions>
     </md-dialog>
   </div>
 </template>
