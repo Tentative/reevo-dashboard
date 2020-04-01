@@ -286,14 +286,14 @@ export default {
             borderSkipped: true,
             data: [],
             type: "line",
-            pointBorderColor: "rgba(75,192,192,1)",
+            pointBorderColor: "#409EFF",
             pointBackgroundColor: "#fff",
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBackgroundColor: "#409EFF",
             pointHoverBorderColor: "rgba(220,220,220,1)",
             pointHoverBorderWidth: 2,
-            pointRadius: 1,
+            pointRadius: 3,
             pointHitRadius: 10,
             lineTension: 0,
             order: 1,
@@ -311,14 +311,14 @@ export default {
             type: "line",
             lineTension: 0,
             steppedLine: "before",
-            pointBorderColor: "rgba(75,192,192,1)",
+            pointBorderColor: "red",
             pointBackgroundColor: "#fff",
             pointBorderWidth: 1,
             pointHoverRadius: 5,
-            pointHoverBackgroundColor: "rgba(75,192,192,1)",
+            pointHoverBackgroundColor: "red",
             pointHoverBorderColor: "rgba(220,220,220,1)",
             pointHoverBorderWidth: 2,
-            pointRadius: 1,
+            pointRadius: 2,
             pointHitRadius: 10
           },
           {
@@ -331,6 +331,7 @@ export default {
             yAxisID: "stock"
           }
         ]
+
       };
     }
   },
