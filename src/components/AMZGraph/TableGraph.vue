@@ -3,11 +3,6 @@
     <div class="md-layout-item md-size-50 first-table">
       <md-table>
         <md-table-row>
-          <md-table-head>Type</md-table-head>
-          <md-table-head>Price</md-table-head>
-          <md-table-head>Date</md-table-head>
-        </md-table-row>
-        <md-table-row>
           <md-table-cell><span>Current</span></md-table-cell>
           <md-table-cell
             ><span v-if="currentItem.InStock == 'No'">-</span
