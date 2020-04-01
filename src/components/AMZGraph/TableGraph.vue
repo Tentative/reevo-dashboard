@@ -1,9 +1,9 @@
 <template>
   <div class="md-layout md-gutter tablegraph">
     <div class="md-layout-item">
-      <md-table>
+      <md-table class="graph">
         <md-table-row>
-          <md-table-cell><span>Current</span></md-table-cell>
+          <md-table-cell><span>Prezzo attuale</span></md-table-cell>
           <md-table-cell
             ><span v-if="currentItem.InStock == 'No'">-</span
             ><span v-else>{{ currentItem.Prezzo }} €</span></md-table-cell
@@ -15,7 +15,7 @@
         </md-table-row>
         <md-table-row>
           <md-table-cell
-            ><span class="highest-price">Highest Price </span></md-table-cell
+            ><span class="highest-price">Prezzo massimo</span></md-table-cell
           >
           <md-table-cell
             ><span class="highest-price"
@@ -28,7 +28,7 @@
         </md-table-row>
         <md-table-row>
           <md-table-cell
-            ><span class="lowest-price">Lowest Price</span></md-table-cell
+            ><span class="lowest-price">Prezzo minimo</span></md-table-cell
           >
           <md-table-cell
             ><span class="lowest-price"
@@ -43,7 +43,7 @@
         </md-table-row>
         <md-table-row>
           <md-table-cell
-            ><span class="average-price">Average</span></md-table-cell
+            ><span class="average-price">Media prezzo</span></md-table-cell
           >
           <md-table-cell
             ><span class="average-price"
