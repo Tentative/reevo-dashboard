@@ -1,6 +1,6 @@
 <template>
   <div class="md-layout md-gutter tablegraph">
-    <div class="md-layout-item md-size-50 first-table">
+    <div class="md-layout-item">
       <md-table>
         <md-table-row>
           <md-table-cell><span>Current</span></md-table-cell>
@@ -54,7 +54,7 @@
         </md-table-row>
       </md-table>
     </div>
-    <div class="md-layout-item md-size-50 second-table">
+    <div class="md-layout-item ">
       <md-table>
         <md-table-row
           ><md-table-cell>List price</md-table-cell
@@ -88,9 +88,7 @@
         >
         <md-table-row
           ><md-table-cell>Last update scan</md-table-cell
-          ><md-table-cell>{{
-            currentItem.UltimaData
-          }}</md-table-cell></md-table-row
+          ><md-table-cell>{{ dataLast }}</md-table-cell></md-table-row
         >
       </md-table>
     </div>
