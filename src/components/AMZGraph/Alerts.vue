@@ -5,7 +5,7 @@
       <div class="md-layout md-gutter">
         <div class="md-layout-item md-size-75 ">
           <md-tabs md-dynamic-height>
-            <md-tab>
+            <md-tab class="switches-wrapper">
               <md-switch
                 class="md-primary"
                 v-model="amz.FiltroAlert"
@@ -48,16 +48,16 @@
 
       <md-divider></md-divider>
 
-      <md-dialog-actions class="switches">
-        <md-button
-          class="md-dense md-secondary ignore-button"
-          @click="ignoreDialog"
-          >Ignora</md-button
-        >
+      <md-dialog-actions class="switches alert-title">
         <md-button
           class="md-raised md-dense md-primary apply-button"
           @click="saveDialog"
           >Applica</md-button
+        >
+        <md-button
+          class="md-dense md-secondary ignore-button"
+          @click="ignoreDialog"
+          >Ignora</md-button
         >
       </md-dialog-actions>
     </md-dialog>

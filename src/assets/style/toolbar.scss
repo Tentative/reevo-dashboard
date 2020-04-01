@@ -119,6 +119,10 @@ a:not(.md-button) {
   }
 }
 
+.md-tab.switches-wrapper {
+  padding: 0 !important;
+}
+
 .filters {
   padding: 0 15px;
 }
@@ -246,8 +250,13 @@ a:not(.md-button) {
 }
 
 .md-dialog-title.md-title.alert-title {
-  margin: 0 72px;
-  padding: 24px 20px;
+  margin: 0 70px !important;
+  padding: 24px 18px 24px 0;
+}
+
+.md-dialog-actions.alert-title {
+  margin: 0 72px !important;
+  padding: 24px 18px 24px 0 !important;
 }
 
 .setting {
@@ -266,10 +275,13 @@ a:not(.md-button) {
 
 .switches {
   padding: 50px 8px 8px 24px !important;
+  justify-content: flex-start !important;
+  padding-left: 0 !important;
+  margin-left: 0 !important;
 }
 
 .apply-button {
-  margin-left: 20px !important;
+  // margin-left: 20px !important;
   box-shadow: none !important;
 }
 
