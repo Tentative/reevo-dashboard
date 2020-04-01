@@ -1,15 +1,17 @@
 <template>
-  <div class="md-layout  md-alignment-center-right header ">
+  <div class="md-layout  md-alignment-center-right header">
     <div class="md-layout-item item-name md-size-60">
       <span>{{ currentItem.NomeItem }}</span>
     </div>
+
     <div class="md-layout-item item-date">
       <md-dialog-actions>
-        <md-button class="md-button " @click="toggleAmzGraph"
+        <md-button class="md-button" @click="toggleAmzGraph"
           ><md-icon>close</md-icon></md-button
         >
       </md-dialog-actions>
     </div>
+
     <!-- div class="md-layout-item item-date">
       <span class="item-update"
         >Aggiornato al {{ currentItem.UltimaData }}</span
