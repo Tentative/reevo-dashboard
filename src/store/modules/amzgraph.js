@@ -389,7 +389,7 @@ export default {
                 }
               }
               prezzo_giorno.push(last_price);
-              console.log(last_price)
+              // console.log(last_price)
             }
             let prezzoMax = Math.max.apply(Math, prezzo_giorno);
             let prezzoMin = Math.min.apply(Math, prezzo_giorno);
