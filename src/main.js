@@ -17,6 +17,10 @@ if (token) {
 }
 
 moment.locale("IT");
+moment()
+  .subtract(1, "days")
+  .startOf("day")
+  .toString();
 
 Vue.config.productionTip = false;
 Vue.use(VueMaterial);

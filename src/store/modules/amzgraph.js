@@ -372,7 +372,7 @@ export default {
             );
             labels.reverse();
             let prezzo_giorno = [];
-            let last_price = total_days[0].PrezzoGiorno;
+            let last_price = null;
             for (const datA in labels) {
               for (const datB in total_days) {
                 let stringa = total_days[datB].DataPrezzo;
@@ -385,9 +385,11 @@ export default {
                 // console.log(dataFinale);
                 if (dataControllo >= dataFinale) {
                   last_price = total_days[datB].PrezzoGiorno;
+
                 }
               }
               prezzo_giorno.push(last_price);
+              console.log(last_price)
             }
             let prezzoMax = Math.max.apply(Math, prezzo_giorno);
             let prezzoMin = Math.min.apply(Math, prezzo_giorno);
