@@ -55,31 +55,18 @@
       </md-table>
     </div>
     <div class="md-layout-item ">
-      <md-table>
-        <md-table-row
-          ><md-table-cell>List price</md-table-cell
-          ><md-table-cell
-            >{{ currentItem.Prezzo }} €</md-table-cell
-          ></md-table-row
-        >
+      <md-table class="graph">
         <md-table-row
           ><md-table-cell>EAN</md-table-cell
           ><md-table-cell>{{ currentItem.EAN }}</md-table-cell></md-table-row
         >
         <md-table-row
-          ><md-table-cell>UPC</md-table-cell
+          ><md-table-cell>Prezzo di listino</md-table-cell
           ><md-table-cell
-            ><span v-if="!!currentItem.UPC">{{ currentItem.UPC }}</span
-            ><span v-else>-</span></md-table-cell
+            >{{ currentItem.Prezzo }} €</md-table-cell
           ></md-table-row
         >
-        <md-table-row
-          ><md-table-cell>SKU</md-table-cell
-          ><md-table-cell
-            ><span v-if="!!currentItem.SKU">{{ currentItem.SKU }}</span
-            ><span v-else>-</span></md-table-cell
-          ></md-table-row
-        >
+
         <md-table-row
           ><md-table-cell>Sales Rank</md-table-cell
           ><md-table-cell>{{
@@ -87,7 +74,7 @@
           }}</md-table-cell></md-table-row
         >
         <md-table-row
-          ><md-table-cell>Last update scan</md-table-cell
+          ><md-table-cell>Ultimo scan</md-table-cell
           ><md-table-cell>{{ dataLast }}</md-table-cell></md-table-row
         >
       </md-table>
