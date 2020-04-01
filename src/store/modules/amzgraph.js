@@ -21,14 +21,14 @@ export default {
           borderSkipped: true,
           data: [],
           type: "line",
-          pointBorderColor: "rgba(75,192,192,1)",
+          pointBorderColor: "#409EFF",
           pointBackgroundColor: "#fff",
           pointBorderWidth: 1,
           pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBackgroundColor: "#409EFF",
           pointHoverBorderColor: "rgba(220,220,220,1)",
           pointHoverBorderWidth: 2,
-          pointRadius: 1,
+          pointRadius: 3,
           pointHitRadius: 10,
           lineTension: 0,
           order: 1,
@@ -46,14 +46,14 @@ export default {
           type: "line",
           lineTension: 0,
           steppedLine: "before",
-          pointBorderColor: "rgba(75,192,192,1)",
+          pointBorderColor: "red",
           pointBackgroundColor: "#fff",
           pointBorderWidth: 1,
           pointHoverRadius: 5,
-          pointHoverBackgroundColor: "rgba(75,192,192,1)",
+          pointHoverBackgroundColor: "red",
           pointHoverBorderColor: "rgba(220,220,220,1)",
           pointHoverBorderWidth: 2,
-          pointRadius: 1,
+          pointRadius: 2,
           pointHitRadius: 10
         },
         {
@@ -70,7 +70,7 @@ export default {
     options: {
       legend: {
         labels: {
-          boxWidth: 10,
+          // boxWidth: 10,
           usePointStyle: true,
           // eslint-disable-next-line no-unused-vars
           filter: function (item, chart) {
@@ -196,11 +196,17 @@ export default {
         mode: "index",
         callbacks: {
           title: tooltipItems => {
-            return "Variazione del " + tooltipItems[0].xLabel;
+            return tooltipItems[0].xLabel;
           },
 
-          label: tooltipItems => {
-            return tooltipItems.yLabel + " €";
+          // 
+          // eslint-disable-next-line no-unused-vars
+          label: function (t, d) {
+            if (t.datasetIndex === 0) {
+              return "Prezzo: " + t.yLabel.toFixed(2) + " " + "€"
+            } else if (t.datasetIndex === 1) {
+              return "Sales Rank: " + t.yLabel;
+            }
           }
         }
       }
@@ -372,9 +378,11 @@ export default {
                 stringa = Date.parse(stringa);
                 let date = new Date(stringa);
                 date.toISOString();
-                let dataFinale = date.toString().slice(4, 15);
-                let dataControllo = labels[datA].toString().slice(4, 15);
-                if (dataControllo == dataFinale) {
+                let dataFinale = date.toString().slice(4, 23);
+                let dataControllo = labels[datA].toString().slice(4, 23);
+                // console.log(dataControllo);
+                // console.log(dataFinale);
+                if (dataControllo >= dataFinale) {
                   last_price = total_days[datB].PrezzoGiorno;
                 }
               }
