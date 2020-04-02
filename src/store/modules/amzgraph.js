@@ -442,9 +442,9 @@ export default {
             // console.log(moment(date).isAfter(dataControllo))
                 // console.log(moment(date).isAfter(dataControllo, "hh:mm:ss"))
                 if (moment(date).isSame(dataControllo, "day")) {
-                  console.log("madonnaputtana")
+                  // console.log("madonnaputtana")
                     
-                    console.log("porcodiddiocanebbastardo")
+                  //   console.log("porcodiddiocanebbastardo")
                   
                   last_price = total_days[datB].PrezzoGiorno;
                   
