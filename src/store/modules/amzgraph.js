@@ -10,6 +10,7 @@ export default {
     graph_res: {},
     graph_days: [],
     currentItem: {},
+    checked: [],
     chartdata: {
       labels: [],
       datasets: [
@@ -194,6 +195,7 @@ export default {
       },
       tooltips: {
         mode: "index",
+        position: "nearest",
         callbacks: {
           title: tooltipItems => {
             return tooltipItems[0].xLabel;
@@ -247,6 +249,7 @@ export default {
         min_rank,
         max_rank,
         max,
+        checked,
         // fullMin
         // fullMax
         minimo
@@ -266,6 +269,7 @@ export default {
       state.options.scales.yAxes[1].ticks.max = parseInt(max_rank + 2);
       state.options.scales.yAxes[2].ticks.min = parseInt(minimo);
       state.options.scales.yAxes[2].ticks.max = parseInt(max);
+      state.checked = checked;
 
       // state.options.scales.xAxes[0].ticks.min = state.currentDate.setDate(
       //   state.currentDate.getDate() - 30
@@ -366,28 +370,88 @@ export default {
             const total_days = current_item.ListaPrezzi;
             total_days.reverse();
             let labels = [...new Array(30)].map((i, idx) =>
-              moment()
+              moment.utc()
                 .startOf("day")
                 .subtract(idx, "days")
+                .utcOffset(1)
+               .format()
+                
+                
             );
             labels.reverse();
             let prezzo_giorno = [];
             let last_price = null;
+            let checked = [];
+ 
+            for (const day in total_days) {
+              let data = total_days[day].DataPrezzo;
+              let data_finale = data.toString().slice(0, 10);
+              let next = parseInt(day) + 1
+              let prev = parseInt(day) - 1
+              let long = total_days.length
+              if (day != long - 1){
+                let data_due = total_days[next].DataPrezzo;
+                let data_finale_due = data_due.toString().slice(0, 10);
+                if (data_finale == data_finale_due){
+                  console.log("porcoddio")
+                  checked.push(total_days[day])
+                  if (total_days[prev] != undefined) {
+                    let data_tre = total_days[prev].DataPrezzo;
+                    let data_finale_tre = data_tre.toString().slice(0, 10);
+                  if (data_finale == data_finale_tre){
+                    checked.push(total_days[day])
+                    console.log("porcamadonna")
+                  }
+                }
+                }
+              }
+              else{break}
+            // console.log(total_days[day].DataPrezzo)
+            }
+            // for (const check of total_days){
+            //   let next = check.indexOf(check) + 1
+            //   console.log(next)
+            //     // let stringa = total_days[datB].DataPrezzo;
+            //     // let date = moment(stringa).format()
+            //     // let lunghezza_x = labels[datA].length;
+            //     // let lunghezza_risposta = date.length
+            //     // let dataFinale = date.toString().slice(0, lunghezza_risposta -6)
+            //   if (total_days[check +1] != undefined){
+            //       if (total_days[check].DataPrezzo == total_days[check+ 1].DataPrezzo){
+            //         checked.push(total_days[check])
+            //       }
+                
+            //   }
+              
+            //   else {break};
+              
+            // }
+
             for (const datA in labels) {
               for (const datB in total_days) {
                 let stringa = total_days[datB].DataPrezzo;
-                stringa = Date.parse(stringa);
-                let date = new Date(stringa);
-                date.toISOString();
-                let dataFinale = date.toString().slice(4, 23);
-                let dataControllo = labels[datA].toString().slice(4, 23);
-                // console.log(dataControllo);
-                // console.log(dataFinale);
-                if (dataControllo >= dataFinale) {
+                let date = moment(stringa).format()
+                // let lunghezza_x = labels[datA].length;
+                // let lunghezza_risposta = date.length
+                // let dataFinale = date
+                // dataFinale = moment(dataFinale).format()
+                let dataControllo = moment(labels[datA]).format()
+                // let troia = dataControllo = moment(dataControllo).format()
+            //     console.log(date)
+            // console.log(dataControllo)
+            // console.log(moment(date).isAfter(dataControllo))
+                // console.log(moment(date).isAfter(dataControllo, "hh:mm:ss"))
+                if (moment(date).isSame(dataControllo, "day")) {
+                  console.log("madonnaputtana")
+                    
+                    console.log("porcodiddiocanebbastardo")
+                  
                   last_price = total_days[datB].PrezzoGiorno;
+                  
 
                 }
-              }
+              
+            }
               prezzo_giorno.push(last_price);
               // console.log(last_price)
             }
@@ -441,14 +505,15 @@ export default {
               min_rank,
               max_rank,
               max,
-              minimo
+              minimo,
+              checked
               // maxx
             });
 
             resolve(res);
             commit("toggle_amz_graph");
             // console.log("ha finit?");
-          })
+            })
 
           .catch(err => {
             reject(err);

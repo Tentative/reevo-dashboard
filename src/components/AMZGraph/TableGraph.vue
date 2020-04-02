@@ -54,7 +54,7 @@
         </md-table-row>
       </md-table>
     </div>
-    <div class="md-layout-item ">
+    <div class="md-layout-item">
       <md-table class="graph">
         <md-table-row
           ><md-table-cell>EAN</md-table-cell
@@ -89,7 +89,7 @@ export default {
   name: "TableGraph",
   computed: {
     ...mapGetters({
-      currentItem: "currentItem"
+      currentItem: "currentItem",
     }),
     prezzoMedio() {
       return this.currentItem.PrezzoMedio.toFixed(2);
@@ -99,10 +99,7 @@ export default {
       datamin = Date.parse(datamin);
       let temp = new Date(datamin);
       let day = temp.getDate();
-      var month = moment()
-        .subtract(1, "month")
-        .startOf("month")
-        .format("MMMM");
+      var month = moment().subtract(1, "month").startOf("month").format("MMMM");
       let dataPrezzoMin =
         day + " " + month.charAt(0).toUpperCase() + month.slice(1);
       dataPrezzoMin.toString().slice(4, 10);
@@ -114,10 +111,7 @@ export default {
       datamax = Date.parse(datamax);
       let temp = new Date(datamax);
       let day = temp.getDate();
-      var month = moment()
-        .subtract(1, "month")
-        .startOf("month")
-        .format("MMMM");
+      var month = moment().subtract(1, "month").startOf("month").format("MMMM");
       let dataPrezzoMax =
         day + " " + month.charAt(0).toUpperCase() + month.slice(1);
       dataPrezzoMax.toString().slice(4, 10);
@@ -129,17 +123,14 @@ export default {
       datalast = Date.parse(datalast);
       let temp = new Date(datalast);
       let day = temp.getDate();
-      var month = moment()
-        .subtract(1, "month")
-        .startOf("month")
-        .format("MMMM");
+      var month = moment().subtract(1, "month").startOf("month").format("MMMM");
       let dataPrezzoLast =
         day + " " + month.charAt(0).toUpperCase() + month.slice(1);
       dataPrezzoLast.toString().slice(4, 10);
 
       return dataPrezzoLast;
-    }
-  }
+    },
+  },
 };
 </script>
 

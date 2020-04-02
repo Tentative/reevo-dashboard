@@ -38,7 +38,7 @@
         <md-table-cell
           class="thumb"
           @click.native="store.dispatch('amz_screenshot', item)"
-          ><a><img :src="item.UrlImmagine"/></a
+          ><a><img :src="item.UrlImmagine" /></a
         ></md-table-cell>
         <md-table-cell
           class="item"
@@ -114,7 +114,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
-      loaded: false
+      loaded: false,
       // amzGraphVisible: false
     };
   },
@@ -124,7 +124,7 @@ export default {
     },
     amzGraphClose() {
       this.amzGraphVisible = false;
-    }
+    },
   },
   computed: {
     ...mapGetters({
@@ -133,7 +133,7 @@ export default {
       amz: "amz",
       amzGraphVisible: "amzGraphVisible",
       screenshotVisible: "screenshotVisible",
-      graphParams: "graphParams"
+      graphParams: "graphParams",
     }),
     router() {
       return this.$route.name;
@@ -143,8 +143,8 @@ export default {
     },
     graphParams() {
       return this.$store.getters.graphParams;
-    }
-  }
+    },
+  },
 };
 </script>
 

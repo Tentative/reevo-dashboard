@@ -1,5 +1,5 @@
 <template>
-  <div class="md-layout  md-alignment-center-right header">
+  <div class="md-layout md-alignment-center-right header">
     <div class="md-layout-item item-name md-size-60">
       <span>{{ currentItem.NomeItem }}</span>
     </div>
@@ -27,14 +27,14 @@ export default {
   computed: {
     ...mapGetters({
       currentItem: "currentItem",
-      amzGraphVisible: "amzGraphVisible"
-    })
+      amzGraphVisible: "amzGraphVisible",
+    }),
   },
   methods: {
     toggleAmzGraph() {
       this.$store.commit("toggle_amz_graph");
-    }
-  }
+    },
+  },
 };
 </script>
 

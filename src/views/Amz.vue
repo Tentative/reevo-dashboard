@@ -22,15 +22,15 @@ export default {
       // items: [],
       // amzdata: {},
       loading: false,
-      amazon: {}
+      amazon: {},
     };
   },
   computed: {
     ...mapGetters({
       amz: "amz",
       items: "items",
-      amzdata: "amzdata"
-    })
+      amzdata: "amzdata",
+    }),
   },
   methods: {
     table_request() {
@@ -40,15 +40,15 @@ export default {
         .dispatch("amz_request", { amz })
 
         // eslint-disable-next-line no-unused-vars
-        .then(res => {
+        .then((res) => {
           // console.log("check su amz" + { amz });
           // console.log(res);
           this.loading = false;
           this.items = this.$store.getters.amz;
         });
       // .catch(err => console.log(err));
-    }
-  }
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

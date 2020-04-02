@@ -10,9 +10,9 @@ export default {
   name: "Thumbnail",
   computed: {
     ...mapGetters({
-      currentItem: "currentItem"
-    })
-  }
+      currentItem: "currentItem",
+    }),
+  },
 };
 </script>
 

@@ -5,7 +5,7 @@ import store from "./store";
 import Axios from "axios";
 import VueMaterial from "vue-material";
 import { Pagination } from "element-ui";
-import moment from "moment";
+// import moment from "moment";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
 import "@/assets/style/global.scss";
@@ -16,18 +16,16 @@ if (token) {
   Vue.prototype.$http.defaults.headers.common["Authorization"] = token;
 }
 
-moment.locale("IT");
-moment()
-  .subtract(1, "days")
-  .startOf("day")
-  .toString();
+// moment.locale("IT");
 
 Vue.config.productionTip = false;
 Vue.use(VueMaterial);
 Vue.use(Pagination);
 
+Vue.use(require("vue-moment"));
+
 new Vue({
   router,
   store,
-  render: h => h(App)
+  render: (h) => h(App),
 }).$mount("#app");

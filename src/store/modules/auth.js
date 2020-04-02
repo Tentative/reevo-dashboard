@@ -7,8 +7,8 @@ export default {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Login",
       VersioneClient: "1.0.3",
-      Url: window.location.href
-    }
+      Url: window.location.href,
+    },
   },
 
   mutations: {
@@ -39,7 +39,7 @@ export default {
       state.token = "";
       localStorage.removeItem("token");
       sessionStorage.removeItem("token");
-    }
+    },
   },
   actions: {
     login({ commit, state }, login, IsMemorizzaPassword) {
@@ -50,11 +50,11 @@ export default {
           url: "/",
           method: "GET",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          params: JSON.stringify(richiesta)
+          params: JSON.stringify(richiesta),
         })
-          .then(res => {
+          .then((res) => {
             // console.log(res);
             const jsonRisposta = JSON.parse(res.data.JsonRisposta);
             const token = jsonRisposta.JsonWebToken;
@@ -77,7 +77,7 @@ export default {
             }
           })
 
-          .catch(err => {
+          .catch((err) => {
             commit("auth_error", err);
             localStorage.removeItem("token");
             reject(err);
@@ -85,12 +85,12 @@ export default {
       });
     },
     logout({ commit }) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         commit("logout");
         delete axios.defaults.headers.common["Authorization"];
         resolve();
       });
-    }
+    },
   },
-  getters: {}
+  getters: {},
 };

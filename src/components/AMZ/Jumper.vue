@@ -35,12 +35,12 @@ export default {
   name: "jumper",
   computed: {
     ...mapGetters({
-      amz: "amz"
-    })
+      amz: "amz",
+    }),
   },
   data() {
     return {
-      itemsPerPage: "20"
+      itemsPerPage: "20",
     };
   },
   methods: {
@@ -53,11 +53,11 @@ export default {
         FiltroInStock: "Tutti",
         FiltroFastTrack: "Tutti",
         FiltroBuyBox: "Tutti",
-        FiltroNegativeReviews: "Tutti"
+        FiltroNegativeReviews: "Tutti",
       };
       this.$store.dispatch("amz_request", { amz });
-    }
-  }
+    },
+  },
 };
 </script>
 

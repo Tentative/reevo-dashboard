@@ -27,7 +27,7 @@
           </center>
         </div>
 
-        <div class="actions  md-layout md-alignment-center-center">
+        <div class="actions md-layout md-alignment-center-center">
           <md-checkbox class="md-primary" v-model="login.IsMemorizzaPassword"
             >Ricordami</md-checkbox
           >
@@ -58,8 +58,8 @@ export default {
   computed: {
     ...mapGetters({
       authStatus: "authStatus",
-      isLoggedIn: "isLoggedIn"
-    })
+      isLoggedIn: "isLoggedIn",
+    }),
   },
   components: {},
   data() {
@@ -69,8 +69,8 @@ export default {
       login: {
         email: "",
         password: "",
-        IsMemorizzaPassword: false
-      }
+        IsMemorizzaPassword: false,
+      },
     };
   },
   methods: {
@@ -86,15 +86,15 @@ export default {
         .dispatch("login", {
           NomeUtente,
           Password,
-          IsMemorizzaPassword
+          IsMemorizzaPassword,
         })
         .then(() => {
           this.loading = false;
           this.$router.push("/amz", () => {});
         });
       // .catch(err => console.log(err));
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -91,10 +91,10 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "App",
-  created: function() {
-    this.$http.interceptors.response.use(undefined, function(err) {
+  created: function () {
+    this.$http.interceptors.response.use(undefined, function (err) {
       // eslint-disable-next-line no-unused-vars
-      return new Promise(function(resolve, reject) {
+      return new Promise(function (resolve, reject) {
         if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
           this.$store.dispatch("logout");
         }
@@ -104,11 +104,11 @@ export default {
   },
   data() {
     return {
-      menuVisible: false
+      menuVisible: false,
     };
   },
   methods: {
-    logout: function() {
+    logout: function () {
       sessionStorage.removeItem("token");
       this.$store.dispatch("logout").then(() => {
         this.$router.push("/login", () => {});
@@ -116,11 +116,11 @@ export default {
     },
     toggleMenu() {
       this.menuVisible = !this.menuVisible;
-    }
+    },
   },
   computed: {
     ...mapGetters({
-      isLoggedIn: "isLoggedIn"
+      isLoggedIn: "isLoggedIn",
     }),
     router: {
       get() {
@@ -128,12 +128,15 @@ export default {
       },
       set(newValue) {
         return newValue;
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 @import "src/assets/style/toolbar.scss";
+@import "src/assets/style/global.scss";
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+@import url("https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css");
 </style>

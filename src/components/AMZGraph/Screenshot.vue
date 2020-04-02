@@ -4,8 +4,8 @@
       @md-clicked-oustide="toggleScreenshot"
       :md-active.sync="screenshot"
     >
-      <div class="md-layout ">
-        <div class="md-layout-item ">
+      <div class="md-layout">
+        <div class="md-layout-item">
           <img :src="currentScreen.UrlImmagine" alt="Screenshot" />
         </div>
       </div>
@@ -28,12 +28,12 @@ export default {
   methods: {
     toggleScreenshot() {
       this.$store.commit("toggle_screenshot");
-    }
+    },
   },
   computed: {
     ...mapGetters({
       screenshotVisible: "screenshotVisible",
-      currentScreen: "currentScreen"
+      currentScreen: "currentScreen",
     }),
     screenshot: {
       get() {
@@ -41,9 +41,9 @@ export default {
       },
       set(newValue) {
         return newValue;
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>
 

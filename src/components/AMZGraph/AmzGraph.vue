@@ -16,7 +16,7 @@
           <bar-chart
             :chartdata="chartdata"
             :options="options"
-            style="width:800px;margin:auto"
+            style="width: 800px; margin: auto;"
           ></bar-chart>
         </div>
       </div>
@@ -36,17 +36,17 @@ export default {
   props: {
     graphParams: {
       type: Object,
-      required: true
-    }
+      required: true,
+    },
   },
   components: { BarChart, Thumbnail, Header, TableGraph },
   data: () => ({
-    loaded: false
+    loaded: false,
   }),
   methods: {
     toggleAmzGraph() {
       this.$store.commit("toggle_amz_graph");
-    }
+    },
   },
 
   computed: {
@@ -55,7 +55,7 @@ export default {
       chartdata: "chartdata",
       options: "options",
       currentItem: "currentItem",
-      value: "value"
+      value: "value",
     }),
     graph: {
       get() {
@@ -70,7 +70,7 @@ export default {
         },
         set(newValue) {
           return newValue;
-        }
+        },
       },
       options: {
         get() {
@@ -78,7 +78,7 @@ export default {
         },
         set(newValue) {
           return newValue;
-        }
+        },
       },
       currentItem: {
         get() {
@@ -86,10 +86,10 @@ export default {
         },
         set(newValue) {
           return newValue;
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 };
 </script>
 

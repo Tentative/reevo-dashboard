@@ -16,10 +16,10 @@ export default new Vuex.Store({
     auth,
     amz,
     amzgraph,
-    screenshot
+    screenshot,
   },
   state: {},
   mutations: {},
   actions: {},
-  getters
+  getters,
 });

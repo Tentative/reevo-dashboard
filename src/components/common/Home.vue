@@ -3,7 +3,7 @@
 <script>
 export default {
   name: "Home",
-  computed: {}
+  computed: {},
 };
 </script>
 

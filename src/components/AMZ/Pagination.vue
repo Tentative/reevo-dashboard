@@ -25,12 +25,12 @@ export default {
       amzdata: "amzdata",
       itemsPerPage: "itemsPerPage",
       thisPage: "thisPage",
-      totalPages: "totalPages"
-    })
+      totalPages: "totalPages",
+    }),
   },
   data() {
     return {
-      currentPage: 1
+      currentPage: 1,
     };
   },
   // components: { BootstrapVue, IconsPlugin },
@@ -53,7 +53,7 @@ export default {
         FiltroInStock: "Tutti",
         FiltroFastTrack: "Tutti",
         FiltroBuyBox: "Tutti",
-        FiltroNegativeReviews: "Tutti"
+        FiltroNegativeReviews: "Tutti",
       };
       this.$store.dispatch("amz_request", { amz });
     },
@@ -64,8 +64,8 @@ export default {
     },
     prevPage() {
       if (this.currentPage != 1) this.currentPage--;
-    }
-  }
+    },
+  },
 };
 </script>
 

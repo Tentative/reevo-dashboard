@@ -7,7 +7,7 @@ export default {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "AMZ",
       VersioneClient: "1.0.3",
-      Url: window.location.href
+      Url: window.location.href,
       // define JsonRichiesta from mutations ===> {amz}
     },
     amz: {
@@ -18,11 +18,11 @@ export default {
       FiltroInStock: "Tutti",
       FiltroFastTrack: "Tutti",
       FiltroBuyBox: "Tutti",
-      FiltroNegativeReviews: "Tutti"
+      FiltroNegativeReviews: "Tutti",
     },
     items: [],
     amzdata: {},
-    amzGraphVisible: false
+    amzGraphVisible: false,
   },
   mutations: {
     table_request(state, { amz }) {
@@ -47,7 +47,7 @@ export default {
     },
     update_params(state, new_data) {
       state.amzdata.NumeroPagina = new_data.numeroPagina;
-    }
+    },
   },
   actions: {
     amz_request({ commit, state }, amz) {
@@ -58,11 +58,11 @@ export default {
           url: "/",
           method: "GET",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          params: JSON.stringify(richiesta)
+          params: JSON.stringify(richiesta),
         })
-          .then(res => {
+          .then((res) => {
             // console.log(res);
             const amzdata = JSON.parse(res.data.JsonRisposta);
             const lista = amzdata.ListaItems;
@@ -74,13 +74,13 @@ export default {
             // console.log(amzdata);
             resolve(res);
           })
-          .catch(err => {
+          .catch((err) => {
             commit("amz_error", err);
             reject(err);
             // console.log(err);
           });
       });
-    }
+    },
   },
-  getters: {}
+  getters: {},
 };

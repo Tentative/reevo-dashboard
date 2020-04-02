@@ -8,12 +8,12 @@ export default {
   props: {
     chartdata: {
       type: Object,
-      default: null
+      default: null,
     },
     options: {
       type: Object,
-      default: null
-    }
+      default: null,
+    },
   },
   computed: {},
   mounted() {
@@ -22,5 +22,5 @@ export default {
   },
   destroyed() {
     this.$store.commit("clear_chart");
-  }
+  },
 };

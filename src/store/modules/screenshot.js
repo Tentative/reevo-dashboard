@@ -7,8 +7,8 @@ export default {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Screenshot",
       VersioneClient: "1.0.3",
-      Url: window.location.href
-    }
+      Url: window.location.href,
+    },
   },
   mutations: {
     get_current(state, item) {
@@ -22,7 +22,7 @@ export default {
     },
     screen_success(state, current_screen) {
       state.current = current_screen;
-    }
+    },
   },
   actions: {
     screenshot({ commit }, item) {
@@ -34,7 +34,7 @@ export default {
         commit("get_current", item);
         let screen_params = {
           EAN: state.current.EAN,
-          Retailer: "Amazon"
+          Retailer: "Amazon",
         };
         commit("screen_request", screen_params);
         const richiesta = state.screen_request;
@@ -42,11 +42,11 @@ export default {
           url: "/",
           method: "GET",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          params: JSON.stringify(richiesta)
+          params: JSON.stringify(richiesta),
         })
-          .then(res => {
+          .then((res) => {
             const current_screen = JSON.parse(res.data.JsonRisposta);
             // console.log(current_item);
             // const total_days = current_item.ListaPrezzi;
@@ -75,7 +75,7 @@ export default {
             // }
 
             commit("screen_success", {
-              current_screen
+              current_screen,
             });
 
             resolve(res);
@@ -83,12 +83,12 @@ export default {
             // console.log("ha finit?");
           })
 
-          .catch(err => {
+          .catch((err) => {
             reject(err);
             // console.log(err);
           });
       });
-    }
+    },
   },
-  getters: {}
+  getters: {},
 };

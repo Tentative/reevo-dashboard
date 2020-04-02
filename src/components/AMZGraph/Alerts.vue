@@ -3,7 +3,7 @@
     <md-dialog class="filter" :md-active.sync="showDialog">
       <md-dialog-title class="alert-title">Filtri</md-dialog-title>
       <div class="md-layout md-gutter">
-        <div class="md-layout-item md-size-75 ">
+        <div class="md-layout-item md-size-75">
           <md-tabs md-dynamic-height>
             <md-tab class="switches-wrapper">
               <md-switch
@@ -55,7 +55,7 @@
           >Applica</md-button
         >
         <md-button
-          class="md-accent md-raised md-dense  ignore-button"
+          class="md-accent md-raised md-dense ignore-button"
           @click="ignoreDialog"
           >Ignora</md-button
         >
@@ -81,9 +81,9 @@ export default {
       FiltroInStock: "Tutti",
       FiltroFastTrack: "Tutti",
       FiltroBuyBox: "Tutti",
-      FiltroNegativeReviews: "Tutti"
+      FiltroNegativeReviews: "Tutti",
     },
-    computedAlert: ""
+    computedAlert: "",
   }),
   methods: {
     saveDialog() {
@@ -106,8 +106,8 @@ export default {
       } else {
         this.computedAlert = "Solo articoli con alert";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

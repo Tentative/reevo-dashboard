@@ -18,10 +18,10 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "Homepage"
-        }
-      ]
-    }
+          content: "Homepage",
+        },
+      ],
+    },
   },
   {
     path: "/amz",
@@ -33,10 +33,10 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "Homepage"
-        }
-      ]
-    }
+          content: "Homepage",
+        },
+      ],
+    },
   },
   {
     path: "/login",
@@ -47,21 +47,21 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "Reevo dashboard login page"
-        }
-      ]
-    }
-  }
+          content: "Reevo dashboard login page",
+        },
+      ],
+    },
+  },
 ];
 
 const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
-  routes
+  routes,
 });
 router.beforeEach((to, from, next) => {
   document.title = "Reevo |" + " " + to.meta.title;
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (store.getters.isLoggedIn) {
       next();
       return;
