@@ -380,7 +380,7 @@ export default {
             );
             labels.reverse();
             let prezzo_giorno = [];
-            let last_price = null;
+            let last_price = total_days[0].PrezzoGiorno;
             let checked = [];
  
             for (const day in total_days) {
@@ -393,14 +393,14 @@ export default {
                 let data_due = total_days[next].DataPrezzo;
                 let data_finale_due = data_due.toString().slice(0, 10);
                 if (data_finale == data_finale_due){
-                  console.log("porcoddio")
+                  // console.log("porcoddio")
                   checked.push(total_days[day])
                   if (total_days[prev] != undefined) {
                     let data_tre = total_days[prev].DataPrezzo;
                     let data_finale_tre = data_tre.toString().slice(0, 10);
                   if (data_finale == data_finale_tre){
                     checked.push(total_days[day])
-                    console.log("porcamadonna")
+                    // console.log("porcamadonna")
                   }
                 }
                 }
@@ -450,6 +450,7 @@ export default {
                   
 
                 }
+            
               
             }
               prezzo_giorno.push(last_price);
