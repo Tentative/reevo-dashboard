@@ -32,7 +32,7 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  name: "jumper",
+  name: "Jumper",
   computed: {
     ...mapGetters({
       amz: "amz",

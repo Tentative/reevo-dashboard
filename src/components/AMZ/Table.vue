@@ -1,7 +1,10 @@
 <template>
   <div>
-    <AmzGraph :graphParams="graphParams" :amzGraphVisible="amzGraphVisible" />
-    <Screenshot :screenshotVisible="screenshotVisible" />
+    <AmzGraph
+      :graph-params="graphParams"
+      :amz-graph-visible="amzGraphVisible"
+    />
+    <Screenshot :screenshot-visible="screenshotVisible" />
     <div class="alert-wrapper">
       <span class="md-title title">Amazon Dashboard</span>
       <Alerts v-if="router == 'Dashboard' || 'Amz'" />
