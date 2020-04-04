@@ -23,7 +23,7 @@
         v-if="router != 'Login'"
       >
         <md-toolbar class="md-transparent" md-elevation="0">
-          <span>Menu</span>
+          <span style="color: red;">Menu</span>
 
           <div class="md-toolbar-section-end">
             <md-button class="md-icon-button md-dense" @click="toggleMenu">
