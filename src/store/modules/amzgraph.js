@@ -426,27 +426,20 @@ export default {
             //   else {break};
               
             // }
-
+            let sales_rank = [];
             for (const datA in labels) {
               for (const datB in total_days) {
                 let stringa = total_days[datB].DataPrezzo;
                 let date = moment(stringa).format()
-                // let lunghezza_x = labels[datA].length;
-                // let lunghezza_risposta = date.length
-                // let dataFinale = date
-                // dataFinale = moment(dataFinale).format()
                 let dataControllo = moment(labels[datA]).format()
-                // let troia = dataControllo = moment(dataControllo).format()
-            //     console.log(date)
-            // console.log(dataControllo)
-            // console.log(moment(date).isAfter(dataControllo))
-                // console.log(moment(date).isAfter(dataControllo, "hh:mm:ss"))
+
                 if (moment(date).isSame(dataControllo, "day")) {
-                  // console.log("madonnaputtana")
-                    
-                  //   console.log("porcodiddiocanebbastardo")
+
                   
                   last_price = total_days[datB].PrezzoGiorno;
+                }
+                if (moment(date).isSame(dataControllo)){
+                  last_rank = total_days[datB].SalesRankGiorno
                   
 
                 }
@@ -454,27 +447,28 @@ export default {
               
             }
               prezzo_giorno.push(last_price);
+              sales_rank.push(last_rank);
               // console.log(last_price)
             }
             let prezzoMax = Math.max.apply(Math, prezzo_giorno);
             let prezzoMin = Math.min.apply(Math, prezzo_giorno);
 
-            let sales_rank = [];
+            
             let in_stock_giorno = [];
             let last_rank = total_days[0].SalesRankGiorno;
             for (const rankA in labels) {
               for (const rankB in total_days) {
-                let stringa = total_days[rankB].DataPrezzo;
-                stringa = Date.parse(stringa);
-                let date = new Date(stringa);
-                date.toISOString();
-                let dataFinale = date.toString().slice(4, 15);
-                let dataControllo = labels[rankA].toString().slice(4, 15);
-                if (dataControllo == dataFinale) {
-                  last_rank = total_days[rankB].SalesRankGiorno;
+               let stringa = total_days[rankB].DataPrezzo;
+                let date = moment(stringa).format()
+                let dataControllo = moment(labels[rankA]).format()
+                if (moment(date).isSame(dataControllo, "day")) {
+                  
+                  // last_price = total_days[rankB].PrezzoGiorno;
+                  
+
                 }
               }
-              sales_rank.push(last_rank);
+              // sales_rank.push(last_rank);
             }
 
             let max_price = Math.max.apply(null, prezzo_giorno);
