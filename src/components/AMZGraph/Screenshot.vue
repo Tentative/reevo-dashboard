@@ -8,6 +8,7 @@
       <Header />
       <md-divider></md-divider>
       <Container />
+      <md-divider></md-divider>
       <Actions />
     </md-dialog>
   </div>
