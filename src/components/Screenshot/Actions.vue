@@ -3,6 +3,15 @@
     <md-button class="md-dense md-raised md-primary" @click="saveFile"
       >Salva</md-button
     >
+    <md-button
+      class="md-dense md-raised md-primary"
+      href="mailto:micoli.giacomo@gmail.com"
+    >
+      Invia Email</md-button
+    >
+    <md-button class="md-dense md-raised md-primary" href="#"
+      >Pagina Prodotto</md-button
+    >
   </md-dialog-actions>
 </template>
 <script>
