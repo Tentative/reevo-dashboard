@@ -1,6 +1,6 @@
 <template>
   <div class="md-layout">
-    <div class="md-layout-item">
+    <div class="md-layout-item screen-container md-alignment-center-center">
       <img :src="url" alt="Screenshot" />
     </div>
   </div>
