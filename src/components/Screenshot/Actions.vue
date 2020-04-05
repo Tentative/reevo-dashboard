@@ -41,9 +41,6 @@ export default {
         link.click();
       });
     },
-    itemName() {
-      return this.$store.getters.currentScreen.NomeItem;
-    },
   },
 };
 </script>
