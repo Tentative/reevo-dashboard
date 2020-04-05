@@ -205,7 +205,7 @@ export default {
           // eslint-disable-next-line no-unused-vars
           label: function (t, d) {
             if (t.datasetIndex === 0) {
-              return "Prezzo: " + t.yLabel.toFixed(2) + " " + "€"
+              return "Prezzo: " + t.yLabel + " " + "€"
             } else if (t.datasetIndex === 1) {
               return "Sales Rank: " + t.yLabel;
             }
@@ -380,7 +380,7 @@ export default {
             );
             labels.reverse();
             let prezzo_giorno = [];
-            let last_price = total_days[0].PrezzoGiorno;
+            let last_price = null;
             let checked = [];
  
             for (const day in total_days) {
@@ -427,6 +427,7 @@ export default {
               
             // }
             let sales_rank = [];
+            let last_rank = null;
             for (const datA in labels) {
               for (const datB in total_days) {
                 let stringa = total_days[datB].DataPrezzo;
@@ -446,8 +447,13 @@ export default {
             
               
             }
+              if (prezzo_giorno.length > 0){
+                prezzo_giorno.push(last_price)
+              }
               prezzo_giorno.push(last_price);
+              if ((sales_rank.length > 0)) {
               sales_rank.push(last_rank);
+              }
               // console.log(last_price)
             }
             let prezzoMax = Math.max.apply(Math, prezzo_giorno);
@@ -455,7 +461,7 @@ export default {
 
             
             let in_stock_giorno = [];
-            let last_rank = total_days[0].SalesRankGiorno;
+            
             for (const rankA in labels) {
               for (const rankB in total_days) {
                let stringa = total_days[rankB].DataPrezzo;

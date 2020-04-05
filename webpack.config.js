@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "[name]-[hash].js",
-    chunkFilename: "[id]-[chunkhash].js",
+    chunkFilename: "[name]-[chunkhash].js",
   },
   module: {
     // Your loader rules go here.

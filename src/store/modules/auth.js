@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export default {
   state: {
     status: "",
@@ -70,6 +71,7 @@ export default {
             if (jsonRisposta.IsAutorizzato == true) {
               commit("auth_success", token);
               axios.defaults.headers.common["Authorization"] = token;
+              console.log(token.exp);
               resolve(res);
             } else {
               commit("auth_error");
