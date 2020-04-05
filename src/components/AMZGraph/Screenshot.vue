@@ -3,6 +3,7 @@
     <md-dialog
       @md-clicked-oustide="toggleScreenshot"
       :md-active.sync="screenshot"
+      class="graph"
     >
       <Header />
       <Container />
@@ -19,7 +20,6 @@
 <script>
 import { mapGetters } from "vuex";
 import { Header, Container } from "@/components/Screenshot/";
-// import Container from "@components/Screenshot/Container.vue";
 export default {
   name: "Screenshot",
   components: { Header, Container },
