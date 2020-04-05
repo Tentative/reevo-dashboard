@@ -6,6 +6,7 @@
       class="graph"
     >
       <Header />
+      <md-divider></md-divider>
       <Container />
       <Actions />
     </md-dialog>

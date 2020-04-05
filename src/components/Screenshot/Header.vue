@@ -1,12 +1,12 @@
 <template>
-  <div class="md-layout md-alignment-center-right header">
-    <div class="md-layout-item screen-name md-size-60">
+  <div class="md-layout header md-gutter">
+    <div class="md-layout-item screen-name">
       <span>{{ currentScreen.NomeItem }}</span>
     </div>
-    <div class="md-layout-item">
+    <div class="md-layout-item screen-retailer">
       <span>{{ currentScreen.Retailer }}</span>
     </div>
-    <div class="md-layout-item">
+    <div class="md-layout-item screen-date">
       <span>{{ computedDate }}</span>
     </div>
 
@@ -39,7 +39,7 @@ export default {
     }),
     computedDate() {
       moment.locale("IT");
-      let cDate = moment(this.currentScreen.Data).format("DD MMMM YYYY HH:MM");
+      let cDate = moment(this.currentScreen.Data).format("DD/MM/YYYY HH:MM");
 
       return cDate;
     },
