@@ -3,6 +3,7 @@ export default {
   state: {
     screenshotVisible: false,
     current: {},
+    screen: {},
     screen_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Screenshot",
@@ -21,7 +22,7 @@ export default {
       state.screen_request.JsonRichiesta = JSON.stringify(screen_params);
     },
     screen_success(state, current_screen) {
-      state.current = current_screen;
+      state.screen = current_screen;
     },
   },
   actions: {
@@ -74,9 +75,7 @@ export default {
             //   in_stock_giorno.push("");
             // }
 
-            commit("screen_success", {
-              current_screen,
-            });
+            commit("screen_success", current_screen);
 
             resolve(res);
             commit("toggle_screenshot");

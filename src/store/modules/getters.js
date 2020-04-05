@@ -22,5 +22,5 @@ export default {
   dataPrezzo: () => amzgraph.state.data_prezzo,
   value: () => amzgraph.state.options.annotation.annotations[0].value,
   screenshotVisible: () => screenshot.state.screenshotVisible,
-  currentScreen: () => screenshot.state.current,
+  currentScreen: () => screenshot.state.screen,
 };

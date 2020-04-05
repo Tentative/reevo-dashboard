@@ -4,11 +4,8 @@
       @md-clicked-oustide="toggleScreenshot"
       :md-active.sync="screenshot"
     >
-      <div class="md-layout">
-        <div class="md-layout-item">
-          <img :src="currentScreen.UrlImmagine" alt="Screenshot" />
-        </div>
-      </div>
+      <Header />
+      <Container />
 
       <md-dialog-actions>
         <md-button class="md-primary" @click="toggleScreenshot"
@@ -21,9 +18,11 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { Header, Container } from "@/components/Screenshot/";
+// import Container from "@components/Screenshot/Container.vue";
 export default {
   name: "Screenshot",
-
+  components: { Header, Container },
   data: () => ({}),
   methods: {
     toggleScreenshot() {
@@ -42,11 +41,19 @@ export default {
       set(newValue) {
         return newValue;
       },
+      src: {
+        get() {
+          return this.currentScreen.UrlScreenshot;
+        },
+        set(newValue) {
+          return newValue;
+        },
+      },
     },
   },
 };
 </script>
 
 <style lang="scss">
-@import "src/assets/style/toolbar.scss";
+@import "src/assets/style/screenshot.scss";
 </style>
