@@ -7,22 +7,17 @@
     >
       <Header />
       <Container />
-
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="toggleScreenshot"
-          >Close</md-button
-        >
-      </md-dialog-actions>
+      <Actions />
     </md-dialog>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import { Header, Container } from "@/components/Screenshot/";
+import { Header, Container, Actions } from "@/components/Screenshot/";
 export default {
   name: "Screenshot",
-  components: { Header, Container },
+  components: { Header, Container, Actions },
   data: () => ({}),
   methods: {
     toggleScreenshot() {
