@@ -78,9 +78,10 @@
           </md-list-item>
         </md-list>
       </md-app-drawer>
-
       <md-app-content :class="router == 'Login' ? 'main-login' : 'table'">
-        <router-view />
+        <keep-alive>
+          <router-view />
+        </keep-alive>
       </md-app-content>
     </md-app>
   </div>
