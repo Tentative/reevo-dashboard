@@ -18,6 +18,10 @@ export default {
     toggle_screenshot(state) {
       state.screenshotVisible = !state.screenshotVisible;
     },
+    clear_screenshot(state) {
+      state.screenshotVisible = !state.screenshotVisible;
+      state.screen = {};
+    },
     screen_request(state, screen_params) {
       state.screen_request.JsonRichiesta = JSON.stringify(screen_params);
     },
@@ -49,37 +53,16 @@ export default {
         })
           .then((res) => {
             const current_screen = JSON.parse(res.data.JsonRisposta);
-            // console.log(current_item);
-            // const total_days = current_item.ListaPrezzi;
-            // let labels = [];
-            // for (const day in total_days) {
-            //   labels.push(total_days[day].DataPrezzo);
-            // }
-            // let sales_rank = [];
-            // let prezzo_giorno = [];
-            // let in_stock_giorno = [];
-            // for (const data in total_days) {
-            //   prezzo_giorno.push(total_days[data].PrezzoGiorno);
-            // }
-            // for (const data in total_days) {
-            //   sales_rank.push(total_days[data].SalesRankGiorno / 100);
-            // }
+            if (current_screen == null) {
+              commit("toggle_screenshot"), resolve(res);
+              return;
+            } else {
+              commit("screen_success", current_screen);
 
-            // let max_price = Math.max.apply(null, prezzo_giorno);
-            // let max_rank = Math.max.apply(null, sales_rank);
-            // let max = Math.max(max_price, max_rank);
-            // for (const data in total_days) {
-            //   if (total_days[data].InStockGiorno == "No") {
-            //     in_stock_giorno.push(max);
-            //   }
-            //   in_stock_giorno.push("");
-            // }
-
-            commit("screen_success", current_screen);
-
-            resolve(res);
-            commit("toggle_screenshot");
-            // console.log("ha finit?");
+              resolve(res);
+              commit("toggle_screenshot");
+              // console.log("ha finit?");
+            }
           })
 
           .catch((err) => {

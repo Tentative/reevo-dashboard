@@ -3,11 +3,11 @@
     <md-dialog
       @md-clicked-oustide="toggleScreenshot"
       :md-active.sync="screenshot"
-      class="graph"
+      class="graph md-scrollbar"
     >
       <Header />
       <md-divider></md-divider>
-      <Container />
+      <Container :message="message" />
       <md-divider></md-divider>
       <Actions />
     </md-dialog>
@@ -20,7 +20,9 @@ import { Header, Container, Actions } from "@/components/Screenshot/";
 export default {
   name: "Screenshot",
   components: { Header, Container, Actions },
-  data: () => ({}),
+  data: () => ({
+    message: "Screenshot non disponibile",
+  }),
   methods: {
     toggleScreenshot() {
       this.$store.commit("toggle_screenshot");

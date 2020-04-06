@@ -1,7 +1,8 @@
 <template>
   <div class="md-layout header md-gutter">
     <div class="md-layout-item screen-name">
-      <span>{{ currentScreen.NomeItem }}</span>
+      <span v-if="currentScreen != null">{{ currentScreen.NomeItem }}</span>
+      <span v-else>{{ currentItem.NomeItem }}</span>
     </div>
     <div class="md-layout-item screen-retailer">
       <span>{{ currentScreen.Retailer }}</span>
@@ -46,7 +47,7 @@ export default {
   },
   methods: {
     toggleScreenshot() {
-      this.$store.commit("toggle_screenshot");
+      this.$store.commit("clear_screenshot");
     },
   },
 };
