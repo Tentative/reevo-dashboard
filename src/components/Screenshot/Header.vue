@@ -1,14 +1,13 @@
 <template>
   <div class="md-layout header md-gutter">
     <div class="md-layout-item screen-name">
-      <span v-if="currentScreen != null">{{ currentScreen.NomeItem }}</span>
-      <span v-else>{{ currentItem.NomeItem }}</span>
+      <span>{{ nomeItem }}</span>
     </div>
-    <div class="md-layout-item screen-retailer">
-      <span>{{ currentScreen.Retailer }}</span>
+    <div class="md-layout-item screen-retailer" :style="visible">
+      <span>{{ retailer }}</span>
     </div>
-    <div class="md-layout-item screen-date">
-      <span>{{ computedDate }}</span>
+    <div class="md-layout-item screen-date" :style="visible">
+      <span>{{ date }}</span>
     </div>
 
     <div class="md-layout-item item-date">
@@ -18,12 +17,6 @@
         >
       </md-dialog-actions>
     </div>
-
-    <!-- div class="md-layout-item item-date">
-      <span class="item-update"
-        >Aggiornato al {{ currentItem.UltimaData }}</span
-     >
-    </div -->
   </div>
 </template>
 
@@ -32,23 +25,51 @@ import { mapGetters } from "vuex";
 import moment from "moment";
 export default {
   name: "Header",
+  created() {
+    this.computedScreen();
+  },
+  data() {
+    return {
+      retailer: "",
+      date: "",
+      nomeItem: "",
+      visible: "",
+    };
+  },
   computed: {
     ...mapGetters({
-      currentItem: "currentItem",
+      currentScreenItem: "currentScreenItem",
       currentScreen: "currentScreen",
       amzGraphVisible: "amzGraphVisible",
     }),
-    computedDate() {
-      moment.locale("IT");
-      let cDate = moment(this.currentScreen.Data).format("DD/MM/YYYY HH:MM");
-
-      return cDate;
-    },
   },
   methods: {
     toggleScreenshot() {
       this.$store.commit("clear_screenshot");
     },
+    computedScreen() {
+      if (Object.keys(this.currentScreen).length != 0) {
+        console.log("screen");
+        this.nomeItem = this.currentScreen.NomeItem;
+        this.retailer = this.currentScreen.Retailer;
+        moment.locale("IT");
+        let cDate = moment(this.currentScreen.Data).format("DD/MM/YYYY HH:MM");
+        this.date = cDate;
+        this.visible = "display:inline-block";
+      } else {
+        this.nomeItem = this.currentScreenItem.NomeItem;
+        this.retailer = null;
+        this.date = null;
+        this.visible = "display:none";
+      }
+    },
+    // computedDate() {
+    //   if (Object.keys(this.currentScreen).length != 0) {
+
+    //   } else {
+    //     return null;
+    //   }
+    // },
   },
 };
 </script>

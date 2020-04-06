@@ -1,5 +1,5 @@
 <template>
-  <md-dialog-actions class="screen-actions">
+  <md-dialog-actions class="screen-actions" v-if="attr != null">
     <md-button class="md-dense md-raised md-primary" @click="saveFile"
       >Salva</md-button
     >

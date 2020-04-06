@@ -23,4 +23,5 @@ export default {
   value: () => amzgraph.state.options.annotation.annotations[0].value,
   screenshotVisible: () => screenshot.state.screenshotVisible,
   currentScreen: () => screenshot.state.screen,
+  currentScreenItem: () => screenshot.state.current,
 };
