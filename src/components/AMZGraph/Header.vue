@@ -2,6 +2,7 @@
   <div class="md-layout md-gutter header">
     <div class="md-layout-item screen-name">
       <span>{{ currentItem.NomeItem }}</span>
+      <md-tooltip md-direction="bottom">{{ currentItem.NomeItem }}</md-tooltip>
     </div>
 
     <div class="md-layout-item screen-date">
