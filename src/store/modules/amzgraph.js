@@ -428,39 +428,46 @@ export default {
             // }
             let sales_rank = [];
             let last_rank = null;
+            // let last_stock = null
+            let in_stock_giorno = [];
             for (const datA in labels) {
               for (const datB in total_days) {
                 let stringa = total_days[datB].DataPrezzo;
-                let date = moment(stringa).format()
-                let dataControllo = moment(labels[datA]).format()
+                var date = moment(stringa).format()
+                var dataControllo = moment(labels[datA]).format()
 
                 if (moment(date).isSame(dataControllo, "day")) {
-
+                  if (total_days[datB].InStockGiorno == "No") {
+                  console.log("porco il signore")
+                  in_stock_giorno.push(current_item.PrezzoMax)
                   
-                  last_price = total_days[datB].PrezzoGiorno;
                 }
-                if (moment(date).isSame(dataControllo)){
+                
+
                   last_rank = total_days[datB].SalesRankGiorno
+                  last_price = total_days[datB].PrezzoGiorno;
                   
-
+                  
                 }
-            
-              
-            }
-              if (prezzo_giorno.length > 0){
-                prezzo_giorno.push(last_price)
-              }
+                
+                
+                              
+            } 
+              in_stock_giorno.push("")
               prezzo_giorno.push(last_price);
-              if ((sales_rank.length > 0)) {
               sales_rank.push(last_rank);
-              }
-              // console.log(last_price)
-            }
+            
+
+              
+            
+          }
+          in_stock_giorno.pop()
+            sales_rank.reverse()
             let prezzoMax = Math.max.apply(Math, prezzo_giorno);
             let prezzoMin = Math.min.apply(Math, prezzo_giorno);
 
             
-            let in_stock_giorno = [];
+
             
             for (const rankA in labels) {
               for (const rankB in total_days) {
@@ -483,17 +490,17 @@ export default {
             let min_rank = Math.min.apply(null, temp_rank);
             let max = Math.max(max_price, max_rank);
             let minimo = Math.min(prezzoMin, min_rank);
-            for (const stock in labels) {
-              if (total_days[stock]) {
-                if (total_days[stock].InStockGiorno == "No") {
-                  in_stock_giorno.push(max + 2);
-                } else {
-                  in_stock_giorno.push("");
-                }
-              } else {
-                in_stock_giorno.push("");
-              }
-            }
+            // for (const stock in labels) {
+            //   if (total_days[stock]) {
+            //     if (total_days[stock].InStockGiorno == "No") {
+            //       in_stock_giorno.push(max + 2);
+            //     } else {
+            //       in_stock_giorno.push("");
+            //     }
+            //   } else {
+            //     in_stock_giorno.push("");
+            //   }
+            // }
 
             commit("graph_success", {
               labels,
