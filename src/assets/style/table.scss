@@ -9,9 +9,10 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
 
 .thumb img {
   height: 54px;
-  max-width: 54px;
-  min-width: 54px;
+  max-width: inherit;
+  min-width: inherit;
   vertical-align: middle;
+  padding: 5px;
 }
 .alert-wrapper {
   align-items: center;
@@ -110,6 +111,7 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
 .md-table-cell-container {
   padding: 0 !important;
 }
+
 .md-table-head {
   font-size: 13px !important;
 }
