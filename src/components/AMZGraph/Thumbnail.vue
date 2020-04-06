@@ -1,7 +1,8 @@
 <template>
-  <div class="md-layout-item">
-    <img :src="currentItem.UrlImmagine" />
-  </div>
+  <div
+    class="md-layout-item md-size-20 thumbnail screen-container"
+    :style="getBackground"
+  ></div>
 </template>
 
 <script>
@@ -12,8 +13,21 @@ export default {
     ...mapGetters({
       currentItem: "currentItem",
     }),
+    getBackground() {
+      return (
+        "background: url(" +
+        this.currentItem.UrlImmagine +
+        ");" +
+        " " +
+        "background-size: contain;" +
+        "background-repeat: no-repeat;" +
+        "background-position: center;"
+      );
+    },
   },
 };
 </script>
 
-<style></style>
+<style lang="scss">
+@import "@/assets/style/amzgraph.scss";
+</style>

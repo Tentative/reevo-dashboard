@@ -6,20 +6,16 @@
       class="graph md-scrollbar"
     >
       <Header />
-      <div class="md-layout">
-        <div
-          class="md-layout-item md-size-20 md-alignment-center-center thumbnail"
-        >
-          <Thumbnail />
-        </div>
-        <div class="md-layout-item md-size-80">
-          <bar-chart
-            :chartdata="chartdata"
-            :options="options"
-            style="width: 800px; margin: auto;"
-          ></bar-chart>
-        </div>
+      <md-divider></md-divider>
+      <div class="md-layout md-gutter">
+        <Thumbnail />
+        <bar-chart
+          :chartdata="chartdata"
+          :options="options"
+          style="width: 800px; margin: auto;"
+        ></bar-chart>
       </div>
+
       <TableGraph />
     </md-dialog>
   </div>
@@ -95,4 +91,5 @@ export default {
 
 <style lang="scss">
 @import "src/assets/style/toolbar.scss";
+@import "src/assets/style/amzgraph.scss";
 </style>
