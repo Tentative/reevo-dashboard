@@ -396,24 +396,20 @@ export default {
                 let data_due = total_days[next].DataPrezzo;
                 let data_finale_due = data_due.toString().slice(0, 10);
                 if (data_finale == data_finale_due){
-                  // console.log("porcoddio")
                   checked.push(total_days[day])
                   if (total_days[prev] != undefined) {
                     let data_tre = total_days[prev].DataPrezzo;
                     let data_finale_tre = data_tre.toString().slice(0, 10);
                   if (data_finale == data_finale_tre){
                     checked.push(total_days[day])
-                    // console.log("porcamadonna")
                   }
                 }
                 }
               }
               else{break}
-            // console.log(total_days[day].DataPrezzo)
             }
             // for (const check of total_days){
             //   let next = check.indexOf(check) + 1
-            //   console.log(next)
             //     // let stringa = total_days[datB].DataPrezzo;
             //     // let date = moment(stringa).format()
             //     // let lunghezza_x = labels[datA].length;
@@ -440,7 +436,6 @@ export default {
             let max_price = Math.max.apply(null, total_prices);
             let max_rank = Math.max.apply(null, total_ranks);
             let max = Math.max(max_price, max_rank);
-            console.log(max);
             let sales_rank = [];
             let last_rank = null;
             // let last_stock = null
@@ -531,12 +526,10 @@ export default {
 
             resolve(res);
             commit("toggle_amz_graph");
-            // console.log("ha finit?");
             })
 
           .catch(err => {
             reject(err);
-            // console.log(err);
           });
       });
     }
