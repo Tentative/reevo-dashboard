@@ -166,15 +166,16 @@ export default {
               precision: 0,
               min: "",
               max: ""
-            }
+            },
           }
         ],
         xAxes: [
           {
+            bounds: "ticks",
             type: "time",
             ticks: {
-              min: "",
-              max: ""
+              // min: "",
+              // max: "",
               // source: "data"
             },
             distribution: "linear",
@@ -188,8 +189,10 @@ export default {
             gridLines: {
               display: true,
               drawTicks: false,
-              zeroLineWidth: 1
-            }
+              zeroLineWidth: 1,
+            },
+            offset: false
+
           }
         ]
       },
