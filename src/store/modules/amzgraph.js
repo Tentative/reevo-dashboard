@@ -165,6 +165,7 @@ export default {
             ticks: {
               display: false,
               precision: 0,
+              source: "data"
               // min: "",
               // max: ""
             },
@@ -197,7 +198,7 @@ export default {
             gridLines: {
               display: true,
               drawTicks: false,
-              offsetGridLines: true,
+              offsetGridLines: false,
               zeroLineWidth: 1,
             },
             offset: false
@@ -457,7 +458,7 @@ export default {
 
                 if (moment(date).isSame(dataControllo, "day")) {
                   if (total_days[datB].InStockGiorno == "No") {
-                  in_stock_giorno.push(max)
+                  in_stock_giorno.push(current_item.PrezzoMax)
                   
                 }
                 
