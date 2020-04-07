@@ -115,7 +115,8 @@ export default {
             type: "linear",
             position: "left",
             gridLines: {
-              display: false,
+              display: true,
+              offsetGridLines: false
             },
             ticks: {
               display: true,
@@ -123,10 +124,10 @@ export default {
               callback: function (value, index, values) {
                 return value + " " + "€";
               },
-              // beginAtZero: true,
+              beginAtZero: true,
               source: "auto",
-              min: "",
-              max: "",
+              // min: "",
+              // max: "",
               precision: 0
             },
             afterTickToLabelConversion: function (scaleInstance) {
@@ -143,7 +144,7 @@ export default {
             type: "linear",
             position: "right",
             gridLines: {
-              display: true,
+              display: false,
               drawBorder: true,
               lineWidth: 1,
               zeroLineWidth: 1,
@@ -164,31 +165,39 @@ export default {
             ticks: {
               display: false,
               precision: 0,
-              min: "",
-              max: ""
+              // min: "",
+              // max: ""
             },
           }
         ],
         xAxes: [
           {
-            bounds: "ticks",
-            type: "time",
+            
+            // bounds: "ticks",
+            // type: "time",
             ticks: {
               // min: "",
               // max: "",
-              // source: "data"
+              // source: "ticks",
+              userCallback: function(item, index) {
+              if (!(index % 3)) return moment(item).format("DD MMM");
+              },
+              autoSkip: true,
+              maxRotation: 0,
+              maxTicksLimit: 30
             },
             distribution: "linear",
             time: {
               displayFormats: {
                 day: "D MMM"
               },
-              stepSize: 3,
+              // stepSize: 3,
               unit: "day"
             },
             gridLines: {
               display: true,
               drawTicks: false,
+              offsetGridLines: true,
               zeroLineWidth: 1,
             },
             offset: false
@@ -247,15 +256,15 @@ export default {
         prezzo_giorno,
         in_stock_giorno,
         current_item,
-        prezzoMin,
-        prezzoMax,
-        min_rank,
-        max_rank,
-        max,
+        // prezzoMin,
+        // prezzoMax,
+        // min_rank,
+        // max_rank,
+        // max,
         checked,
         // fullMin
         // fullMax
-        minimo
+        // minimo
         // maxx
       }
     ) {
@@ -264,14 +273,14 @@ export default {
       state.chartdata.datasets[1].data = sales_rank;
       state.chartdata.datasets[2].data = in_stock_giorno;
       state.currentItem = current_item;
-      state.options.annotation.annotations[0].value = prezzoMax;
-      state.options.annotation.annotations[1].value = prezzoMin;
-      state.options.scales.yAxes[0].ticks.min = parseInt(prezzoMin - 2);
-      state.options.scales.yAxes[0].ticks.max = parseInt(prezzoMax + 2);
-      state.options.scales.yAxes[1].ticks.min = parseInt(min_rank - 2);
-      state.options.scales.yAxes[1].ticks.max = parseInt(max_rank + 2);
-      state.options.scales.yAxes[2].ticks.min = parseInt(minimo);
-      state.options.scales.yAxes[2].ticks.max = parseInt(max);
+      state.options.annotation.annotations[0].value = current_item.PrezzoMax;
+      state.options.annotation.annotations[1].value = current_item.PrezzoMin;
+      // state.options.scales.yAxes[0].ticks.min = parseInt(prezzoMin - 2);
+      // state.options.scales.yAxes[0].ticks.max = parseInt(prezzoMax + 2);
+      // state.options.scales.yAxes[1].ticks.min = parseInt(min_rank - 2);
+      // state.options.scales.yAxes[1].ticks.max = parseInt(max_rank + 2);
+      // state.options.scales.yAxes[2].ticks.min = parseInt(minimo);
+      // state.options.scales.yAxes[2].ticks.max = parseInt(max);
       state.checked = checked;
 
       // state.options.scales.xAxes[0].ticks.min = state.currentDate.setDate(
@@ -372,7 +381,7 @@ export default {
             const current_item = JSON.parse(res.data.JsonRisposta);
             const total_days = current_item.ListaPrezzi;
             total_days.reverse();
-            let labels = [...new Array(30)].map((i, idx) =>
+            let labels = [...new Array(31)].map((i, idx) =>
               moment.utc()
                 .startOf("day")
                 .subtract(idx, "days")
