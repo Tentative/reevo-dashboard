@@ -1,7 +1,7 @@
 <template>
   <div>
     <md-dialog
-      @md-clicked-oustide="toggleScreenshot"
+      @md-clicked-outside="toggleScreenshot"
       :md-active.sync="screenshot"
       class="graph md-scrollbar"
     >
@@ -25,7 +25,7 @@ export default {
   }),
   methods: {
     toggleScreenshot() {
-      this.$store.commit("toggle_screenshot");
+      this.$store.commit("clear_screenshot");
     },
   },
   computed: {

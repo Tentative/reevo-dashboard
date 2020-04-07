@@ -4,7 +4,7 @@
       :graph-params="graphParams"
       :amz-graph-visible="amzGraphVisible"
     />
-    <Screenshot :screenshot-visible="screenshotVisible" />
+    <Screen :screenshot-visible="screenshotVisible" />
     <div class="alert-wrapper">
       <span class="md-title title">Amazon Dashboard</span>
       <Alerts v-if="router == 'Dashboard' || 'Amz'" />
@@ -110,10 +110,11 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { Alerts, AmzGraph, Screenshot } from "@/components/AMZGraph";
+import { Alerts, AmzGraph } from "@/components/AMZGraph";
+import Screen from "@/components/Screenshot/Screen.vue";
 export default {
   name: "Table",
-  components: { Alerts, AmzGraph, Screenshot },
+  components: { Alerts, AmzGraph, Screen },
   data() {
     return {
       dialogVisible: false,
