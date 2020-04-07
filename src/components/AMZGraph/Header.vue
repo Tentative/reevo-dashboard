@@ -5,10 +5,6 @@
       <md-tooltip md-direction="bottom">{{ currentItem.NomeItem }}</md-tooltip>
     </div>
 
-    <div class="md-layout-item screen-date">
-      <span class="item-update">Aggiornato al {{ computedDate }}</span>
-    </div>
-
     <div class="md-layout-item item-date">
       <md-dialog-actions>
         <md-button class="md-button" @click="toggleAmzGraph"

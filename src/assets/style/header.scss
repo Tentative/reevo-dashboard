@@ -21,10 +21,16 @@
 
 .md-layout-item.screen-name {
   flex-basis: unset!important;
+  padding-left: 0!important;
 }
 .item-date {
-  margin-right: 18px;
+  // margin-right: 18px;
   text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  & .md-dialog-actions {
+    padding :8px 0 8px 24px!important;
+  }
 }
 .header {
   // border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -38,4 +44,13 @@
     margin-right: 20px;
     margin-left: 20px;
 
+}
+.md-layout.md-gutter > .md-layout-item.item-date{
+  padding-right: 0!important;
+
+}
+
+.item-date > .md-button .md-ripple {
+  padding: 0!important;
+  justify-content: right;
 }
