@@ -124,8 +124,8 @@ export default {
               callback: function (value, index, values) {
                 return value + " " + "€";
               },
-              beginAtZero: true,
-              source: "auto",
+              beginAtZero: false,
+              bounds: "ticks",
               // min: "",
               // max: "",
               precision: 0
@@ -153,7 +153,7 @@ export default {
               display: false,
               reverse: true,
               precision: 0,
-              soruce: "auto"
+              bounds: "data"
             }
           },
           {
