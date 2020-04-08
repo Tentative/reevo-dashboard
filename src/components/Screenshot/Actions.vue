@@ -1,9 +1,13 @@
 <template>
-  <md-dialog-actions class="screen-actions" v-if="attr != null">
-    <md-button class="md-dense md-raised md-primary" @click="saveFile"
+  <md-dialog-actions class="screen-actions">
+    <md-button
+      class="md-dense md-raised md-primary"
+      v-show="attr != ''"
+      @click="saveFile"
       >Salva</md-button
     >
     <md-button
+      v-show="attr != ''"
       class="md-dense md-raised md-primary"
       href="mailto:micoli.giacomo@gmail.com"
     >
@@ -18,12 +22,19 @@
 import axios from "axios";
 export default {
   name: "Actions",
+  created() {
+    this.computedScreen;
+  },
+
   computed: {
     attr() {
       return this.$store.getters.currentScreen.UrlScreenshot;
     },
     name() {
       return this.$store.getters.currentScreen.NomeItem;
+    },
+    computedScreen() {
+      return this.$store.getters.currentScreen.UrlScreenshot;
     },
   },
   methods: {

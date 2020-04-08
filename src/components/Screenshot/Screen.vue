@@ -9,7 +9,7 @@
       <md-divider></md-divider>
       <Container :message="message" />
       <md-divider></md-divider>
-      <Actions />
+      <Actions :message="message" />
     </md-dialog>
   </div>
 </template>

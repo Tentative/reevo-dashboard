@@ -2,7 +2,7 @@
   <div class="md-layout">
     <div class="md-layout-item screen-container md-alignment-center-center">
       <img v-if="url" :src="url" alt="Screenshot" />
-      <h1 v-if="url == null">{{ message }}</h1>
+      <h1 v-if="url == '' || Object.keys(screen).length == 0">{{ message }}</h1>
     </div>
   </div>
 </template>
@@ -22,6 +22,9 @@ export default {
   computed: {
     url() {
       return this.$store.getters.currentScreen.UrlScreenshot;
+    },
+    screen() {
+      return this.$store.getters.currentScreen;
     },
   },
 };
