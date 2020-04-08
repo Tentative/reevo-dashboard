@@ -125,6 +125,7 @@ export default {
                 return value + " " + "€";
               },
               beginAtZero: false,
+              suggestedMax: "",
               bounds: "data",
               // min: "",
               // max: "",
@@ -148,9 +149,10 @@ export default {
               drawBorder: true,
               lineWidth: 1,
               zeroLineWidth: 1,
+              offsetGridLines: false
             },
             ticks: {
-              display: false,
+              display: true,
               reverse: true,
               precision: 0,
               bounds: "data"
@@ -276,6 +278,7 @@ export default {
       state.currentItem = current_item;
       state.options.annotation.annotations[0].value = current_item.PrezzoMax;
       state.options.annotation.annotations[1].value = current_item.PrezzoMin;
+      // state.options.scales.yAxes[0].ticks.suggestedMax = (current_item.PrezzoMax / 100) * current_item.PrezzoMax;
       // state.options.scales.yAxes[0].ticks.min = parseInt(prezzoMin - 2);
       // state.options.scales.yAxes[0].ticks.max = parseInt(prezzoMax + 2);
       // state.options.scales.yAxes[1].ticks.min = parseInt(min_rank - 2);

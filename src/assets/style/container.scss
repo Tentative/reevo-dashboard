@@ -3,4 +3,10 @@
   margin-bottom: 10px;
 display: flex;
 justify-content: center;
+
+}
+.screen-container img{
+  object-fit: contain;
+  align-self: center;
+  -webkit-align-self: center;
 }
