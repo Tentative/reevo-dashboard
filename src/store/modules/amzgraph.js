@@ -125,7 +125,7 @@ export default {
                 return value + " " + "€";
               },
               beginAtZero: false,
-              bounds: "ticks",
+              bounds: "data",
               // min: "",
               // max: "",
               precision: 0

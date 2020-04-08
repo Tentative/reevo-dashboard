@@ -49,7 +49,7 @@ export default {
       this.$store.commit("clear_screenshot");
     },
     computedScreen() {
-      if (Object.keys(this.currentScreen).length != 0) {
+      if (Object.keys(this.currentScreen).UrlScreenshot != null) {
         console.log("screen");
         this.nomeItem = this.currentScreen.NomeItem;
         this.retailer = this.currentScreen.Retailer;

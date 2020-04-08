@@ -116,6 +116,12 @@ a:not(.md-button) {
 .md-table-cell.item {
   & .md-table-cell-container {
     text-align: left;
+
+  display: -webkit-box;
+overflow: hidden;
+-webkit-box-orient: vertical;
+-webkit-line-clamp: 3;
+
   }
 }
 
@@ -343,3 +349,5 @@ a:not(.md-button) {
 .md-content.md-table.amz table {
   background-color: rgb(244, 246, 251) !important;
 }
+
+
