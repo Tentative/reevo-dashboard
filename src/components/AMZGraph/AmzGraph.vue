@@ -7,7 +7,7 @@
     >
       <Header />
       <md-divider></md-divider>
-      <div class="md-layout md-gutter">
+      <div class="md-layout">
         <Thumbnail />
         <bar-chart
           :chartdata="chartdata"
