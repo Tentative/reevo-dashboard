@@ -65,7 +65,7 @@ export default {
           type: "bar",
           order: 3,
           yAxisID: "stock",
-          steppedLine: "before",
+
           categoryPercentage: 1.1,
             barPercentage: 1.1,
         }
@@ -182,7 +182,7 @@ export default {
             categoryPercentage: 1.1,
             
             // bounds: "ticks",
-            type: "time",
+            // type: "time",
             ticks: {
               // min: "",
               // max: "",
@@ -190,28 +190,29 @@ export default {
               // userCallback: function(item, index) {
               // if (!(index % 3)) return moment(item).format("DD MMM");
               // },
-              autoSkip: true,
-              maxRotation: 0,
-              maxTicksLimit: 10
+              // autoSkip: true,
+              // maxRotation: 0,
+              // maxTicksLimit: 30
             },
             distribution: "linear",
-            time: {
-              displayFormats: {
-                day: "D MMM"
-              },
-              // stepSize: 3,
-              unit: "day"
-            },
-            gridLines: {
-              display: true,
-              drawTicks: false,
-              offsetGridLines: false,
-              zeroLineWidth: 1,
-            },
-            offset: false
-
-          }
-        ]
+            type: 'time',
+    time: {
+    
+        // round: 'day'                                                                                                                                                                            
+        tooltipFormat: 'YYYY-MM-DD HH:mm',
+        displayFormats: {
+            millisecond: 'HH:mm:ss.SSS',
+            second: 'HH:mm:ss',
+            minute: 'HH:mm',
+            hour: 'HH'
+        }
+    },
+    display: true,
+    scaleLabel: {
+        display: true,
+        labelString: 'Time'
+    }
+ }],
       },
       tooltips: {
         mode: "index",
@@ -354,7 +355,6 @@ export default {
           type: "bar",
           order: 3,
           yAxisID: "stock",
-          steppedLine: "before",
           categoryPercentage: 1.1,
             barPercentage: 1.1,
         }
@@ -396,10 +396,10 @@ export default {
             console.log(current_item)
             let labels = [...new Array(31)].map((i, idx) =>
               moment.utc()
-                .startOf("day")
+                // .startOf("day")
                 .subtract(idx, "days")
                 .utcOffset(1)
-               .format()
+               
                 
                 
             );
@@ -473,12 +473,13 @@ export default {
                    last_stock = current_item.PrezzoMax
                 }
                 else {
-                  last_stock = null
+                  last_stock = ""
                 }
                 
 
                   last_rank = total_days[datB].SalesRankGiorno
                   last_price = total_days[datB].PrezzoGiorno;
+                  prezzo_giorno.push(last_price);
                   
                   
                 }
@@ -494,7 +495,7 @@ export default {
               
             
           }
-          in_stock_giorno.pop()
+          // in_stock_giorno.pop()
             sales_rank.reverse()
             let prezzoMax = Math.max.apply(Math, prezzo_giorno);
             let prezzoMin = Math.min.apply(Math, prezzo_giorno);
