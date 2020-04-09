@@ -1,3 +1,4 @@
-import Amz from "@/views/Amz.vue";
+import Amz from "./Amz.vue";
+import Items from "./Items.vue";
 
-export { Amz };
+export { Amz, Items };

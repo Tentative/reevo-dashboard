@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import { Login } from "@/components";
-import { Amz } from "@/views";
+import { Amz, Items } from "@/views";
 // import Home from "@/views/Home.vue";
 import store from "@/store/index.js";
 
@@ -34,6 +34,21 @@ const routes = [
         {
           name: "description",
           content: "Homepage",
+        },
+      ],
+    },
+  },
+  {
+    path: "/items",
+    name: "Items",
+    component: Items,
+    meta: {
+      requiresAuth: true,
+      title: "Items",
+      metaTags: [
+        {
+          name: "items",
+          content: "Items Dashboard",
         },
       ],
     },
