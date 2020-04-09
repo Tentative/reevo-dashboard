@@ -62,10 +62,9 @@ export default {
           backgroundColor: "#ffb8ab",
           borderColor: "red",
           data: [],
-          type: "line",
+          type: "bar",
           order: 3,
           yAxisID: "stock",
-          steppedLine: "before",
           categoryPercentage: 1.1,
             barPercentage: 1.1,
         }
@@ -351,10 +350,9 @@ export default {
           backgroundColor: "#ffb8ab",
           borderColor: "red",
           data: [],
-          type: "line",
+          type: "bar",
           order: 3,
           yAxisID: "stock",
-          steppedLine: "before",
           categoryPercentage: 1.1,
             barPercentage: 1.1,
         }
