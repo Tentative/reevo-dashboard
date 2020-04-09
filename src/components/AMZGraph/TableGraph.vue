@@ -99,7 +99,7 @@ export default {
       datamin = Date.parse(datamin);
       let temp = new Date(datamin);
       let day = temp.getDate();
-      var month = moment().subtract(1, "month").startOf("month").format("MMMM");
+      var month = moment().startOf("month").format("MMMM");
       let dataPrezzoMin =
         day + " " + month.charAt(0).toUpperCase() + month.slice(1);
       dataPrezzoMin.toString().slice(4, 10);
@@ -111,7 +111,7 @@ export default {
       datamax = Date.parse(datamax);
       let temp = new Date(datamax);
       let day = temp.getDate();
-      var month = moment().subtract(1, "month").startOf("month").format("MMMM");
+      var month = moment().startOf("month").format("MMMM");
       let dataPrezzoMax =
         day + " " + month.charAt(0).toUpperCase() + month.slice(1);
       dataPrezzoMax.toString().slice(4, 10);
@@ -123,7 +123,7 @@ export default {
       datalast = Date.parse(datalast);
       let temp = new Date(datalast);
       let day = temp.getDate();
-      var month = moment().subtract(1, "month").startOf("month").format("MMMM");
+      var month = moment().startOf("month").format("MMMM");
       let dataPrezzoLast =
         day + " " + month.charAt(0).toUpperCase() + month.slice(1);
       dataPrezzoLast.toString().slice(4, 10);

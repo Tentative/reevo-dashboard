@@ -62,9 +62,12 @@ export default {
           backgroundColor: "#ffb8ab",
           borderColor: "red",
           data: [],
-          type: "bar",
+          type: "line",
           order: 3,
-          yAxisID: "stock"
+          yAxisID: "stock",
+          steppedLine: "before",
+          categoryPercentage: 1.1,
+            barPercentage: 1.1,
         }
       ]
     },
@@ -125,7 +128,7 @@ export default {
                 return value + " " + "€";
               },
               beginAtZero: false,
-              suggestedMax: "",
+              // suggestedMax: "",
               bounds: "data",
               // min: "",
               // max: "",
@@ -152,7 +155,7 @@ export default {
               offsetGridLines: false
             },
             ticks: {
-              display: true,
+              display: false,
               reverse: true,
               precision: 0,
               bounds: "data"
@@ -175,6 +178,8 @@ export default {
         ],
         xAxes: [
           {
+            barPercentage: 1.1,
+            categoryPercentage: 1.1,
             
             // bounds: "ticks",
             // type: "time",
@@ -278,13 +283,13 @@ export default {
       state.currentItem = current_item;
       state.options.annotation.annotations[0].value = current_item.PrezzoMax;
       state.options.annotation.annotations[1].value = current_item.PrezzoMin;
-      // state.options.scales.yAxes[0].ticks.suggestedMax = (current_item.PrezzoMax / 100) * current_item.PrezzoMax;
+      // state.options.scales.yAxes[0].ticks.max = parseInt(current_item.PrezzoMax);
       // state.options.scales.yAxes[0].ticks.min = parseInt(prezzoMin - 2);
       // state.options.scales.yAxes[0].ticks.max = parseInt(prezzoMax + 2);
       // state.options.scales.yAxes[1].ticks.min = parseInt(min_rank - 2);
       // state.options.scales.yAxes[1].ticks.max = parseInt(max_rank + 2);
       // state.options.scales.yAxes[2].ticks.min = parseInt(minimo);
-      // state.options.scales.yAxes[2].ticks.max = parseInt(max);
+      state.options.scales.yAxes[2].ticks.max = parseInt(current_item.PrezzoMax);
       state.checked = checked;
 
       // state.options.scales.xAxes[0].ticks.min = state.currentDate.setDate(
@@ -342,14 +347,17 @@ export default {
             pointHitRadius: 10
           },
           {
-            label: "Out of stock",
-            backgroundColor: "#ffb8ab",
-            borderColor: "red",
-            data: [],
-            type: "bar",
-            order: 3,
-            yAxisID: "stock"
-          }
+          label: "Out of stock",
+          backgroundColor: "#ffb8ab",
+          borderColor: "red",
+          data: [],
+          type: "line",
+          order: 3,
+          yAxisID: "stock",
+          steppedLine: "before",
+          categoryPercentage: 1.1,
+            barPercentage: 1.1,
+        }
         ]
 
       };
@@ -385,6 +393,7 @@ export default {
             const current_item = JSON.parse(res.data.JsonRisposta);
             const total_days = current_item.ListaPrezzi;
             total_days.reverse();
+            console.log(current_item)
             let labels = [...new Array(31)].map((i, idx) =>
               moment.utc()
                 .startOf("day")
@@ -451,7 +460,7 @@ export default {
             let max = Math.max(max_price, max_rank);
             let sales_rank = [];
             let last_rank = null;
-            // let last_stock = null
+            let last_stock = null
             let in_stock_giorno = [];
             for (const datA in labels) {
               for (const datB in total_days) {
@@ -461,8 +470,10 @@ export default {
 
                 if (moment(date).isSame(dataControllo, "day")) {
                   if (total_days[datB].InStockGiorno == "No") {
-                  in_stock_giorno.push(current_item.PrezzoMax)
-                  
+                   last_stock = current_item.PrezzoMax
+                }
+                else {
+                  last_stock = ""
                 }
                 
 
@@ -475,7 +486,7 @@ export default {
                 
                               
             } 
-              in_stock_giorno.push("")
+              in_stock_giorno.push(last_stock)
               prezzo_giorno.push(last_price);
               sales_rank.push(last_rank);
             

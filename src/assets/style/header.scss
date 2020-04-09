@@ -4,7 +4,7 @@
 }
 .screen-name {
     text-transform: uppercase;
-      width: 700px;
+      max-width: 1200px;
       display: inline-block;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -53,4 +53,12 @@
 .item-date > .md-button .md-ripple {
   padding: 0!important;
   justify-content: right;
+}
+
+@media (max-width: 1280px) {
+.md-layout-item.screen-name{
+padding-right: 12px;
+padding-left: 12px;
+max-width: 400px!important
+}
 }
