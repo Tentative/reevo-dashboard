@@ -7,36 +7,36 @@
           <md-tabs md-dynamic-height>
             <md-tab class="switches-wrapper">
               <md-switch
-                class="md-primary"
                 v-model="amz.FiltroAlert"
+                class="md-primary"
                 true-value="Si"
                 false-value="Tutti"
                 >Mostra solo articoli con Alert
               </md-switch>
               <md-switch
-                class="md-primary"
                 v-model="amz.FiltroInStock"
+                class="md-primary"
                 true-value="No"
                 false-value="Tutti"
                 >Mostra solo articoli Fuori Stock</md-switch
               >
               <md-switch
-                class="md-primary"
                 v-model="amz.FiltroFastTrack"
+                class="md-primary"
                 true-value="No"
                 false-value="Tutti"
                 >Mostra solo articoli non Fast Track</md-switch
               >
               <md-switch
-                class="md-primary"
                 v-model="amz.FiltroBuyBox"
+                class="md-primary"
                 true-value="No"
                 false-value="Tutti"
                 >Mostra solo articoli senza BuyBox</md-switch
               >
               <md-switch
-                class="md-primary"
                 v-model="amz.FiltroNegativeReviews"
+                class="md-primary"
                 true-value="SoloNegative"
                 false-value="Tutti"
                 >Mostra solo articoli con recensioni negative maggiori del 20%

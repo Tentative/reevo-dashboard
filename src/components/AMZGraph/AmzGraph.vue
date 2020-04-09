@@ -2,18 +2,18 @@
   <div>
     <md-dialog
       :md-active.sync="graph"
-      @md-clicked-outside="toggleAmzGraph"
       class="graph md-scrollbar"
+      @md-clicked-outside="toggleAmzGraph"
     >
       <Header />
       <md-divider></md-divider>
       <div class="md-layout">
         <Thumbnail />
-        <bar-chart
+        <BarChart
           :chartdata="chartdata"
           :options="options"
           style="width: 800px; margin: auto;"
-        ></bar-chart>
+        ></BarChart>
       </div>
 
       <TableGraph />
@@ -29,22 +29,16 @@ import TableGraph from "@/components/AMZGraph/TableGraph.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "AmzGraph",
+  components: { BarChart, Thumbnail, Header, TableGraph },
   props: {
     graphParams: {
       type: Object,
       required: true,
     },
   },
-  components: { BarChart, Thumbnail, Header, TableGraph },
   data: () => ({
     loaded: false,
   }),
-  methods: {
-    toggleAmzGraph() {
-      this.$store.commit("toggle_amz_graph");
-    },
-  },
-
   computed: {
     ...mapGetters({
       amzGraphVisible: "amzGraphVisible",
@@ -84,6 +78,11 @@ export default {
           return newValue;
         },
       },
+    },
+  },
+  methods: {
+    toggleAmzGraph() {
+      this.$store.commit("toggle_amz_graph");
     },
   },
 };

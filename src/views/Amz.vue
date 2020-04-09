@@ -14,9 +14,6 @@ import { mapGetters } from "vuex";
 export default {
   name: "Dashboard",
   components: { Table, Pagination, Jumper },
-  created() {
-    this.table_request();
-  },
   data() {
     return {
       // items: [],
@@ -32,6 +29,10 @@ export default {
       amzdata: "amzdata",
     }),
   },
+  created() {
+    this.table_request();
+  },
+
   methods: {
     table_request() {
       this.loading = true;

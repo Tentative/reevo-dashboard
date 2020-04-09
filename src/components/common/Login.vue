@@ -18,17 +18,17 @@
             <md-input v-model="login.password" type="password"></md-input>
           </md-field>
           <center>
-            <span class="errors md-body-1" v-if="authStatus == 'error'">{{
+            <span v-if="authStatus == 'error'" class="errors md-body-1">{{
               errors
             }}</span>
-            <span class="errors md-body-1" v-if="authStatus == 'Unauthorized'"
+            <span v-if="authStatus == 'Unauthorized'" class="errors md-body-1"
               >Email o Password errate</span
             >
           </center>
         </div>
 
         <div class="actions md-layout md-alignment-center-center">
-          <md-checkbox class="md-primary" v-model="login.IsMemorizzaPassword"
+          <md-checkbox v-model="login.IsMemorizzaPassword" class="md-primary"
             >Ricordami</md-checkbox
           >
 
@@ -39,7 +39,7 @@
           >
         </div>
 
-        <div class="loading-overlay" v-if="authStatus == 'loading'">
+        <div v-if="authStatus == 'loading'" class="loading-overlay">
           <md-progress-spinner
             md-mode="indeterminate"
             :md-stroke="2"
@@ -55,13 +55,6 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Login",
-  computed: {
-    ...mapGetters({
-      authStatus: "authStatus",
-      isLoggedIn: "isLoggedIn",
-    }),
-  },
-  components: {},
   data() {
     return {
       errors: "",
@@ -73,6 +66,13 @@ export default {
       },
     };
   },
+  computed: {
+    ...mapGetters({
+      authStatus: "authStatus",
+      isLoggedIn: "isLoggedIn",
+    }),
+  },
+
   methods: {
     login_request() {
       this.loading = true;

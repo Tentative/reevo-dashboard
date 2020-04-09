@@ -1,11 +1,11 @@
 <template>
   <div class="page-container main-container">
     <md-app md-waterfall md-mode="fixed">
-      <md-app-toolbar class="md-primary topbar" v-show="router != 'Login'">
+      <md-app-toolbar v-show="router != 'Login'" class="md-primary topbar">
         <md-button
+          v-if="!menuVisible"
           class="md-icon-button"
           @click="toggleMenu"
-          v-if="!menuVisible"
         >
           <md-icon class="hamburger-menu">menu</md-icon>
         </md-button>
@@ -18,9 +18,9 @@
       </md-app-toolbar>
 
       <md-app-drawer
+        v-if="router != 'Login'"
         :md-active.sync="menuVisible"
         md-persistent="mini"
-        v-if="router != 'Login'"
       >
         <md-toolbar class="md-transparent" md-elevation="0">
           <span>Menu</span>
@@ -32,7 +32,7 @@
           </div>
         </md-toolbar>
 
-        <md-content class="main-menu" v-show="menuVisible">
+        <md-content v-show="menuVisible" class="main-menu">
           <md-list class="main-navigation">
             <md-list-item><span>F.A.Q</span></md-list-item>
             <md-list-item><span>Centro Assistenza</span></md-list-item>
@@ -90,32 +90,10 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "App",
-  created: function () {
-    this.$http.interceptors.response.use(undefined, function (err) {
-      // eslint-disable-next-line no-unused-vars
-      return new Promise(function (resolve, reject) {
-        if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
-          this.$store.dispatch("logout");
-        }
-        throw err;
-      });
-    });
-  },
   data() {
     return {
       menuVisible: false,
     };
-  },
-  methods: {
-    logout: function () {
-      sessionStorage.removeItem("token");
-      this.$store.dispatch("logout").then(() => {
-        this.$router.push("/login", () => {});
-      });
-    },
-    toggleMenu() {
-      this.menuVisible = !this.menuVisible;
-    },
   },
   computed: {
     ...mapGetters({
@@ -128,6 +106,28 @@ export default {
       set(newValue) {
         return newValue;
       },
+    },
+  },
+  created: function () {
+    this.$http.interceptors.response.use(undefined, function (err) {
+      // eslint-disable-next-line no-unused-vars
+      return new Promise(function (resolve, reject) {
+        if (err.status === 401 && err.config && !err.config.__isRetryRequest) {
+          this.$store.dispatch("logout");
+        }
+        throw err;
+      });
+    });
+  },
+  methods: {
+    logout: function () {
+      sessionStorage.removeItem("token");
+      this.$store.dispatch("logout").then(() => {
+        this.$router.push("/login", () => {});
+      });
+    },
+    toggleMenu() {
+      this.menuVisible = !this.menuVisible;
     },
   },
 };

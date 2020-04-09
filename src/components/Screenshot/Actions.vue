@@ -1,8 +1,8 @@
 <template>
   <md-dialog-actions class="screen-actions">
     <md-button
-      class="md-dense md-raised md-primary"
       v-show="attr != ''"
+      class="md-dense md-raised md-primary"
       @click="saveFile"
       >Salva</md-button
     >
@@ -22,9 +22,6 @@
 import axios from "axios";
 export default {
   name: "Actions",
-  created() {
-    this.computedScreen;
-  },
 
   computed: {
     attr() {
@@ -36,6 +33,9 @@ export default {
     computedScreen() {
       return this.$store.getters.currentScreen.UrlScreenshot;
     },
+  },
+  created() {
+    this.computedScreen;
   },
   methods: {
     saveFile() {

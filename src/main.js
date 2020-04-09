@@ -22,7 +22,7 @@ Vue.config.productionTip = false;
 Vue.use(VueMaterial);
 Vue.use(Pagination);
 
-Vue.use(require("vue-moment"));
+Vue.use("vue-moment");
 
 new Vue({
   router,

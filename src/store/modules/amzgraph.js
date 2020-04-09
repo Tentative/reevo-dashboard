@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import axios from "axios";
 import moment from "moment";
 export default {
@@ -34,7 +33,7 @@ export default {
           lineTension: 0,
           order: 1,
           yAxisID: "prices",
-          steppedLine: "before"
+          steppedLine: "before",
         },
         {
           label: "Sales Rank",
@@ -55,7 +54,7 @@ export default {
           pointHoverBorderColor: "rgba(220,220,220,1)",
           pointHoverBorderWidth: 2,
           pointRadius: 2,
-          pointHitRadius: 10
+          pointHitRadius: 10,
         },
         {
           label: "Out of stock",
@@ -66,9 +65,9 @@ export default {
           order: 3,
           yAxisID: "stock",
           categoryPercentage: 1.1,
-            barPercentage: 1.1,
-        }
-      ]
+          barPercentage: 1.1,
+        },
+      ],
     },
     options: {
       legend: {
@@ -78,9 +77,9 @@ export default {
           // eslint-disable-next-line no-unused-vars
           filter: function (item, chart) {
             // Logic to remove a particular legend item goes here
-            return !item.text.includes('Out of stock');
-          }
-        }
+            return !item.text.includes("Out of stock");
+          },
+        },
       },
       annotation: {
         annotations: [
@@ -92,7 +91,7 @@ export default {
             value: "",
             borderColor: "rgba(255,0,0,0.4)",
             borderWidth: 2,
-            borderDash: [2, 2]
+            borderDash: [2, 2],
           },
           {
             id: "max-line",
@@ -102,10 +101,10 @@ export default {
             value: "",
             borderColor: "rgba(0,204,102,0.4)",
             borderWidth: 2,
-            borderDash: [2, 2]
-          }
+            borderDash: [2, 2],
+          },
         ],
-        drawTime: "afterDraw"
+        drawTime: "afterDraw",
       },
       responsive: true,
       maintainAspectRatio: false,
@@ -118,7 +117,7 @@ export default {
             position: "left",
             gridLines: {
               display: true,
-              offsetGridLines: false
+              offsetGridLines: false,
             },
             ticks: {
               display: true,
@@ -131,7 +130,7 @@ export default {
               bounds: "data",
               // min: "",
               // max: "",
-              precision: 0
+              precision: 0,
             },
             afterTickToLabelConversion: function (scaleInstance) {
               // set the first and last tick to null so it does not display
@@ -139,8 +138,10 @@ export default {
               scaleInstance.ticks[scaleInstance.ticks.length - 1] = null;
 
               // need to do the same thing for this similiar array which is used internally
-              scaleInstance.ticksAsNumbers[scaleInstance.ticksAsNumbers.length - 1] = null;
-            }
+              scaleInstance.ticksAsNumbers[
+                scaleInstance.ticksAsNumbers.length - 1
+              ] = null;
+            },
           },
           {
             id: "ranks",
@@ -151,55 +152,55 @@ export default {
               drawBorder: true,
               lineWidth: 1,
               zeroLineWidth: 1,
-              offsetGridLines: false
+              offsetGridLines: false,
             },
             ticks: {
               display: false,
               reverse: true,
               precision: 0,
-              bounds: "data"
-            }
+              bounds: "data",
+            },
           },
           {
             id: "stock",
             distribution: "linear",
             gridLines: {
-              display: false
+              display: false,
             },
             ticks: {
               display: false,
               precision: 0,
-              source: "data"
+              source: "data",
               // min: "",
               // max: ""
             },
-          }
+          },
         ],
         xAxes: [
           {
             barPercentage: 1.1,
             categoryPercentage: 1.1,
-            
+
             // bounds: "ticks",
             // type: "time",
             ticks: {
               // min: "",
               // max: "",
               // source: "ticks",
-              userCallback: function(item, index) {
-              if (!(index % 3)) return moment(item).format("DD MMM");
+              userCallback: function (item, index) {
+                if (!(index % 3)) return moment(item).format("DD MMM");
               },
               autoSkip: true,
               maxRotation: 0,
-              maxTicksLimit: 30
+              maxTicksLimit: 30,
             },
             distribution: "linear",
             time: {
               displayFormats: {
-                day: "D MMM"
+                day: "D MMM",
               },
               // stepSize: 3,
-              unit: "day"
+              unit: "day",
             },
             gridLines: {
               display: true,
@@ -207,30 +208,29 @@ export default {
               offsetGridLines: false,
               zeroLineWidth: 1,
             },
-            offset: false
-
-          }
-        ]
+            offset: false,
+          },
+        ],
       },
       tooltips: {
         mode: "index",
         position: "nearest",
         callbacks: {
-          title: tooltipItems => {
+          title: (tooltipItems) => {
             return tooltipItems[0].xLabel;
           },
 
-          // 
+          //
           // eslint-disable-next-line no-unused-vars
           label: function (t, d) {
             if (t.datasetIndex === 0) {
-              return "Prezzo: " + t.yLabel + " " + "€"
+              return "Prezzo: " + t.yLabel + " " + "€";
             } else if (t.datasetIndex === 1) {
               return "Sales Rank: " + t.yLabel;
             }
-          }
-        }
-      }
+          },
+        },
+      },
     },
     days: [],
     min_max: [],
@@ -238,9 +238,9 @@ export default {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "AMZGraph",
       VersioneClient: "1.0.3",
-      Url: window.location.href
+      Url: window.location.href,
       //define JsonRichiesta from mutations;
-    }
+    },
   },
 
   mutations: {
@@ -288,7 +288,9 @@ export default {
       // state.options.scales.yAxes[1].ticks.min = parseInt(min_rank - 2);
       // state.options.scales.yAxes[1].ticks.max = parseInt(max_rank + 2);
       // state.options.scales.yAxes[2].ticks.min = parseInt(minimo);
-      state.options.scales.yAxes[2].ticks.max = parseInt(current_item.PrezzoMax);
+      state.options.scales.yAxes[2].ticks.max = parseInt(
+        current_item.PrezzoMax
+      );
       state.checked = checked;
 
       // state.options.scales.xAxes[0].ticks.min = state.currentDate.setDate(
@@ -322,7 +324,7 @@ export default {
             lineTension: 0,
             order: 1,
             yAxisID: "prices",
-            steppedLine: "before"
+            steppedLine: "before",
           },
           {
             label: "Sales Rank",
@@ -343,23 +345,22 @@ export default {
             pointHoverBorderColor: "rgba(220,220,220,1)",
             pointHoverBorderWidth: 2,
             pointRadius: 2,
-            pointHitRadius: 10
+            pointHitRadius: 10,
           },
           {
-          label: "Out of stock",
-          backgroundColor: "#ffb8ab",
-          borderColor: "red",
-          data: [],
-          type: "bar",
-          order: 3,
-          yAxisID: "stock",
-          categoryPercentage: 1.1,
+            label: "Out of stock",
+            backgroundColor: "#ffb8ab",
+            borderColor: "red",
+            data: [],
+            type: "bar",
+            order: 3,
+            yAxisID: "stock",
+            categoryPercentage: 1.1,
             barPercentage: 1.1,
-        }
-        ]
-
+          },
+        ],
       };
-    }
+    },
   },
   actions: {
     save_graph({ commit }, item) {
@@ -371,7 +372,7 @@ export default {
         commit("get_current_item", item);
         let graph_params = {
           EAN: state.currentItem.EAN,
-          FiltroGiorni: "30"
+          FiltroGiorni: "30",
         };
         commit("graph_request", graph_params);
         const richiesta = state.amzgraph_request;
@@ -379,11 +380,11 @@ export default {
           url: "/",
           method: "GET",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
-          params: JSON.stringify(richiesta)
+          params: JSON.stringify(richiesta),
         })
-          .then(res => {
+          .then((res) => {
             let maxx = new Date();
             let min_temp = new Date().setDate(maxx.getDate() - 30);
             let min = new Date(min_temp);
@@ -391,42 +392,42 @@ export default {
             const current_item = JSON.parse(res.data.JsonRisposta);
             const total_days = current_item.ListaPrezzi;
             total_days.reverse();
-            console.log(current_item)
+            console.log(current_item);
             let labels = [...new Array(31)].map((i, idx) =>
-              moment.utc()
+              moment
+                .utc()
                 .startOf("day")
                 .subtract(idx, "days")
                 .utcOffset(1)
-               .format()
-                
-                
+                .format()
             );
             labels.reverse();
             let prezzo_giorno = [];
             let last_price = null;
             let checked = [];
- 
+
             for (const day in total_days) {
               let data = total_days[day].DataPrezzo;
               let data_finale = data.toString().slice(0, 10);
-              let next = parseInt(day) + 1
-              let prev = parseInt(day) - 1
-              let long = total_days.length
-              if (day != long - 1){
+              let next = parseInt(day) + 1;
+              let prev = parseInt(day) - 1;
+              let long = total_days.length;
+              if (day != long - 1) {
                 let data_due = total_days[next].DataPrezzo;
                 let data_finale_due = data_due.toString().slice(0, 10);
-                if (data_finale == data_finale_due){
-                  checked.push(total_days[day])
+                if (data_finale == data_finale_due) {
+                  checked.push(total_days[day]);
                   if (total_days[prev] != undefined) {
                     let data_tre = total_days[prev].DataPrezzo;
                     let data_finale_tre = data_tre.toString().slice(0, 10);
-                  if (data_finale == data_finale_tre){
-                    checked.push(total_days[day])
+                    if (data_finale == data_finale_tre) {
+                      checked.push(total_days[day]);
+                    }
                   }
                 }
-                }
+              } else {
+                break;
               }
-              else{break}
             }
             // for (const check of total_days){
             //   let next = check.indexOf(check) + 1
@@ -439,77 +440,60 @@ export default {
             //       if (total_days[check].DataPrezzo == total_days[check+ 1].DataPrezzo){
             //         checked.push(total_days[check])
             //       }
-                
+
             //   }
-              
+
             //   else {break};
-              
+
             // }
-            let total_ranks = []
-            let total_prices = []
+            let total_ranks = [];
+            let total_prices = [];
             for (const rankA in total_days) {
               let rank = total_days[rankA].SalesRankGiorno;
               let price = total_days[rankA].PrezzoGiorno;
-              total_ranks.push(rank)
-              total_prices.push(price)
+              total_ranks.push(rank);
+              total_prices.push(price);
             }
             let max_price = Math.max.apply(null, total_prices);
             let max_rank = Math.max.apply(null, total_ranks);
             let max = Math.max(max_price, max_rank);
             let sales_rank = [];
             let last_rank = null;
-            let last_stock = null
+            let last_stock = null;
             let in_stock_giorno = [];
             for (const datA in labels) {
               for (const datB in total_days) {
                 let stringa = total_days[datB].DataPrezzo;
-                var date = moment(stringa).format()
-                var dataControllo = moment(labels[datA]).format()
+                var date = moment(stringa).format();
+                var dataControllo = moment(labels[datA]).format();
 
                 if (moment(date).isSame(dataControllo, "day")) {
                   if (total_days[datB].InStockGiorno == "No") {
-                   last_stock = current_item.PrezzoMax
-                }
-                else {
-                  last_stock = ""
-                }
-                
+                    last_stock = current_item.PrezzoMax;
+                  } else {
+                    last_stock = "";
+                  }
 
-                  last_rank = total_days[datB].SalesRankGiorno
+                  last_rank = total_days[datB].SalesRankGiorno;
                   last_price = total_days[datB].PrezzoGiorno;
-                  
-                  
                 }
-                
-                
-                              
-            } 
-              in_stock_giorno.push(last_stock)
+              }
+              in_stock_giorno.push(last_stock);
               prezzo_giorno.push(last_price);
               sales_rank.push(last_rank);
-            
-
-              
-            
-          }
-          in_stock_giorno.pop()
-            sales_rank.reverse()
+            }
+            in_stock_giorno.pop();
+            sales_rank.reverse();
             let prezzoMax = Math.max.apply(Math, prezzo_giorno);
             let prezzoMin = Math.min.apply(Math, prezzo_giorno);
 
-            
-
-            
             for (const rankA in labels) {
               for (const rankB in total_days) {
-               let stringa = total_days[rankB].DataPrezzo;
-                let date = moment(stringa).format()
-                let dataControllo = moment(labels[rankA]).format()
+                let stringa = total_days[rankB].DataPrezzo;
+                let date = moment(stringa).format();
+                let dataControllo = moment(labels[rankA]).format();
                 if (moment(date).isSame(dataControllo, "day")) {
-                  
                   // last_price = total_days[rankB].PrezzoGiorno;
-                  
-
                 }
               }
               // sales_rank.push(last_rank);
@@ -542,19 +526,19 @@ export default {
               max_rank,
               max,
               minimo,
-              checked
+              checked,
               // maxx
             });
 
             resolve(res);
             commit("toggle_amz_graph");
-            })
+          })
 
-          .catch(err => {
+          .catch((err) => {
             reject(err);
           });
       });
-    }
+    },
   },
-  getters: {}
+  getters: {},
 };

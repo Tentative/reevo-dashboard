@@ -26,9 +26,6 @@ import { mapGetters } from "vuex";
 import moment from "moment";
 export default {
   name: "Header",
-  created() {
-    this.computedScreen();
-  },
   data() {
     return {
       retailer: "",
@@ -44,6 +41,10 @@ export default {
       amzGraphVisible: "amzGraphVisible",
     }),
   },
+  created() {
+    this.computedScreen();
+  },
+
   methods: {
     toggleScreenshot() {
       this.$store.commit("clear_screenshot");

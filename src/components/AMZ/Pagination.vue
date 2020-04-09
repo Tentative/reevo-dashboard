@@ -20,6 +20,11 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Paginate",
+  data() {
+    return {
+      currentPage: 1,
+    };
+  },
   computed: {
     ...mapGetters({
       amzdata: "amzdata",
@@ -28,22 +33,8 @@ export default {
       totalPages: "totalPages",
     }),
   },
-  data() {
-    return {
-      currentPage: 1,
-    };
-  },
-  // components: { BootstrapVue, IconsPlugin },
 
   methods: {
-    // update_params() {
-    //   let new_data = {
-    //     total_page: this.mdPageSize,
-    //     numeroPagina: this.currentPage
-    //   };
-    //   this.$store.commit("update_params", new_data);
-    //   this.table_request();
-    // },
     call_amz() {
       let amz = {
         NumeroPagina: this.currentPage,

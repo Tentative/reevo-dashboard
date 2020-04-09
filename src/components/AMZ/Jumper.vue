@@ -1,20 +1,10 @@
-<!-- template>
-  <div class="jumper">
-    <label for="items">Items per page</label>
-    <select id="items" v-model="itemsPerPage" @change="call_amz()">
-      <option value="20">20</option>
-      <option value="50">50</option>
-      <option value="100">100</option>
-    </select>
-  </div>
-</template-->
 <template>
   <div class="wrap">
     <div class="select">
       <select
+        v-model="itemsPerPage"
         class="select-text"
         required
-        v-model="itemsPerPage"
         @change="call_amz()"
       >
         <option value="" disabled selected></option>
@@ -33,15 +23,15 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Jumper",
-  computed: {
-    ...mapGetters({
-      amz: "amz",
-    }),
-  },
   data() {
     return {
       itemsPerPage: "20",
     };
+  },
+  computed: {
+    ...mapGetters({
+      amz: "amz",
+    }),
   },
   methods: {
     call_amz() {

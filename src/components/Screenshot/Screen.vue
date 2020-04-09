@@ -1,9 +1,9 @@
 <template>
   <div>
     <md-dialog
-      @md-clicked-outside="toggleScreenshot"
       :md-active.sync="screenshot"
       class="graph md-scrollbar"
+      @md-clicked-outside="toggleScreenshot"
     >
       <Header />
       <md-divider></md-divider>
@@ -23,11 +23,6 @@ export default {
   data: () => ({
     message: "Screenshot non disponibile",
   }),
-  methods: {
-    toggleScreenshot() {
-      this.$store.commit("clear_screenshot");
-    },
-  },
   computed: {
     ...mapGetters({
       screenshotVisible: "screenshotVisible",
@@ -48,6 +43,11 @@ export default {
           return newValue;
         },
       },
+    },
+  },
+  methods: {
+    toggleScreenshot() {
+      this.$store.commit("clear_screenshot");
     },
   },
 };
