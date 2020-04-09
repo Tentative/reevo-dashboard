@@ -62,7 +62,7 @@ export default {
           backgroundColor: "#ffb8ab",
           borderColor: "red",
           data: [],
-          type: "line",
+          type: "bar",
           order: 3,
           yAxisID: "stock",
           steppedLine: "before",
@@ -182,17 +182,17 @@ export default {
             categoryPercentage: 1.1,
             
             // bounds: "ticks",
-            // type: "time",
+            type: "time",
             ticks: {
               // min: "",
               // max: "",
               // source: "ticks",
-              userCallback: function(item, index) {
-              if (!(index % 3)) return moment(item).format("DD MMM");
-              },
+              // userCallback: function(item, index) {
+              // if (!(index % 3)) return moment(item).format("DD MMM");
+              // },
               autoSkip: true,
               maxRotation: 0,
-              maxTicksLimit: 30
+              maxTicksLimit: 10
             },
             distribution: "linear",
             time: {
@@ -351,7 +351,7 @@ export default {
           backgroundColor: "#ffb8ab",
           borderColor: "red",
           data: [],
-          type: "line",
+          type: "bar",
           order: 3,
           yAxisID: "stock",
           steppedLine: "before",
@@ -473,7 +473,7 @@ export default {
                    last_stock = current_item.PrezzoMax
                 }
                 else {
-                  last_stock = ""
+                  last_stock = null
                 }
                 
 
