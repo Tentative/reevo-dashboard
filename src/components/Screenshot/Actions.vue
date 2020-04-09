@@ -7,13 +7,16 @@
       >Salva</md-button
     >
     <md-button
-      v-show="attr != ''"
+      v-show="attr != '' || Object.keys(currentScreen).length > 0"
       class="md-dense md-raised md-primary"
       href="mailto:micoli.giacomo@gmail.com"
     >
       Invia Email</md-button
     >
-    <md-button class="md-dense md-raised md-primary" href="#"
+    <md-button
+      class="md-dense md-raised md-primary"
+      :href="computedLink"
+      target="_blank"
       >Pagina Prodotto</md-button
     >
   </md-dialog-actions>
@@ -32,6 +35,11 @@ export default {
     },
     computedScreen() {
       return this.$store.getters.currentScreen.UrlScreenshot;
+    },
+    computedLink() {
+      return this.$store.getters.currentScreen
+        ? this.$store.getters.currentScreen.UrlItem
+        : "#";
     },
   },
   created() {
