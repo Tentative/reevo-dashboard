@@ -57,9 +57,9 @@
           </md-list-item>
 
           <md-list-item
-            :class="router == '' ? 'amz-active' : 'quick-navigation'"
+            :class="router == 'Items' ? 'amz-active' : 'quick-navigation'"
           >
-            <md-icon>send</md-icon>
+            <router-link to="/items"> <md-icon>send</md-icon></router-link>
             <span class="md-list-item-text">Sent Mail</span>
           </md-list-item>
 

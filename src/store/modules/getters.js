@@ -2,6 +2,7 @@ import auth from "./auth.js";
 import amz from "./amz.js";
 import amzgraph from "./amzgraph.js";
 import screenshot from "./screenshot.js";
+import items from "./items.js";
 export default {
   isLoggedIn: () => !!auth.state.token || !!sessionStorage.getItem("token"),
   authStatus: () => auth.state.status,
@@ -24,4 +25,7 @@ export default {
   screenshotVisible: () => screenshot.state.screenshotVisible,
   currentScreen: () => screenshot.state.screen,
   currentScreenItem: () => screenshot.state.current,
+  itm: () => items.state.itm,
+  table_items: () => items.state.itmdata,
+  lista_items: () => items.state.items,
 };
