@@ -23,76 +23,129 @@
             ><a><img :src="item.UrlImmagine" /></a></md-table-cell
           ><md-table-cell class="item is-dashboard"
             ><span>{{ item.NomeItem }}</span></md-table-cell
-          ><md-table-cell class="prezzo fix is-dashboard"
+          ><md-table-cell
+            class="fix is-dashboard"
+            :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'price'"
             ><span v-if="index < lista_items.length"
               >{{ lista_items[index].ListaInfo[0].Prezzo }} €</span
             >
             <span v-else>/</span></md-table-cell
           >
-          <md-table-cell class="cheap is-dashboard"
+          <md-table-cell
+            class="is-dashboard"
+            :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'discount'"
             ><span v-if="index < lista_items.length"
               >{{ lista_items[index].ListaInfo[0].Sconto }} %</span
             ></md-table-cell
           >
           <md-table-cell class="stock is-dashboard"
-            ><span v-if="index < lista_items.length">{{
-              lista_items[index].ListaInfo[0].InStock
-            }}</span></md-table-cell
-          >
+            ><span
+              v-if="
+                index < lista_items.length ||
+                lista_items[index].ListaInfo[0].InStock == 'No'
+              "
+              ><md-icon class="no-status">cancel</md-icon></span
+            ><span v-else></span
+          ></md-table-cell>
           <!-- second retailer -->
-          <md-table-cell class="prezzo fix is-dashboard"
+          <md-table-cell
+            class="fix is-dashboard"
+            :class="
+              item.ListaInfo[1] != undefined && item.ListaInfo[1].IsAlert
+                ? 'filtro-alert'
+                : 'price'
+            "
             ><span v-if="lista_items[index].ListaInfo[1]"
               >{{ lista_items[index].ListaInfo[1].Prezzo }} €</span
             >
             <span v-else>/</span></md-table-cell
           >
-          <md-table-cell class="cheap is-dashboard"
+          <md-table-cell
+            class="cheap is-dashboard"
+            :class="
+              item.ListaInfo[1] != undefined && item.ListaInfo[1].IsAlert
+                ? 'filtro-alert'
+                : 'discount'
+            "
             ><span v-if="lista_items[index].ListaInfo[1]"
               >{{ lista_items[index].ListaInfo[1].Sconto }} %</span
             ><span v-else>/</span></md-table-cell
           >
           <md-table-cell class="stock is-dashboard"
-            ><span v-if="lista_items[index].ListaInfo[1]">{{
-              lista_items[index].ListaInfo[1].Stock
-            }}</span
-            ><span v-else>/</span></md-table-cell
-          >
+            ><span
+              v-if="
+                index < lista_items.length ||
+                lista_items[index].ListaInfo[1].InStock == 'No'
+              "
+              ><md-icon class="no-status">cancel</md-icon></span
+            ><span v-else></span
+          ></md-table-cell>
           <!-- third retailer -->
-          <md-table-cell class="prezzo fix is-dashboard"
+          <md-table-cell
+            class="fix is-dashboard"
+            :class="
+              item.ListaInfo[2] != undefined && item.ListaInfo[2].IsAlert
+                ? 'filtro-alert'
+                : 'price'
+            "
             ><span v-if="lista_items[index].ListaInfo[2]"
               >{{ lista_items[index].ListaInfo[2].Prezzo }} €</span
             >
             <span v-else>/</span></md-table-cell
           >
-          <md-table-cell class="cheap is-dashboard"
+          <md-table-cell
+            class="cheap is-dashboard"
+            :class="
+              item.ListaInfo[2] != undefined && item.ListaInfo[2].IsAlert
+                ? 'filtro-alert'
+                : 'discount'
+            "
             ><span v-if="lista_items[index].ListaInfo[2]"
               >{{ lista_items[index].ListaInfo[2].Sconto }} %</span
             ><span v-else>/</span></md-table-cell
           >
           <md-table-cell class="stock is-dashboard"
-            ><span v-if="lista_items[index].ListaInfo[2]">{{
-              lista_items[index].ListaInfo[2].Stock
-            }}</span
-            ><span v-else>/</span></md-table-cell
-          >
+            ><span
+              v-if="
+                index < lista_items.length ||
+                lista_items[index].ListaInfo[2].InStock == 'No'
+              "
+              ><md-icon class="no-status">cancel</md-icon></span
+            ><span v-else></span
+          ></md-table-cell>
           <!-- fourth retailer -->
-          <md-table-cell class="prezzo fix is-dashboard"
+          <md-table-cell
+            class="fix is-dashboard"
+            :class="
+              item.ListaInfo[3] != undefined && item.ListaInfo[3].IsAlert
+                ? 'filtro-alert'
+                : 'price'
+            "
             ><span v-if="lista_items[index].ListaInfo[3]"
               >{{ lista_items[index].ListaInfo[3].Prezzo }} €</span
             >
             <span v-else>/</span></md-table-cell
           >
-          <md-table-cell class="cheap is-dashboard"
+          <md-table-cell
+            class="cheap is-dashboard"
+            :class="
+              item.ListaInfo[3] != undefined && item.ListaInfo[3].IsAlert
+                ? 'filtro-alert'
+                : 'price'
+            "
             ><span v-if="lista_items[index].ListaInfo[3]"
               >{{ lista_items[index].ListaInfo[3].Sconto }} %</span
             ><span v-else>/</span></md-table-cell
           >
           <md-table-cell class="stock is-dashboard"
-            ><span v-if="lista_items[index].ListaInfo[3]">{{
-              lista_items[index].ListaInfo[3].Stock
-            }}</span
-            ><span v-else>/</span></md-table-cell
-          >
+            ><span
+              v-if="
+                index < lista_items.length ||
+                lista_items[index].ListaInfo[3].InStock == 'No'
+              "
+              ><md-icon class="no-status">cancel</md-icon></span
+            ><span v-else></span
+          ></md-table-cell>
         </md-table-row>
       </md-table>
     </div>
@@ -108,6 +161,7 @@ export default {
   data() {
     return {
       // retailers: [],
+      debug: [],
     };
   },
 

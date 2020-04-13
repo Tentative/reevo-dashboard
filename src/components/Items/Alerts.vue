@@ -71,9 +71,6 @@ export default {
       this.showDialog = false;
       this.itm.FiltroAlert = "Tutti";
       this.itm.FiltroInStock = "Tutti";
-      this.itm.FiltroFastTrack = "Tutti";
-      this.itm.FiltroBuyBox = "Tutti";
-      this.itm.FiltroNegativeReviews = "Tutti";
     },
 
     computedText() {
