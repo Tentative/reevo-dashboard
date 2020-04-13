@@ -44,9 +44,7 @@
         <md-list :class="menuVisible ? 'quick' : ''">
           <md-list-item
             class="dashboard"
-            :class="
-              router == 'Dashboard' || 'Amz' ? 'amz-active' : 'quick-navigation'
-            "
+            :class="isHome ? 'amz-active' : 'quick-navigation'"
           >
             <router-link to="/amz">
               <md-icon class="dashboard-icon"
@@ -57,9 +55,12 @@
           </md-list-item>
 
           <md-list-item
+            class="dashboard"
             :class="router == 'Items' ? 'amz-active' : 'quick-navigation'"
           >
-            <router-link to="/items"> <md-icon>send</md-icon></router-link>
+            <router-link to="/items">
+              <md-icon class="dashboard-icon">send</md-icon></router-link
+            >
             <span class="md-list-item-text">Sent Mail</span>
           </md-list-item>
 
@@ -99,6 +100,12 @@ export default {
     ...mapGetters({
       isLoggedIn: "isLoggedIn",
     }),
+    isHome() {
+      if (this.$route.name == "Amz" || this.$route.name == "Dashboard") {
+        return true;
+      }
+      return false;
+    },
     router: {
       get() {
         return this.$route.name;
