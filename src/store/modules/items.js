@@ -19,6 +19,7 @@ export default {
     },
     items: [],
     itmdata: {},
+    retailers: [],
     // itmGraphVisible: false,
   },
   mutations: {
@@ -31,10 +32,11 @@ export default {
       state.itm.FiltroInStock = itm.FiltroInStock;
       state.itm_request.JsonRichiesta = JSON.stringify(itm);
     },
-    itm_success(state, { items, itmdata }) {
+    itm_success(state, { items, itmdata, retailers }) {
       state.status = "";
       state.items = items;
       state.itmdata = itmdata;
+      state.retailers = retailers;
     },
     itm_error(state) {
       state.status = "";
@@ -60,11 +62,15 @@ export default {
             // console.log(res);
             const itmdata = JSON.parse(res.data.JsonRisposta);
             const lista = itmdata.ListaItems;
+            const retailers = itmdata.ListaRetailers;
             let items = [];
             for (const item of lista) {
               items.push(item);
             }
-            commit("itm_success", { items, itmdata });
+            for (const retailer in retailers) {
+              retailers.push(retailer);
+            }
+            commit("itm_success", { items, itmdata, retailers });
             // console.log(itmdata);
             resolve(res);
           })

@@ -1,17 +1,29 @@
 <template>
   <div>
-    <md-table class="items-dashboard">
+    <md-table class="amz">
       <md-table-row>
         <md-table-head></md-table-head>
-        <md-table-head>Articolo</md-table-head>
+        <md-table-head class="name">Articolo</md-table-head>
         <md-table-head
           v-for="(item, index) in table_items.ListaRetailers"
           :key="index"
           colspan="3"
-          >{{ item }}</md-table-head
+        >
+          <span v-if="index <= '3'">{{ item }}</span></md-table-head
         >
       </md-table-row>
-      <md-table-row> </md-table-row>
+      <md-table-row v-for="(item, index) in lista_items" :key="index"
+        ><md-table-cell class="thumb"
+          ><a><img :src="item.UrlImmagine" /></a></md-table-cell
+        ><md-table-cell class="item"
+          ><span>{{ item.NomeItem }}</span></md-table-cell
+        ><md-table-cell class="prezzo fix"
+          ><span v-if="index < lista_items.length">{{
+            lista_items[index].ListaInfo[0].Prezzo
+          }}</span>
+          <span v-else>/</span></md-table-cell
+        ></md-table-row
+      >
     </md-table>
   </div>
 </template>
@@ -22,7 +34,7 @@ export default {
   name: "Table",
   data() {
     return {
-      retailers: [],
+      // retailers: [],
     };
   },
 
@@ -30,6 +42,7 @@ export default {
     ...mapGetters({
       table_items: "table_items",
       lista_items: "lista_items",
+      retailers: "retailers",
     }),
   },
   beforeCreate() {
@@ -45,3 +58,7 @@ export default {
   },
 };
 </script>
+<style lang="scss">
+@import "@/assets/style/toolbar.scss";
+@import "@/assets/style/table.scss";
+</style>

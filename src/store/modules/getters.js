@@ -28,4 +28,5 @@ export default {
   itm: () => items.state.itm,
   table_items: () => items.state.itmdata,
   lista_items: () => items.state.items,
+  retailers: () => items.state.retailers,
 };
