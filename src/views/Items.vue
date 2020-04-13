@@ -1,19 +1,19 @@
 <template>
   <div class="md-alignment-center-center">
     <Table />
-    <!--
     <Pagination />
+    <!--
     <Jumper />
     -->
   </div>
 </template>
 
 <script>
-import { Table } from "@/components/Items/";
+import { Table, Pagination } from "@/components/Items/";
 import { mapGetters } from "vuex";
 export default {
   name: "Items",
-  components: { Table },
+  components: { Table, Pagination },
   data() {
     return {
       loading: false,

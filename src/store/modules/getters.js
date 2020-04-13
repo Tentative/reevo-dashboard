@@ -29,4 +29,7 @@ export default {
   table_items: () => items.state.itmdata,
   lista_items: () => items.state.items,
   retailers: () => items.state.retailers,
+  ipp: () => items.state.itm.ItemsPerPagina,
+  tp: () => items.state.itm.NumeroPagina,
+  ttp: () => items.state.itm.QtaPagine,
 };
