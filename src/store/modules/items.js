@@ -6,16 +6,9 @@ export default {
     itm_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Items",
-      VersioneClient: "1.0.3",
+      VersioneClient: "0.2.4",
       Url: window.location.href,
       // define JsonRichiesta from mutations ===> {itm}
-    },
-    itm: {
-      NumeroPagina: 1,
-      ItemsPerPagina: "20",
-      Categoria: null,
-      FiltroAlert: "Tutti",
-      FiltroInStock: "Tutti",
     },
     items: [],
     itmdata: {},

@@ -6,7 +6,7 @@ export default {
     amz_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "AMZ",
-      VersioneClient: "1.0.3",
+      VersioneClient: "0.2.4",
       Url: window.location.href,
       // define JsonRichiesta from mutations ===> {amz}
     },
