@@ -12,18 +12,83 @@
           <span v-if="index <= '3'">{{ item }}</span></md-table-head
         >
       </md-table-row>
-      <md-table-row v-for="(item, index) in lista_items" :key="index"
+      <!-- first retailer -->
+      <md-table-row v-for="(item, index) of lista_items" :key="index"
         ><md-table-cell class="thumb"
           ><a><img :src="item.UrlImmagine" /></a></md-table-cell
         ><md-table-cell class="item"
           ><span>{{ item.NomeItem }}</span></md-table-cell
         ><md-table-cell class="prezzo fix"
-          ><span v-if="index < lista_items.length">{{
-            lista_items[index].ListaInfo[0].Prezzo
-          }}</span>
+          ><span v-if="index < lista_items.length"
+            >{{ lista_items[index].ListaInfo[0].Prezzo }} €</span
+          >
           <span v-else>/</span></md-table-cell
-        ></md-table-row
-      >
+        >
+        <md-table-cell class="cheap"
+          ><span v-if="index < lista_items.length"
+            >{{ lista_items[index].ListaInfo[0].Sconto }} %</span
+          ></md-table-cell
+        >
+        <md-table-cell class="stock"
+          ><span v-if="index < lista_items.length">{{
+            lista_items[index].ListaInfo[0].InStock
+          }}</span></md-table-cell
+        >
+        <!-- second retailer -->
+        <md-table-cell class="prezzo fix"
+          ><span v-if="lista_items[index].ListaInfo[1]"
+            >{{ lista_items[index].ListaInfo[1].Prezzo }} €</span
+          >
+          <span v-else>/</span></md-table-cell
+        >
+        <md-table-cell class="cheap"
+          ><span v-if="lista_items[index].ListaInfo[1]"
+            >{{ lista_items[index].ListaInfo[1].Sconto }} %</span
+          ></md-table-cell
+        >
+        <md-table-cell class="stock"
+          ><span v-if="lista_items[index].ListaInfo[1]">{{
+            lista_items[index].ListaInfo[1].Stock
+          }}</span
+          ><span v-else>/</span></md-table-cell
+        >
+        <!-- third retailer -->
+        <md-table-cell class="prezzo fix"
+          ><span v-if="lista_items[index].ListaInfo[2]"
+            >{{ lista_items[index].ListaInfo[2].Prezzo }} €</span
+          >
+          <span v-else>/</span></md-table-cell
+        >
+        <md-table-cell class="cheap"
+          ><span v-if="lista_items[index].ListaInfo[2]"
+            >{{ lista_items[index].ListaInfo[2].Sconto }} %</span
+          ></md-table-cell
+        >
+        <md-table-cell class="stock"
+          ><span v-if="lista_items[index].ListaInfo[2]">{{
+            lista_items[index].ListaInfo[2].Stock
+          }}</span
+          ><span v-else>/</span></md-table-cell
+        >
+        <!-- fourth retailer -->
+        <md-table-cell class="prezzo fix"
+          ><span v-if="lista_items[index].ListaInfo[3]"
+            >{{ lista_items[index].ListaInfo[3].Prezzo }} €</span
+          >
+          <span v-else>/</span></md-table-cell
+        >
+        <md-table-cell class="cheap"
+          ><span v-if="lista_items[index].ListaInfo[3]"
+            >{{ lista_items[index].ListaInfo[3].Sconto }} %</span
+          ></md-table-cell
+        >
+        <md-table-cell class="stock"
+          ><span v-if="lista_items[index].ListaInfo[3]">{{
+            lista_items[index].ListaInfo[3].Stock
+          }}</span
+          ><span v-else>/</span></md-table-cell
+        >
+      </md-table-row>
     </md-table>
   </div>
 </template>
@@ -58,7 +123,7 @@ export default {
   },
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/style/toolbar.scss";
 @import "@/assets/style/table.scss";
 </style>
