@@ -120,3 +120,17 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   font-size: 13px !important;
 }
 
+.item.is-dashboard {
+  width: 400px;
+  max-width: 400px
+}
+.item-dashboard {
+  display: flex;
+  justify-content: center;
+}
+.md-table-cell.prezzo.is-dashboard,
+.md-table-cell.cheap.is-dashboard 
+.md-table-cell.stock.is-dashboard  {
+  width: 65px;
+  max-width: 65px;
+}
