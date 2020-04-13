@@ -6,9 +6,16 @@ export default {
     itm_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Items",
-      VersioneClient: "0.2.4",
+      VersioneClient: "0.2.5",
       Url: window.location.href,
       // define JsonRichiesta from mutations ===> {itm}
+    },
+    itm: {
+      NumeroPagina: 1,
+      ItemsPerPagina: 20,
+      Categoria: null,
+      FiltroAlert: "Tutti",
+      FiltroInStock: "Tutti",
     },
     items: [],
     itmdata: {},
@@ -59,9 +66,6 @@ export default {
             let items = [];
             for (const item of lista) {
               items.push(item);
-            }
-            for (const retailer in retailers) {
-              retailers.push(retailer);
             }
             commit("itm_success", { items, itmdata, retailers });
             // console.log(itmdata);

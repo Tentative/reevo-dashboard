@@ -18,12 +18,16 @@
           >
         </md-table-row>
         <!-- first retailer -->
-        <md-table-row v-for="(item, index) of lista_items" :key="index"
+        <md-table-row
+          v-for="(item, index) of lista_items"
+          v-show="lista_items[index]"
+          :key="index"
           ><md-table-cell class="thumb"
             ><a><img :src="item.UrlImmagine" /></a></md-table-cell
           ><md-table-cell class="item is-dashboard"
             ><span>{{ item.NomeItem }}</span></md-table-cell
           ><md-table-cell
+            v-show="first_exist"
             class="fix is-dashboard"
             :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'price'"
             ><span v-if="index < lista_items.length"
@@ -32,13 +36,14 @@
             <span v-else>/</span></md-table-cell
           >
           <md-table-cell
+            v-show="first_exist"
             class="is-dashboard"
             :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'discount'"
             ><span v-if="index < lista_items.length"
               >{{ lista_items[index].ListaInfo[0].Sconto }} %</span
             ></md-table-cell
           >
-          <md-table-cell class="stock is-dashboard"
+          <md-table-cell v-show="first_exist" class="stock is-dashboard"
             ><span
               v-if="
                 index < lista_items.length ||
@@ -49,6 +54,7 @@
           ></md-table-cell>
           <!-- second retailer -->
           <md-table-cell
+            v-show="second_exist"
             class="fix is-dashboard"
             :class="
               item.ListaInfo[1] != undefined && item.ListaInfo[1].IsAlert
@@ -61,6 +67,7 @@
             <span v-else>/</span></md-table-cell
           >
           <md-table-cell
+            v-show="second_exist"
             class="cheap is-dashboard"
             :class="
               item.ListaInfo[1] != undefined && item.ListaInfo[1].IsAlert
@@ -71,7 +78,7 @@
               >{{ lista_items[index].ListaInfo[1].Sconto }} %</span
             ><span v-else>/</span></md-table-cell
           >
-          <md-table-cell class="stock is-dashboard"
+          <md-table-cell v-show="second_exist" class="stock is-dashboard"
             ><span
               v-if="
                 index < lista_items.length ||
@@ -82,6 +89,7 @@
           ></md-table-cell>
           <!-- third retailer -->
           <md-table-cell
+            v-show="third_exist"
             class="fix is-dashboard"
             :class="
               item.ListaInfo[2] != undefined && item.ListaInfo[2].IsAlert
@@ -94,6 +102,7 @@
             <span v-else>/</span></md-table-cell
           >
           <md-table-cell
+            v-show="third_exist"
             class="cheap is-dashboard"
             :class="
               item.ListaInfo[2] != undefined && item.ListaInfo[2].IsAlert
@@ -104,7 +113,7 @@
               >{{ lista_items[index].ListaInfo[2].Sconto }} %</span
             ><span v-else>/</span></md-table-cell
           >
-          <md-table-cell class="stock is-dashboard"
+          <md-table-cell v-show="third_exist" class="stock is-dashboard"
             ><span
               v-if="
                 index < lista_items.length ||
@@ -115,6 +124,7 @@
           ></md-table-cell>
           <!-- fourth retailer -->
           <md-table-cell
+            v-show="fourth_exist"
             class="fix is-dashboard"
             :class="
               item.ListaInfo[3] != undefined && item.ListaInfo[3].IsAlert
@@ -127,6 +137,7 @@
             <span v-else>/</span></md-table-cell
           >
           <md-table-cell
+            v-show="fourth_exist"
             class="cheap is-dashboard"
             :class="
               item.ListaInfo[3] != undefined && item.ListaInfo[3].IsAlert
@@ -137,7 +148,7 @@
               >{{ lista_items[index].ListaInfo[3].Sconto }} %</span
             ><span v-else>/</span></md-table-cell
           >
-          <md-table-cell class="stock is-dashboard"
+          <md-table-cell v-show="fourth_exist" class="stock is-dashboard"
             ><span
               v-if="
                 index < lista_items.length ||
@@ -173,6 +184,30 @@ export default {
     }),
     router() {
       return this.$route.name;
+    },
+    first_exist() {
+      if (this.retailers[0]) {
+        return true;
+      }
+      return false;
+    },
+    second_exist() {
+      if (this.retailers[1]) {
+        return true;
+      }
+      return false;
+    },
+    third_exist() {
+      if (this.retailers[2]) {
+        return true;
+      }
+      return false;
+    },
+    fourth_exist() {
+      if (this.retailers[3]) {
+        return true;
+      }
+      return false;
     },
   },
   beforeCreate() {

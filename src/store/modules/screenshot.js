@@ -7,7 +7,7 @@ export default {
     screen_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Screenshot",
-      VersioneClient: "0.2.4",
+      VersioneClient: "0.2.5",
       Url: window.location.href,
     },
   },
