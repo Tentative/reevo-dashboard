@@ -19,7 +19,7 @@
         </md-table-row>
         <!-- first retailer -->
         <md-table-row
-          v-for="(item, index) of lista_items"
+          v-for="(item, index) in lista_items"
           v-show="lista_items[index]"
           :key="index"
           ><md-table-cell class="thumb"
@@ -31,7 +31,7 @@
             class="fix is-dashboard"
             :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'price'"
             ><span v-if="index < lista_items.length"
-              >{{ lista_items[index].ListaInfo[0].Prezzo }} €</span
+              >{{ item.ListaInfo[0].Prezzo }} €</span
             >
             <span v-else>/</span></md-table-cell
           >
@@ -40,14 +40,13 @@
             class="is-dashboard"
             :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'discount'"
             ><span v-if="index < lista_items.length"
-              >{{ lista_items[index].ListaInfo[0].Sconto }} %</span
+              >{{ item.ListaInfo[0].Sconto }} %</span
             ></md-table-cell
           >
           <md-table-cell v-show="first_exist" class="stock is-dashboard"
             ><span
               v-if="
-                index < lista_items.length ||
-                lista_items[index].ListaInfo[0].InStock == 'No'
+                index < lista_items.length && item.ListaInfo[0].InStock == 'No'
               "
               ><md-icon class="no-status">cancel</md-icon></span
             ><span v-else></span
