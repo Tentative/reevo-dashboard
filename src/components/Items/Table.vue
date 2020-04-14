@@ -40,7 +40,10 @@
             class="is-dashboard"
             :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'discount'"
             ><span v-if="index < lista_items.length"
-              >{{ item.ListaInfo[0].Sconto }} %</span
+              >{{
+                Math.abs(item.ListaInfo[0].Sconto).toString().slice(0, 2)
+              }}
+              %</span
             ></md-table-cell
           >
           <md-table-cell v-show="first_exist" class="stock is-dashboard"

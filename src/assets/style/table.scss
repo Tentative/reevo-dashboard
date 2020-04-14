@@ -5,6 +5,7 @@ $error-background: #ffb8ab;
 $text-on-dark: #fafafa;
 $text-on-alert: #000000;
 $icon-size: 1.3rem;
+$responsive-icon-size: 1rem;
 $filtro-alert: rgba(255, 0, 0, 0.12);
 
 .thumb img {
@@ -146,4 +147,19 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
     width: 280px;
     max-width: 280px;
   }
+  .price .md-table-cell-container,
+  .filtro-alert .md-table-cell-container,
+  .discount .md-table-cell-container
+   {
+    padding: 0 10px 0 0!important;
+    width: 55px!important;
+  }
+  .stock .md-table-cell-container {
+    padding: 0 32px 0 10px!important;
+    width: 55px!important;
+  }
+  .md-icon.md-theme-default.md-icon-font.no-status {
+  color: $error-status;
+  font-size: $responsive-icon-size !important;
+}
 }
