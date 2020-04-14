@@ -60,8 +60,8 @@
                 ? 'filtro-alert'
                 : 'price'
             "
-            ><span v-if="lista_items[index].ListaInfo[1]"
-              >{{ lista_items[index].ListaInfo[1].Prezzo }} €</span
+            ><span v-if="item.ListaInfo[1] != undefined"
+              >{{ item.ListaInfo[1].Prezzo }} €</span
             >
             <span v-else>/</span></md-table-cell
           >
@@ -73,14 +73,14 @@
                 ? 'filtro-alert'
                 : 'discount'
             "
-            ><span v-if="lista_items[index].ListaInfo[1]"
+            ><span v-if="item.ListaInfo[1] != undefined"
               >{{ lista_items[index].ListaInfo[1].Sconto }} %</span
             ><span v-else>/</span></md-table-cell
           >
           <md-table-cell v-show="second_exist" class="stock is-dashboard"
             ><span
               v-if="
-                index < lista_items.length ||
+                item.ListaInfo[1] &&
                 lista_items[index].ListaInfo[1].InStock == 'No'
               "
               ><md-icon class="no-status">cancel</md-icon></span
@@ -95,7 +95,7 @@
                 ? 'filtro-alert'
                 : 'price'
             "
-            ><span v-if="lista_items[index].ListaInfo[2]"
+            ><span v-if="item.ListaInfo[2] != undefined"
               >{{ lista_items[index].ListaInfo[2].Prezzo }} €</span
             >
             <span v-else>/</span></md-table-cell
@@ -108,14 +108,14 @@
                 ? 'filtro-alert'
                 : 'discount'
             "
-            ><span v-if="lista_items[index].ListaInfo[2]"
+            ><span v-if="item.ListaInfo[2]"
               >{{ lista_items[index].ListaInfo[2].Sconto }} %</span
             ><span v-else>/</span></md-table-cell
           >
           <md-table-cell v-show="third_exist" class="stock is-dashboard"
             ><span
               v-if="
-                index < lista_items.length ||
+                item.ListaInfo[2] &&
                 lista_items[index].ListaInfo[2].InStock == 'No'
               "
               ><md-icon class="no-status">cancel</md-icon></span
@@ -130,8 +130,8 @@
                 ? 'filtro-alert'
                 : 'price'
             "
-            ><span v-if="lista_items[index].ListaInfo[3]"
-              >{{ lista_items[index].ListaInfo[3].Prezzo }} €</span
+            ><span v-if="item.ListaInfo[3]"
+              >{{ item.ListaInfo[3].Prezzo }} €</span
             >
             <span v-else>/</span></md-table-cell
           >
@@ -143,16 +143,12 @@
                 ? 'filtro-alert'
                 : 'price'
             "
-            ><span v-if="lista_items[index].ListaInfo[3]"
-              >{{ lista_items[index].ListaInfo[3].Sconto }} %</span
+            ><span v-if="item.ListaInfo[3]"
+              >{{ item.ListaInfo[3].Sconto }} %</span
             ><span v-else>/</span></md-table-cell
           >
           <md-table-cell v-show="fourth_exist" class="stock is-dashboard"
-            ><span
-              v-if="
-                index < lista_items.length ||
-                lista_items[index].ListaInfo[3].InStock == 'No'
-              "
+            ><span v-if="item.ListaInfo[3] && item.ListaInfo[3].InStock == 'No'"
               ><md-icon class="no-status">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
