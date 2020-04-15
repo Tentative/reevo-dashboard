@@ -6,7 +6,7 @@ export default {
     itm_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Items",
-      VersioneClient: "0.3.7",
+      VersioneClient: "0.3.8",
       Url: window.location.href,
       // define JsonRichiesta from mutations ===> {itm}
     },

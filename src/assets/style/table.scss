@@ -145,7 +145,11 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   align-items: center;
 }
 
-.md-table-head.retailer .md-table-head-container {
+.retailer .md-table-head-container {
+  padding-right: 32px;
+}
+
+.retailer .md-table-head-container {
   text-align: center !important;
 }
 
