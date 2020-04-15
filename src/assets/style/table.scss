@@ -148,6 +148,10 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   white-space: nowrap;
 }
 
+.md-table-cell.filtro-alert .md-table-cell-container {
+  white-space: nowrap;
+}
+
 .md-table-cell.item {
   width: 280px;
   max-width: 280px;
