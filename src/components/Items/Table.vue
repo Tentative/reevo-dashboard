@@ -164,14 +164,17 @@
                 : 'price'
             "
             ><span v-if="item.ListaInfo[3]"
-              >{{ item.ListaInfo[3].Sconto }} %</span
+              >{{
+                Math.abs(item.ListaInfo[2].Sconto).toString().slice(0, 2)
+              }}
+              %</span
             ><span v-else class="unavailable"
               ><md-icon>remove</md-icon></span
             ></md-table-cell
           >
           <md-table-cell v-show="fourth_exist" class="stock is-dashboard"
             ><span v-if="item.ListaInfo[3] && item.ListaInfo[3].InStock == 'No'"
-              ><md-icon class="no-status">cancel</md-icon></span
+              ><md-icon class="no-status-item">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
         </md-table-row>
