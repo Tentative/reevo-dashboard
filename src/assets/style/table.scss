@@ -135,6 +135,16 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   max-width: 65px;
 }
 
+.stock .md-table-cell-container {
+  background-color: #f4f6fb !important;
+  border-right: 3px solid #88b3dd;
+  // padding-left: 15px;
+  border-radius: 3px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .md-table-head.retailer .md-table-head-container {
   text-align: center !important;
 }
