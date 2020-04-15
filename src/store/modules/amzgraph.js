@@ -237,7 +237,7 @@ export default {
     amzgraph_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "AMZGraph",
-      VersioneClient: "1.0.3",
+      VersioneClient: "0.3.5",
       Url: window.location.href,
       //define JsonRichiesta from mutations;
     },
