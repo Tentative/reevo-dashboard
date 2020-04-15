@@ -80,7 +80,10 @@
                 : 'discount'
             "
             ><span v-if="item.ListaInfo[1] != undefined"
-              >{{ lista_items[index].ListaInfo[1].Sconto }} %</span
+              >{{
+                Math.abs(item.ListaInfo[1].Sconto).toString().slice(0, 2)
+              }}
+              %</span
             ><span v-else class="unavailable"
               ><md-icon>remove</md-icon></span
             ></md-table-cell
@@ -91,7 +94,7 @@
                 item.ListaInfo[1] &&
                 lista_items[index].ListaInfo[1].InStock == 'No'
               "
-              ><md-icon class="no-status">cancel</md-icon></span
+              ><md-icon class="no-status-item">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
           <!-- third retailer -->
