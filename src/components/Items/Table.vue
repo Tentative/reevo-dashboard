@@ -12,6 +12,7 @@
           <md-table-head
             v-for="(item, index) in table_items.ListaRetailers"
             :key="index"
+            class="retailer"
             colspan="3"
           >
             <span v-if="index <= '3'">{{ item }}</span></md-table-head
@@ -51,7 +52,7 @@
               v-if="
                 index < lista_items.length && item.ListaInfo[0].InStock == 'No'
               "
-              ><md-icon class="no-status">cancel</md-icon></span
+              ><md-icon class="no-status-item">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
           <!-- second retailer -->

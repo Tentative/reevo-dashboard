@@ -123,43 +123,67 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
 
 .item.is-dashboard {
   width: 400px;
-  max-width: 400px
+  max-width: 400px;
 }
 .item-dashboard {
   display: flex;
   justify-content: center;
 }
 .md-table-cell.prezzo.is-dashboard,
-.md-table-cell.cheap.is-dashboard 
-.md-table-cell.stock.is-dashboard  {
+.md-table-cell.cheap.is-dashboard .md-table-cell.stock.is-dashboard {
   width: 65px;
   max-width: 65px;
 }
 
-.unavailable i{
-  color: rgba(0,0,0,.26)!important;
+.md-table-head.retailer .md-table-head-container {
+  text-align: center !important;
 }
 
-@media only screen and (max-width: 1280px) {
+.unavailable i {
+  color: rgba(0, 0, 0, 0.26) !important;
+}
 
+.md-table-cell.price .md-table-cell-container,
+.md-table-cell.discount .md-table-cell-container {
+  white-space: nowrap;
+}
 
-  .md-table-cell.item .md-table-cell-container {
-    width: 280px;
-    max-width: 280px;
-  }
-  .price .md-table-cell-container,
-  .filtro-alert .md-table-cell-container,
-  .discount .md-table-cell-container
-   {
-    padding: 0 10px 0 0!important;
-    width: 55px!important;
-  }
-  .stock .md-table-cell-container {
-    padding: 0 32px 0 10px!important;
-    width: 55px!important;
-  }
-  .md-icon.md-theme-default.md-icon-font.no-status {
+.md-table-cell.item {
+  width: 280px;
+  max-width: 280px;
+}
+
+.stock .md-table-cell-container {
+  padding: 0 32px 0 10px !important;
+  width: 55px !important;
+}
+
+.price .md-table-cell-container,
+.filtro-alert .md-table-cell-container,
+.discount .md-table-cell-container {
+  padding: 0 10px 0 0 !important;
+  width: 55px !important;
+}
+
+.md-table-cell.stock.is-dashboard {
+  padding-right: 32px;
+}
+
+.md-icon.md-theme-default.md-icon-font.no-status-item {
   color: $error-status;
   font-size: $responsive-icon-size !important;
 }
+
+@media only screen and (max-width: 1280px) {
+  .price .md-table-cell-container,
+  .filtro-alert .md-table-cell-container,
+  .discount .md-table-cell-container {
+    padding: 0 10px 0 0 !important;
+    width: 55px !important;
+  }
+
+  .md-icon.md-theme-default.md-icon-font.no-status {
+    color: $error-status;
+    font-size: $responsive-icon-size !important;
+  }
 }
