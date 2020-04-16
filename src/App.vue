@@ -92,13 +92,12 @@ import { mapGetters } from "vuex";
 export default {
   name: "App",
   data() {
-    return {
-      menuVisible: false,
-    };
+    return {};
   },
   computed: {
     ...mapGetters({
       isLoggedIn: "isLoggedIn",
+      menuVisible: "menuVisible",
     }),
     isHome() {
       if (this.$route.name == "Amz" || this.$route.name == "Dashboard") {
@@ -134,7 +133,7 @@ export default {
       });
     },
     toggleMenu() {
-      this.menuVisible = !this.menuVisible;
+      this.$store.commit("toggleMenu");
     },
   },
 };

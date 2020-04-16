@@ -25,17 +25,15 @@
           Stock
         </md-table-head>
         <md-table-head class="rank">
-          Sales Rank
+          {{ computedRank }}
         </md-table-head>
         <md-table-head class="track">
-          Fast Track
+          {{ computedFT }}
         </md-table-head>
         <md-table-head class="buybox">
-          Acquistabile
+          {{ computedBuyable }}
         </md-table-head>
-        <md-table-head class="reviews">
-          Recensioni Negative
-        </md-table-head>
+        <md-table-head class="reviews"> {{ computedReviews }} </md-table-head>
       </md-table-row>
       <md-table-row v-for="(item, index) in items" :key="index">
         <md-table-cell
@@ -138,6 +136,7 @@ export default {
       amzGraphVisible: "amzGraphVisible",
       screenshotVisible: "screenshotVisible",
       graphParams: "graphParams",
+      menuVisible: "menuVisible",
     }),
     router() {
       return this.$route.name;
@@ -147,6 +146,30 @@ export default {
     },
     graphParams() {
       return this.$store.getters.graphParams;
+    },
+    computedRank() {
+      if (this.menuVisible && screen.width <= 1280) {
+        return "Rank";
+      }
+      return "Sales Rank";
+    },
+    computedFT() {
+      if (this.menuVisible && screen.width <= 1280) {
+        return "F.Track";
+      }
+      return "Fast Track";
+    },
+    computedBuyable() {
+      if (this.menuVisible && screen.width <= 1280) {
+        return "Acq.";
+      }
+      return "Acquistabile";
+    },
+    computedReviews() {
+      if (this.menuVisible && screen.width <= 1280) {
+        return "Rec. Negative";
+      }
+      return "Recensioni Negative";
     },
   },
 };

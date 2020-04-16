@@ -209,12 +209,3 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   color: $error-status;
   font-size: $icon-size !important;
 }
-
-@media only screen and (max-width: 1280px) {
-  .price .md-table-cell-container,
-  .filtro-alert .md-table-cell-container,
-  .discount .md-table-cell-container {
-    padding: 0 10px 0 10px !important;
-    width: 55px !important;
-  }
-}

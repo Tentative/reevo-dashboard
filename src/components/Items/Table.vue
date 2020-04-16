@@ -189,6 +189,7 @@ import Alerts from "./Alerts";
 export default {
   name: "Table",
   components: { Alerts },
+
   data() {
     return {
       // retailers: [],
