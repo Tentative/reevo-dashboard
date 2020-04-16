@@ -70,6 +70,7 @@ export default {
     ...mapGetters({
       authStatus: "authStatus",
       isLoggedIn: "isLoggedIn",
+      VersioneClient: "VersioneClient",
     }),
   },
 

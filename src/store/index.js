@@ -6,6 +6,7 @@ import amz from "./modules/amz.js";
 import amzgraph from "./modules/amzgraph.js";
 import screenshot from "./modules/screenshot.js";
 import items from "./modules/items.js";
+import global from "./modules/global.js";
 import axios from "axios";
 
 Vue.use(Vuex);
@@ -19,8 +20,8 @@ export default new Vuex.Store({
     amzgraph,
     screenshot,
     items,
+    global,
   },
-  state: {},
   mutations: {},
   actions: {},
   getters,

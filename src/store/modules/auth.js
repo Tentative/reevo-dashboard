@@ -1,4 +1,5 @@
 import axios from "axios";
+import global from "@/store/modules/global.js";
 
 export default {
   state: {
@@ -7,7 +8,7 @@ export default {
     login: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Login",
-      VersioneClient: "0.3.8",
+      VersioneClient: global.state.VersioneClient,
       Url: window.location.href,
     },
   },

@@ -32,4 +32,5 @@ export default {
   ipp: () => items.state.itm.ItemsPerPagina,
   tp: () => items.state.itm.NumeroPagina,
   ttp: () => items.state.itm.QtaPagine,
+  VersioneClient: (state, rootState) => rootState.state.VersioneClient,
 };

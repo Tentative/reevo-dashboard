@@ -1,4 +1,5 @@
 import axios from "axios";
+import global from "@/store/modules/global.js";
 
 export default {
   state: {
@@ -6,7 +7,7 @@ export default {
     amz_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "AMZ",
-      VersioneClient: "0.3.8",
+      VersioneClient: global.state.VersioneClient,
       Url: window.location.href,
       // define JsonRichiesta from mutations ===> {amz}
     },

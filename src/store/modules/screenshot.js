@@ -1,4 +1,6 @@
 import axios from "axios";
+import global from "@/store/modules/global.js";
+
 export default {
   state: {
     screenshotVisible: false,
@@ -7,7 +9,7 @@ export default {
     screen_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "Screenshot",
-      VersioneClient: "0.3.8",
+      VersioneClient: global.state.VersioneClient,
       Url: window.location.href,
     },
   },
