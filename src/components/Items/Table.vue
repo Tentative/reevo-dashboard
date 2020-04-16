@@ -157,7 +157,7 @@
           >
           <md-table-cell
             v-show="fourth_exist"
-            class="cheap is-dashboard"
+            class="discount is-dashboard"
             :class="
               item.ListaInfo[3] != undefined && item.ListaInfo[3].IsAlert
                 ? 'filtro-alert'
