@@ -4,8 +4,7 @@ $error-status: #f05545;
 $error-background: #ffb8ab;
 $text-on-dark: #fafafa;
 $text-on-alert: #000000;
-$icon-size: 1.3rem;
-$responsive-icon-size: 1rem;
+$icon-size: 1rem;
 $filtro-alert: rgba(255, 0, 0, 0.12);
 
 .thumb img {
@@ -135,9 +134,9 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   max-width: 65px;
 }
 
-.stock .md-table-cell-container {
-  background-color: #f4f6fb !important;
-  border-right: 3px solid #88b3dd;
+.stock-item .md-table-cell-container {
+  background-color: white !important;
+  border-right: 3px solid rgba(0, 0, 0, 0.54);
   // padding-left: 15px;
   border-radius: 3px;
   height: 100%;
@@ -170,7 +169,10 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   width: 280px;
   max-width: 280px;
 }
-
+.discount.is-dashboard,
+.filtro-alert.is-dashboard:not(.fix) {
+  font-size: 0.7rem;
+}
 .stock .md-table-cell-container {
   padding: 0 32px 0 10px !important;
   width: 55px !important;
@@ -187,9 +189,9 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   padding-right: 32px;
 }
 
-.md-icon.md-theme-default.md-icon-font.no-status-item {
+.md-icon.md-theme-default.md-icon-font.no-status {
   color: $error-status;
-  font-size: $responsive-icon-size !important;
+  font-size: $icon-size !important;
 }
 
 @media only screen and (max-width: 1280px) {
@@ -198,10 +200,5 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   .discount .md-table-cell-container {
     padding: 0 10px 0 10px !important;
     width: 55px !important;
-  }
-
-  .md-icon.md-theme-default.md-icon-font.no-status {
-    color: $error-status;
-    font-size: $responsive-icon-size !important;
   }
 }

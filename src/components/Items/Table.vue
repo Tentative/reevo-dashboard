@@ -47,12 +47,12 @@
               %</span
             ></md-table-cell
           >
-          <md-table-cell v-show="first_exist" class="stock is-dashboard"
+          <md-table-cell v-show="first_exist" class="stock-item is-dashboard"
             ><span
               v-if="
                 index < lista_items.length && item.ListaInfo[0].InStock == 'No'
               "
-              ><md-icon class="no-status-item">cancel</md-icon></span
+              ><md-icon class="no-status">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
           <!-- second retailer -->
@@ -88,13 +88,13 @@
               ><md-icon>remove</md-icon></span
             ></md-table-cell
           >
-          <md-table-cell v-show="second_exist" class="stock is-dashboard"
+          <md-table-cell v-show="second_exist" class="stock-item is-dashboard"
             ><span
               v-if="
                 item.ListaInfo[1] &&
                 lista_items[index].ListaInfo[1].InStock == 'No'
               "
-              ><md-icon class="no-status-item">cancel</md-icon></span
+              ><md-icon class="no-status">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
           <!-- third retailer -->
@@ -130,13 +130,13 @@
               ><md-icon>remove</md-icon></span
             ></md-table-cell
           >
-          <md-table-cell v-show="third_exist" class="stock is-dashboard"
+          <md-table-cell v-show="third_exist" class="stock-item is-dashboard"
             ><span
               v-if="
                 item.ListaInfo[2] &&
                 lista_items[index].ListaInfo[2].InStock == 'No'
               "
-              ><md-icon class="no-status-item">cancel</md-icon></span
+              ><md-icon class="no-status">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
           <!-- fourth retailer -->
@@ -172,9 +172,9 @@
               ><md-icon>remove</md-icon></span
             ></md-table-cell
           >
-          <md-table-cell v-show="fourth_exist" class="stock is-dashboard"
+          <md-table-cell v-show="fourth_exist" class="stock-item is-dashboard"
             ><span v-if="item.ListaInfo[3] && item.ListaInfo[3].InStock == 'No'"
-              ><md-icon class="no-status-item">cancel</md-icon></span
+              ><md-icon class="no-status">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
         </md-table-row>
