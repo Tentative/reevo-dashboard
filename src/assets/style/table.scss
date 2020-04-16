@@ -124,10 +124,7 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   width: 400px;
   max-width: 400px;
 }
-// .item-dashboard {
-//   display: flex;
-//   justify-content: center;
-// }
+
 .md-table-cell.prezzo.is-dashboard,
 .md-table-cell.cheap.is-dashboard .md-table-cell.stock.is-dashboard {
   width: 65px;
@@ -146,6 +143,19 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
 
 .retailer .md-table-head-container {
   padding-right: 32px;
+}
+
+.md-table-head:not(.name) .md-table-head-container {
+  padding: 16px 0;
+  text-align: center;
+}
+
+.md-table-head-label {
+  padding: 0 !important;
+}
+
+.item .md-table-cell-container {
+  padding: 0 32px 0 0 !important;
 }
 
 .retailer .md-table-head-container {
@@ -176,14 +186,19 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
 }
 .stock .md-table-cell-container {
   padding: 0 32px 0 10px !important;
-  width: 55px !important;
+  // width: 55px !important;
 }
 
 .price .md-table-cell-container,
 .filtro-alert .md-table-cell-container,
-.discount .md-table-cell-container {
+.discount .md-table-cell-container,
+.stock .md-table-cell-container,
+.rank .md-table-cell-container,
+.track .md-table-cell-container,
+.buybox .md-table-cell-container,
+.reviews .md-table-cell-container {
   padding: 0 10px 0 10px !important;
-  width: 55px !important;
+  // width: 55px !important;
 }
 
 .md-table-cell.stock.is-dashboard {
