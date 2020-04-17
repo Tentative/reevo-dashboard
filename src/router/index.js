@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import { Login } from "@/components";
-import { Amz, Items, Price, Main } from "@/views";
+import { Amz, Items, Price, Main, Parametri } from "@/views";
 import store from "@/store/index.js";
 
 Vue.use(Router);
@@ -78,6 +78,21 @@ const routes = [
         {
           name: "Main",
           content: "Main Dashboard",
+        },
+      ],
+    },
+  },
+  {
+    path: "/parametri",
+    name: "Parametri",
+    component: Parametri,
+    meta: {
+      requiresAuth: true,
+      title: "Parametri",
+      metaTags: [
+        {
+          name: "Parametri",
+          content: "Lista Parametri",
         },
       ],
     },
