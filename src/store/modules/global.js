@@ -1,6 +1,6 @@
 export default {
   state: {
-    VersioneClient: "0.4.5",
+    VersioneClient: "0.4.6",
     menuVisible: false,
   },
   mutations: {

@@ -8,6 +8,8 @@ import screenshot from "./modules/screenshot.js";
 import items from "./modules/items.js";
 import global from "./modules/global.js";
 import axios from "axios";
+import price from "./modules/price.js";
+import main from "./modules/main.js";
 
 Vue.use(Vuex);
 
@@ -21,6 +23,8 @@ export default new Vuex.Store({
     screenshot,
     items,
     global,
+    price,
+    main,
   },
   mutations: {},
   actions: {},

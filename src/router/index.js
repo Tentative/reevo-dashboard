@@ -1,8 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import { Login } from "@/components";
-import { Amz, Items } from "@/views";
-// import Home from "@/views/Home.vue";
+import { Amz, Items, Price, Main } from "@/views";
 import store from "@/store/index.js";
 
 Vue.use(Router);
@@ -49,6 +48,36 @@ const routes = [
         {
           name: "items",
           content: "Items Dashboard",
+        },
+      ],
+    },
+  },
+  {
+    path: "/price",
+    name: "Price",
+    component: Price,
+    meta: {
+      requiresAuth: true,
+      title: "Price",
+      metaTags: [
+        {
+          name: "Price",
+          content: "Price Dashboard",
+        },
+      ],
+    },
+  },
+  {
+    path: "/main",
+    name: "Main",
+    component: Main,
+    meta: {
+      requiresAuth: true,
+      title: "Main",
+      metaTags: [
+        {
+          name: "Main",
+          content: "Main Dashboard",
         },
       ],
     },

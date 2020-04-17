@@ -61,20 +61,18 @@
             <router-link to="/items">
               <md-icon class="dashboard-icon">send</md-icon></router-link
             >
-            <span class="md-list-item-text">Sent Mail</span>
+            <span class="md-list-item-text">Items Dashboard</span>
           </md-list-item>
 
           <md-list-item
-            :class="router == '' ? 'amz-active' : 'quick-navigation'"
-          >
-            <md-icon>delete</md-icon>
-            <span class="md-list-item-text">Trash</span>
+            :class="router == 'Price' ? 'amz-active' : 'quick-navigation'"
+            ><router-link to="/price"> <md-icon>delete</md-icon></router-link>
+            <span class="md-list-item-text">Price Graph</span>
           </md-list-item>
 
           <md-list-item
-            :class="router == '' ? 'amz-active' : 'quick-navigation'"
-          >
-            <md-icon>error</md-icon>
+            :class="router == 'Main' ? 'amz-active' : 'quick-navigation'"
+            ><router-link to="/main"> <md-icon>error</md-icon></router-link>
             <span class="md-list-item-text">Spam</span>
           </md-list-item>
         </md-list>
