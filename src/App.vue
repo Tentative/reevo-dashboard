@@ -37,6 +37,11 @@
             <md-list-item><span>F.A.Q</span></md-list-item>
             <md-list-item><span>Centro Assistenza</span></md-list-item>
             <md-list-item><span>Import Items</span></md-list-item>
+            <md-list-item
+              ><router-link to="/parametri"
+                ><span>Parametri</span></router-link
+              ></md-list-item
+            >
           </md-list>
         </md-content>
         <md-divider v-show="menuVisible"></md-divider>
