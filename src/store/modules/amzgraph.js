@@ -4,9 +4,7 @@ import global from "@/store/modules/global.js";
 
 export default {
   state: {
-    months: ["Gen", "Feb", "Mar", "Apr"],
     amzGraphVisible: false,
-    currentDate: new Date(),
     graph_params: {},
     graph_res: {},
     graph_days: [],

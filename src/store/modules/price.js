@@ -25,6 +25,16 @@ export default {
       VersioneClient: global.state.VersioneClient,
       Url: window.location.href,
     },
+    chartdata: {
+      labels: [],
+      datasets: [],
+    },
+    options: {
+      legend: {
+        display: true,
+        position: "bottom",
+      },
+    },
     prcdata: {},
     retailers: {},
     curve: {},
@@ -39,6 +49,11 @@ export default {
       state.retailers = prcdata.ListaRetailers;
       state.curve = prcdata.ListaCurve;
       state.status = "Success";
+    },
+    fill_chart(state, { prcdata }) {
+      for (const label of prcdata.ListaRetailers) {
+        state.chartdata.datasets.push({ label });
+      }
     },
     prc_error(state, err) {
       state.status = err;
@@ -59,7 +74,9 @@ export default {
         })
           .then((res) => {
             const prcdata = JSON.parse(res.data.JsonRisposta);
+            commit("fill_chart", { prcdata });
             commit("prc_success", { prcdata });
+
             resolve(res);
           })
           .catch((err) => {
@@ -71,5 +88,7 @@ export default {
   },
   getters: {
     status: (state) => state.status,
+    pricedata: (state) => state.chartdata,
+    priceoptions: (state) => state.options,
   },
 };

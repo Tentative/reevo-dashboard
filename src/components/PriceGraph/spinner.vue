@@ -1,6 +1,6 @@
 <template>
   <div class="loading-price">
-    <div v-if="status == 'loading'" class="loading-overlay">
+    <div class="loading-overlay">
       <md-progress-spinner
         md-mode="indeterminate"
         :md-stroke="2"

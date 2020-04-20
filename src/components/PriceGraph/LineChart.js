@@ -18,7 +18,6 @@ export default {
   computed: {},
   mounted() {
     this.renderChart(this.chartdata, this.options);
-    // this.updateChart();
   },
   destroyed() {
     this.$store.commit("clear_chart");
