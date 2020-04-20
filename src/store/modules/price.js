@@ -26,14 +26,18 @@ export default {
       Url: window.location.href,
     },
     prcdata: {},
+    retailers: {},
+    curve: {},
   },
   mutations: {
     prc_request(state) {
       state.status = "loading";
       state.price_request.JsonRichiesta = JSON.stringify(state.price_graph);
     },
-    prc_success(state, prcdata) {
+    prc_success(state, { prcdata }) {
       state.prcdata = prcdata;
+      state.retailers = prcdata.ListaRetailers;
+      state.curve = prcdata.ListaCurve;
       state.status = "Success";
     },
     prc_error(state, err) {
@@ -55,7 +59,7 @@ export default {
         })
           .then((res) => {
             const prcdata = JSON.parse(res.data.JsonRisposta);
-            commit("prc_success", prcdata);
+            commit("prc_success", { prcdata });
             resolve(res);
           })
           .catch((err) => {
@@ -64,5 +68,8 @@ export default {
           });
       });
     },
+  },
+  getters: {
+    status: (state) => state.status,
   },
 };
