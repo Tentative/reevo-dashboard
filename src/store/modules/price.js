@@ -92,6 +92,9 @@ export default {
                 data: [...new Array(31)].map(() =>
                   Math.floor(Math.random() * 31)
                 ),
+                backgroundColor: "transparent",
+                borderWidth: 3,
+                borderColor: "#" + label.Colore,
               });
               scales.push({
                 id: label.TestoLegenda,
