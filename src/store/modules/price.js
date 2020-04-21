@@ -1,5 +1,6 @@
 import axios from "axios";
 import global from "@/store/modules/global.js";
+import moment from "moment";
 export default {
   state: {
     status: "",
@@ -30,9 +31,21 @@ export default {
       datasets: [],
     },
     options: {
+      // responsive: true,
+      // maintainAspectRatio: true,
       legend: {
         display: true,
         position: "bottom",
+        scales: {
+          xAxes: [
+            {
+              reverse: true,
+              ticks: {
+                reverse: true,
+              },
+            },
+          ],
+        },
       },
     },
     prcdata: {},
@@ -44,16 +57,12 @@ export default {
       state.status = "loading";
       state.price_request.JsonRichiesta = JSON.stringify(state.price_graph);
     },
-    prc_success(state, { prcdata }) {
+    prc_success(state, { prcdata, labels }) {
       state.prcdata = prcdata;
+      state.chartdata.labels = labels;
       state.retailers = prcdata.ListaRetailers;
       state.curve = prcdata.ListaCurve;
       state.status = "Success";
-    },
-    fill_chart(state, { prcdata }) {
-      for (const label of prcdata.ListaRetailers) {
-        state.chartdata.datasets.push({ label });
-      }
     },
     prc_error(state, err) {
       state.status = err;
@@ -74,8 +83,22 @@ export default {
         })
           .then((res) => {
             const prcdata = JSON.parse(res.data.JsonRisposta);
-            commit("fill_chart", { prcdata });
-            commit("prc_success", { prcdata });
+            for (const label of prcdata.ListaRetailers) {
+              state.chartdata.datasets.push({
+                label: label,
+                yAxisID: label,
+              });
+            }
+            let labels = [...new Array(31)].map((i, idx) =>
+              moment
+                .utc()
+                .startOf("day")
+                .subtract(idx, "days")
+                .utcOffset(1)
+                .format("DD MMM")
+            );
+
+            commit("prc_success", { prcdata, labels });
 
             resolve(res);
           })
