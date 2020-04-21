@@ -20,6 +20,6 @@ export default {
     this.renderChart(this.chartdata, this.options);
   },
   destroyed() {
-    this.$store.commit("clear_chart");
+    this.$store.commit("clear_price");
   },
 };

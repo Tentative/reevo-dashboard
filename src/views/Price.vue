@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="md-title">Price Graph</div>
-    <md-dialog :md-active.sync="loading" class="graph md-scrollbar">
+    <md-dialog :md-active.sync="loading" class="graph md-scrollbar loading">
       <spinner />
     </md-dialog>
     <div class="container">
@@ -38,11 +38,13 @@ export default {
   },
 
   async mounted() {
+    this.loading = true;
     this.loaded = false;
     try {
       const { res } = await this.$store.dispatch("prc_call");
       this.chartdata = res;
       this.loaded = true;
+      this.loading = false;
     } catch (e) {
       console.log(e);
     }

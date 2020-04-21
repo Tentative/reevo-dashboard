@@ -37,14 +37,7 @@ export default {
         display: true,
         position: "bottom",
         scales: {
-          xAxes: [
-            {
-              reverse: true,
-              ticks: {
-                reverse: true,
-              },
-            },
-          ],
+          xAxes: [],
         },
       },
     },
@@ -57,15 +50,20 @@ export default {
       state.status = "loading";
       state.price_request.JsonRichiesta = JSON.stringify(state.price_graph);
     },
-    prc_success(state, { prcdata, labels }) {
+    prc_success(state, { prcdata, labels, pdata }) {
       state.prcdata = prcdata;
       state.chartdata.labels = labels;
+      state.chartdata.datasets = pdata;
       state.retailers = prcdata.ListaRetailers;
       state.curve = prcdata.ListaCurve;
       state.status = "Success";
     },
     prc_error(state, err) {
       state.status = err;
+    },
+    clear_price(state) {
+      state.chartdata.labels = [];
+      state.chartdata.datasets = [];
     },
   },
   actions: {
@@ -83,10 +81,14 @@ export default {
         })
           .then((res) => {
             const prcdata = JSON.parse(res.data.JsonRisposta);
-            for (const label of prcdata.ListaRetailers) {
-              state.chartdata.datasets.push({
-                label: label,
-                yAxisID: label,
+            let pdata = [];
+            for (const label of prcdata.ListaCurve) {
+              pdata.push({
+                label: label.TestoLegenda,
+                yAxisID: label.TestoLegenda,
+                data: [...new Array(31)].map(() =>
+                  Math.floor(Math.random() * 31)
+                ),
               });
             }
             let labels = [...new Array(31)].map((i, idx) =>
@@ -95,10 +97,11 @@ export default {
                 .startOf("day")
                 .subtract(idx, "days")
                 .utcOffset(1)
-                .format("DD MMM")
+                .format("YYYY-MM-DD")
             );
+            labels.reverse();
 
-            commit("prc_success", { prcdata, labels });
+            commit("prc_success", { prcdata, labels, pdata });
 
             resolve(res);
           })
