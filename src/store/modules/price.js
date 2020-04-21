@@ -36,9 +36,9 @@ export default {
       legend: {
         display: true,
         position: "bottom",
-        scales: {
-          xAxes: [],
-        },
+      },
+      scales: {
+        yAxes: [],
       },
     },
     prcdata: {},
@@ -50,10 +50,11 @@ export default {
       state.status = "loading";
       state.price_request.JsonRichiesta = JSON.stringify(state.price_graph);
     },
-    prc_success(state, { prcdata, labels, pdata }) {
+    prc_success(state, { prcdata, labels, pdata, scales }) {
       state.prcdata = prcdata;
       state.chartdata.labels = labels;
       state.chartdata.datasets = pdata;
+      state.options.scales.yAxes = scales;
       state.retailers = prcdata.ListaRetailers;
       state.curve = prcdata.ListaCurve;
       state.status = "Success";
@@ -82,13 +83,19 @@ export default {
           .then((res) => {
             const prcdata = JSON.parse(res.data.JsonRisposta);
             let pdata = [];
+            let scales = [];
             for (const label of prcdata.ListaCurve) {
               pdata.push({
                 label: label.TestoLegenda,
                 yAxisID: label.TestoLegenda,
+                type: "line",
                 data: [...new Array(31)].map(() =>
                   Math.floor(Math.random() * 31)
                 ),
+              });
+              scales.push({
+                id: label.TestoLegenda,
+                position: "left",
               });
             }
             let labels = [...new Array(31)].map((i, idx) =>
@@ -101,7 +108,7 @@ export default {
             );
             labels.reverse();
 
-            commit("prc_success", { prcdata, labels, pdata });
+            commit("prc_success", { prcdata, labels, pdata, scales });
 
             resolve(res);
           })
