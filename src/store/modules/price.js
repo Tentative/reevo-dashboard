@@ -31,8 +31,8 @@ export default {
       datasets: [],
     },
     options: {
-      // responsive: true,
-      // maintainAspectRatio: true,
+      responsive: true,
+      maintainAspectRatio: false,
       legend: {
         display: true,
         position: "bottom",

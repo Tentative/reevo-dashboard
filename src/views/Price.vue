@@ -9,6 +9,7 @@
         v-if="loaded"
         :chartdata.sync="pricedata"
         :options.sync="priceoptions"
+        style="width: 1200px; height: 600px;"
       ></LineChart>
     </div>
   </div>
