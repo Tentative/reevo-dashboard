@@ -102,6 +102,11 @@ export default {
                 ticks: {
                   display: idx == 0 ? true : false,
                 },
+                gridLines: {
+                  display: idx == 0 ? true : false,
+                  drawTicks: idx == 0 ? true : false,
+                  offsetGridLines: false,
+                },
               });
             });
             let labels = [...new Array(31)].map((i, idx) =>
