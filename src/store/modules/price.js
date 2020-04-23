@@ -101,6 +101,9 @@ export default {
                 position: "left",
                 ticks: {
                   display: idx == 0 ? true : false,
+                  callback: function (value) {
+                    return value + " " + "€";
+                  },
                 },
                 gridLines: {
                   display: idx == 0 ? true : false,
