@@ -84,7 +84,7 @@ export default {
             const prcdata = JSON.parse(res.data.JsonRisposta);
             let pdata = [];
             let scales = [];
-            for (const label of prcdata.ListaCurve) {
+            prcdata.ListaCurve.forEach((label, idx) => {
               pdata.push({
                 label: label.TestoLegenda,
                 yAxisID: label.TestoLegenda,
@@ -99,8 +99,11 @@ export default {
               scales.push({
                 id: label.TestoLegenda,
                 position: "left",
+                ticks: {
+                  display: idx == 0 ? true : false,
+                },
               });
-            }
+            });
             let labels = [...new Array(31)].map((i, idx) =>
               moment
                 .utc()
