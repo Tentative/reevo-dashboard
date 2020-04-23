@@ -94,7 +94,7 @@ export default {
                 ),
                 backgroundColor: "transparent",
                 borderWidth: 3,
-                borderColor: "#" + label.Colore,
+                borderColor: "#" + label.Colore.toString().slice(2),
               });
               scales.push({
                 id: label.TestoLegenda,
