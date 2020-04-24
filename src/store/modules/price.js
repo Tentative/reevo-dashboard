@@ -82,16 +82,25 @@ export default {
         })
           .then((res) => {
             const prcdata = JSON.parse(res.data.JsonRisposta);
+            let labels = [...new Array(31)].map((i, idx) =>
+              moment
+                .utc()
+                .startOf("day")
+                .subtract(idx, "days")
+                .utcOffset(1)
+                .format("YYYY-MM-DD")
+            );
+            labels.reverse();
             let pdata = [];
             let scales = [];
+            let last = null;
+            let last_price = [];
             prcdata.ListaCurve.forEach((label, idx) => {
               pdata.push({
                 label: label.TestoLegenda,
                 yAxisID: label.TestoLegenda,
                 type: "line",
-                data: [...new Array(31)].map(() =>
-                  Math.floor(Math.random() * 31)
-                ),
+                data: label.ListaValori,
                 backgroundColor: "transparent",
                 borderWidth: 3,
                 borderColor: "#" + label.Colore.toString().slice(2),
@@ -112,15 +121,15 @@ export default {
                 },
               });
             });
-            let labels = [...new Array(31)].map((i, idx) =>
-              moment
-                .utc()
-                .startOf("day")
-                .subtract(idx, "days")
-                .utcOffset(1)
-                .format("YYYY-MM-DD")
-            );
-            labels.reverse();
+            labels.forEach((date, idx) => {
+              pdata.forEach((item) => {
+                item.data.forEach((obj, index, arr) => {
+                  last = obj.DataValore == date ? obj.Valore : last;
+                  arr[idx] = idx > index ? ;
+                });
+              });
+            });
+            console.log(pdata);
 
             commit("prc_success", { prcdata, labels, pdata, scales });
 
