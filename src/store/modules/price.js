@@ -122,14 +122,18 @@ export default {
               });
             });
             labels.forEach((date, idx) => {
-              pdata.forEach((item) => {
-                item.data.forEach((obj, index, arr) => {
-                  last = obj.DataValore == date ? obj.Valore : last;
-                  arr[idx] = idx > index ? ;
+              pdata.forEach((obj, dio) => {
+                obj.data.forEach((item, index, arr) => {
+                  if (item.DataValore == date) {
+                    last = item.Valore;
+                  }
+                  arr[idx] = last;
+                  // console.log(index);
                 });
+                console.log(dio);
               });
+              // console.log(idx);
             });
-            console.log(pdata);
 
             commit("prc_success", { prcdata, labels, pdata, scales });
 
