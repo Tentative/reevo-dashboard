@@ -39,6 +39,18 @@ export default {
       },
       scales: {
         yAxes: [],
+        xAxes: [
+          {
+            ticks: {
+              userCallback: function (item, index) {
+                if (!(index % 3)) return moment(item).format("DD MMM");
+              },
+              autoSkip: true,
+              maxRotation: 0,
+              maxTicksLimit: 30,
+            },
+          },
+        ],
       },
     },
     prcdata: {},
@@ -88,7 +100,7 @@ export default {
                 .startOf("day")
                 .subtract(idx, "days")
                 .utcOffset(1)
-                .format("YYYY-MM-DD")
+                .format("DD MMM")
             );
             let pdata = [];
             let scales = [];
@@ -100,6 +112,9 @@ export default {
                 yAxisID: label.TestoLegenda,
                 type: "line",
                 data: label.ListaValori.map((date, idx, arr) => {
+                  date.DataValore = moment
+                    .utc(date.DataValore)
+                    .format("DD MMM");
                   return {
                     x: date.DataValore,
                     y: date.Valore,
