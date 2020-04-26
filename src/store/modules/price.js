@@ -90,7 +90,6 @@ export default {
                 .utcOffset(1)
                 .format("YYYY-MM-DD")
             );
-            labels.reverse();
             let pdata = [];
             let scales = [];
             let last = null;
@@ -100,7 +99,15 @@ export default {
                 label: label.TestoLegenda,
                 yAxisID: label.TestoLegenda,
                 type: "line",
-                data: label.ListaValori,
+                data: label.ListaValori.map((date, idx, arr) => {
+                  return {
+                    x: date.DataValore,
+                    y: date.Valore,
+                  };
+                }),
+                temp: label.ListaValori.map((value, index) => {
+                  return (value = value.Valore);
+                }),
                 backgroundColor: "transparent",
                 borderWidth: 3,
                 borderColor: "#" + label.Colore.toString().slice(2),
@@ -122,14 +129,18 @@ export default {
               });
             });
 
-            pdata.forEach((set, idx, arr) => {
-              labels.forEach((label, index) => {
-                set.data.forEach((value, i, array) => {
-                  // cazzafa
-                });
-                console.log(index + "volta");
-              });
-            });
+            // pdata.forEach((set, idx, arr) => {
+            //   labels.forEach((label, index) => {
+            //     set.data.forEach((value, i, array) => {
+            //       console.log(i + " volta");
+            //       console.log(value.DataValore);
+            //       console.log(arr[idx].array[i].value);
+            //       // console.log(label == value.DataValore);
+            //       // console.log("mannaggiacristo " + (array[index] = "cazzo"));
+            //     });
+            //     // console.log(index + " volta");
+            //   });
+            // });
 
             commit("prc_success", { prcdata, labels, pdata, scales });
 
