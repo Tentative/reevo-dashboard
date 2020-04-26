@@ -121,18 +121,14 @@ export default {
                 },
               });
             });
-            labels.forEach((date, idx) => {
-              pdata.forEach((obj, dio) => {
-                obj.data.forEach((item, index, arr) => {
-                  if (item.DataValore == date) {
-                    last = item.Valore;
-                  }
-                  arr[idx] = last;
-                  // console.log(index);
+
+            pdata.forEach((set, idx, arr) => {
+              labels.forEach((label, index) => {
+                set.data.forEach((value, i, array) => {
+                  // cazzafa
                 });
-                console.log(dio);
+                console.log(index + "volta");
               });
-              // console.log(idx);
             });
 
             commit("prc_success", { prcdata, labels, pdata, scales });
