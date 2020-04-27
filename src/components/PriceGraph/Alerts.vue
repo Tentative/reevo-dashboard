@@ -34,22 +34,16 @@
         <div class="md-layout-item md-size-33">
           <div class="md-title">Retailer</div>
           <md-divider></md-divider>
-          <md-checkbox
-            v-model="price.FiltroListaRetailers"
-            value="Amazon"
-            :disabled="disabled_retailer"
-            >Amazon</md-checkbox
-          >
-          <md-checkbox v-model="price.FiltroListaRetailers" value="Ibs"
-            >Ibs</md-checkbox
-          >
-          <md-checkbox v-model="price.FiltroListaRetailers" value="Mondadori"
-            >Mondadori</md-checkbox
-          >
-          <md-checkbox
-            v-model="price.FiltroListaRetailers"
-            value="LaFeltrinelli"
-            >LaFeltrinelli</md-checkbox
+          <div v-for="retailer in listaRetailers" :key="retailer">
+            <md-checkbox
+              v-model="price.FiltroListaRetailers"
+              :value="`${retailer}`"
+              :disabled="disabled_retailer"
+              >{{ retailer }}</md-checkbox
+            >
+          </div>
+          <span v-show="no_selected" class="error"
+            >Selezionare almeno un retailer</span
           >
         </div>
         <div class="md-layout-item md-size-33">
@@ -123,6 +117,7 @@
       <md-dialog-actions class="switches alert-title">
         <md-button
           class="md-raised md-dense md-primary apply-button"
+          :disabled="no_selected"
           @click="saveDialog"
           >Applica</md-button
         >
@@ -150,7 +145,7 @@ export default {
     price: {
       Categoria: null,
       FiltroGiorni: 30,
-      FiltroListaRetailers: ["Amazon", "Ibs", "LaFeltrinelli", "Mondadori"],
+      FiltroListaRetailers: [],
       FiltroStessiProdotti: "No",
       FiltroIndex: "No",
       FiltroSuddividiPrezzo: "No",
@@ -168,6 +163,9 @@ export default {
   computed: {
     isVisible() {
       return this.$store.getters.show_price_alerts;
+    },
+    listaRetailers() {
+      return this.$store.getters.listaRetailers;
     },
     disabled_price() {
       return this.price.FiltroSuddividiSR == "Si" ||
@@ -187,6 +185,12 @@ export default {
         ? true
         : false;
     },
+    no_selected() {
+      if (this.price.FiltroListaRetailers.length == 0) {
+        return true;
+      }
+      return false;
+    },
     priceAlerts: {
       get() {
         return this.isVisible;
@@ -205,27 +209,7 @@ export default {
       this.$emit("update-call", { price });
       this.showPriceAlerts();
     },
-    check_errors() {
-      if (this.price.FiltroListaRetailers.length == 0) {
-        this.error = "Selezionare almeno un retailer";
-      }
-      if (
-        this.price.FiltroSuddvidiSR == "Si" &&
-        this.price.FiltroSRBasso == "No" &&
-        this.price.FiltroSRMedio == "No" &&
-        this.price.FiltroSRAlto == "No"
-      ) {
-        this.error = "Selezionare almeno un valore di filtro Catalogo";
-      }
-      if (
-        this.price.FiltroSuddividiPrezzo == "Si" &&
-        this.price.FiltroPrezzoBasso == "No" &&
-        this.price.FiltroPrezzoMedio == "No" &&
-        this.price.FiltroPrezzoAlto == "No"
-      ) {
-        this.error = "Selezionare almeno un valore di filtro Prezzo";
-      }
-    },
+
     ignorePriceAlerts() {
       this.$store.commit("togglePriceAlerts");
       //   this.amz.FiltroAlert = "Tutti";

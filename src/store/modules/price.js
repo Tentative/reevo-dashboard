@@ -171,5 +171,6 @@ export default {
     status: (state) => state.status,
     pricedata: (state) => state.chartdata,
     priceoptions: (state) => state.options,
+    listaRetailers: (state) => state.retailers,
   },
 };

@@ -1,3 +1,5 @@
+$error-status: #f05545;
+
 .loading {
   background-color: transparent !important;
   box-shadow: none !important;
@@ -16,4 +18,8 @@
   & .md-checkbox {
     display: flex;
   }
+}
+
+.error {
+  color: $error-status;
 }
