@@ -6,7 +6,7 @@
       @md-clicked-outside="showPriceAlerts"
     >
       <md-dialog-title class="">Filtri</md-dialog-title>
-      <div class="md-layout">
+      <div class="md-layout md-gutter">
         <div class="md-layout-item md-size-100">
           <md-checkbox
             v-model="price.FiltroStessiProdotti"
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <div class="md-layout">
+      <div class="md-layout -md-gutter">
         <div class="md-layout-item md-size-33">
           <div class="md-title">Retailer</div>
           <md-divider></md-divider>
