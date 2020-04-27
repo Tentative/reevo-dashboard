@@ -59,11 +59,15 @@ export default {
       state.price_graph = price;
       state.price_request.JsonRichiesta = JSON.stringify(state.price_graph);
     },
-    prc_success(state, { prcdata, labels, pdata, scales }) {
+    prc_success(state, { prcdata, labels, pdata, scales, max, min }) {
       state.prcdata = prcdata;
       state.chartdata.labels = labels;
       state.chartdata.datasets = pdata;
       state.options.scales.yAxes = scales;
+      scales.forEach((scale) => {
+        scale.ticks.suggestedMax = max;
+        scale.ticks.suggestedMin = min;
+      });
       state.retailers = prcdata.ListaRetailers;
       state.curve = prcdata.ListaCurve;
       state.status = "Success";
@@ -116,7 +120,6 @@ export default {
                     y: date.Valore,
                   };
                 }).reverse(),
-
                 backgroundColor: "transparent",
                 borderWidth: 3,
                 borderColor: "#" + label.Colore.toString().slice(2),
@@ -125,6 +128,7 @@ export default {
                 id: label.TestoLegenda,
                 position: "left",
                 ticks: {
+                  source: "labels",
                   display: idx == 0 ? true : false,
                   callback: function (value) {
                     return value + " " + "€";
@@ -137,8 +141,22 @@ export default {
                 },
               });
             });
+            let max = 0;
+            let min = null;
+            let maxs = [];
+            let lista_valori = [];
+            pdata.forEach((data) => {
+              data.data.forEach((item) => {
+                max = item.y > max ? item.y : max;
+                maxs.push(max);
+                lista_valori.push(item.y);
+              });
+            });
+            max = Math.max.apply(null, maxs);
+            min = Math.min.apply(null, lista_valori);
+            console.log(min);
 
-            commit("prc_success", { prcdata, labels, pdata, scales });
+            commit("prc_success", { prcdata, labels, pdata, scales, max, min });
 
             resolve(res);
           })
