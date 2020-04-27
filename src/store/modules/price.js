@@ -58,8 +58,9 @@ export default {
     curve: {},
   },
   mutations: {
-    prc_request(state) {
+    prc_request(state, { price }) {
       state.status = "loading";
+      state.price_graph = price;
       state.price_request.JsonRichiesta = JSON.stringify(state.price_graph);
     },
     prc_success(state, { prcdata, labels, pdata, scales }) {
@@ -80,9 +81,9 @@ export default {
     },
   },
   actions: {
-    prc_call({ commit, state }) {
+    prc_call({ commit, state }, { price }) {
       return new Promise((resolve, reject) => {
-        commit("prc_request");
+        commit("prc_request", { price });
         const richiesta = state.price_request;
         axios({
           url: "/",
@@ -104,14 +105,12 @@ export default {
             );
             let pdata = [];
             let scales = [];
-            let last = null;
-            let last_price = [];
             prcdata.ListaCurve.forEach((label, idx) => {
               pdata.push({
                 label: label.TestoLegenda,
                 yAxisID: label.TestoLegenda,
                 type: "line",
-                data: label.ListaValori.map((date, idx, arr) => {
+                data: label.ListaValori.map((date) => {
                   date.DataValore = moment
                     .utc(date.DataValore)
                     .format("DD MMM");
@@ -120,7 +119,7 @@ export default {
                     y: date.Valore,
                   };
                 }),
-                temp: label.ListaValori.map((value, index) => {
+                temp: label.ListaValori.map((value) => {
                   return (value = value.Valore);
                 }),
                 backgroundColor: "transparent",
@@ -143,19 +142,6 @@ export default {
                 },
               });
             });
-
-            // pdata.forEach((set, idx, arr) => {
-            //   labels.forEach((label, index) => {
-            //     set.data.forEach((value, i, array) => {
-            //       console.log(i + " volta");
-            //       console.log(value.DataValore);
-            //       console.log(arr[idx].array[i].value);
-            //       // console.log(label == value.DataValore);
-            //       // console.log("mannaggiacristo " + (array[index] = "cazzo"));
-            //     });
-            //     // console.log(index + " volta");
-            //   });
-            // });
 
             commit("prc_success", { prcdata, labels, pdata, scales });
 

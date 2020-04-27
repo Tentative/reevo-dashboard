@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="md-title">Price Graph</div>
+    <div class="alert-wrapper">
+      <div class="md-title">Price Graph</div>
+      <Alerts />
+    </div>
     <md-dialog :md-active.sync="loading" class="graph md-scrollbar loading">
       <spinner />
     </md-dialog>
@@ -9,24 +12,40 @@
         v-if="loaded"
         :chartdata.sync="pricedata"
         :options.sync="priceoptions"
-        style="width: 100%;"
+        style="width: 100%; margin-top: 20px;"
       ></LineChart>
     </div>
   </div>
 </template>
 
 <script>
-import { LineChart, spinner } from "@/components/PriceGraph";
+import { LineChart, spinner, Alerts } from "@/components/PriceGraph";
 import { mapGetters } from "vuex";
 export default {
   name: "Price",
-  components: { LineChart, spinner },
+  components: { LineChart, spinner, Alerts },
 
   data() {
     return {
       loading: null,
       loaded: false,
       chartdata: null,
+      price: {
+        Categoria: null,
+        FiltroGiorni: 30,
+        FiltroListaRetailers: null,
+        FiltroStessiProdotti: "No",
+        FiltroIndex: "No",
+        FiltroSuddividiPrezzo: "No",
+        FiltroPrezzoBasso: "Si",
+        FiltroPrezzoMedio: "Si",
+        FiltroPrezzoAlto: "Si",
+        FiltroSuddividiSR: "No",
+        FiltroSRBasso: "Si",
+        FiltroSRMedio: "Si",
+        FiltroSRAlto: "Si",
+        FiltroSRTop: "No",
+      },
     };
   },
 
@@ -41,8 +60,9 @@ export default {
   async mounted() {
     this.loading = true;
     this.loaded = false;
+    let price = this.price;
     try {
-      const { res } = await this.$store.dispatch("prc_call");
+      const { res } = await this.$store.dispatch("prc_call", { price });
       this.chartdata = res;
       this.loaded = true;
       this.loading = false;
