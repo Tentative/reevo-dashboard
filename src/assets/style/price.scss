@@ -9,3 +9,10 @@
   justify-content: center;
   width: 100%;
 }
+
+.md-dialog.price-alert {
+  height: 80%;
+  & .md-checkbox {
+    display: flex;
+  }
+}

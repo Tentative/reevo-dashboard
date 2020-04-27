@@ -41,13 +41,9 @@ export default {
         yAxes: [],
         xAxes: [
           {
-            ticks: {
-              userCallback: function (item, index) {
-                if (!(index % 3)) return moment(item).format("DD MMM");
-              },
-              autoSkip: true,
-              maxRotation: 0,
-              maxTicksLimit: 30,
+            type: "time",
+            time: {
+              stepSize: 3,
             },
           },
         ],
@@ -103,6 +99,7 @@ export default {
                 .utcOffset(1)
                 .format("DD MMM")
             );
+            labels.reverse();
             let pdata = [];
             let scales = [];
             prcdata.ListaCurve.forEach((label, idx) => {
@@ -118,10 +115,8 @@ export default {
                     x: date.DataValore,
                     y: date.Valore,
                   };
-                }),
-                temp: label.ListaValori.map((value) => {
-                  return (value = value.Valore);
-                }),
+                }).reverse(),
+
                 backgroundColor: "transparent",
                 borderWidth: 3,
                 borderColor: "#" + label.Colore.toString().slice(2),

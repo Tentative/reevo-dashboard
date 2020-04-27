@@ -67,6 +67,7 @@ export default {
       this.loaded = true;
       this.loading = false;
     } catch (e) {
+      this.loading = false;
       console.log(e);
     }
   },
