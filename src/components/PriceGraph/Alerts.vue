@@ -201,13 +201,9 @@ export default {
       this.$store.commit("togglePriceAlerts");
     },
     saveDialog() {
-      if (this.error) {
-        return;
-      } else {
-        let price = this.price;
-        this.$store.dispatch("prc_call", { price });
-        this.$store.commit("togglePriceAlerts");
-      }
+      let price = this.price;
+      this.$emit("update-call", { price });
+      this.showPriceAlerts();
     },
     check_errors() {
       if (this.price.FiltroListaRetailers.length == 0) {
