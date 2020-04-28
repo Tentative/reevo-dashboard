@@ -1,6 +1,6 @@
 export default {
   state: {
-    VersioneClient: "0.7.3",
+    VersioneClient: "0.7.5",
     menuVisible: false,
     show_price_alerts: false,
   },
