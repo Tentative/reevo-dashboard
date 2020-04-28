@@ -49,11 +49,16 @@ export default {
                 day: "D MMM",
               },
               unit: "day",
-              stepSize: 3,
+              // stepSize: 3,
             },
             ticks: {
               // source: "data",
-              autoSkip: false,
+              autoSkip: true,
+              maxRotation: 0,
+              maxTicksLimit: 30,
+              callback: function (item, index) {
+                if (!(index % 2)) return item;
+              },
             },
           },
         ],
