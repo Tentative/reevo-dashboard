@@ -161,7 +161,7 @@ export default {
             });
             max = Math.max.apply(null, maxs);
             min = Math.min.apply(null, lista_valori);
-            console.log(min);
+            // console.log(min);
 
             commit("prc_success", { prcdata, labels, pdata, scales, max, min });
 
