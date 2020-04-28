@@ -42,7 +42,7 @@ export default {
         xAxes: [
           {
             offset: true,
-            distribution: "series",
+            distribution: "linear",
             type: "time",
             time: {
               displayFormat: {
@@ -50,6 +50,10 @@ export default {
               },
               unit: "day",
               stepSize: 3,
+            },
+            ticks: {
+              // source: "data",
+              autoSkip: false,
             },
           },
         ],
@@ -135,7 +139,7 @@ export default {
                 id: label.TestoLegenda,
                 position: "left",
                 ticks: {
-                  source: "data",
+                  source: "auto",
                   display: idx == 0 ? true : false,
                   callback: function (value) {
                     return value + " " + "€";
