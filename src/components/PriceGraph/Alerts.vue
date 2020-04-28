@@ -38,7 +38,6 @@
             <md-checkbox
               v-model="price.FiltroListaRetailers"
               :value="`${retailer}`"
-              :disabled="disabled_retailer"
               >{{ retailer }}</md-checkbox
             >
           </div>
@@ -53,7 +52,7 @@
             v-model="price.FiltroSuddividiPrezzo"
             true-value="Si"
             false-value="No"
-            :disabled="disabled_price"
+            :disabled="price.FiltroSuddividiSR == 'Si'"
             >Suddividi per prezzo</md-checkbox
           >
           <md-checkbox
@@ -77,6 +76,9 @@
             :disabled="price.FiltroSuddividiPrezzo == 'No'"
             >Prezzo alto</md-checkbox
           >
+          <span v-show="no_price == true" class="error"
+            >Selezionare almeno un valore</span
+          >
         </div>
         <div class="md-layout-item md-size-33">
           <div class="md-title">Catalogo</div>
@@ -85,10 +87,11 @@
             v-model="price.FiltroSuddividiSR"
             true-value="Si"
             false-value="No"
-            :disabled="disabled_rank"
+            :disabled="price.FiltroSuddividiPrezzo == 'Si'"
             >Suddividi per vendite</md-checkbox
           >
           <md-checkbox
+            id="basso"
             v-model="price.FiltroSRBasso"
             true-value="Si"
             false-value="No"
@@ -96,6 +99,7 @@
             >Bassa Rotazione</md-checkbox
           >
           <md-checkbox
+            id="medio"
             v-model="price.FiltroSRMedio"
             true-value="Si"
             false-value="No"
@@ -103,6 +107,7 @@
             >Intermedia</md-checkbox
           >
           <md-checkbox
+            id="alto"
             v-model="price.FiltroSRAlto"
             true-value="Si"
             false-value="No"
@@ -139,26 +144,32 @@
 <script>
 export default {
   name: "Alerts",
+  props: {
+    price: {
+      type: Object,
+      required: true,
+    },
+  },
   data: () => ({
     error: "",
     show_price_alerts: false,
-    price: {
-      Categoria: null,
-      FiltroGiorni: 30,
-      FiltroListaRetailers: [],
-      FiltroStessiProdotti: "No",
-      FiltroIndex: "No",
-      FiltroSuddividiPrezzo: "No",
-      FiltroPrezzoBasso: "Si",
-      FiltroPrezzoMedio: "Si",
-      FiltroPrezzoAlto: "Si",
-      FiltroSuddividiSR: "No",
-      FiltroSRBasso: "Si",
-      FiltroSRMedio: "Si",
-      FiltroSRAlto: "Si",
-      FiltroSRTop: "No",
-    },
-    computedAlert: "",
+    //   price: {
+    //     Categoria: null,
+    //     FiltroGiorni: 30,
+    //     FiltroListaRetailers: [],
+    //     FiltroStessiProdotti: "No",
+    //     FiltroIndex: "No",
+    //     FiltroSuddividiPrezzo: "No",
+    //     FiltroPrezzoBasso: "Si",
+    //     FiltroPrezzoMedio: "Si",
+    //     FiltroPrezzoAlto: "Si",
+    //     FiltroSuddividiSR: "No",
+    //     FiltroSRBasso: "Si",
+    //     FiltroSRMedio: "Si",
+    //     FiltroSRAlto: "Si",
+    //     FiltroSRTop: "No",
+    //   },
+    //   computedAlert: "",
   }),
   computed: {
     isVisible() {
@@ -191,6 +202,21 @@ export default {
       }
       return false;
     },
+    no_price() {
+      let prezzo_basso = this.price.FiltroPrezzoBasso;
+      let prezzo_medio = this.price.FiltroPrezzoMedio;
+      let prezzo_alto = this.price.FiltroPrezzoAlto;
+      if (
+        this.price.FiltroSuddividiPrezzo == "Si" &&
+        prezzo_basso == "No" &&
+        prezzo_medio == "No" &&
+        !prezzo_alto == "No"
+      ) {
+        return true;
+      }
+      return false;
+    },
+
     priceAlerts: {
       get() {
         return this.isVisible;
@@ -200,9 +226,15 @@ export default {
       },
     },
   },
+
   methods: {
     showPriceAlerts() {
       this.$store.commit("togglePriceAlerts");
+    },
+    restore_price() {
+      this.price.FiltroPrezzoBasso = !this.price.FiltroPrezzoBasso;
+      this.price.FiltroPrezzoMedio = !this.price.FiltroPrezzoMedio;
+      this.price.FiltroPrezzoAlto = !this.price.FiltroPrezzoAlto;
     },
     saveDialog() {
       let price = this.price;

@@ -41,8 +41,14 @@ export default {
         yAxes: [],
         xAxes: [
           {
+            offset: true,
+            distribution: "series",
             type: "time",
             time: {
+              displayFormat: {
+                day: "D MMM",
+              },
+              unit: "day",
               stepSize: 3,
             },
           },
@@ -101,7 +107,7 @@ export default {
                 .startOf("day")
                 .subtract(idx, "days")
                 .utcOffset(1)
-                .format("DD MMM")
+                .format()
             );
             labels.reverse();
             let pdata = [];
@@ -114,7 +120,8 @@ export default {
                 data: label.ListaValori.map((date) => {
                   date.DataValore = moment
                     .utc(date.DataValore)
-                    .format("DD MMM");
+                    .format("YYYY-MM-DD");
+
                   return {
                     x: date.DataValore,
                     y: date.Valore,
@@ -128,7 +135,7 @@ export default {
                 id: label.TestoLegenda,
                 position: "left",
                 ticks: {
-                  source: "labels",
+                  source: "data",
                   display: idx == 0 ? true : false,
                   callback: function (value) {
                     return value + " " + "€";

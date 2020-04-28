@@ -2,7 +2,7 @@
   <div>
     <div class="alert-wrapper">
       <div class="md-title">Price Graph</div>
-      <Alerts @update-call="update_call" />
+      <Alerts :price="price" @update-call="update_call" />
     </div>
     <md-dialog :md-active.sync="loading" class="graph md-scrollbar loading">
       <spinner />
@@ -33,7 +33,7 @@ export default {
       price: {
         Categoria: null,
         FiltroGiorni: 30,
-        FiltroListaRetailers: null,
+        FiltroListaRetailers: [],
         FiltroStessiProdotti: "No",
         FiltroIndex: "No",
         FiltroSuddividiPrezzo: "No",
@@ -54,7 +54,13 @@ export default {
       status: "status",
       pricedata: "pricedata",
       priceoptions: "priceoptions",
+      listaRetailers: "listaRetailers",
     }),
+  },
+  async created() {
+    this.listaRetailers.forEach((retailer) => {
+      this.price.FiltroListaRetailers.push(retailer);
+    });
   },
 
   async mounted() {
