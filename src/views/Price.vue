@@ -2,7 +2,7 @@
   <div>
     <div class="alert-wrapper">
       <div class="md-title">Price Graph</div>
-      <Alerts :price="price" @update-call="update_call" />
+      <Alerts @update-call="update_call" />
     </div>
     <md-dialog :md-active.sync="loading" class="graph md-scrollbar loading">
       <spinner />
