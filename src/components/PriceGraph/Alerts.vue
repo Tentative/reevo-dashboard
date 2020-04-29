@@ -1,7 +1,7 @@
 <template>
   <div class="md-alignment-center-center settings">
     <md-dialog
-      class="price-alert"
+      class="price-alert price-settings"
       :md-active.sync="priceAlerts"
       @md-clicked-outside="showPriceAlerts"
     >
@@ -31,7 +31,7 @@
         </div>
       </div>
 
-      <div class="md-layout -md-gutter">
+      <div class="md-layout md-gutter">
         <div class="md-layout-item md-size-33">
           <div class="md-title">Retailer</div>
           <md-divider></md-divider>
@@ -43,9 +43,6 @@
               >{{ retailer }}</md-checkbox
             >
           </div>
-          <span v-show="no_selected" class="error"
-            >Selezionare almeno un retailer</span
-          >
         </div>
         <div class="md-layout-item md-size-33">
           <div class="md-title">Prezzo</div>
@@ -77,9 +74,6 @@
             false-value="No"
             :disabled="suddividi_prezzo"
             >Prezzo alto</md-checkbox
-          >
-          <span v-show="no_price" class="error"
-            >Selezionare almeno un valore Prezzo</span
           >
         </div>
         <div class="md-layout-item md-size-33">
@@ -117,27 +111,43 @@
             >Alto Vendenti</md-checkbox
           >
         </div>
-        <span v-show="no_sr" class="error"
-          >Selezionare almeno un valore Catalogo</span
-        >
+      </div>
+      <div class="md-layout md-gutter">
+        <div class="md-layout-item md-size-33">
+          <span v-show="no_selected" class="error"
+            >Selezionare almeno un retailer</span
+          >
+        </div>
+        <div class="md-layout-item md-size-33">
+          <span v-show="no_price" class="error"
+            >Selezionare almeno un valore Prezzo</span
+          >
+        </div>
+        <div class="md-layout-item md-size-33">
+          <span v-show="no_sr" class="error"
+            >Selezionare almeno un valore Catalogo</span
+          >
+        </div>
       </div>
 
-      <md-divider></md-divider>
-
-      <md-dialog-actions class="switches alert-title">
-        <md-button
-          class="md-raised md-dense md-primary apply-button"
-          :disabled="no_selected || no_price || no_sr"
-          @click="saveDialog"
-          >Applica</md-button
-        >
-        <md-button
-          class="md-accent md-raised md-dense ignore-button"
-          @click="ignorePriceAlerts"
-          >Ignora</md-button
-        >
-        <span class="errors md-body-1">{{ error }}</span>
-      </md-dialog-actions>
+      <md-divider class="action-divider"></md-divider>
+      <div class="md-layout md-gutter">
+        <div class="md-layout-item">
+          <md-dialog-actions>
+            <md-button
+              class="md-raised md-dense md-primary apply-button"
+              :disabled="no_selected || no_price || no_sr"
+              @click="saveDialog"
+              >Applica</md-button
+            >
+            <md-button
+              class="md-accent md-raised md-dense ignore-button"
+              @click="ignorePriceAlerts"
+              >Ignora</md-button
+            >
+          </md-dialog-actions>
+        </div>
+      </div>
     </md-dialog>
 
     <md-button class="setting" @click="showPriceAlerts"

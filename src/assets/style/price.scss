@@ -5,6 +5,20 @@ $error-status: #f05545;
   box-shadow: none !important;
 }
 
+.price-settings .md-layout.md-gutter:not(:last-child) {
+  margin-bottom: 10px;
+  padding: 24px 24px 0;
+}
+
+.md-layout.md-gutter .md-layout-item .md-dialog-actions {
+  justify-content: flex-start;
+  padding-top: 10px;
+}
+
+.price-settings hr:not(.action-divider) {
+  width: 80%;
+}
+
 .container {
   display: flex;
   align-items: center;
