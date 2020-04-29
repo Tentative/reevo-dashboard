@@ -41,22 +41,23 @@ export default {
         yAxes: [],
         xAxes: [
           {
-            // bounds: "data",
             offset: true,
-            distribution: "linear",
+            bounds: "data",
+            // distribution: "linear",
             type: "time",
+            autoSkip: false,
             time: {
               displayFormat: {
                 day: "D MMM",
               },
               unit: "day",
+              unitStepSize: 3,
               // stepSize: 3,
             },
             ticks: {
               source: "labels",
-              autoSkip: true,
+              autoSkip: false,
               maxRotation: 0,
-              // maxTicksLimit: 31,
               callback: function (item, index) {
                 if (!(index % 3)) return item;
               },
@@ -80,10 +81,10 @@ export default {
       state.chartdata.labels = labels;
       state.chartdata.datasets = pdata;
       state.options.scales.yAxes = scales;
-      state.options.scales.xAxes[0].ticks.min = moment()
-        .subtract(29, "days")
-        .format();
-      state.options.scales.xAxes[0].ticks.max = moment().format();
+      // state.options.scales.xAxes[0].ticks.min = moment()
+      //   .subtract(29, "days")
+      //   .format();
+      // state.options.scales.xAxes[0].ticks.max = moment().format();
       scales.forEach((scale) => {
         scale.ticks.suggestedMax = max;
         scale.ticks.suggestedMin = min;
@@ -142,8 +143,11 @@ export default {
                   };
                 }).reverse(),
                 backgroundColor: "transparent",
-                borderWidth: 3,
+                borderWidth: 2,
                 borderColor: "#" + label.Colore.toString().slice(2),
+                pointBorderWidth: 1,
+                pointRadius: 2,
+                pointBackgroundColor: "#" + label.Colore.toString().slice(2),
               });
               scales.push({
                 id: label.TestoLegenda,
@@ -159,6 +163,7 @@ export default {
                   display: idx == 0 ? true : false,
                   drawTicks: idx == 0 ? true : false,
                   offsetGridLines: false,
+                  drawBorder: false,
                 },
               });
             });

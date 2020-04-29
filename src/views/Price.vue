@@ -57,11 +57,6 @@ export default {
       listaRetailers: "listaRetailers",
     }),
   },
-  async created() {
-    this.listaRetailers.forEach((retailer) => {
-      this.price.FiltroListaRetailers.push(retailer);
-    });
-  },
 
   async mounted() {
     this.prc_call();

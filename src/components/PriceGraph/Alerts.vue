@@ -34,6 +34,9 @@
         <div class="md-layout-item md-size-33">
           <div class="md-title">Retailer</div>
           <md-divider></md-divider>
+          <md-checkbox v-model="retailers_checked"
+            >Filtra per Retailers</md-checkbox
+          >
           <div v-for="retailer in listaRetailers" :key="retailer">
             <md-checkbox
               v-model="price.FiltroListaRetailers"
@@ -153,23 +156,24 @@ export default {
   data: () => ({
     error: "",
     show_price_alerts: false,
-    //   price: {
-    //     Categoria: null,
-    //     FiltroGiorni: 30,
-    //     FiltroListaRetailers: [],
-    //     FiltroStessiProdotti: "No",
-    //     FiltroIndex: "No",
-    //     FiltroSuddividiPrezzo: "No",
-    //     FiltroPrezzoBasso: "Si",
-    //     FiltroPrezzoMedio: "Si",
-    //     FiltroPrezzoAlto: "Si",
-    //     FiltroSuddividiSR: "No",
-    //     FiltroSRBasso: "Si",
-    //     FiltroSRMedio: "Si",
-    //     FiltroSRAlto: "Si",
-    //     FiltroSRTop: "No",
-    //   },
-    //   computedAlert: "",
+    retailers_checked: false,
+    price: {
+      Categoria: null,
+      FiltroGiorni: 30,
+      FiltroListaRetailers: [],
+      FiltroStessiProdotti: "No",
+      FiltroIndex: "No",
+      FiltroSuddividiPrezzo: "No",
+      FiltroPrezzoBasso: "Si",
+      FiltroPrezzoMedio: "Si",
+      FiltroPrezzoAlto: "Si",
+      FiltroSuddividiSR: "No",
+      FiltroSRBasso: "Si",
+      FiltroSRMedio: "Si",
+      FiltroSRAlto: "Si",
+      FiltroSRTop: "No",
+    },
+    computedAlert: "",
   }),
   computed: {
     isVisible() {
@@ -225,6 +229,12 @@ export default {
         return newValue;
       },
     },
+  },
+  created() {
+    this.listaRetailers.forEach((retailer) => {
+      this.price.FiltroListaRetailers.push(retailer);
+      console.log(retailer);
+    });
   },
 
   methods: {
