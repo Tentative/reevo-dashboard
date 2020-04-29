@@ -41,6 +41,7 @@ export default {
         yAxes: [],
         xAxes: [
           {
+            // bounds: "data",
             offset: true,
             distribution: "linear",
             type: "time",
@@ -52,12 +53,12 @@ export default {
               // stepSize: 3,
             },
             ticks: {
-              // source: "data",
+              source: "labels",
               autoSkip: true,
               maxRotation: 0,
-              maxTicksLimit: 30,
+              // maxTicksLimit: 31,
               callback: function (item, index) {
-                if (!(index % 2)) return item;
+                if (!(index % 3)) return item;
               },
             },
           },
@@ -79,6 +80,10 @@ export default {
       state.chartdata.labels = labels;
       state.chartdata.datasets = pdata;
       state.options.scales.yAxes = scales;
+      state.options.scales.xAxes[0].ticks.min = moment()
+        .subtract(29, "days")
+        .format();
+      state.options.scales.xAxes[0].ticks.max = moment().format();
       scales.forEach((scale) => {
         scale.ticks.suggestedMax = max;
         scale.ticks.suggestedMin = min;
@@ -110,7 +115,7 @@ export default {
         })
           .then((res) => {
             const prcdata = JSON.parse(res.data.JsonRisposta);
-            let labels = [...new Array(31)].map((i, idx) =>
+            let labels = [...new Array(30)].map((i, idx) =>
               moment
                 .utc()
                 .startOf("day")
