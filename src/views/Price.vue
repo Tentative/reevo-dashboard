@@ -4,7 +4,11 @@
       <div class="md-title">Price Graph</div>
       <Alerts @update-call="update_call" />
     </div>
-    <md-dialog :md-active.sync="loading" class="graph md-scrollbar loading">
+    <md-dialog
+      :md-active.sync="loading"
+      class="graph md-scrollbar loading"
+      :md-backdrop="false"
+    >
       <spinner />
     </md-dialog>
     <div class="container">
