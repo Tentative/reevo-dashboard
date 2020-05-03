@@ -19,7 +19,7 @@ $error-status: #f05545;
   width: 80%;
 }
 
-.container {
+.container :not(.info) {
   display: flex;
   align-items: center;
   justify-content: center;

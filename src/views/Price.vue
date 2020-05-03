@@ -19,15 +19,18 @@
         style="width: 100%; margin-top: 20px;"
       ></LineChart>
     </div>
+    <div class="container info">
+      <Table :lista-retailers="listaRetailers" />
+    </div>
   </div>
 </template>
 
 <script>
-import { LineChart, spinner, Alerts } from "@/components/PriceGraph";
+import { LineChart, spinner, Alerts, Table } from "@/components/PriceGraph";
 import { mapGetters } from "vuex";
 export default {
   name: "Price",
-  components: { LineChart, spinner, Alerts },
+  components: { LineChart, spinner, Alerts, Table },
 
   data() {
     return {
