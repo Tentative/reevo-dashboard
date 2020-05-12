@@ -20,10 +20,7 @@ $error-status: #f05545;
 }
 
 .container :not(.info) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  display: block;
 }
 
 .md-dialog.price-alert {
@@ -33,6 +30,10 @@ $error-status: #f05545;
   & .md-checkbox {
     display: flex;
   }
+}
+
+.price-table .md-table-cell-container {
+  padding: 0 !important;
 }
 
 .error {

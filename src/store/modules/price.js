@@ -68,7 +68,7 @@ export default {
     },
     prcdata: {},
     retailers: {},
-    curve: {},
+    listaRigheTabella: {},
   },
   mutations: {
     prc_request(state, { price }) {
@@ -90,7 +90,7 @@ export default {
         scale.ticks.suggestedMin = min;
       });
       state.retailers = prcdata.ListaRetailers;
-      state.curve = prcdata.ListaCurve;
+      state.listaRigheTabella = prcdata.ListaRigheTabella;
       state.status = "Success";
     },
     prc_error(state, err) {
@@ -198,5 +198,6 @@ export default {
     pricedata: (state) => state.chartdata,
     priceoptions: (state) => state.options,
     listaRetailers: (state) => state.retailers,
+    listaRigheTabella: (state) => state.listaRigheTabella,
   },
 };

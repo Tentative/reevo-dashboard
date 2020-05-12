@@ -19,9 +19,7 @@
         style="width: 100%; margin-top: 20px;"
       ></LineChart>
     </div>
-    <div class="container info">
-      <Table :lista-retailers="listaRetailers" />
-    </div>
+    <Table :lista-righe-tabella="listaRigheTabella" />
   </div>
 </template>
 
@@ -62,6 +60,7 @@ export default {
       pricedata: "pricedata",
       priceoptions: "priceoptions",
       listaRetailers: "listaRetailers",
+      listaRigheTabella: "listaRigheTabella",
     }),
   },
 
