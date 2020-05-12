@@ -153,7 +153,7 @@
               >Applica</md-button
             >
             <md-button
-              class="md-accent md-raised md-dense ignore-button"
+              class="md-secondary md-raised md-dense ignore-button"
               @click="ignorePriceAlerts"
               >Ignora</md-button
             >

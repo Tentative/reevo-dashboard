@@ -36,6 +36,10 @@ $error-status: #f05545;
   padding: 0 !important;
 }
 
+.ignore-button {
+  box-shadow: none !important;
+}
+
 .error {
   color: $error-status;
 }
