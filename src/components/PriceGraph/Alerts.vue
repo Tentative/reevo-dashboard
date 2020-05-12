@@ -126,17 +126,17 @@
       </div>
       <div class="md-layout md-gutter">
         <div class="md-layout-item md-size-33">
-          <span v-show="no_selected" class="error"
+          <span v-if="no_selected" class="error"
             >Selezionare almeno un retailer</span
           >
         </div>
         <div class="md-layout-item md-size-33">
-          <span v-show="no_price" class="error"
+          <span v-if="no_price" class="error"
             >Selezionare almeno un valore Prezzo</span
           >
         </div>
         <div class="md-layout-item md-size-33">
-          <span v-show="no_sr" class="error"
+          <span v-if="no_sr" class="error"
             >Selezionare almeno un valore Catalogo</span
           >
         </div>
