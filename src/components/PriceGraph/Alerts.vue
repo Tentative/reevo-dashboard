@@ -10,6 +10,7 @@
         <div class="md-layout-item md-size-100">
           <md-checkbox
             v-model="price.FiltroStessiProdotti"
+            class="md-primary"
             true-value="Si"
             false-value="No"
             >Mostra solo articoli presenti in tutti i Retailer
@@ -17,6 +18,7 @@
           >
           <md-checkbox
             v-model="price.FiltroIndex"
+            class="md-primary"
             true-value="Si"
             false-value="No"
             >Grafico a indice 100</md-checkbox
@@ -25,6 +27,7 @@
             v-model="price.FiltroSRTop"
             true-value="Si"
             false-value="No"
+            class="md-primary"
             :disabled="sr_top_disabled"
             >Includi solo articoli top</md-checkbox
           >
@@ -38,6 +41,7 @@
           <div v-for="retailer in listaRetailers" :key="retailer">
             <md-checkbox
               v-model="price.FiltroListaRetailers"
+              class="md-primary"
               :value="`${retailer}`"
               :checked="suddividi_retailer"
               >{{ retailer }}</md-checkbox
@@ -49,6 +53,7 @@
           <md-divider></md-divider>
           <md-checkbox
             v-model="price.FiltroSuddividiPrezzo"
+            class="md-primary"
             true-value="Si"
             false-value="No"
             :disabled="price_disabled"
@@ -56,6 +61,7 @@
           >
           <md-checkbox
             v-model="price.FiltroPrezzoBasso"
+            class="md-primary"
             true-value="Si"
             false-value="No"
             :disabled="suddividi_prezzo"
@@ -63,6 +69,7 @@
           >
           <md-checkbox
             v-model="price.FiltroPrezzoMedio"
+            class="md-primary"
             true-value="Si"
             false-value="No"
             :disabled="suddividi_prezzo"
@@ -70,6 +77,7 @@
           >
           <md-checkbox
             v-model="price.FiltroPrezzoAlto"
+            class="md-primary"
             true-value="Si"
             false-value="No"
             :disabled="suddividi_prezzo"
@@ -81,6 +89,7 @@
           <md-divider></md-divider>
           <md-checkbox
             v-model="price.FiltroSuddividiSR"
+            class="md-primary"
             true-value="Si"
             false-value="No"
             :disabled="sr_disabled"
@@ -89,6 +98,7 @@
           <md-checkbox
             id="basso"
             v-model="price.FiltroSRBasso"
+            class="md-primary"
             true-value="Si"
             false-value="No"
             :disabled="suddividi_rank"
@@ -97,6 +107,7 @@
           <md-checkbox
             id="medio"
             v-model="price.FiltroSRMedio"
+            class="md-primary"
             true-value="Si"
             false-value="No"
             :disabled="suddividi_rank"
@@ -105,6 +116,7 @@
           <md-checkbox
             id="alto"
             v-model="price.FiltroSRAlto"
+            class="md-primary"
             true-value="Si"
             false-value="No"
             :disabled="suddividi_rank"
