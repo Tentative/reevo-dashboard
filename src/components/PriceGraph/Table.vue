@@ -6,8 +6,8 @@
         <md-table-head>Articoli</md-table-head>
         <md-table-head>Media attuale</md-table-head>
         <md-table-head>Media storica </md-table-head>
-        <md-table-head># Aumenti </md-table-head>
         <md-table-head># Diminuzioni </md-table-head>
+        <md-table-head># Aumenti </md-table-head>
         <md-table-head># Prezzi Uguali</md-table-head>
         <md-table-head>% Fuori stock</md-table-head>
       </md-table-row>
