@@ -1,4 +1,5 @@
 $error-status: #f05545;
+$icon-size: 1rem;
 
 .md-dialog.loading {
   background-color: transparent !important;
@@ -42,4 +43,9 @@ $error-status: #f05545;
 
 .error {
   color: $error-status;
+}
+
+.unavailable i {
+  color: rgba(0, 0, 0, 0.26) !important;
+  font-size: $icon-size !important;
 }
