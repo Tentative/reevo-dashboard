@@ -17,7 +17,7 @@
         class="price-table"
       >
         <md-table-cell>{{ riga.NomeRiga }}</md-table-cell>
-        <md-table-cell>{{ riga.NumerItems }}</md-table-cell>
+        <md-table-cell>{{ riga.NumeroItems }}</md-table-cell>
         <md-table-cell>€ {{ riga.PrezzoMedioAttuale }}</md-table-cell>
         <md-table-cell>€ {{ riga.PrezzoMedioPeriodo }}</md-table-cell>
         <md-table-cell>€ {{ riga.PrezziGiu }}</md-table-cell>
