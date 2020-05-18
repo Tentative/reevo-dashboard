@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="md-layout">
-      <div class="md-layout-item md-size-50">
+    <div class="md-layout md-gutter">
+      <div class="md-layout-item">
         <md-table>
           <md-table-row>
             <md-table-head></md-table-head>
@@ -27,14 +27,29 @@
           </md-table-row>
         </md-table>
       </div>
-      <div class="md-layout-item md-size-50">
+      <div class="md-layout-item">
         <md-table>
           <md-table-row>
             <md-table-head></md-table-head>
-            <md-table-head>Articolo</md-table-head>
+            <md-table-head class="name">Articolo</md-table-head>
             <md-table-head>InStock</md-table-head>
             <md-table-head>Retailer</md-table-head>
             <md-table-head>SR</md-table-head>
+          </md-table-row>
+          <md-table-row
+            v-for="item of maindata.ListaItemsInStock"
+            :key="item.id"
+          >
+            <md-table-cell class="thumb">
+              <img :src="item.UrlImmagine"
+            /></md-table-cell>
+            <md-table-cell class="name">{{ item.NomeItem }}</md-table-cell>
+            <md-table-cell
+              ><span v-if="item.InStock != null">{{ item.InStock }}</span
+              ><span v-else></span
+            ></md-table-cell>
+            <md-table-cell>{{ item.Retailer }}</md-table-cell>
+            <md-table-cell>{{ item.SalesRank }}</md-table-cell>
           </md-table-row>
         </md-table>
       </div>
