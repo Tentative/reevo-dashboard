@@ -52,4 +52,7 @@ export default {
       });
     },
   },
+  getters: {
+    maindata: (state) => state.maindata,
+  },
 };
