@@ -29,6 +29,14 @@
 .md-table {
   background-color: transparent !important;
   width: 100%;
+  & .md-table-row:first-child {
+    background-color: #f4f6fb !important;
+  }
+  & .md-table-row {
+    background-color: white !important;
+    border-bottom: 10px solid #f4f6fb;
+    height: 62px !important;
+  }
 }
 
 // .md-table-head {
