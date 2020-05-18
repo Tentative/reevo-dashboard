@@ -50,7 +50,7 @@
           ></md-table-cell
         >
         <md-table-cell
-          ><span v-if="riga.PrezziUguali != 0">{{ riga.PrezziUguali }} €</span
+          ><span v-if="riga.PrezziUguali != 0">{{ riga.PrezziUguali }} </span
           ><span v-else class="unavailable"
             ><md-icon>remove</md-icon></span
           ></md-table-cell
