@@ -1,12 +1,19 @@
 <template>
-  <div class="md-title">
-    Main
+  <div class="container">
+    <div class="md-title">
+      Main
+    </div>
+    <Table />
   </div>
 </template>
 
 <script>
+import { Table } from "@/components/Main";
 export default {
   name: "Main",
+  components: {
+    Table,
+  },
   data() {
     return {};
   },
@@ -20,3 +27,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "@/assets/style/main.scss";
+</style>

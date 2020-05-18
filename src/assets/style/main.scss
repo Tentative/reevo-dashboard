@@ -1,0 +1,17 @@
+.container :not(.info) {
+  display: block;
+}
+
+.md-dialog.loading {
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.md-dialog.price-alert {
+  height: 80%;
+  width: 80%;
+  overflow-y: auto;
+  & .md-checkbox {
+    display: flex;
+  }
+}

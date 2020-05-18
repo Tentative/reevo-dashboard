@@ -156,12 +156,15 @@ export default {
                   source: "auto",
                   display: idx == 0 ? true : false,
                   callback: function (value) {
-                    return value + " " + "€";
+                    if (prcdata.FiltroIndex == "No") {
+                      return (value = value + " €");
+                    }
+                    return value;
                   },
                 },
                 gridLines: {
                   display: idx == 0 ? true : false,
-                  drawTicks: idx == 0 ? true : false,
+                  drawTicks: false,
                   offsetGridLines: false,
                   drawBorder: false,
                 },
