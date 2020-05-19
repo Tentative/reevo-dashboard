@@ -175,7 +175,7 @@ export default {
           })
           .catch((err) => {
             commit("main_error", err);
-            console.log(err);
+            // console.log(err);
             reject(err);
           });
       });
