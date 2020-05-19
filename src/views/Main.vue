@@ -10,25 +10,27 @@
     >
       <spinner />
     </md-dialog>
-    <Table :maindata="maindata" />
+    <Tables :maindata="maindata" />
     <LineChart
       v-if="loaded"
       :chartdata.sync="maindata_graph"
       :options.sync="mainoptions"
       style="width: 100%; margin-top: 20px;"
     ></LineChart>
+    <Table :maindata="maindata" />
   </div>
 </template>
 
 <script>
-import { Table, spinner, LineChart } from "@/components/Main";
+import { Tables, spinner, LineChart, Table } from "@/components/Main";
 import { mapGetters } from "vuex";
 export default {
   name: "Main",
   components: {
-    Table,
+    Tables,
     spinner,
     LineChart,
+    Table,
   },
 
   data() {

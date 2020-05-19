@@ -1,62 +1,73 @@
 <template>
   <div>
-    <div class="md-layout md-gutter">
-      <div class="md-layout-item">
-        <md-table>
-          <md-table-row>
-            <md-table-head></md-table-head>
-            <md-table-head>Articolo</md-table-head>
-            <md-table-head>Prezzo</md-table-head>
-            <md-table-head>Sconto</md-table-head>
-            <md-table-head>Retailer</md-table-head>
-            <md-table-head>SR</md-table-head>
-          </md-table-row>
-          <md-table-row
-            v-for="item of maindata.maindata.ListaItemsAlert"
-            :key="item.id"
-          >
-            <md-table-cell class="thumb">
-              <span><img :src="item.UrlImmagine" /></span>
-            </md-table-cell>
-            <md-table-cell>
-              {{ item.NomeItem }}
-            </md-table-cell>
-            <md-table-cell>
-              {{ item.Prezzo }}
-            </md-table-cell>
-            <md-table-cell> {{ item.Sconto }} % </md-table-cell>
-            <md-table-cell> {{ item.Retailer }} </md-table-cell>
-            <md-table-cell> {{ item.SalesRank }} </md-table-cell>
-          </md-table-row>
-        </md-table>
-      </div>
-      <div class="md-layout-item">
-        <md-table>
-          <md-table-row>
-            <md-table-head></md-table-head>
-            <md-table-head class="name">Articolo</md-table-head>
-            <md-table-head>InStock</md-table-head>
-            <md-table-head>Retailer</md-table-head>
-            <md-table-head>SR</md-table-head>
-          </md-table-row>
-          <md-table-row
-            v-for="item of maindata.maindata.ListaItemsInStock"
-            :key="item.id"
-          >
-            <md-table-cell class="thumb">
-              <img :src="item.UrlImmagine"
-            /></md-table-cell>
-            <md-table-cell class="name">{{ item.NomeItem }}</md-table-cell>
-            <md-table-cell
-              ><span v-if="item.InStock != null">{{ item.InStock }}</span
-              ><span v-else></span
-            ></md-table-cell>
-            <md-table-cell>{{ item.Retailer }}</md-table-cell>
-            <md-table-cell>{{ item.SalesRank }}</md-table-cell>
-          </md-table-row>
-        </md-table>
-      </div>
-    </div>
+    <md-table class="amz">
+      <md-table-row>
+        <md-table-head></md-table-head>
+        <md-table-head>Retailer / Curva</md-table-head>
+        <md-table-head>Articoli</md-table-head>
+        <md-table-head>Media attuale</md-table-head>
+        <md-table-head>Media storica </md-table-head>
+        <md-table-head># Diminuzioni </md-table-head>
+        <md-table-head># Aumenti </md-table-head>
+        <md-table-head># Prezzi Uguali</md-table-head>
+        <md-table-head>% Fuori stock</md-table-head>
+      </md-table-row>
+      <md-table-row
+        v-for="riga of maindata.maindata.ListaRigheTabella"
+        :key="riga.id"
+        class="price-table"
+      >
+        <md-table-cell class="thumb"
+          ><img :src="riga.UrlLogoRetailer"
+        /></md-table-cell>
+        <md-table-cell>{{ riga.NomeRiga }}</md-table-cell>
+        <md-table-cell
+          ><span v-if="riga.NumeroItems != 0">{{ riga.NumeroItems }}</span
+          ><span v-else class="unavailable"
+            ><md-icon>remove</md-icon></span
+          ></md-table-cell
+        >
+        <md-table-cell
+          ><span v-if="riga.PrezzoMedioAttuale != null">{{
+            Math.abs(riga.PrezzoMedioAttuale).toString().slice(0, 4)
+          }}</span>
+          <span v-else class="unavailable"><md-icon>remove</md-icon></span>
+          €</md-table-cell
+        >
+        <md-table-cell
+          ><span v-if="riga.PrezzoMedioPeriodo != null">{{
+            Math.abs(riga.PrezzoMedioPeriodo).toString().slice(0, 4)
+          }}</span>
+          <span v-else class="unavailable"><md-icon>remove</md-icon></span>
+          €</md-table-cell
+        >
+        <md-table-cell
+          ><span v-if="riga.PrezziGiu != 0">{{ riga.PrezziGiu }} €</span
+          ><span v-else class="unavailable"
+            ><md-icon>remove</md-icon></span
+          ></md-table-cell
+        >
+        <md-table-cell
+          ><span v-if="riga.PrezziSu != 0">{{ riga.PrezziSu }} €</span
+          ><span v-else class="unavailable"
+            ><md-icon>remove</md-icon></span
+          ></md-table-cell
+        >
+        <md-table-cell
+          ><span v-if="riga.PrezziUguali != 0">{{ riga.PrezziUguali }} </span
+          ><span v-else class="unavailable"
+            ><md-icon>remove</md-icon></span
+          ></md-table-cell
+        >
+        <md-table-cell
+          ><span v-if="riga.FuoriStock != null"
+            >{{ Math.abs(riga.FuoriStock).toString().slice(0, 2) }} % </span
+          ><span v-else class="unavailable"
+            ><md-icon>remove</md-icon></span
+          ></md-table-cell
+        >
+      </md-table-row>
+    </md-table>
   </div>
 </template>
 
@@ -71,7 +82,7 @@ export default {
   },
 };
 </script>
-
 <style lang="scss">
-@import "@/assets/style/main.scss";
+@import "@/assets/style/table.scss";
+@import "src/assets/style/toolbar.scss";
 </style>
