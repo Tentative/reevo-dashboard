@@ -11,7 +11,10 @@
             <md-table-head>Retailer</md-table-head>
             <md-table-head>SR</md-table-head>
           </md-table-row>
-          <md-table-row v-for="item of maindata.ListaItemsAlert" :key="item.id">
+          <md-table-row
+            v-for="item of maindata.maindata.ListaItemsAlert"
+            :key="item.id"
+          >
             <md-table-cell class="thumb">
               <span><img :src="item.UrlImmagine" /></span>
             </md-table-cell>
@@ -37,7 +40,7 @@
             <md-table-head>SR</md-table-head>
           </md-table-row>
           <md-table-row
-            v-for="item of maindata.ListaItemsInStock"
+            v-for="item of maindata.maindata.ListaItemsInStock"
             :key="item.id"
           >
             <md-table-cell class="thumb">
@@ -58,14 +61,13 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
 export default {
-  name: "Tabe",
-  components: "spinner",
-  computed: {
-    ...mapGetters({
-      maindata: "maindata",
-    }),
+  name: "Table",
+  props: {
+    maindata: {
+      type: Object,
+      required: true,
+    },
   },
 };
 </script>
