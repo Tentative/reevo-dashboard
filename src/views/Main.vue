@@ -5,6 +5,14 @@
         Main
       </div>
     </div>
+    <div class="sub-wrapper md-layout md-gutter">
+      <div class="md-layout-item">
+        <span>Principali Alert di Prezzo</span>
+      </div>
+      <div class="md-layout-item">
+        <span>Principali Alert Fuori Stock</span>
+      </div>
+    </div>
     <md-dialog
       :md-active.sync="loading"
       class="graph md-scrollbar loading"
