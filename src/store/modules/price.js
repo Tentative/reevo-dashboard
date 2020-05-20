@@ -41,7 +41,7 @@ export default {
         yAxes: [],
         xAxes: [
           {
-            offset: true,
+            offset: false,
             bounds: "data",
             // distribution: "linear",
             type: "time",
@@ -55,12 +55,17 @@ export default {
               // stepSize: 3,
             },
             ticks: {
-              source: "labels",
+              source: "data",
+              padding: 15,
               autoSkip: false,
               maxRotation: 0,
               callback: function (item, index) {
                 if (!(index % 3)) return item;
               },
+            },
+            gridLines: {
+              drawTicks: false,
+              drawBorder: true,
             },
           },
         ],
@@ -151,9 +156,10 @@ export default {
               });
               scales.push({
                 id: label.TestoLegenda,
-                position: "left",
+                position: idx == 0 ? "left" : "right",
                 ticks: {
                   source: "auto",
+                  padding: 15,
                   display: idx == 0 ? true : false,
                   callback: function (value) {
                     if (prcdata.FiltroIndex == "No") {
@@ -163,10 +169,10 @@ export default {
                   },
                 },
                 gridLines: {
-                  display: idx == 0 ? true : false,
+                  display: idx == 0 || idx == 1 ? true : false,
                   drawTicks: false,
                   offsetGridLines: false,
-                  drawBorder: false,
+                  drawBorder: true,
                 },
               });
             });
