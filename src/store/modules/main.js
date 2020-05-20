@@ -53,6 +53,7 @@ export default {
             },
             gridLines: {
               drawTicks: false,
+              drawBorder: true,
             },
           },
         ],
@@ -142,10 +143,10 @@ export default {
                   },
                 },
                 gridLines: {
-                  display: idx == 0 ? true : false,
+                  display: idx == 0 || idx == 1 ? true : false,
                   drawTicks: false,
                   offsetGridLines: false,
-                  drawBorder: false,
+                  drawBorder: true,
                 },
               });
             });
