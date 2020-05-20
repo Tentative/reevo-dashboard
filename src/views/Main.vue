@@ -1,7 +1,9 @@
 <template>
   <div>
-    <div class="md-title">
-      Main
+    <div class="alert-wrapper">
+      <div class="md-title">
+        Main
+      </div>
     </div>
     <md-dialog
       :md-active.sync="loading"

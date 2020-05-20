@@ -29,7 +29,7 @@
         >
         <md-table-cell>{{ riga.NonPresenti }}</md-table-cell>
         <md-table-cell>{{ riga.NonAcquistabili }}</md-table-cell>
-        <md-table-cell>{{ riga.PrezzoMedioAttuale }}</md-table-cell>
+        <md-table-cell>{{ riga.PrezzoMedioAttuale }} €</md-table-cell>
         <md-table-cell>{{ riga.PrezziGiu }}</md-table-cell>
         <md-table-cell>{{ riga.PrezziSu }}</md-table-cell>
         <md-table-cell
