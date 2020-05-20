@@ -133,10 +133,7 @@ export default {
                   source: "auto",
                   display: idx == 0 ? true : false,
                   callback: function (value) {
-                    if (maindata.FiltroIndex == "No") {
-                      return (value = value + " €");
-                    }
-                    return value;
+                    return value + " €";
                   },
                 },
                 gridLines: {

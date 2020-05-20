@@ -25,9 +25,7 @@
             <md-table-cell class="item">
               {{ item.NomeItem }}
             </md-table-cell>
-            <md-table-cell>
-              {{ item.Prezzo }}
-            </md-table-cell>
+            <md-table-cell> {{ item.Prezzo }} € </md-table-cell>
             <md-table-cell> {{ item.Sconto }} % </md-table-cell>
             <md-table-cell> {{ item.Retailer }} </md-table-cell>
             <md-table-cell> {{ item.SalesRank }} </md-table-cell>
