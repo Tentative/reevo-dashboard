@@ -1,6 +1,6 @@
 <template>
   <div>
-    <md-table class="amz">
+    <md-table class="main-single">
       <md-table-row>
         <md-table-head></md-table-head>
         <md-table-head class="name">Retailer </md-table-head>
@@ -56,7 +56,5 @@ export default {
 };
 </script>
 <style lang="scss">
-@import "@/assets/style/table.scss";
 @import "@/assets/style/main.scss";
-@import "src/assets/style/toolbar.scss";
 </style>

@@ -34,6 +34,11 @@
   }
 }
 
+.main-single .md-table-head:not(.name) .md-table-head-container {
+  padding: 16px 0 !important;
+  text-align: center;
+}
+
 .name {
   text-align: left !important;
 }
