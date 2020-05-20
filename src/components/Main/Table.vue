@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="single-container">
     <md-table class="main-single">
       <md-table-row>
         <md-table-head></md-table-head>
