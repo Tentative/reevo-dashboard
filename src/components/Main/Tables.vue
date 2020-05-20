@@ -26,7 +26,9 @@
               {{ item.NomeItem }}
             </md-table-cell>
             <md-table-cell> {{ item.Prezzo }} € </md-table-cell>
-            <md-table-cell> {{ item.Sconto }} % </md-table-cell>
+            <md-table-cell>
+              {{ Math.abs(item.Sconto).toString().slice(0, 2) }} %
+            </md-table-cell>
             <md-table-cell> {{ item.Retailer }} </md-table-cell>
             <md-table-cell> {{ item.SalesRank }} </md-table-cell>
           </md-table-row>

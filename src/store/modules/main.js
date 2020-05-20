@@ -29,7 +29,7 @@ export default {
         yAxes: [],
         xAxes: [
           {
-            offset: true,
+            offset: false,
             bounds: "data",
             // distribution: "linear",
             type: "time",
@@ -43,12 +43,16 @@ export default {
               // stepSize: 3,
             },
             ticks: {
-              source: "labels",
+              source: "data",
+              padding: 15,
               autoSkip: false,
               maxRotation: 0,
               callback: function (item, index) {
                 if (!(index % 3)) return item;
               },
+            },
+            gridLines: {
+              drawTicks: false,
             },
           },
         ],
@@ -128,8 +132,9 @@ export default {
               });
               scales.push({
                 id: label.TestoLegenda,
-                position: "left",
+                position: idx == 0 ? "left" : "right",
                 ticks: {
+                  padding: 15,
                   source: "auto",
                   display: idx == 0 ? true : false,
                   callback: function (value) {
