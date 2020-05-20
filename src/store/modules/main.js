@@ -74,8 +74,8 @@ export default {
       state.status = "Success";
       state.options.scales.yAxes = maindata.scales;
       maindata.scales.forEach((scale) => {
-        scale.ticks.suggestedMax = maindata.max;
-        scale.ticks.suggestedMin = maindata.min;
+        scale.ticks.suggestedMax = maindata.max + 4;
+        scale.ticks.suggestedMin = maindata.min - 4;
       });
       state.listaRigheTabella = maindata.ListaRigheTabella;
     },
