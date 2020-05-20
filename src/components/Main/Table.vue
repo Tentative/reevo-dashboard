@@ -57,5 +57,6 @@ export default {
 </script>
 <style lang="scss">
 @import "@/assets/style/table.scss";
+@import "@/assets/style/main.scss";
 @import "src/assets/style/toolbar.scss";
 </style>

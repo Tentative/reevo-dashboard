@@ -16,6 +16,10 @@
   }
 }
 
+.name .md-table-head-container {
+  text-align: left !important;
+}
+
 .main {
   display: inline-block !important;
   & .md-table-row:first-child {
@@ -50,6 +54,14 @@
     font-weight: bold;
     font-size: 13px;
   }
+}
+
+.md-table-cell.item .md-table-cell-container {
+  text-align: left;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 // .md-table-head {

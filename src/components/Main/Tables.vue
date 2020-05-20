@@ -2,10 +2,13 @@
   <div>
     <div class="md-layout md-gutter">
       <div class="md-layout-item">
+        <div class="sub-wrapper">
+          <span>Principali Alert di Prezzo</span>
+        </div>
         <md-table>
           <md-table-row>
             <md-table-head></md-table-head>
-            <md-table-head>Articolo</md-table-head>
+            <md-table-head class="name">Articolo</md-table-head>
             <md-table-head>Prezzo</md-table-head>
             <md-table-head>Sconto</md-table-head>
             <md-table-head>Retailer</md-table-head>
@@ -18,7 +21,7 @@
             <md-table-cell class="thumb">
               <span><img :src="item.UrlImmagine" /></span>
             </md-table-cell>
-            <md-table-cell>
+            <md-table-cell class="item">
               {{ item.NomeItem }}
             </md-table-cell>
             <md-table-cell>
@@ -31,6 +34,9 @@
         </md-table>
       </div>
       <div class="md-layout-item">
+        <div class="sub-wrapper">
+          <span>Principali Alert Fuori Stock</span>
+        </div>
         <md-table>
           <md-table-row>
             <md-table-head></md-table-head>
@@ -46,7 +52,7 @@
             <md-table-cell class="thumb">
               <img :src="item.UrlImmagine"
             /></md-table-cell>
-            <md-table-cell class="name">{{ item.NomeItem }}</md-table-cell>
+            <md-table-cell class="item">{{ item.NomeItem }}</md-table-cell>
             <md-table-cell
               ><span v-if="item.InStock != null">{{ item.InStock }}</span
               ><span v-else></span
