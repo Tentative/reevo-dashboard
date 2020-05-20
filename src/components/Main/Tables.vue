@@ -17,6 +17,7 @@
           <md-table-row
             v-for="item of maindata.maindata.ListaItemsAlert"
             :key="item.id"
+            class="main-row"
           >
             <md-table-cell class="thumb">
               <span><img :src="item.UrlImmagine" /></span>
@@ -48,6 +49,7 @@
           <md-table-row
             v-for="item of maindata.maindata.ListaItemsInStock"
             :key="item.id"
+            class="main-row"
           >
             <md-table-cell class="thumb">
               <img :src="item.UrlImmagine"
