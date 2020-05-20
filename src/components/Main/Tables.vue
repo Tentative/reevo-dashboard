@@ -56,9 +56,8 @@
             /></md-table-cell>
             <md-table-cell class="item">{{ item.NomeItem }}</md-table-cell>
             <md-table-cell
-              ><span v-if="item.InStock != null">{{ item.InStock }}</span
-              ><span v-else></span
-            ></md-table-cell>
+              ><md-icon class="no-status">cancel</md-icon></md-table-cell
+            >
             <md-table-cell>{{ item.Retailer }}</md-table-cell>
             <md-table-cell>{{ item.SalesRank }}</md-table-cell>
           </md-table-row>
