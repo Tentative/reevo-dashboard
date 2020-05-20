@@ -35,6 +35,9 @@ export default {
       maintainAspectRatio: false,
       legend: {
         display: true,
+        labels: {
+          useLineStyle: true,
+        },
         position: "bottom",
       },
       scales: {

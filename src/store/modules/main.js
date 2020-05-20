@@ -24,6 +24,9 @@ export default {
       legend: {
         display: true,
         position: "bottom",
+        labels: {
+          useLineStyle: true,
+        },
       },
       scales: {
         yAxes: [],
