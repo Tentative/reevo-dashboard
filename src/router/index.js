@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import { Login } from "@/components";
-import { Amz, Items, Price, Main, Parametri } from "@/views";
+import { Amz, Items, Price, Main, Parametri, Input } from "@/views";
 import store from "@/store/index.js";
 
 Vue.use(Router);
@@ -78,6 +78,21 @@ const routes = [
         {
           name: "Main",
           content: "Main Dashboard",
+        },
+      ],
+    },
+  },
+  {
+    path: "/input",
+    name: "Input",
+    component: Input,
+    meta: {
+      requiresAuth: true,
+      title: "Input",
+      metaTags: [
+        {
+          name: "input",
+          content: "Input articles",
         },
       ],
     },

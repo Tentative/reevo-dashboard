@@ -11,6 +11,7 @@ import axios from "axios";
 import price from "./modules/price.js";
 import main from "./modules/main.js";
 import parametri from "./modules/parametri.js";
+import input from "./modules/input.js";
 
 Vue.use(Vuex);
 
@@ -27,6 +28,7 @@ export default new Vuex.Store({
     price,
     main,
     parametri,
+    input,
   },
   mutations: {},
   actions: {},
