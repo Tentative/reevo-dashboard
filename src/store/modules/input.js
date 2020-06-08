@@ -6,13 +6,20 @@ export default {
     status: "",
     input_params: {
       CodiceClient: "reevolacerba2020",
-      CodiceRichiesta: "ListaArticoli",
+      CodiceRichiesta: "Articoli",
+      VersioneClient: global.state.VersioneClient,
+      Url: window.location.href,
+    },
+    upload_params: {
+      CodiceClient: "reevolacerba2020",
+      CodiceRichiesta: "Upload",
       VersioneClient: global.state.VersioneClient,
       Url: window.location.href,
     },
     input: {
       Categoria: "Null",
     },
+    upload: {},
   },
   mutations: {
     input_request(state) {
@@ -24,6 +31,11 @@ export default {
     },
     input_error(state, err) {
       state.status = err;
+    },
+    upload_request(state, { params }) {
+      state.status = "loading";
+      state.upload.NomeFile = params.filename;
+      state.upload.Tipologia = params.mode;
     },
   },
   actions: {
@@ -40,7 +52,7 @@ export default {
           params: JSON.stringify(richiesta),
         })
           .then((res) => {
-            const inputdata = res.data.JsonRisposta;
+            const inputdata = JSON.parse(res.data.JsonRisposta);
             commit("input_success", inputdata);
             resolve(res);
           })
@@ -51,5 +63,14 @@ export default {
           });
       });
     },
+    //   upload({ commit, state }, { params }) {
+    //     return new Promise((resolve, reject) => {
+    //       commit("upload_request", params)
+    //     }
+    // }
+  },
+  getters: {
+    nomeAzienda: (state) => state.inputdata.NomeAzienda,
+    linkFile: (state) => state.inputdata.LinkListaArticoli,
   },
 };

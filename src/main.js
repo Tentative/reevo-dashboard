@@ -5,6 +5,8 @@ import store from "./store";
 import Axios from "axios";
 import VueMaterial from "vue-material";
 import { Pagination } from "element-ui";
+import vueFilePond from "vue-filepond";
+import "filepond/dist/filepond.min.css";
 // import moment from "moment";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
@@ -28,4 +30,7 @@ new Vue({
   router,
   store,
   render: (h) => h(App),
+  components: {
+    FilePond: vueFilePond(),
+  },
 }).$mount("#app");
