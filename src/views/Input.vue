@@ -11,18 +11,20 @@
     >
     <p>{{ message }}</p>
     <div class="md-title">Caricamento articoli:</div>
-    <label
-      >File
-      <input
-        id="file"
-        ref="file"
-        type="file"
-        accept=".xls, .xlsx"
-        @change="handleFileUpload()"
-      />
-    </label>
-    <FilePond :server="path" />
-    <button @click="submitFile()">Submit</button>
+    <label>File</label>
+    <form id="uploadForm" name="uploadForm" enctype="multipart/form-data">
+      <input id="file" ref="file" type="file" @change="handleFileUpload" />
+      <input type="button" value="Upload" @click="submitFile" />
+    </form>
+
+    <FilePond
+      ref="pond"
+      name="upload"
+      :server="path"
+      :files="filess"
+      @init="handleFilePondInit"
+      @change="handleFilePondInit"
+    />
 
     <a href="http://data.reevo.io/reevoimport/template.xlsx"
       >Scarica Template</a
@@ -39,10 +41,10 @@ export default {
     return {
       add: false,
       replace: false,
-      file: "",
+      file: null,
       isValid: null,
       message: "",
-      path: "http://data.reevo.io/",
+      path: `https://data.reevo.io/`,
       params: {
         NomeFile: "ALL MusicaT",
         Tipologia: "ALL",
@@ -59,8 +61,14 @@ export default {
     this.input();
   },
   methods: {
-    handleFileUpload() {
-      this.file = this.$refs.file.files[0];
+    handleFileUpload(event) {
+      this.file = event.target.files[0];
+    },
+    handleFilePondInit: function () {
+      console.log("FilePond has initialized");
+      this.$refs.pond.getFiles();
+
+      // FilePond instance methods are available on `this.$refs.pond`
     },
     validate() {
       this.message = "";
@@ -71,9 +79,13 @@ export default {
       this.submitFile();
     },
     submitFile() {
-      let formData = new FormData();
+      // const config = { headers: { "Content-Type": "multipart/form-data" } };
+      // const data = new FormData(document.getElementById("uploadForm"));
+      // var imagefile = document.querySelector("#file");
+      // data.append("file", imagefile.files[0]);
+      // console.log(imagefile);
       let nomeAzienda = this.nomeAzienda;
-      formData.append("file", this.file);
+      // formData.append("file", this.file);
       // var EasyFtp = require("easy-ftp");
       // var ftp = new EasyFtp();
       // var config = {
@@ -99,27 +111,15 @@ export default {
       //     this.params.NomeFile = `ALL ${nomeAzienda}`;
       //     this.params.Tipologia = "ALL";
       //   }
-
-      console.log(this.params.NomeFile);
-      let call = {
-        CodiceClient: "reevolacerba2020",
-        VersioneClient: "0.9.8",
-        CodiceRichiesta: "Upload",
-        Url: window.location.href,
-        JsonRichiesta: JSON.stringify(this.params),
-      };
+      const fd = new FormData();
+      fd.append("file", this.file, this.file.name);
       axios
-        .post(`/reevoimport/${nomeAzienda}`, formData, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          data: call,
-        })
-        .then(function () {
-          // console.log("SUCCESS!!");
+        .post(`/reevoimport/${nomeAzienda}/`, fd)
+        .then((res) => {
+          console.log(res);
         })
         .catch(function () {
-          // console.log("FAILURE!!");
+          console.log("FAILURE!!");
         });
     },
     input() {
