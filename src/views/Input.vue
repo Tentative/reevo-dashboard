@@ -1,34 +1,50 @@
 <template>
   <div>
     <div>
-      <div class="md-title">Gestione articoli</div>
+      <h3 class="md-title">Gestione articoli</h3>
     </div>
 
-    <div class="md-title">Tipologia di caricamento:</div>
+    <h5 class="md-subheading">Tipologia di caricamento:</h5>
     <md-checkbox v-model="add">Aggiungi alla mia lista di articoli</md-checkbox>
     <md-checkbox v-model="replace"
       >Sostituisci la mia lista con gli articoli caricati</md-checkbox
     >
     <p>{{ message }}</p>
-    <div class="md-title">Caricamento articoli:</div>
-    <label>File</label>
-    <form id="uploadForm" name="uploadForm" enctype="multipart/form-data">
-      <input id="file" ref="file" type="file" @change="handleFileUpload" />
-      <input type="button" value="Upload" @click="submitFile" />
+    <div class="md-layout">
+      <div class="md-layout-item">
+        <div class="md-subheading">Caricamento articoli:</div>
+      </div>
+    </div>
+    <form
+      class="md-layout"
+      id="uploadForm"
+      name="uploadForm"
+      enctype="multipart/form-data"
+    >
+      <md-field class="md-layout-item md-size-50">
+        <md-file id="file" ref="file" type="file" @change="handleFileUpload" />
+        <label id="select" for="file"
+          >Seleziona il file con la lista dei tuoi articoli
+        </label>
+      </md-field>
     </form>
+    <p>
+      oppure
+      <a href="http://data.reevo.io/reevoimport/template.xlsx"
+        >Scarica il Template</a
+      >
+    </p>
 
-    <FilePond
+    <input type="button" value="Upload" @click="submitFile" />
+
+    <!-- FilePond
       ref="pond"
       name="upload"
       :server="path"
       :files="filess"
       @init="handleFilePondInit"
       @change="handleFilePondInit"
-    />
-
-    <a href="http://data.reevo.io/reevoimport/template.xlsx"
-      >Scarica Template</a
-    >
+    / -->
   </div>
 </template>
 
@@ -128,3 +144,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "src/assets/style/input.scss";
+</style>
