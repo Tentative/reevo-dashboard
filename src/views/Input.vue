@@ -5,8 +5,10 @@
     </div>
 
     <h5 class="md-subheading">Tipologia di caricamento:</h5>
-    <md-checkbox v-model="add">Aggiungi alla mia lista di articoli</md-checkbox>
-    <md-checkbox v-model="replace"
+    <md-checkbox v-model="add" class="md-primary"
+      >Aggiungi alla mia lista di articoli</md-checkbox
+    >
+    <md-checkbox v-model="replace" class="md-primary"
       >Sostituisci la mia lista con gli articoli caricati</md-checkbox
     >
     <p>{{ message }}</p>
@@ -55,7 +57,7 @@ export default {
   name: "Input",
   data() {
     return {
-      add: false,
+      all: false,
       replace: false,
       file: null,
       isValid: null,
