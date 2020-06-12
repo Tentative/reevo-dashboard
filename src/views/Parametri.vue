@@ -1,12 +1,18 @@
 <template>
-  <div class="md-title">
-    Parametri
+  <div class="md-layout md-alignment-center-center">
+    <div class="md-layout-item">
+      <Form />
+    </div>
   </div>
 </template>
 
 <script>
+import { Form } from "@/components/Parametri/";
 export default {
   name: "Parametri",
+  components: {
+    Form,
+  },
   data() {
     return {
       parametri: {
