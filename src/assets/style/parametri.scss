@@ -7,6 +7,10 @@ input:-internal-autofill-previewed {
     align-items: baseline;
   }
   & .md-body-1 {
-    padding-left: 30px;
+    padding-left: 40px;
   }
+}
+
+.md-card-actions.md-alignment-left {
+  margin-top: 20px;
 }
