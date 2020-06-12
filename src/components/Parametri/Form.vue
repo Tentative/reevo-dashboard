@@ -1,33 +1,36 @@
 <template>
   <div>
-    <form novalidate class="md-layout" @submit.prevent="saveUser">
-      <md-card class="md-layout-item md-size-50 md-small-size-100">
-        <md-card-header>
-          <div class="md-title">Parametri</div>
-        </md-card-header>
-
+    <div class="alert-wrapper">
+      <div class="md-title">Impostazione Parametri</div>
+    </div>
+    <div class="alert-wrapper">
+      <div class="md-subheading">Parametri PriceGraph</div>
+      </div>
+    <form novalidate class="md-layout" @submit.prevent="validateUser">
         <md-card-content>
-          <div class="md-layout md-gutter">
-            <div class="md-layout-item md-size-20">
-              <md-field :class="getValidationClass('ArticoliTOP')">
-                <label for="articoli-top">Articoli TOP</label>
+          <div id="labels" class="md-layout">
+              <md-field class="md-layout-item md-size-20" :class="getValidationClass('ArticoliTOP')">
+                <label></label>
                 <md-input
+                  :placeholder="parseInt(params.ArticoliTOP).toString()"
                   name="articoli-top"
                   id="articoli-top"
                   type="number"
-                  autocomplete="given-name"
                   v-model="form.ArticoliTOP"
                   :disabled="sending"
                 />
                 <span class="md-error" v-if="!$v.form.ArticoliTOP.required"
-                  >The first name is required</span
+                  >Campo obbligatorio</span
                 >
                 <span
                   class="md-error"
-                  v-else-if="!$v.form.ArticoliTOP.minlength"
-                  >Invalid first name</span
+                  v-else-if="!$v.form.ArticoliTOP.between"
+                  >Inserire un valore valido (1 - 99)</span
                 >
+                
+                
               </md-field>
+              <div class="md-body-1">Numero di articoli Alto Vendenti da includere nel grafico Prezzi come Articoli Top</div>
             </div>
 
             <div class="md-layout-item md-size-20">
@@ -69,7 +72,6 @@
                 >
               </md-field>
             </div>
-          </div>
 
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-20">
@@ -121,7 +123,7 @@
                 <span class="md-error" v-if="!$v.form.ListPriceUP.required"
                   >The email is required</span
                 >
-                <span class="md-error" v-else-if="!$v.form.ListPriceUP.email"
+                <span class="md-error" v-else-if="!$v.form.ListPriceUP"
                   >Invalid email</span
                 >
               </md-field>
@@ -233,9 +235,12 @@
 import { validationMixin } from "vuelidate";
 import {
   required,
-  email,
+  minValue,
+  numeric,
   minLength,
   maxLength,
+  maxValue,
+  between,
 } from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
 
@@ -269,7 +274,12 @@ export default {
     form: {
       ArticoliTOP: {
         required,
+        numeric,
+        between: between(1,99),
         minLength: minLength(1),
+        minValue: minValue(1),
+        maxLength: maxLength(2),
+        maxValue: maxValue(99)
       },
       Prezzo1: {
         required,
@@ -312,7 +322,7 @@ export default {
       },
       email: {
         required,
-        email,
+        
       },
     },
   },
@@ -349,7 +359,7 @@ export default {
         this.userSaved = true;
         this.sending = false;
         this.clearForm();
-      }, 1500);
+      }, 2000);
     },
     validateUser() {
       this.$v.$touch();
@@ -363,6 +373,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "src/assets/style/parametri.scss";
 .md-progress-bar {
   position: absolute;
   top: 0;

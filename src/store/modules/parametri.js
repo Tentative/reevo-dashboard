@@ -68,8 +68,8 @@ export default {
     },
     parametri_save_call({ state, commit }, form) {
       return new Promise((resolve, reject) => {
-        const richiesta = state.params;
         commit("parametri_save_request", form);
+        const richiesta = state.params;
         axios({
           url: "/",
           method: "GET",

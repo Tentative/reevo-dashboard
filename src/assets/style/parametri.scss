@@ -1,0 +1,12 @@
+input:-internal-autofill-previewed {
+  background-color: transparent !important;
+}
+
+.md-layout {
+  & #labels {
+    align-items: baseline;
+  }
+  & .md-body-1 {
+    padding-left: 30px;
+  }
+}
