@@ -3,11 +3,12 @@
     <div class="alert-wrapper">
       <div class="md-title">Impostazione Parametri</div>
     </div>
-    <div class="alert-wrapper">
-      <div class="md-subheading">Parametri PriceGraph</div>
-      </div>
+    
     <form novalidate class="md-layout" @submit.prevent="validateUser">
         <md-card-content>
+          <div class="alert-wrapper">
+            <div class="md-subheading">Parametri PriceGraph</div>
+        </div>
           <div id="labels" class="md-layout">
               <md-field class="md-layout-item md-size-20" :class="getValidationClass('ArticoliTOP')">
                 <label></label>
@@ -33,186 +34,236 @@
               <div class="md-body-1">Numero di articoli Alto Vendenti da includere nel grafico Prezzi come Articoli Top</div>
             </div>
 
-            <div class="md-layout-item md-size-20">
-              <md-field :class="getValidationClass('Prezzo1')">
-                <label for="prezzo-1">Prezzo 1</label>
+            <div id="labels" class="md-layout">
+              <md-field class="md-layout-item md-size-20" :class="getValidationClass('Prezzo1')">
+                <label></label>
                 <md-input
+                  :placeholder="parseInt(params.Prezzo1).toString()"
                   name="prezzo-1"
                   id="prezzo-1"
                   type="number"
-                  autocomplete="family-name"
                   v-model="form.Prezzo1"
                   :disabled="sending"
                 />
                 <span class="md-error" v-if="!$v.form.Prezzo1.required"
-                  >The last name is required</span
+                  >Campo obbligatorio</span
                 >
-                <span class="md-error" v-else-if="!$v.form.Prezzo1.minlength"
-                  >Invalid last name</span
+                <span
+                  class="md-error"
+                  v-else-if="!$v.form.Prezzo1.minValue"
+                  >Inserire un valore valido (valore minimo: 1)</span
                 >
+                
+                
               </md-field>
+              <div class="md-body-1">Limite inferiore sotto il quale vengono considerati articoli a Prezzo Basso</div>
             </div>
 
-            <div class="md-layout-item md-size-20">
-              <md-field :class="getValidationClass('Prezzo1')">
-                <label for="prezzo-2">Prezzo 2</label>
+            <div id="labels" class="md-layout">
+              <md-field class="md-layout-item md-size-20" :class="getValidationClass('Prezzo2')">
+                <label></label>
                 <md-input
+                  :placeholder="parseInt(params.Prezzo2).toString()"
                   name="prezzo-2"
                   id="prezzo-2"
                   type="number"
-                  autocomplete="family-name"
                   v-model="form.Prezzo2"
                   :disabled="sending"
                 />
                 <span class="md-error" v-if="!$v.form.Prezzo2.required"
-                  >The last name is required</span
+                  >Campo obbligatorio</span
                 >
-                <span class="md-error" v-else-if="!$v.form.Prezzo2.minlength"
-                  >Invalid last name</span
+                <span
+                  class="md-error"
+                  v-else-if="!$v.form.Prezzo2.minValue"
+                  >Inserire un valore valido (valore minimo: 1)</span
                 >
+                
+                
               </md-field>
+              <div class="md-body-1">Limite superiore sopra il quale vengono considerati articoli a Prezzo Alto</div>
             </div>
 
-          <div class="md-layout md-gutter">
-            <div class="md-layout-item md-small-size-20">
-              <md-field :class="getValidationClass('SR1')">
-                <label for="sales-rank-1">Sales Rank 1</label>
+          <div id="labels" class="md-layout">
+              <md-field class="md-layout-item md-size-20" :class="getValidationClass('SR1')">
+                <label></label>
                 <md-input
-                  name="sales-rank-1"
-                  id="sales-rank-1"
-                  v-model="form.SR1"
-                  md-dense
-                  :disabled="sending"
-                >
-                </md-input>
-                <span class="md-error">The gender is required</span>
-              </md-field>
-            </div>
-
-            <div class="md-layout-item md-small-size-20">
-              <md-field :class="getValidationClass('SR2')">
-                <label for="sales-rank-2">Sales Rank 2</label>
-                <md-input
+                  :placeholder="parseInt(params.SR1).toString()"
+                  name="sr-1"
+                  id="sr-1"
                   type="number"
-                  id="sales-rank-2"
-                  name="sales-rank-2"
-                  autocomplete="age"
+                  v-model="form.SR1"
+                  :disabled="sending"
+                />
+                <span class="md-error" v-if="!$v.form.SR1.required"
+                  >Campo obbligatorio</span
+                >
+                <span
+                  class="md-error"
+                  v-else-if="!$v.form.SR1.minValue"
+                  >Inserire un valore valido (valore minimo: 1)</span
+                >
+                
+                
+              </md-field>
+              <div class="md-body-1">Percentuale inferiore per considerare articoli a Bassa Rotazione</div>
+            </div>
+
+           <div id="labels" class="md-layout">
+              <md-field class="md-layout-item md-size-20" :class="getValidationClass('SR2')">
+                <label></label>
+                <md-input
+                  :placeholder="parseInt(params.SR2).toString()"
+                  name="sr-2"
+                  id="sr-2"
+                  type="number"
                   v-model="form.SR2"
                   :disabled="sending"
                 />
                 <span class="md-error" v-if="!$v.form.SR2.required"
-                  >The age is required</span
+                  >Campo obbligatorio</span
                 >
-                <span class="md-error" v-else-if="!$v.form.SR2.maxlength"
-                  >Invalid age</span
+                <span
+                  class="md-error"
+                  v-else-if="!$v.form.SR2.minValue"
+                  >Inserire un valore valido (valore minimo: 1)</span
                 >
+                
+                
               </md-field>
+              <div class="md-body-1">Percentuale Superiore per considerare articoli Alto Vendenti</div>
             </div>
 
-            <div class="md-layout-item md-small-size-20">
-              <md-field :class="getValidationClass('ListPriceUP')">
-                <label for="list-price-up">List Price UP</label>
+            <div class="alert-wrapper">
+              <div class="md-subheading">Parametri Alerts</div>
+            </div>
+
+            <div id="labels" class="md-layout">
+              <md-field class="md-layout-item md-size-20" :class="getValidationClass('ListPriceUP')">
+                <label></label>
                 <md-input
-                  type="number"
+                  :placeholder="parseInt(params.ListPriceUP).toString()"
                   name="list-price-up"
                   id="list-price-up"
-                  autocomplete="email"
+                  type="number"
                   v-model="form.ListPriceUP"
                   :disabled="sending"
                 />
                 <span class="md-error" v-if="!$v.form.ListPriceUP.required"
-                  >The email is required</span
+                  >Campo obbligatorio</span
                 >
-                <span class="md-error" v-else-if="!$v.form.ListPriceUP"
-                  >Invalid email</span
+                <span
+                  class="md-error"
+                  v-else-if="!$v.form.ListPriceUP.minValue"
+                  >Inserire un valore valido (valore minimo: 1)</span
                 >
+                
+                
               </md-field>
+              <div class="md-body-1">Percentuale sopra il Prezzo di Listino per attivare un Alert Prezzo</div>
             </div>
 
-            <div class="md-layout-item md-small-size-20">
-              <md-field :class="getValidationClass('ListPriceDOWN')">
-                <label for="list-price-up">List Price DOWN</label>
+            <div id="labels" class="md-layout">
+              <md-field class="md-layout-item md-size-20" :class="getValidationClass('ListPriceDOWN')">
+                <label></label>
                 <md-input
-                  type="number"
+                  :placeholder="parseInt(params.ListPriceDOWN).toString()"
                   name="list-price-down"
                   id="list-price-down"
-                  autocomplete="email"
+                  type="number"
                   v-model="form.ListPriceDOWN"
                   :disabled="sending"
                 />
                 <span class="md-error" v-if="!$v.form.ListPriceDOWN.required"
-                  >The email is required</span
+                  >Campo obbligatorio</span
                 >
-                <span class="md-error" v-else-if="!$v.form.ListPriceDOWN.email"
-                  >Invalid email</span
+                <span
+                  class="md-error"
+                  v-else-if="!$v.form.ListPriceDOWN.minValue"
+                  >Inserire un valore valido (valore minimo: 1)</span
                 >
+                
+                
               </md-field>
+              <div class="md-body-1">Percentuale sotto il Prezzo di Listino per attivare un Alert Prezzo</div>
             </div>
-          </div>
 
-          <div class="md-layout md-gutter">
-            <div class="md-layout-item md-size-20">
-              <md-field :class="getValidationClass('PriceVariation')">
-                <label for="price-variation">Price Variation</label>
+           <div id="labels" class="md-layout">
+              <md-field class="md-layout-item md-size-20" :class="getValidationClass('PriceVariation')">
+                <label></label>
                 <md-input
-                  type="number"
+                  :placeholder="parseInt(params.PriceVariation).toString()"
                   name="price-variation"
                   id="price-variation"
-                  autocomplete="email"
+                  type="number"
                   v-model="form.PriceVariation"
                   :disabled="sending"
                 />
                 <span class="md-error" v-if="!$v.form.PriceVariation.required"
-                  >The email is required</span
+                  >Campo obbligatorio</span
                 >
-                <span class="md-error" v-else-if="!$v.form.PriceVariation.email"
-                  >Invalid email</span
+                <span
+                  class="md-error"
+                  v-else-if="!$v.form.PriceVariation.minValue"
+                  >Inserire un valore valido (valore minimo: 1)</span
                 >
+                
+                
               </md-field>
+              <div class="md-body-1">Variazione percentuale di prezzo per attivare un Alert Prezzo</div>
             </div>
 
-            <div class="md-layout-item md-size-20">
-              <md-field :class="getValidationClass('TopAlertItems')">
-                <label for="top-alert-items">TOP Alert Items</label>
+           
+
+            <div id="labels" class="md-layout">
+              <md-field class="md-layout-item md-size-20" :class="getValidationClass('TopAlertItems')">
+                <label></label>
                 <md-input
-                  type="number"
+                  :placeholder="parseInt(params.ListPriceDOWN).toString()"
                   name="top-alert-items"
                   id="top-alert-items"
-                  autocomplete="email"
+                  type="number"
                   v-model="form.TopAlertItems"
                   :disabled="sending"
                 />
                 <span class="md-error" v-if="!$v.form.TopAlertItems.required"
-                  >The email is required</span
+                  >Campo obbligatorio</span
                 >
-                <span class="md-error" v-else-if="!$v.form.TopAlertItems.email"
-                  >Invalid email</span
+                <span
+                  class="md-error"
+                  v-else-if="!$v.form.TopAlertItems.minValue"
+                  >Inserire un valore valido (valore minimo: 1)</span
                 >
+                
+                
               </md-field>
+              <div class="md-body-1">Percentuale sotto il Prezzo di Listino per attivare un Alert Prezzo</div>
             </div>
 
-            <div class="md-layout-item md-size-20">
-              <md-field :class="getValidationClass('TopInStockItems')">
-                <label for="top-instock-items">TOP Alert Items</label>
+            <div id="labels" class="md-layout">
+              <md-field class="md-layout-item md-size-20" :class="getValidationClass('TopInStockItems')">
+                <label></label>
                 <md-input
-                  type="number"
+                  :placeholder="parseInt(params.TopInStockItems).toString()"
                   name="top-instock-items"
                   id="top-instock-items"
-                  autocomplete="email"
+                  type="number"
                   v-model="form.TopInStockItems"
                   :disabled="sending"
                 />
                 <span class="md-error" v-if="!$v.form.TopInStockItems.required"
-                  >The email is required</span
+                  >Campo obbligatorio</span
                 >
                 <span
                   class="md-error"
-                  v-else-if="!$v.form.TopInStockItems.email"
-                  >Invalid email</span
+                  v-else-if="!$v.form.TopInStockItems.minValue"
+                  >Inserire un valore valido (valore minimo: 1)</span
                 >
+                
+                
               </md-field>
+              <div class="md-body-1">Numero di articoli Alto Vendenti su cui inviare Alert InStock</div>
             </div>
-          </div>
         </md-card-content>
 
         <md-progress-bar md-mode="indeterminate" v-if="sending" />
@@ -283,39 +334,41 @@ export default {
       },
       Prezzo1: {
         required,
-        minLength: minLength(1),
+        numeric,
+        minValue: minValue(1)
       },
       Prezzo2: {
         required,
+        minValue: minValue(1),
         minLength: minLength(1),
       },
       SR1: {
         required,
-        minLength: minLength(1),
+        minLength: minValue(1),
       },
       SR2: {
         required,
-        minLength: minLength(1),
+        minLength: minValue(1),
       },
       ListPriceUP: {
         required,
-        maxLength: maxLength(1),
+        minValue: minValue(1),
       },
       ListPriceDOWN: {
         required,
-        maxLength: maxLength(3),
+        minValue: minValue(1),
       },
       PriceVariation: {
         required,
-        maxLength: maxLength(3),
+        minValue: minValue(1),
       },
       TopAlertItems: {
         required,
-        maxLength: maxLength(3),
+        minValue: minValue(1),
       },
       TopInStockItems: {
         required,
-        maxLength: maxLength(3),
+        minValue: minValue(1),
       },
       gender: {
         required,
