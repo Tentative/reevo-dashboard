@@ -5,13 +5,13 @@
     </div>
 
     <h5 class="md-subheading">Tipologia di caricamento:</h5>
-    <md-checkbox v-model="add" class="md-primary"
+    <md-checkbox v-model="add" class="md-primary" :disabled="all"
       >Aggiungi alla mia lista di articoli</md-checkbox
     >
-    <md-checkbox v-model="replace" class="md-primary"
+    <md-checkbox v-model="all" class="md-primary" :disabled="add"
       >Sostituisci la mia lista con gli articoli caricati</md-checkbox
     >
-    <p>{{ message }}</p>
+    <p class="md-error">{{ message }}</p>
     <div class="md-layout">
       <div class="md-layout-item">
         <div class="md-subheading">Caricamento articoli:</div>
@@ -57,16 +57,12 @@ export default {
   name: "Input",
   data() {
     return {
+      add: false,
       all: false,
-      replace: false,
       file: null,
       isValid: null,
       message: "",
       path: `https://data.reevo.io/`,
-      params: {
-        NomeFile: "ALL MusicaT",
-        Tipologia: "ALL",
-      },
     };
   },
   computed: {
@@ -78,67 +74,43 @@ export default {
   created() {
     this.input();
   },
+
   methods: {
     handleFileUpload(event) {
       this.file = event.target.files[0];
-    },
-    handleFilePondInit: function () {
-      console.log("FilePond has initialized");
-      this.$refs.pond.getFiles();
 
-      // FilePond instance methods are available on `this.$refs.pond`
+      console.log(this.file.name);
     },
-    validate() {
-      this.message = "";
-      if (!this.add && !this.replace) {
-        this.message = "selezionare almeno un opzione";
-        return;
-      }
-      this.submitFile();
-    },
+
     submitFile() {
-      // const config = { headers: { "Content-Type": "multipart/form-data" } };
-      // const data = new FormData(document.getElementById("uploadForm"));
-      // var imagefile = document.querySelector("#file");
-      // data.append("file", imagefile.files[0]);
-      // console.log(imagefile);
-      let nomeAzienda = this.nomeAzienda;
-      // formData.append("file", this.file);
-      // var EasyFtp = require("easy-ftp");
-      // var ftp = new EasyFtp();
-      // var config = {
-      //   host: "data.reevo.io",
-      //   port: 21,
-      //   username: "FrontEnd",
-      //   password: "Reevolacerba2020",
-      //   type: "ftp",
-      // };
-      // ftp.connect(config);
-      // ftp.upload(
-      //   `${this.file}`,
-      //   `/reevoimport/${nomeAzienda}/ALL ${nomeAzienda}`,
-      //   function (err) {
-      //     console.log(err);
-      //   }
-      // );
+      if (!this.all && !this.add) {
+        this.message = "Selezionare almeno un opzione";
+        return;
+      } else if (this.file == null) {
+        this.message = "Selezionare un file";
+        return;
+      } else {
+        let nomeAzienda = this.nomeAzienda;
 
-      //   if (this.add) {
-      //     this.params.NomeFile = `ADD ${nomeAzienda}`;
-      //     this.params.Tipologia = "ADD";
-      //   } else if (this.replace) {
-      //     this.params.NomeFile = `ALL ${nomeAzienda}`;
-      //     this.params.Tipologia = "ALL";
-      //   }
-      const fd = new FormData();
-      fd.append("file", this.file, this.file.name);
-      axios
-        .post(`/reevoimport/${nomeAzienda}/`, fd)
-        .then((res) => {
-          console.log(res);
-        })
-        .catch(function () {
-          console.log("FAILURE!!");
-        });
+        const fd = new FormData();
+        let name = this.all
+          ? (name = "ALL" + " " + nomeAzienda)
+          : this.add
+          ? (name = "ADD" + " " + nomeAzienda)
+          : "";
+
+        fd.append("file", this.file, name);
+        console.log(name);
+        axios
+          .post(`/reevoimport/${nomeAzienda}/`, fd)
+          .then((res) => {
+            console.log(res);
+          })
+          .catch(function () {
+            console.log("FAILURE!!");
+          });
+        this.message = "";
+      }
     },
     input() {
       this.$store.dispatch("input_call");
