@@ -41,9 +41,9 @@
             class="md-layout-item md-size-20"
             :class="getValidationClass('Prezzo1')"
           >
-            <label></label>
+            <label>€</label>
             <md-input
-              :placeholder="parseInt(params.Prezzo1).toString()"
+              :placeholder="parseInt(params.Prezzo1).toString() + ' €'"
               name="prezzo-1"
               id="prezzo-1"
               type="number"
@@ -68,9 +68,9 @@
             class="md-layout-item md-size-20"
             :class="getValidationClass('Prezzo2')"
           >
-            <label></label>
+            <label>€</label>
             <md-input
-              :placeholder="parseInt(params.Prezzo2).toString()"
+              :placeholder="parseInt(params.Prezzo2).toString() + ' €'"
               name="prezzo-2"
               id="prezzo-2"
               type="number"
@@ -85,7 +85,7 @@
             >
           </md-field>
           <div class="md-body-1">
-            Limite superiore sopra il quale vengono considerati articoli a
+            € Limite superiore sopra il quale vengono considerati articoli a
             Prezzo Alto
           </div>
         </div>
@@ -151,9 +151,9 @@
             class="md-layout-item md-size-20"
             :class="getValidationClass('ListPriceUP')"
           >
-            <label></label>
+            <label>%</label>
             <md-input
-              :placeholder="parseInt(params.ListPriceUP).toString()"
+              :placeholder="parseInt(params.ListPriceUP).toString() + ' %'"
               name="list-price-up"
               id="list-price-up"
               type="number"
@@ -177,9 +177,9 @@
             class="md-layout-item md-size-20"
             :class="getValidationClass('ListPriceDOWN')"
           >
-            <label></label>
+            <label>%</label>
             <md-input
-              :placeholder="parseInt(params.ListPriceDOWN).toString()"
+              :placeholder="parseInt(params.ListPriceDOWN).toString() + ' %'"
               name="list-price-down"
               id="list-price-down"
               type="number"
@@ -203,9 +203,9 @@
             class="md-layout-item md-size-20"
             :class="getValidationClass('PriceVariation')"
           >
-            <label></label>
+            <label>%</label>
             <md-input
-              :placeholder="parseInt(params.PriceVariation).toString()"
+              :placeholder="parseInt(params.PriceVariation).toString() + ' %'"
               name="price-variation"
               id="price-variation"
               type="number"
