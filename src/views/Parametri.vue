@@ -39,3 +39,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "src/assets/style/parametri.scss";
+</style>
