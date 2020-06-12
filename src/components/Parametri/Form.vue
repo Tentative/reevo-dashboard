@@ -73,12 +73,12 @@
 
           <div class="md-layout md-gutter">
             <div class="md-layout-item md-small-size-20">
-              <md-field :class="getValidationClass('SalesRank1')">
+              <md-field :class="getValidationClass('SR1')">
                 <label for="sales-rank-1">Sales Rank 1</label>
                 <md-input
                   name="sales-rank-1"
                   id="sales-rank-1"
-                  v-model="form.SalesRank1"
+                  v-model="form.SR1"
                   md-dense
                   :disabled="sending"
                 >
@@ -88,20 +88,20 @@
             </div>
 
             <div class="md-layout-item md-small-size-20">
-              <md-field :class="getValidationClass('SalesRank2')">
+              <md-field :class="getValidationClass('SR2')">
                 <label for="sales-rank-2">Sales Rank 2</label>
                 <md-input
                   type="number"
                   id="sales-rank-2"
                   name="sales-rank-2"
                   autocomplete="age"
-                  v-model="form.SalesRank2"
+                  v-model="form.SR2"
                   :disabled="sending"
                 />
-                <span class="md-error" v-if="!$v.form.SalesRank2.required"
+                <span class="md-error" v-if="!$v.form.SR2.required"
                   >The age is required</span
                 >
-                <span class="md-error" v-else-if="!$v.form.SalesRank2.maxlength"
+                <span class="md-error" v-else-if="!$v.form.SR2.maxlength"
                   >Invalid age</span
                 >
               </md-field>
@@ -247,8 +247,8 @@ export default {
       ArticoliTOP: null,
       Prezzo1: null,
       Prezzo2: null,
-      SalesRank1: null,
-      SalesRank2: null,
+      SR1: null,
+      SR2: null,
       ListPriceUP: null,
       ListPriceDOWN: null,
       PriceVariation: null,
@@ -279,11 +279,11 @@ export default {
         required,
         minLength: minLength(1),
       },
-      SalesRank1: {
+      SR1: {
         required,
         minLength: minLength(1),
       },
-      SalesRank2: {
+      SR2: {
         required,
         minLength: minLength(1),
       },
@@ -331,8 +331,8 @@ export default {
       this.form.ArticoliTOP = null;
       this.form.Prezzo1 = null;
       this.form.Prezzo2 = null;
-      this.form.SalesRank1 = null;
-      this.form.SalesRank2 = null;
+      this.form.SR1 = null;
+      this.form.SR2 = null;
       this.form.ListPriceUP = null;
       this.form.ListPriceDOWN = null;
       this.form.PriceVariation = null;
