@@ -19,6 +19,23 @@ a#drawer {
   align-items: center;
 }
 
+.quick .md-list-item {
+  margin-bottom: 20px;
+}
+
+ul:not(#sidebar) .md-list.item {
+  margin-bottom: 30px;
+}
+
+.md-drawer.md-persistent-mini:not(.md-active) {
+  width: 70px !important;
+  z-index: 1;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 a#drawers {
   display: inherit;
   color: rgba(0, 0, 0, 0.87);
@@ -57,8 +74,10 @@ a#drawers {
   border-radius: 3px;
 }
 
-.quick-navigation {
+.quick-navigation,
+.amz-active {
   padding-left: 15px !important;
+  margin-bottom: 50%;
 }
 
 .md-list.quick {
@@ -86,9 +105,9 @@ a:not(.md-button) {
   transition: all 0.4s;
 }
 
-.md-list {
-  margin: 120px 0 !important;
-}
+// .md-list {
+//   margin: 120px 0 !important;
+// }
 
 .md-content {
   // padding: 16px;

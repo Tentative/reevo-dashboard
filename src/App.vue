@@ -39,7 +39,7 @@
         </md-toolbar>
 
         <md-content v-show="menuVisible" class="main-menu">
-          <md-list class="main-navigation">
+          <md-list id="sidebar" class="main-navigation">
             <md-list-item
               ><a
                 id="drawers"
