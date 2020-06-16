@@ -1,5 +1,8 @@
 <template>
-  <div id="nav" class="page-container main-container">
+  <div
+    :id="router == 'Login' ? 'nav' : ''"
+    class="page-container main-container"
+  >
     <md-app md-waterfall md-mode="fixed">
       <md-app-toolbar
         v-show="router != 'Main' && router != 'Login'"
