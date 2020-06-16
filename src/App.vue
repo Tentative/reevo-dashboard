@@ -1,7 +1,10 @@
 <template>
-  <div class="page-container main-container">
+  <div id="nav" class="page-container main-container">
     <md-app md-waterfall md-mode="fixed">
-      <md-app-toolbar v-show="router != 'Login'" class="md-primary topbar">
+      <md-app-toolbar
+        v-show="router != 'Main' && router != 'Login'"
+        class="md-primary topbar"
+      >
         <md-button
           v-if="!menuVisible"
           class="md-icon-button"

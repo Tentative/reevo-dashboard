@@ -8,7 +8,7 @@ Vue.use(Router);
 
 const routes = [
   {
-    path: "/",
+    path: "/amz",
     name: "Amz",
     component: Amz,
     meta: {
@@ -17,7 +17,7 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "Homepage",
+          content: "Amazon Dashboard",
         },
       ],
     },
@@ -32,7 +32,7 @@ const routes = [
       metaTags: [
         {
           name: "description",
-          content: "Homepage",
+          content: "Amazon Dashboard",
         },
       ],
     },
@@ -68,7 +68,7 @@ const routes = [
     },
   },
   {
-    path: "/main",
+    path: "/",
     name: "Main",
     component: Main,
     meta: {
@@ -77,7 +77,7 @@ const routes = [
       metaTags: [
         {
           name: "Main",
-          content: "Main Dashboard",
+          content: "Main Dashboard Homepage",
         },
       ],
     },

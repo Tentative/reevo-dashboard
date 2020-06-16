@@ -13,6 +13,11 @@
   transition: all 0.3s;
 }
 
+#nav .md-app-scroller.md-layout-column.md-flex.md-theme-default.md-scrollbar {
+  padding-left: 0 !important;
+  height: 100vh;
+}
+
 .md-list-item-content > a .md-icon:first-child {
   margin-right: 32px;
 }
