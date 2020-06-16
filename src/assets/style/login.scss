@@ -62,6 +62,14 @@ $alert-color: #bf3f3f;
   }
 }
 
+.centered-container .title {
+  display: flex;
+  & img {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .md-layout.md-alignment-center,
 .md-layout.md-alignment-center-center {
   justify-content: space-between;
