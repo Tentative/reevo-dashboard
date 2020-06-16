@@ -8,6 +8,18 @@ body {
   color: white !important;
 }
 
+a.router-link-active.router-link-exact-active {
+  display: inherit;
+  vertical-align: middle;
+  color: rgba(0, 0, 0, 0.87);
+  align-items: center;
+  &:hover {
+    text-decoration: none;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.87);
+  }
+}
+
 *::moz-selection {
   background-color: rgb(50, 124, 224) !important;
   color: white !important;

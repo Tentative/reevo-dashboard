@@ -61,12 +61,13 @@
             class="dashboard"
             :class="isHome ? 'amz-active' : 'quick-navigation'"
           >
-            <router-link to="/amz">
-              <md-icon class="dashboard-icon"
-                >move_to_inbox</md-icon
+            <router-link id="drawer" to="/amz">
+              <md-icon class="dashboard-icon">move_to_inbox</md-icon>
+
+              <span class="md-list-item-text"
+                >Amazon Dashboard</span
               ></router-link
             >
-            <span class="md-list-item-text">Amazon Dashboard</span>
           </md-list-item>
 
           <md-list-item
