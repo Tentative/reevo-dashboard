@@ -98,11 +98,28 @@ export default {
           : this.add
           ? (name = "ADD" + " " + nomeAzienda)
           : "";
-
         fd.append("file", this.file, name);
-        console.log(name);
-        axios
-          .post(`/reevoimport/${nomeAzienda}/`, fd)
+        console.log(this.file);
+        let params = {
+          CodiceClient: "reevolacerba2020",
+          CodiceRichiesta: "Upload",
+          VersioneClient: "0.9.8",
+          Url: window.location.href,
+          JsonRichiesta: JSON.stringify({
+            NomeFile: name,
+            Tipologia: this.all ? "ALL" : "ADD",
+          }),
+        };
+
+        axios({
+          url: `/reevoimport/${nomeAzienda}/`,
+          method: "POST",
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          params: JSON.stringify(params),
+          data: fd,
+        })
           .then((res) => {
             console.log(res);
           })
