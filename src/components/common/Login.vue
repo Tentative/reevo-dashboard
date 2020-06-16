@@ -8,13 +8,17 @@
 
         <div class="form">
           <md-field>
-            <label>E-mail</label>
+            <label id="email" class="input-email">E-mail</label>
             <md-input v-model="login.email" autofocus></md-input>
           </md-field>
 
           <md-field md-has-password>
-            <label>Password</label>
-            <md-input v-model="login.password" type="password"></md-input>
+            <label id="password" class="login-password">Password</label>
+            <md-input
+              v-model="login.password"
+              type="password"
+              placeholder=""
+            ></md-input>
           </md-field>
           <center>
             <span v-if="authStatus == 'error'" class="errors md-body-1">{{
