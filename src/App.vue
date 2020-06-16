@@ -49,7 +49,15 @@
                 ><span>Reevo.io</span></a
               ></md-list-item
             >
-            <md-list-item><span>Centro Assistenza</span></md-list-item>
+            <md-list-item
+              ><a
+                id="drawers"
+                target="_blank"
+                href="https://reevo.io/assistenza"
+                @click="toggleMenu"
+                ><span>Centro Assistenza</span></a
+              ></md-list-item
+            >
             <md-list-item
               ><router-link id="drawers" to="/input" @click.native="toggleMenu"
                 ><span>Articoli</span></router-link
