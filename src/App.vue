@@ -64,7 +64,10 @@
               ></md-list-item
             >
             <md-list-item
-              ><router-link to="/parametri"
+              ><router-link
+                id="drawers"
+                to="/parametri"
+                @click.native="toggleMenu"
                 ><span>Parametri</span></router-link
               ></md-list-item
             >
