@@ -69,14 +69,14 @@ const routes = [
   },
   {
     path: "/",
-    name: "Main",
+    name: "Home",
     component: Main,
     meta: {
       requiresAuth: true,
-      title: "Main",
+      title: "Home",
       metaTags: [
         {
-          name: "Main",
+          name: "Home",
           content: "Main Dashboard Homepage",
         },
       ],

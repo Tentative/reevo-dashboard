@@ -2,7 +2,7 @@
   <div>
     <div class="alert-wrapper">
       <div class="md-title">
-        Main
+        Home
       </div>
     </div>
 

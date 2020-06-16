@@ -61,7 +61,7 @@
             class="dashboard"
             :class="isHome ? 'amz-active' : 'quick-navigation'"
           >
-            <router-link id="drawer" to="/amz">
+            <router-link id="drawer" to="/amz" @click.native="toggleMenu">
               <md-icon class="dashboard-icon">move_to_inbox</md-icon>
 
               <span class="md-list-item-text"
