@@ -51,8 +51,8 @@
             >
             <md-list-item><span>Centro Assistenza</span></md-list-item>
             <md-list-item
-              ><router-link to="/input"
-                ><span>Input</span></router-link
+              ><router-link id="drawers" to="/input" @click.native="toggleMenu"
+                ><span>Articoli</span></router-link
               ></md-list-item
             >
             <md-list-item
