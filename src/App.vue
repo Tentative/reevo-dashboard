@@ -16,12 +16,13 @@
           <md-icon class="hamburger-menu">menu</md-icon>
         </md-button>
         <span class="md-title logo"
-          ><img src="/assets/img/logo.png" alt="logo"
-        /></span>
+          ><router-link to="/"
+            ><img src="/assets/img/logo.png" alt="logo" /></router-link
+        ></span>
         <div class="login">
-          <md-avatar>
+          <!-- <md-avatar>
             <img src="/assets/img/avatar.png" alt="Avatar" />
-          </md-avatar>
+          </md-avatar> -->
 
           <span v-if="isLoggedIn"><a @click="logout">Logout</a></span>
         </div>
