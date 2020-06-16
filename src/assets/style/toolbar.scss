@@ -19,6 +19,19 @@ a#drawer {
   align-items: center;
 }
 
+a#drawers {
+  display: inherit;
+  color: rgba(0, 0, 0, 0.87);
+  align-items: center;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+#drawers span:hover {
+  text-decoration: underline;
+}
+
 #nav .md-app-scroller.md-layout-column.md-flex.md-theme-default.md-scrollbar {
   padding-left: 0 !important;
   height: 100vh;

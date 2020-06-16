@@ -40,7 +40,15 @@
 
         <md-content v-show="menuVisible" class="main-menu">
           <md-list class="main-navigation">
-            <md-list-item><span>F.A.Q</span></md-list-item>
+            <md-list-item
+              ><a
+                id="drawers"
+                href="https://reevo.io"
+                target="_blank"
+                @click="toggleMenu"
+                ><span>Reevo.io</span></a
+              ></md-list-item
+            >
             <md-list-item><span>Centro Assistenza</span></md-list-item>
             <md-list-item
               ><router-link to="/input"
