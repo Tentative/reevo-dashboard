@@ -9,15 +9,20 @@
         <div class="form">
           <md-field>
             <label id="email" class="input-email">E-mail</label>
-            <md-input v-model="login.email" autofocus></md-input>
+            <md-input
+              v-model="login.email"
+              autofocus
+              autocomplete="new-email"
+            ></md-input>
           </md-field>
 
           <md-field md-has-password>
             <label id="password" class="login-password">Password</label>
             <md-input
+              md-inline
               v-model="login.password"
               type="password"
-              placeholder=""
+              autocomplete="new-password"
             ></md-input>
           </md-field>
           <center>

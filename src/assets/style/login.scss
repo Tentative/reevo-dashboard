@@ -64,17 +64,19 @@ $alert-color: #bf3f3f;
 
 .centered-container .title {
   display: flex;
+  height: 80px;
   & img {
     margin-left: auto;
     margin-right: auto;
+    object-fit: contain;
   }
 }
 
-#password.login-password,
-#email.login-email {
-  bottom: 40px !important;
-  top: auto !important;
-}
+// #password.login-password,
+// #email.login-email {
+//   // bottom: 40px !important;
+//   top: 0 !important;
+// }
 
 .md-layout.md-alignment-center,
 .md-layout.md-alignment-center-center {

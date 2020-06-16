@@ -11,6 +11,13 @@ import "filepond/dist/filepond.min.css";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
 import "@/assets/style/global.scss";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+
+library.add(faUserSecret);
+
+Vue.component("font-awesome-icon", FontAwesomeIcon);
 
 Vue.prototype.$http = Axios;
 const token = localStorage.getItem("token") || sessionStorage.getItem("token");
@@ -23,6 +30,9 @@ if (token) {
 Vue.config.productionTip = false;
 Vue.use(VueMaterial);
 Vue.use(Pagination);
+Vue.use(library);
+Vue.use(faUserSecret);
+Vue.use(FontAwesomeIcon);
 
 Vue.use("vue-moment");
 

@@ -82,11 +82,18 @@
 
         <md-list :class="menuVisible ? 'quick' : ''">
           <md-list-item
+            :class="router == 'Main' ? 'amz-active' : 'quick-navigation'"
+            ><router-link id="drawer" to="/" @click.native="toggleMenu">
+              <md-icon md-src="/assets/img/home-solid.svg" />
+              <span class="md-list-item-text">Home</span></router-link
+            >
+          </md-list-item>
+          <md-list-item
             class="dashboard"
             :class="isHome ? 'amz-active' : 'quick-navigation'"
           >
             <router-link id="drawer" to="/amz" @click.native="toggleMenu">
-              <md-icon class="dashboard-icon">move_to_inbox</md-icon>
+              <md-icon md-src="/assets/img/amazon-brands.svg" />
 
               <span class="md-list-item-text"
                 >Amazon Dashboard</span
@@ -99,7 +106,7 @@
             :class="router == 'Items' ? 'amz-active' : 'quick-navigation'"
           >
             <router-link id="drawer" to="/items" @click.native="toggleMenu">
-              <md-icon class="dashboard-icon">send</md-icon>
+              <md-icon md-src="/assets/img/table-solid.svg" />
               <span class="md-list-item-text"
                 >Items Dashboard</span
               ></router-link
@@ -109,16 +116,8 @@
           <md-list-item
             :class="router == 'Price' ? 'amz-active' : 'quick-navigation'"
             ><router-link to="/price" id="drawer" @click.native="toggleMenu">
-              <md-icon>delete</md-icon>
+              <md-icon md-src="/assets/img/chart-area-solid.svg" />
               <span class="md-list-item-text">Price Graph</span></router-link
-            >
-          </md-list-item>
-
-          <md-list-item
-            :class="router == 'Main' ? 'amz-active' : 'quick-navigation'"
-            ><router-link id="drawer" to="/main" @click.native="toggleMenu">
-              <md-icon>error</md-icon>
-              <span class="md-list-item-text">Spam</span></router-link
             >
           </md-list-item>
         </md-list>
