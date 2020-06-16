@@ -67,6 +67,10 @@ a#drawers {
   cursor: pointer;
 }
 
+.md-elevation-4 {
+  box-shadow: none !important;
+}
+
 .amz-active {
   background-color: rgb(244, 246, 251) !important;
   border-left: 3px solid #88b3dd;

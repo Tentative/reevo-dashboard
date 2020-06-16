@@ -11,6 +11,7 @@ export default {
       VersioneClient: global.state.VersioneClient,
       Url: window.location.href,
     },
+    authdata: {},
   },
 
   mutations: {
@@ -21,6 +22,9 @@ export default {
       state.status = "loading";
       state.login.JsonRichiesta = JSON.stringify(login);
       state.login.IsMemorizzaPassword = login.IsMemorizzaPassword;
+    },
+    auth_data(state, jsonRisposta) {
+      state.authdata = jsonRisposta;
     },
     auth_success(state, token) {
       state.status = "success";
@@ -60,6 +64,7 @@ export default {
             // console.log(res);
             const jsonRisposta = JSON.parse(res.data.JsonRisposta);
             const token = jsonRisposta.JsonWebToken;
+            commit("auth_data", jsonRisposta);
             if (
               login.NomeUtente != "" &&
               login.Password != "" &&

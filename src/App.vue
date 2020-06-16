@@ -6,7 +6,7 @@
     <md-app md-waterfall md-mode="fixed">
       <md-app-toolbar
         v-show="router != 'Main' && router != 'Login'"
-        class="md-primary topbar"
+        class="md-primary topbar md-elevation-1"
       >
         <md-button
           v-if="!menuVisible"
@@ -19,6 +19,10 @@
           ><img src="/assets/img/logo.png" alt="logo"
         /></span>
         <div class="login">
+          <md-avatar>
+            <img src="/assets/img/avatar.png" alt="Avatar" />
+          </md-avatar>
+
           <span v-if="isLoggedIn"><a @click="logout">Logout</a></span>
         </div>
       </md-app-toolbar>
