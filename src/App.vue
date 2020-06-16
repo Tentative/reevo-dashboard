@@ -74,22 +74,28 @@
             class="dashboard"
             :class="router == 'Items' ? 'amz-active' : 'quick-navigation'"
           >
-            <router-link to="/items">
-              <md-icon class="dashboard-icon">send</md-icon></router-link
+            <router-link id="drawer" to="/items" @click.native="toggleMenu">
+              <md-icon class="dashboard-icon">send</md-icon>
+              <span class="md-list-item-text"
+                >Items Dashboard</span
+              ></router-link
             >
-            <span class="md-list-item-text">Items Dashboard</span>
           </md-list-item>
 
           <md-list-item
             :class="router == 'Price' ? 'amz-active' : 'quick-navigation'"
-            ><router-link to="/price"> <md-icon>delete</md-icon></router-link>
-            <span class="md-list-item-text">Price Graph</span>
+            ><router-link to="/price" id="drawer" @click.native="toggleMenu">
+              <md-icon>delete</md-icon>
+              <span class="md-list-item-text">Price Graph</span></router-link
+            >
           </md-list-item>
 
           <md-list-item
             :class="router == 'Main' ? 'amz-active' : 'quick-navigation'"
-            ><router-link to="/main"> <md-icon>error</md-icon></router-link>
-            <span class="md-list-item-text">Spam</span>
+            ><router-link id="drawer" to="/main" @click.native="toggleMenu">
+              <md-icon>error</md-icon>
+              <span class="md-list-item-text">Spam</span></router-link
+            >
           </md-list-item>
         </md-list>
       </md-app-drawer>
