@@ -94,7 +94,7 @@ export default {
         })
         .then(() => {
           this.loading = false;
-          this.$router.push("/amz", () => {});
+          this.$router.push("/", () => {});
         });
       // .catch(err => console.log(err));
     },
