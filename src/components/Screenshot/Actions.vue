@@ -9,14 +9,13 @@
     <md-button
       v-show="attr != '' || Object.keys(currentScreen).length > 0"
       class="md-dense md-raised md-primary apply-button"
-      href="mailto:micoli.giacomo@gmail.com"
+      :href="mail"
     >
       Invia Email</md-button
     >
     <md-button
       class="md-dense md-raised md-primary apply-button"
-      :href="computedLink"
-      target="_blank"
+      @click="openProductPage"
       >Pagina Prodotto</md-button
     >
   </md-dialog-actions>
@@ -41,11 +40,22 @@ export default {
         ? this.$store.getters.currentScreen.UrlItem
         : "#";
     },
+    mail() {
+      return (
+        "mailto:@?subject=" +
+        this.$store.getters.currentScreen.NomeItem +
+        "&body=" +
+        this.$store.getters.currentScreen.UrlScreenshot
+      );
+    },
   },
   created() {
     this.computedScreen;
   },
   methods: {
+    openProductPage() {
+      window.open(this.computedLink, "_blank");
+    },
     saveFile() {
       axios({
         url: this.attr,
