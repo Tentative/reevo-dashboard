@@ -20,7 +20,9 @@
         <md-table-cell class="thumb"
           ><img :src="riga.UrlLogoRetailer"
         /></md-table-cell>
-        <md-table-cell class="item">{{ riga.NomeRiga }}</md-table-cell>
+        <md-table-cell class="item">{{
+          riga.NomeRiga + "&nbsp;"
+        }}</md-table-cell>
         <md-table-cell
           ><span v-if="riga.NumeroItems != 0">{{ riga.NumeroItems }}</span
           ><span v-else class="unavailable"
@@ -41,7 +43,7 @@
         <md-table-cell>{{ riga.PrezziSu }}</md-table-cell>
         <md-table-cell
           ><span v-if="riga.FuoriStock != null"
-            >{{ Math.abs(riga.FuoriStock).toString().slice(0, 2) }} % </span
+            >{{ riga.FuoriStock + "&nbsp;" }} </span
           ><span v-else class="unavailable"
             ><md-icon>remove</md-icon></span
           ></md-table-cell

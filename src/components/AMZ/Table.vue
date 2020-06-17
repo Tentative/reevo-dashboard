@@ -67,8 +67,10 @@
           @click.native="store.dispatch('amz_graph', { item })"
         >
           <a>
-            <span v-if="item.Sconto != '0'">{{ item.Sconto }} %</span>
-            <span v-else class="discount">/</span>
+            <span v-if="item.Sconto != null">{{ item.Sconto + "&nbsp;" }}</span>
+            <span v-else class="discount unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+            >
           </a>
         </md-table-cell>
         <md-table-cell class="stock">
@@ -102,7 +104,12 @@
           <span v-else><md-icon class="no-status">cancel</md-icon></span>
         </md-table-cell>
         <md-table-cell class="reviews">
-          <span>{{ item.NegativeReviewsPercentuale }} %</span>
+          <span v-if="item.NegativeReviewsPercentuale != null">{{
+            item.NegativeReviewsPercentuale + "&nbsp;"
+          }}</span>
+          <span v-else class="unavailable"
+            ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+          >
         </md-table-cell>
       </md-table-row>
     </md-table>

@@ -36,7 +36,7 @@
               >
             </md-table-cell>
             <md-table-cell>
-              {{ Math.abs(item.Sconto).toString().slice(0, 2) }} %
+              {{ item.Sconto + "&nbsp;" }}
             </md-table-cell>
             <md-table-cell> {{ item.Retailer }} </md-table-cell>
             <md-table-cell> {{ item.SalesRank }} </md-table-cell>

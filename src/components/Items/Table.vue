@@ -45,11 +45,13 @@
             v-show="first_exist"
             class="is-dashboard"
             :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'discount'"
-            ><span v-if="index < lista_items.length"
-              >{{
-                Math.abs(item.ListaInfo[0].Sconto).toString().slice(0, 2)
-              }}
-              %</span
+            ><span
+              v-if="
+                index < lista_items.length && item.ListaInfo[0].Sconto != null
+              "
+              >{{ item.ListaInfo[0].Sconto + "&nbsp;" }} </span
+            ><span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
             ></md-table-cell
           >
           <md-table-cell v-show="first_exist" class="stock-item is-dashboard"
@@ -84,11 +86,12 @@
                 ? 'filtro-alert'
                 : 'discount'
             "
-            ><span v-if="item.ListaInfo[1] != undefined"
-              >{{
-                Math.abs(item.ListaInfo[1].Sconto).toString().slice(0, 2)
-              }}
-              %</span
+            ><span
+              v-if="
+                item.ListaInfo[1] != undefined &&
+                item.ListaInfo[1].Sconto != null
+              "
+              >{{ item.ListaInfo[1].Sconto + "&nbsp;" }} </span
             ><span v-else class="unavailable"
               ><md-icon>remove</md-icon></span
             ></md-table-cell
@@ -130,11 +133,8 @@
                 ? 'filtro-alert'
                 : 'discount'
             "
-            ><span v-if="item.ListaInfo[2]"
-              >{{
-                Math.abs(item.ListaInfo[2].Sconto).toString().slice(0, 2)
-              }}
-              %</span
+            ><span v-if="item.ListaInfo[2] && item.ListaInfo[2].Sconto != null"
+              >{{ item.ListaInfo[2].Sconto + "&nbsp;" }} </span
             ><span v-else class="unavailable"
               ><md-icon>remove</md-icon></span
             ></md-table-cell
@@ -172,11 +172,8 @@
                 ? 'filtro-alert'
                 : 'price'
             "
-            ><span v-if="item.ListaInfo[3]"
-              >{{
-                Math.abs(item.ListaInfo[2].Sconto).toString().slice(0, 2)
-              }}
-              %</span
+            ><span v-if="item.ListaInfo[3] && item.ListaInfo[3].Sconto != null"
+              >{{ item.ListaInfo[3].Sconto + "&nbsp;" }} </span
             ><span v-else class="unavailable"
               ><md-icon>remove</md-icon></span
             ></md-table-cell
