@@ -7,6 +7,10 @@ $text-on-alert: #000000;
 $icon-size: 1rem;
 $filtro-alert: rgba(255, 0, 0, 0.12);
 
+.amz .md-table-head .md-table-head-container {
+  padding: 16px 0 !important;
+}
+
 .thumb img {
   // height: 54px;
   // max-width: inherit;
