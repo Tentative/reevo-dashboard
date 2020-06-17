@@ -1,3 +1,7 @@
 @import "./header.scss";
 @import "./container.scss";
 @import "./actions.scss";
+
+.graph .md-layout {
+  flex-wrap: nowrap !important;
+}
