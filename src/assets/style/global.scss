@@ -20,6 +20,10 @@ a.router-link-active.router-link-exact-active {
   }
 }
 
+.view {
+  overflow-y: auto !important;
+}
+
 *::moz-selection {
   background-color: rgb(50, 124, 224) !important;
   color: white !important;
