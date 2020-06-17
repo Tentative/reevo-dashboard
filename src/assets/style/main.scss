@@ -20,8 +20,15 @@
   text-align: left !important;
 }
 
-.main-row {
-  border-bottom: 5px #f4f6fb !important;
+.md-table .md-table-row {
+  &.main-row {
+    // border-bottom: 10px #f4f6fb !important;
+    height: 50px !important;
+    & .thumb img {
+      max-width: 40px;
+      max-height: 40px;
+    }
+  }
 }
 
 .main {
