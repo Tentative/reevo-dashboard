@@ -22,6 +22,7 @@ a.router-link-active.router-link-exact-active {
 
 .view {
   overflow-y: auto !important;
+  overflow-x: hidden;
 }
 
 *::moz-selection {
