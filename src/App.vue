@@ -82,9 +82,9 @@
 
         <md-list :class="menuVisible ? 'quick' : ''">
           <md-list-item
-            :class="router == 'Main' ? 'amz-active' : 'quick-navigation'"
+            :class="router == 'Home' ? 'amz-active' : 'quick-navigation'"
             ><router-link id="drawer" to="/">
-              <md-icon md-src="/assets/img/home-solid.svg" />
+              <md-icon class="side" md-src="/assets/img/home-solid.svg" />
               <span class="md-list-item-text" @click="toggleMenu"
                 >Home</span
               ></router-link
@@ -95,7 +95,7 @@
             :class="isHome ? 'amz-active' : 'quick-navigation'"
           >
             <router-link id="drawer" to="/amz">
-              <md-icon md-src="/assets/img/amazon-brands.svg" />
+              <md-icon class="side" md-src="/assets/img/amazon-brands.svg" />
 
               <span class="md-list-item-text" @click="toggleMenu"
                 >Amazon Dashboard</span
@@ -108,7 +108,7 @@
             :class="router == 'Items' ? 'amz-active' : 'quick-navigation'"
           >
             <router-link id="drawer" to="/items">
-              <md-icon md-src="/assets/img/table-solid.svg" />
+              <md-icon class="side" md-src="/assets/img/table-solid.svg" />
               <span class="md-list-item-text" @click="toggleMenu"
                 >Items Dashboard</span
               ></router-link
@@ -118,7 +118,7 @@
           <md-list-item
             :class="router == 'Price' ? 'amz-active' : 'quick-navigation'"
             ><router-link to="/price" id="drawer">
-              <md-icon md-src="/assets/img/chart-area-solid.svg" />
+              <md-icon class="side" md-src="/assets/img/chart-area-solid.svg" />
               <span class="md-list-item-text" @click="toggleMenu"
                 >Price Graph</span
               ></router-link

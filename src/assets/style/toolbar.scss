@@ -342,6 +342,14 @@ a:not(.md-button) {
   margin-left: 0 !important;
 }
 
+.side svg {
+  background-color: transparent;
+}
+
+.amz-active .side svg {
+  background-color: #f4f6fb;
+}
+
 .apply-button {
   // margin-left: 20px !important;
   box-shadow: none !important;
