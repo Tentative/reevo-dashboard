@@ -30,20 +30,18 @@
       <md-dialog-actions class="switches alert-title">
         <md-button
           class="md-raised md-dense md-primary apply-button"
-          :md-ripple="false"
           @click="saveDialog"
           >Applica</md-button
         >
         <md-button
           class="md-accent md-raised md-dense ignore-button"
-          :md-ripple="false"
           @click="ignoreDialog"
           >Ignora</md-button
         >
       </md-dialog-actions>
     </md-dialog>
 
-    <md-button class="setting" @click="showDialog = true" :md-ripple="false"
+    <md-button class="setting" @click="showDialog = true"
       ><md-icon>settings</md-icon></md-button
     >
   </div>
