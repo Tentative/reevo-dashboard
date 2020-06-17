@@ -12,6 +12,7 @@
           v-if="!menuVisible"
           class="md-icon-button"
           @click="toggleMenu"
+          :md-ripple="false"
         >
           <md-icon class="hamburger-menu">menu</md-icon>
         </md-button>
@@ -37,7 +38,11 @@
           <span>Menu</span>
 
           <div class="md-toolbar-section-end">
-            <md-button class="md-icon-button md-dense" @click="toggleMenu">
+            <md-button
+              class="md-icon-button md-dense"
+              :md-ripple="false"
+              @click="toggleMenu"
+            >
               <md-icon>keyboard_arrow_left</md-icon>
             </md-button>
           </div>

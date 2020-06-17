@@ -148,12 +148,14 @@
           <md-dialog-actions>
             <md-button
               class="md-raised md-dense md-primary apply-button"
+              :md-ripple="false"
               :disabled="no_selected || no_price || no_sr"
               @click="saveDialog"
               >Applica</md-button
             >
             <md-button
               class="md-secondary md-raised md-dense ignore-button"
+              :md-ripple="false"
               @click="ignorePriceAlerts"
               >Ignora</md-button
             >
@@ -162,7 +164,7 @@
       </div>
     </md-dialog>
 
-    <md-button class="setting" @click="showPriceAlerts"
+    <md-button class="setting" @click="showPriceAlerts" :md-ripple="false"
       ><md-icon>settings</md-icon></md-button
     >
   </div>
