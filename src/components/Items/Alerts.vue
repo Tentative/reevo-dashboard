@@ -34,7 +34,7 @@
           >Applica</md-button
         >
         <md-button
-          class="md-accent md-raised md-dense ignore-button"
+          class="md-button md-secondary md-raised md-dense ignore-button md-theme-default"
           @click="ignoreDialog"
           >Ignora</md-button
         >
