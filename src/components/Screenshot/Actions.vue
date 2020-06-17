@@ -2,19 +2,19 @@
   <md-dialog-actions class="screen-actions">
     <md-button
       v-show="attr != ''"
-      class="md-dense md-raised md-primary"
+      class="md-dense md-raised md-primary apply-button"
       @click="saveFile"
       >Salva</md-button
     >
     <md-button
       v-show="attr != '' || Object.keys(currentScreen).length > 0"
-      class="md-dense md-raised md-primary"
+      class="md-dense md-raised md-primary apply-button"
       href="mailto:micoli.giacomo@gmail.com"
     >
       Invia Email</md-button
     >
     <md-button
-      class="md-dense md-raised md-primary"
+      class="md-dense md-raised md-primary apply-button"
       :href="computedLink"
       target="_blank"
       >Pagina Prodotto</md-button
@@ -63,3 +63,7 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+@import "src/assets/style/toolbar.scss";
+</style>
