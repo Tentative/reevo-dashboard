@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="alert-wrapper">
-      <span class="md-title title">Items Dashboard</span>
+      <div class="md-title">Items Dashboard</div>
       <Alerts v-if="router == 'Items'" />
     </div>
     <div class="md-alignment-center-center item-dashboard">

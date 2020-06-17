@@ -1,20 +1,25 @@
 <template>
   <div>
-    <div>
-      <h3 class="md-title">Gestione articoli</h3>
+    <div class="alert-wrapper">
+      <div class="md-title">Gestione articoli</div>
     </div>
-
-    <h5 class="md-subheading">Tipologia di caricamento:</h5>
-    <md-checkbox v-model="add" class="md-primary" :disabled="all"
-      >Aggiungi alla mia lista di articoli</md-checkbox
-    >
-    <md-checkbox v-model="all" class="md-primary" :disabled="add"
-      >Sostituisci la mia lista con gli articoli caricati</md-checkbox
-    >
-    <p class="md-error">{{ message }}</p>
+    <div class="alert-wrapper">
+      <div class="md-subheading">Tipologia di caricamento:</div>
+    </div>
+    <div class="alert-wrapper">
+      <md-checkbox v-model="add" class="md-primary" :disabled="all"
+        >Aggiungi alla mia lista di articoli</md-checkbox
+      >
+      <md-checkbox v-model="all" class="md-primary" :disabled="add"
+        >Sostituisci la mia lista con gli articoli caricati</md-checkbox
+      >
+      <p class="md-error">{{ message }}</p>
+    </div>
     <div class="md-layout">
       <div class="md-layout-item">
-        <div class="md-subheading">Caricamento articoli:</div>
+        <div class="alert-wrapper">
+          <div class="md-subheading">Caricamento articoli:</div>
+        </div>
       </div>
     </div>
     <form
