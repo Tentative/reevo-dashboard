@@ -8,6 +8,7 @@ export default {
     graph_res: {},
     graph_days: [],
     currentItem: {},
+    graph_data: {},
     amzgraph_request: {
       CodiceClient: "reevolacerba2020",
       CodiceRichiesta: "AMZGraph",
@@ -84,7 +85,7 @@ export default {
     // graph_success(state) {
     //   state.status = "success";
     // },
-    graph_success(state, { prcdata, labels, pdata, graph_data, max, min }) {
+    graph_success(state, prcdata, labels, pdata, graph_data, max, min) {
       // state.prcdata = prcdata;
       state.graph_data = graph_data;
       state.chartdata.labels = labels;
@@ -202,6 +203,7 @@ export default {
               // max,
               // min,
             });
+            commit("toggle_amz_graph", state);
 
             resolve(res);
           })
@@ -213,10 +215,10 @@ export default {
     },
   },
   getters: {
-    status: (state) => state.status,
-    pricedata: (state) => state.chartdata,
-    priceoptions: (state) => state.options,
-    listaRetailers: (state) => state.retailers,
-    listaRigheTabella: (state) => state.listaRigheTabella,
+    // status: (state) => state.status,
+    // pricedata: (state) => state.chartdata,
+    // priceoptions: (state) => state.options,
+    // listaRetailers: (state) => state.retailers,
+    // listaRigheTabella: (state) => state.listaRigheTabella,
   },
 };

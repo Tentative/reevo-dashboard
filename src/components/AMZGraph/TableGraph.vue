@@ -47,7 +47,7 @@
           >
           <md-table-cell
             ><span class="average-price"
-              >{{ prezzoMedio }} €</span
+              >{{ currentItem.PrezzoMedio }} €</span
             ></md-table-cell
           >
           <md-table-cell><span>-</span></md-table-cell>
@@ -91,9 +91,9 @@ export default {
     ...mapGetters({
       currentItem: "currentItem",
     }),
-    prezzoMedio() {
-      return this.currentItem.PrezzoMedio.toFixed(2);
-    },
+    // prezzoMedio() {
+    //   return this.currentItem.PrezzoMedio.toFixed(2);
+    // },
     dataMin() {
       let datamin = this.currentItem.DataPrezzoMin;
       datamin = Date.parse(datamin);
