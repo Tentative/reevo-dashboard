@@ -2,7 +2,6 @@
   <div class="md-layout header md-gutter">
     <div class="md-layout-item screen-name">
       <span>{{ nomeItem }}</span>
-      <md-tooltip md-direction="bottom">{{ nomeItem }}</md-tooltip>
     </div>
     <div class="md-layout-item screen-retailer" :style="visible">
       <span>{{ retailer }}</span>
