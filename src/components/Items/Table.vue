@@ -31,10 +31,15 @@
             v-show="first_exist"
             class="fix is-dashboard"
             :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'price'"
-            ><span v-if="index < lista_items.length"
-              >{{ item.ListaInfo[0].Prezzo }} €</span
+            ><span
+              v-if="
+                index < lista_items.length && item.ListaInfo[0].Prezzo != null
+              "
+              >{{ item.ListaInfo[0].Prezzo + "&nbsp;" }}€</span
             >
-            <span v-else class="unavailable">-</span></md-table-cell
+            <span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+            ></md-table-cell
           >
           <md-table-cell
             v-show="first_exist"
@@ -65,7 +70,7 @@
                 : 'price'
             "
             ><span v-if="item.ListaInfo[1] != undefined"
-              >{{ item.ListaInfo[1].Prezzo }} €</span
+              >{{ item.ListaInfo[1].Prezzo + "&nbsp;" }}€</span
             >
             <span v-else class="unavailable"
               ><md-icon>remove</md-icon></span
@@ -106,8 +111,12 @@
                 ? 'filtro-alert'
                 : 'price'
             "
-            ><span v-if="item.ListaInfo[2] != undefined"
-              >{{ lista_items[index].ListaInfo[2].Prezzo }} €</span
+            ><span
+              v-if="
+                item.ListaInfo[2] != undefined &&
+                item.ListaInfo[2].Prezzo != null
+              "
+              >{{ lista_items[index].ListaInfo[2].Prezzo + "&nbsp;" }}€</span
             >
             <span v-else class="unavailable"
               ><md-icon>remove</md-icon></span
@@ -149,7 +158,7 @@
                 : 'price'
             "
             ><span v-if="item.ListaInfo[3]"
-              >{{ item.ListaInfo[3].Prezzo }} €</span
+              >{{ item.ListaInfo[3].Prezzo + "&nbsp;" }}€</span
             >
             <span v-else class="unavailable"
               ><md-icon>remove</md-icon></span

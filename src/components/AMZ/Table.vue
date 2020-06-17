@@ -54,8 +54,11 @@
           :class="item.IsAlert ? 'filtro-alert' : 'price'"
           @click.native="store.dispatch('amz_graph', { item })"
         >
-          <span
-            ><a>{{ item.Prezzo }} €</a></span
+          <span v-if="item.Prezzo != null">
+            <a>{{ item.Prezzo + "&nbsp;" }}€</a></span
+          >
+          <span v-else class="unavailable"
+            ><i class="md-icon md-icon-font md-theme-default">remove</i></span
           >
         </md-table-cell>
         <md-table-cell
@@ -177,5 +180,6 @@ export default {
 
 <style lang="scss">
 @import "src/assets/style/price.scss";
+@import "src/assets/style/table.scss";
 @import "src/assets/style/toolbar.scss";
 </style>

@@ -25,14 +25,14 @@
         >
         <md-table-cell
           ><span v-if="riga.PrezzoMedioAttuale != null">{{
-            Math.abs(riga.PrezzoMedioAttuale).toString().slice(0, 4)
+            riga.PrezzoMedioAttuale
           }}</span>
           <span v-else class="unavailable"><md-icon>remove</md-icon></span>
           €</md-table-cell
         >
         <md-table-cell
           ><span v-if="riga.PrezzoMedioPeriodo != null">{{
-            Math.abs(riga.PrezzoMedioPeriodo).toString().slice(0, 4)
+            riga.PrezzoMedioPeriodo
           }}</span>
           <span v-else class="unavailable"><md-icon>remove</md-icon></span>
           €</md-table-cell
@@ -57,7 +57,7 @@
         >
         <md-table-cell
           ><span v-if="riga.FuoriStock != null"
-            >{{ Math.abs(riga.FuoriStock).toString().slice(0, 2) }} % </span
+            >{{ riga.FuoriStock + "&nbsp;" }} </span
           ><span v-else class="unavailable"
             ><md-icon>remove</md-icon></span
           ></md-table-cell
