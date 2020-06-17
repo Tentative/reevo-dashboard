@@ -156,6 +156,10 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   padding: 0 !important;
 }
 
+.md-table.md-theme-default .md-table-row td {
+  border-top-color: transparent !important;
+}
+
 .item .md-table-cell-container {
   padding: 0 32px 0 0 !important;
 }

@@ -355,6 +355,10 @@ a:not(.md-button) {
   box-shadow: none !important;
 }
 
+.md-table.md-theme-default .md-table-row td {
+  border-top-color: transparent !important;
+}
+
 .ignore-button {
   border: 1px solid rgba(0, 0, 0, 0.12) !important;
 }
