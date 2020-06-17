@@ -14,20 +14,20 @@
       <spinner />
     </md-dialog>
     <Tables :maindata="maindata" />
-    <div class="sub-wrapper md-layout md-gutter">
+    <div class="alert-wrapper md-layout md-gutter">
       <div class="md-layout-item">
-        <span>Andamento Prezzi Retailers</span>
+        <div class="md-subheading">Andamento Prezzi Retailers</div>
       </div>
     </div>
     <LineChart
       v-if="loaded"
       :chartdata.sync="maindata_graph"
       :options.sync="mainoptions"
-      style="width: 100%; margin-top: 20px;"
+      style="width: 100%; margin-top: 20px; margin-bottom: 10%;"
     ></LineChart>
     <div class="sub-wrapper md-layout md-gutter">
       <div class="md-layout-item">
-        <span>Distribuzione Articoli</span>
+        <div class="md-subheading">Distribuzione Articoli</div>
       </div>
     </div>
     <Table :maindata="maindata" />

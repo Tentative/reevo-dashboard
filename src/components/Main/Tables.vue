@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="md-layout md-gutter">
+    <div class="md-layout md-gutter" style="margin-bottom: 10%;">
       <div class="md-layout-item">
-        <div class="sub-wrapper">
-          <span>Principali Alert di Prezzo</span>
+        <div class="alert-wrapper">
+          <div class="md-subheading">Principali Alert di Prezzo</div>
         </div>
         <md-table>
           <md-table-row>
@@ -44,8 +44,8 @@
         </md-table>
       </div>
       <div class="md-layout-item">
-        <div class="sub-wrapper">
-          <span>Principali Alert Fuori Stock</span>
+        <div class="alert-wrapper">
+          <div class="md-subheading">Principali Alert Fuori Stock</div>
         </div>
         <md-table>
           <md-table-row>
