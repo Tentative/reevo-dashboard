@@ -52,7 +52,7 @@
         <md-table-cell
           class="prezzo fix"
           :class="item.IsAlert ? 'filtro-alert' : 'price'"
-          @click.native="store.dispatch('amz_graph', { item })"
+          @click.native="store.dispatch('amz_graph', item)"
         >
           <span v-if="item.Prezzo != null">
             <a>{{ item.Prezzo + "&nbsp;" }}€</a></span

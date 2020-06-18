@@ -16,7 +16,7 @@ export default {
     },
   },
   computed: {},
-  mounted() {
+  async mounted() {
     this.renderChart(this.chartdata, this.options);
     // this.updateChart();
   },

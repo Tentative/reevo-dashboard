@@ -95,40 +95,43 @@ export default {
     //   return this.currentItem.PrezzoMedio.toFixed(2);
     // },
     dataMin() {
-      let datamin = this.currentItem.DataPrezzoMin;
-      datamin = Date.parse(datamin);
-      let temp = new Date(datamin);
-      let day = temp.getDate();
-      var month = moment().startOf("month").format("MMMM");
-      let dataPrezzoMin =
-        day + " " + month.charAt(0).toUpperCase() + month.slice(1);
-      dataPrezzoMin.toString().slice(4, 10);
+      moment.locale("it");
+      let datamin = moment(this.currentItem.DataPrezzoMin).format("DD MMMM");
+      // datamin = Date.parse(datamin);
+      // let temp = new Date(datamin);
+      // let day = temp.getDate();
+      // var month = moment().startOf("month").format("MMMM");
+      // let dataPrezzoMin =
+      //   day + " " + month.charAt(0).toUpperCase() + month.slice(1);
+      // dataPrezzoMin.toString().slice(4, 10);
 
-      return dataPrezzoMin;
+      return datamin;
     },
     dataMax() {
-      let datamax = this.currentItem.DataPrezzoMax;
-      datamax = Date.parse(datamax);
-      let temp = new Date(datamax);
-      let day = temp.getDate();
-      var month = moment().startOf("month").format("MMMM");
-      let dataPrezzoMax =
-        day + " " + month.charAt(0).toUpperCase() + month.slice(1);
-      dataPrezzoMax.toString().slice(4, 10);
+      moment.locale("it");
+      let datamax = moment(this.currentItem.DataPrezzoMax).format("DD MMMM");
+      // datamax = Date.parse(datamax);
+      // let temp = new Date(datamax);
+      // let day = temp.getDate();
+      // var month = moment().startOf("month").format("MMMM");
+      // let dataPrezzoMax =
+      //   day + " " + month.charAt(0).toUpperCase() + month.slice(1);
+      // dataPrezzoMax.toString().slice(4, 10);
 
-      return dataPrezzoMax;
+      return datamax;
     },
     dataLast() {
-      let datalast = this.currentItem.UltimaData;
-      datalast = Date.parse(datalast);
-      let temp = new Date(datalast);
-      let day = temp.getDate();
-      var month = moment().startOf("month").format("MMMM");
-      let dataPrezzoLast =
-        day + " " + month.charAt(0).toUpperCase() + month.slice(1);
-      dataPrezzoLast.toString().slice(4, 10);
+      moment.locale("it");
+      let datalast = moment(this.currentItem.UltimaData).format("DD MMMM");
+      // datalast = Date.parse(datalast);
+      // let temp = new Date(datalast);
+      // let day = temp.getDate();
+      // var month = moment().startOf("month").format("MMMM");
+      // let dataPrezzoLast =
+      //   day + " " + month.charAt(0).toUpperCase() + month.slice(1);
+      // dataPrezzoLast.toString().slice(4, 10);
 
-      return dataPrezzoLast;
+      return datalast;
     },
   },
 };

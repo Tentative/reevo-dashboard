@@ -116,20 +116,48 @@ export default {
           }),
         };
 
+        // axios({
+        //   url: `/reevoimport/${nomeAzienda}/`,
+        //   method: "POST",
+        //   headers: {
+        //     "Content-Type": "multipart/form-data",
+        //   },
+        //   params: JSON.stringify(params),
+        //   data: fd,
+        // })
+        //   .then((res) => {
+        //     console.log(res);
+        //   })
+        //   .catch(function () {
+        //     console.log("FAILURE!!");
+        //   });
         axios({
-          url: `/reevoimport/${nomeAzienda}/`,
+          url: "/ReevoImport",
           method: "POST",
           headers: {
             "Content-Type": "multipart/form-data",
           },
-          params: JSON.stringify(params),
           data: fd,
         })
           .then((res) => {
+            axios({
+              url: "/",
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              params: JSON.stringify(params),
+            })
+              .then((response) => {
+                console.log(response);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
             console.log(res);
           })
           .catch(function () {
-            console.log("FAILURE!!");
+            console.log("fail");
           });
         this.message = "";
       }

@@ -1,6 +1,13 @@
 <template>
   <div>
     <md-dialog
+      :md-active.sync="loading"
+      class="graph md-scrollbar loading"
+      :md-backdrop="false"
+    >
+      <spinner />
+    </md-dialog>
+    <md-dialog
       :md-active.sync="graph"
       class="graph md-scrollbar"
       @md-clicked-outside="toggleAmzGraph"
@@ -10,8 +17,8 @@
       <div class="md-layout">
         <Thumbnail />
         <BarChart
-          :chartdata="chartdata"
-          :options="options"
+          :chartdata.sync="graphdata"
+          :options.sync="graphoptions"
           style="width: 800px; margin: auto;"
         ></BarChart>
       </div>
@@ -25,11 +32,12 @@
 import BarChart from "./LineChart.js";
 import Thumbnail from "@/components/AMZGraph/Thumbnail.vue";
 import Header from "@/components/AMZGraph/Header.vue";
+import spinner from "@/components/AMZGraph/spinner.vue";
 import TableGraph from "@/components/AMZGraph/TableGraph.vue";
 import { mapGetters } from "vuex";
 export default {
   name: "AmzGraph",
-  components: { BarChart, Thumbnail, Header, TableGraph },
+  components: { BarChart, spinner, Thumbnail, Header, TableGraph },
   props: {
     graphParams: {
       type: Object,
@@ -38,13 +46,19 @@ export default {
   },
   data: () => ({
     loaded: false,
+    loading: false,
+    chartdata: null,
   }),
+  // created() {
+  //   this.amz_call();
+  // },
   computed: {
     ...mapGetters({
       amzGraphVisible: "amzGraphVisible",
-      chartdata: "chartdata",
-      options: "options",
-      currentItem: "currentItem",
+      // chartdata: "chartdata",
+      graphdata: "graphdata",
+      graphoptions: "graphoptions",
+      current_graph_item: "currentItem",
       value: "value",
     }),
     graph: {
@@ -54,9 +68,9 @@ export default {
       set(newValue) {
         return newValue;
       },
-      chartdata: {
+      graphdata: {
         get() {
-          return this.chartdata;
+          return this.$store.getters.graphdata;
         },
         set(newValue) {
           return newValue;
@@ -64,7 +78,7 @@ export default {
       },
       options: {
         get() {
-          return this.options;
+          return this.$store.getters.graphoptions;
         },
         set(newValue) {
           return newValue;
@@ -80,9 +94,38 @@ export default {
       },
     },
   },
+
   methods: {
     toggleAmzGraph() {
       this.$store.commit("toggle_amz_graph");
+    },
+    // async toggleAmzGraph() {
+    //   this.loading = true;
+    //   this.loaded = false;
+
+    //   try {
+    //     const { res } = await this.$store.dispatch(
+    //       "amz_graph",
+    //       this.currentItem
+    //     );
+    //     this.chartdata = res;
+    //     this.loaded = true;
+    //     this.loading = false;
+    //   } catch (e) {
+    //     this.loading = false;
+    //     console.log(e);
+    //   }
+    // },
+
+    amz_call() {
+      this.loaded = false;
+      try {
+        const { res } = this.$store.dispatch("amz_graph", this.currentItem);
+        this.chartdata = res;
+        this.loaded = true;
+      } catch (e) {
+        console.error(e);
+      }
     },
   },
 };

@@ -19,7 +19,14 @@ export default {
 
     chartdata: {
       labels: [],
-      datasets: [],
+      datasets: [
+        {
+          yAxisID: "prices",
+          position: "left",
+          data: [],
+          label: "Prezzi",
+        },
+      ],
     },
     options: {
       responsive: true,
@@ -32,7 +39,45 @@ export default {
         position: "bottom",
       },
       scales: {
-        yAxes: [],
+        yAxes: [
+          {
+            id: "prices",
+            backgroundColor: "transparent",
+            borderWidth: 2,
+            borderColor: "#191919",
+            pointBorderWidth: 1,
+            pointRadius: 2,
+            pointBackgroundColor: "#191919",
+            type: "linear",
+            position: "left",
+            gridLines: {
+              display: true,
+              offsetGridLines: false,
+            },
+            ticks: {
+              display: true,
+              // eslint-disable-next-line no-unused-vars
+              callback: function (value, index, values) {
+                return value + " " + "€";
+              },
+              beginAtZero: false,
+              // suggestedMax: "",
+              bounds: "data",
+              // min: "",
+              // max: "",
+              precision: 0,
+            },
+            afterTickToLabelConversion: function (scaleInstance) {
+              // set the first and last tick to null so it does not display
+              // note, ticks[0] is the last tick and ticks[length - 1] is the first
+              scaleInstance.ticks[scaleInstance.ticks.length - 1] = null;
+              // need to do the same thing for this similiar array which is used internally
+              scaleInstance.ticksAsNumbers[
+                scaleInstance.ticksAsNumbers.length - 1
+              ] = null;
+            },
+          },
+        ],
         xAxes: [
           {
             offset: false,
@@ -56,10 +101,11 @@ export default {
               callback: function (item, index) {
                 if (!(index % 3)) return item;
               },
-            },
-            gridLines: {
-              drawTicks: false,
-              drawBorder: true,
+              // },
+              // gridLines: {
+              //   drawTicks: false,
+              //   drawBorder: true,
+              // },
             },
           },
         ],
@@ -85,11 +131,12 @@ export default {
     // graph_success(state) {
     //   state.status = "success";
     // },
-    graph_success(state, prcdata, labels, pdata, graph_data, max, min) {
+    graph_success(state, { pdata, labels, graph_data, max, min }) {
       // state.prcdata = prcdata;
       state.graph_data = graph_data;
       state.chartdata.labels = labels;
-      state.chartdata.datasets[0] = pdata;
+      state.chartdata.datasets[0].data = pdata;
+
       // state.options.scales.yAxes = scales;
       // state.options.scales.xAxes[0].ticks.min = moment()
       //   .subtract(29, "days")
@@ -103,16 +150,16 @@ export default {
       // state.listaRigheTabella = prcdata.ListaRigheTabella;
       state.status = "Success";
     },
-    prc_error(state, err) {
+    amz_error(state, err) {
       state.status = err;
     },
-    clear_price(state) {
+    clear_chart(state) {
       state.chartdata.labels = [];
       state.chartdata.datasets = [];
     },
   },
   actions: {
-    amz_graph({ commit, state }, { item }) {
+    amz_graph({ commit, state }, item) {
       return new Promise((resolve, reject) => {
         commit("get_current_item", { item });
         commit("graph_request");
@@ -126,44 +173,25 @@ export default {
           params: JSON.stringify(richiesta),
         })
           .then((res) => {
-            console.log(res);
-
-            const graph_data = JSON.parse(res.data.JsonRisposta);
+            let graph_data = JSON.parse(res.data.JsonRisposta);
+            console.log(graph_data);
             let labels = [...new Array(30)].map((i, idx) =>
               moment
                 .utc()
                 .startOf("day")
                 .subtract(idx, "days")
                 .utcOffset(1)
-                .format()
+                .format("YYYY-MM-DDTHH:MM")
             );
             labels.reverse();
             let pdata = [];
             let scales = [];
-
             graph_data.ListaPrezzi.forEach((entry, idx, arr) => {
               pdata.push({
-                // label: label.TestoLegenda,
-                // yAxisID: label.TestoLegenda,
-                type: "line",
-                data: arr.map((date) => {
-                  date.DataPrezzo = moment
-                    .utc(date.DataValore)
-                    .format("YYYY-MM-DD");
-
-                  return {
-                    x: date.DataPrezzo,
-                    y: date.PrezzoGiorno,
-                  };
-                }),
-
-                backgroundColor: "transparent",
-                borderWidth: 2,
-                borderColor: "#191919",
-                pointBorderWidth: 1,
-                pointRadius: 2,
-                pointBackgroundColor: "#191919",
+                x: entry.DataPrezzo,
+                y: entry.PrezzoGiorno,
               });
+
               // scales.push({
               //   id: label.TestoLegenda,
               //   position: idx == 0 ? "left" : "right",
@@ -179,6 +207,9 @@ export default {
               //   },
               // });
             });
+
+            console.log(pdata);
+
             // let max = 0;
             // let min = null;
             // let maxs = [];
@@ -195,7 +226,6 @@ export default {
             // console.log(min);
 
             commit("graph_success", {
-              // graphdata,
               labels,
               pdata,
               scales,
@@ -203,12 +233,13 @@ export default {
               // max,
               // min,
             });
-            commit("toggle_amz_graph", state);
+            console.log(pdata);
 
             resolve(res);
+            commit("toggle_amz_graph");
           })
           .catch((err) => {
-            commit("graph_error", err);
+            commit("amz_error", err);
             reject(err);
           });
       });
@@ -216,9 +247,10 @@ export default {
   },
   getters: {
     // status: (state) => state.status,
-    // pricedata: (state) => state.chartdata,
-    // priceoptions: (state) => state.options,
+    graphdata: (state) => state.chartdata,
+    graphoptions: (state) => state.options,
     // listaRetailers: (state) => state.retailers,
     // listaRigheTabella: (state) => state.listaRigheTabella,
+    current_graph_item: (state) => state.currentItem,
   },
 };
