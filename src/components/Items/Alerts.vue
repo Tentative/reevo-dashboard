@@ -6,19 +6,19 @@
         <div class="md-layout-item md-size-75">
           <md-tabs md-dynamic-height>
             <md-tab class="switches-wrapper">
-              <md-switch
+              <md-checkbox
                 v-model="itm.FiltroAlert"
                 class="md-primary"
                 true-value="Si"
                 false-value="Tutti"
                 >Mostra solo articoli con Alert
-              </md-switch>
-              <md-switch
+              </md-checkbox>
+              <md-checkbox
                 v-model="itm.FiltroInStock"
                 class="md-primary"
                 true-value="No"
                 false-value="Tutti"
-                >Mostra solo articoli Fuori Stock</md-switch
+                >Mostra solo articoli Fuori Stock</md-checkbox
               >
             </md-tab></md-tabs
           >

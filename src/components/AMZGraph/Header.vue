@@ -21,8 +21,9 @@ export default {
   name: "Header",
   computed: {
     ...mapGetters({
-      currentItem: "currentItem",
+      // currentItem: "currentItem",
       amzGraphVisible: "amzGraphVisible",
+      currentItem: "graph_data",
     }),
     computedDate() {
       moment.locale("IT");

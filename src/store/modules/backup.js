@@ -17,6 +17,7 @@ export default {
           label: "Prices",
           type: "line",
           yAxisID: "prices",
+          steppedLine: "before",
         },
         {
           label: "Sales Rank",
@@ -140,9 +141,7 @@ export default {
         ],
         xAxes: [
           {
-            barPercentage: 1.1,
-            categoryPercentage: 1.1,
-
+            
             // bounds: "ticks",
             // type: "time",
             ticks: {
@@ -170,7 +169,7 @@ export default {
               offsetGridLines: false,
               zeroLineWidth: 1,
             },
-            offset: false,
+            offset: true,
           },
         ],
       },

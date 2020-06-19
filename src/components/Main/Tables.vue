@@ -10,7 +10,7 @@
             <md-table-head></md-table-head>
             <md-table-head class="name">Articolo</md-table-head>
             <md-table-head>Prezzo</md-table-head>
-            <md-table-head>Sconto</md-table-head>
+            <md-table-head>Delta</md-table-head>
             <md-table-head>Retailer</md-table-head>
             <md-table-head>SR</md-table-head>
           </md-table-row>

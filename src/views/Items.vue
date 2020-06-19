@@ -22,6 +22,7 @@ export default {
   computed: {
     ...mapGetters({
       itm: "itm",
+      itmdata: "itmdata",
     }),
   },
   created() {

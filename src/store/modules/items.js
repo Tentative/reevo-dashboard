@@ -80,5 +80,7 @@ export default {
       });
     },
   },
-  getters: {},
+  getters: {
+    itmdata: (state) => state.itmdata,
+  },
 };

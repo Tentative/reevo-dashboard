@@ -19,7 +19,7 @@
         <BarChart
           :chartdata.sync="graphdata"
           :options.sync="graphoptions"
-          style="width: 800px; margin: auto;"
+          style="width: 800px; margin: 30px auto;"
         ></BarChart>
       </div>
 
@@ -58,7 +58,7 @@ export default {
       // chartdata: "chartdata",
       graphdata: "graphdata",
       graphoptions: "graphoptions",
-      current_graph_item: "currentItem",
+      currentItem: "currentItem",
       value: "value",
     }),
     graph: {
@@ -84,14 +84,14 @@ export default {
           return newValue;
         },
       },
-      currentItem: {
-        get() {
-          return this.currentItem.UrlImmagine;
-        },
-        set(newValue) {
-          return newValue;
-        },
-      },
+      // currentItem: {
+      //   get() {
+      //     return this.currentItem.UrlImmagine;
+      //   },
+      //   set(newValue) {
+      //     return newValue;
+      //   },
+      // },
     },
   },
 

@@ -2,51 +2,53 @@
   <div class="md-alignment-center-center settings">
     <md-dialog class="filter" :md-active.sync="showDialog">
       <md-dialog-title class="alert-title">Filtri</md-dialog-title>
+      <md-divider
+        style="width: 70%; margin-left: auto; margin-right: auto;"
+      ></md-divider>
+
       <div class="md-layout md-gutter">
         <div class="md-layout-item md-size-75">
           <md-tabs md-dynamic-height>
             <md-tab class="switches-wrapper">
-              <md-switch
+              <md-checkbox
                 v-model="amz.FiltroAlert"
                 class="md-primary"
                 true-value="Si"
                 false-value="Tutti"
                 >Mostra solo articoli con Alert
-              </md-switch>
-              <md-switch
+              </md-checkbox>
+              <md-checkbox
                 v-model="amz.FiltroInStock"
                 class="md-primary"
                 true-value="No"
                 false-value="Tutti"
-                >Mostra solo articoli Fuori Stock</md-switch
+                >Mostra solo articoli Fuori Stock</md-checkbox
               >
-              <md-switch
+              <md-checkbox
                 v-model="amz.FiltroFastTrack"
                 class="md-primary"
                 true-value="No"
                 false-value="Tutti"
-                >Mostra solo articoli non Fast Track</md-switch
+                >Mostra solo articoli non Fast Track</md-checkbox
               >
-              <md-switch
+              <md-checkbox
                 v-model="amz.FiltroBuyBox"
                 class="md-primary"
                 true-value="No"
                 false-value="Tutti"
-                >Mostra solo articoli senza BuyBox</md-switch
+                >Mostra solo articoli senza BuyBox</md-checkbox
               >
-              <md-switch
+              <md-checkbox
                 v-model="amz.FiltroNegativeReviews"
                 class="md-primary"
                 true-value="SoloNegative"
                 false-value="Tutti"
                 >Mostra solo articoli con recensioni negative maggiori del 20%
-              </md-switch>
+              </md-checkbox>
             </md-tab></md-tabs
           >
         </div>
       </div>
-
-      <md-divider></md-divider>
 
       <md-dialog-actions class="switches alert-title">
         <md-button

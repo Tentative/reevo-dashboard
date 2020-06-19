@@ -147,7 +147,7 @@ export default {
 
                   return {
                     x: date.DataValore,
-                    y: date.Valore,
+                    y: parseFloat(date.Valore),
                   };
                 }).reverse(),
                 backgroundColor: "transparent",

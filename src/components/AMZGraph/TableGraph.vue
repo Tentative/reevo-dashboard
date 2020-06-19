@@ -89,7 +89,7 @@ export default {
   name: "TableGraph",
   computed: {
     ...mapGetters({
-      currentItem: "currentItem",
+      currentItem: "graph_data",
     }),
     // prezzoMedio() {
     //   return this.currentItem.PrezzoMedio.toFixed(2);

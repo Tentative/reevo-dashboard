@@ -19,7 +19,7 @@
           Prezzo
         </md-table-head>
         <md-table-head class="cheap fix">
-          Sconto
+          Delta
         </md-table-head>
         <md-table-head class="oos">
           Stock

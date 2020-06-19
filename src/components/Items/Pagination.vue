@@ -3,11 +3,10 @@
     <el-pagination
       background
       layout="prev, pager, next"
-      :page-size="parseInt(ipp)"
+      :page-size="ipp"
       :pager-count="5"
-      :page-count="parseInt(itm.QtaPagine)"
+      :page-count="itmdata.QtaPagine"
       :current-page.sync="currentPage"
-      :total="ttp"
       @prev-click="prevPage()"
       @next-click="nextPage()"
       @current-change="call_itm()"
@@ -29,8 +28,9 @@ export default {
     ...mapGetters({
       itm: "itm",
       ipp: "ipp",
-      tp: "tp",
-      ttp: "ttp",
+      // tp: "tp",
+      // ttp: "ttp",
+      itmdata: "itmdata",
     }),
   },
 
@@ -38,7 +38,7 @@ export default {
     call_itm() {
       let itm = {
         NumeroPagina: this.currentPage,
-        ItemsPerPagina: this.ipp,
+        ItemsPerPagina: this.itmdata.ItemsPerPagina,
         Categoria: null,
         FiltroAlert: "Tutti",
         FiltroInStock: "Tutti",
@@ -46,7 +46,7 @@ export default {
       this.$store.dispatch("itm_request", { itm });
     },
     nextPage() {
-      if (this.currentPage != this.ttp) {
+      if (this.currentPage != this.itmdata.QtaPagine) {
         this.currentPage = this.currentPage + 1;
       }
     },
