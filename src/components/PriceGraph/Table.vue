@@ -16,7 +16,7 @@
         :key="riga.id"
         class="price-table"
       >
-        <md-table-cell>{{ riga.NomeRiga }}</md-table-cell>
+        <md-table-cell class="price-head">{{ riga.NomeRiga }}</md-table-cell>
         <md-table-cell
           ><span v-if="riga.NumeroItems != 0">{{ riga.NumeroItems }}</span
           ><span v-else class="unavailable"

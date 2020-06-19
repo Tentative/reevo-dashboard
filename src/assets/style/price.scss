@@ -11,9 +11,14 @@ $icon-size: 1rem;
   padding: 24px 24px 0;
 }
 
-.price-head .md-table-head-container {
+.amz .price-head .md-table-head-container {
   text-align: left !important;
-  padding: 16px 32px !important;
+  padding-left: 80px !important;
+}
+
+.amz .price-head .md-table-cell-container {
+  text-align: left !important;
+  padding-left: 80px !important;
 }
 
 .md-layout.md-gutter .md-layout-item .md-dialog-actions {
