@@ -136,9 +136,21 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   max-width: 65px;
 }
 
+.md-table-cell .stock-item .is-dashboard td {
+  padding-top: 0 !important;
+  border: 0 !important;
+}
+
+tbody .md-table-row td {
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
+}
+
 .stock-item .md-table-cell-container {
   background-color: white !important;
-  border-right: 10px solid #f4f6fb;
+  border-right: 5px solid #f4f6fb;
   // padding-left: 15px;
   // border-radius: 3px;
   height: 100%;
