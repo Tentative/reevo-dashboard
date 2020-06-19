@@ -27,10 +27,35 @@ export default {
       Url: window.location.href,
     },
     chartdata: {
-      labels: [],
+      labels: [...new Array(30)].map((i, idx) =>
+        moment
+          .utc()
+          .startOf("day")
+          .subtract(idx, "days")
+          .utcOffset(1)
+          .format("YYYY-MM-DD")
+      ),
       datasets: [],
     },
     options: {
+      tooltips: {
+        enabled: true,
+        intersect: true,
+        mode: "index",
+        displayColors: false,
+        callbacks: {
+          title: (tooltipItems) => {
+            return moment(tooltipItems[0].xLabel)
+              .locale("it")
+              .format("DD MMMM HH:MM");
+          },
+          // label: function (t, d) {
+          //   if (t.datasetIndex === 0) {
+          //     return "Prezzo: " + t.yLabel + " " + "€";
+          //   }
+          // },
+        },
+      },
       responsive: true,
       maintainAspectRatio: false,
       legend: {
@@ -45,8 +70,8 @@ export default {
         xAxes: [
           {
             offset: false,
-            bounds: "data",
-            // distribution: "linear",
+            bounds: "ticks",
+            distribution: "linear",
             type: "time",
             autoSkip: false,
             time: {
@@ -62,13 +87,14 @@ export default {
               padding: 15,
               autoSkip: false,
               maxRotation: 0,
-              callback: function (item, index) {
-                if (!(index % 3)) return item;
-              },
+              //   callback: function (item, index) {
+              //     if (!(index % 3)) return item;
+              //   },
             },
             gridLines: {
               drawTicks: false,
-              drawBorder: true,
+              drawBorder: false,
+              zeroLineWidth: 0,
             },
           },
         ],
@@ -95,7 +121,11 @@ export default {
       // state.options.scales.xAxes[0].ticks.max = moment().format();
       scales.forEach((scale) => {
         scale.ticks.suggestedMax = max;
-        scale.ticks.suggestedMin = min;
+        if (state.price_graph.FiltroIndex == "Si") {
+          scale.ticks.min = 100;
+        } else {
+          scale.ticks.suggestedMin = min;
+        }
       });
       state.retailers = prcdata.ListaRetailers;
       state.listaRigheTabella = prcdata.ListaRigheTabella;
@@ -130,7 +160,7 @@ export default {
                 .startOf("day")
                 .subtract(idx, "days")
                 .utcOffset(1)
-                .format()
+                .format("YYYY-MM-DD")
             );
             labels.reverse();
             let pdata = [];
@@ -149,7 +179,7 @@ export default {
                     x: date.DataValore,
                     y: parseFloat(date.Valore),
                   };
-                }).reverse(),
+                }),
                 backgroundColor: "transparent",
                 borderWidth: 2,
                 borderColor: "#" + label.Colore.toString().slice(2),
@@ -172,7 +202,7 @@ export default {
                   },
                 },
                 gridLines: {
-                  display: idx == 0 || idx == 1 ? true : false,
+                  display: idx == 0 ? true : false,
                   drawTicks: false,
                   offsetGridLines: false,
                   drawBorder: true,

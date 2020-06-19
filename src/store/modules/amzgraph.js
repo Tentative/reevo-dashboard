@@ -134,24 +134,22 @@ export default {
           {
             id: "prices",
 
-            // type: "linear",
             position: "left",
             gridLines: {
               display: true,
               offsetGridLines: false,
               drawTicks: false,
-              drawOnChartArea: false,
               drawBorder: true,
             },
             ticks: {
-              padding: 0,
+              source: "auto",
+              padding: 15,
               display: true,
               // eslint-disable-next-line no-unused-vars
               callback: function (value, index, values) {
                 return value + " €";
               },
 
-              beginAtZero: false,
               // suggestedMax: "",
               // bounds: "data",
               // min: "",
@@ -166,15 +164,18 @@ export default {
             gridLines: {
               display: false,
               offsetGridLines: false,
+              drawTicks: false,
+              drawBorder: true,
             },
             ticks: {
               display: false,
+              padding: 15,
+              source: "auto",
+              precision: 0,
               // callback: function (value, index, values) {
               //   return value;
               // },
-              beginAtZero: false,
               // bounds: "data",
-              precision: 0,
             },
           },
           {
@@ -183,6 +184,8 @@ export default {
             gridLines: {
               display: false,
               offsetGridLines: false,
+              drawTicks: false,
+              drawBorder: true,
             },
 
             ticks: {
@@ -214,11 +217,9 @@ export default {
         //     ],
         xAxes: [
           {
-            stacked: true,
-
-            offset: true,
-            bounds: "data",
-            distribution: "linear",
+            offset: false,
+            bounds: "ticks",
+            distribution: "series",
             type: "time",
             autoSkip: false,
             time: {
@@ -226,27 +227,24 @@ export default {
                 day: "DD MMM",
               },
               unit: "day",
-              // unitStepSize: 3,
+              unitStepSize: 3,
               // stepSize: 3,
             },
             ticks: {
-              // source: "data",
+              source: "data",
               padding: 15,
               autoSkip: false,
               maxRotation: 0,
-              maxTicksLimit: 30.1,
 
-              min: moment().subtract(29, "days").format(),
-              max: moment().format(),
-              callback: function (item, index) {
-                if (!(index % 4)) return item;
-              },
+              // min: moment().subtract(29, "days").format(),
+              // max: moment().format(),
+              // callback: function (item, index) {
+              //   if (!(index % 4)) return item;
+              // },
               // },
               gridLines: {
                 drawTicks: false,
-                drawBorder: true,
-                drawOnChartArea: false,
-                zeroLineColor: "red",
+                drawBorder: false,
               },
               // callback: function (value, index, values) {
               //   if (index == 1 || index == values.length) {

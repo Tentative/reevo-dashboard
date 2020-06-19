@@ -11,6 +11,11 @@ $icon-size: 1rem;
   padding: 24px 24px 0;
 }
 
+.price-head .md-table-head-container {
+  text-align: left !important;
+  padding: 16px 32px !important;
+}
+
 .md-layout.md-gutter .md-layout-item .md-dialog-actions {
   justify-content: flex-start;
   padding-top: 10px;
@@ -28,8 +33,13 @@ $icon-size: 1rem;
   display: block;
 }
 
+#price-actions {
+  position: fixed;
+  bottom: 20px;
+}
+
 .md-dialog.price-alert {
-  height: 80%;
+  height: 60% !important;
   width: 80%;
   overflow-y: auto;
   & .md-checkbox {

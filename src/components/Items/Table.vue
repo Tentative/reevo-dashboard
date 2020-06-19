@@ -178,7 +178,9 @@
               ><md-icon>remove</md-icon></span
             ></md-table-cell
           >
-          <md-table-cell v-show="fourth_exist" class="stock-item is-dashboard"
+          <md-table-cell
+            v-show="fourth_exist"
+            class="last stock-item is-dashboard"
             ><span v-if="item.ListaInfo[3] && item.ListaInfo[3].InStock == 'No'"
               ><md-icon class="no-status">cancel</md-icon></span
             ><span v-else></span

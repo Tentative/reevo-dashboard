@@ -2,7 +2,7 @@
   <div>
     <md-table class="amz">
       <md-table-row>
-        <md-table-head>Retailer / Curva</md-table-head>
+        <md-table-head class="price-head">Retailer / Curva</md-table-head>
         <md-table-head>Articoli</md-table-head>
         <md-table-head>Media attuale</md-table-head>
         <md-table-head>Media storica </md-table-head>
@@ -38,13 +38,13 @@
           €</md-table-cell
         >
         <md-table-cell
-          ><span v-if="riga.PrezziGiu != 0">{{ riga.PrezziGiu }} €</span
+          ><span v-if="riga.PrezziGiu != 0">{{ riga.PrezziGiu }}</span
           ><span v-else class="unavailable"
             ><md-icon>remove</md-icon></span
           ></md-table-cell
         >
         <md-table-cell
-          ><span v-if="riga.PrezziSu != 0">{{ riga.PrezziSu }} €</span
+          ><span v-if="riga.PrezziSu != 0">{{ riga.PrezziSu }} </span
           ><span v-else class="unavailable"
             ><md-icon>remove</md-icon></span
           ></md-table-cell

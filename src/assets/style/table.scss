@@ -136,6 +136,9 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   max-width: 65px;
 }
 
+.last.stock-item .md-table-cell-container {
+  border-right-width: 0 !important;
+}
 .md-table-cell .stock-item .is-dashboard td {
   padding-top: 0 !important;
   border: 0 !important;
