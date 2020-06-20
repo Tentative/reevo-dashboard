@@ -15,12 +15,14 @@
             :class="getValidationClass('ArticoliTOP')"
           >
             <label></label>
+
             <md-input
               :placeholder="parseInt(params.ArticoliTOP).toString()"
               name="articoli-top"
               id="articoli-top"
               type="number"
               v-model="form.ArticoliTOP"
+              :class="errors"
               :disabled="sending"
             />
             <span class="md-error" v-if="!$v.form.ArticoliTOP.required"
@@ -41,10 +43,12 @@
             class="md-layout-item md-size-20"
             :class="getValidationClass('Prezzo1')"
           >
-            <label>€</label>
+            <label></label>
+            <span class="md-prefix">€</span>
             <md-input
               :placeholder="parseInt(params.Prezzo1).toString() + ' €'"
               name="prezzo-1"
+              :class="errors"
               id="prezzo-1"
               type="number"
               v-model="form.Prezzo1"
@@ -68,7 +72,8 @@
             class="md-layout-item md-size-20"
             :class="getValidationClass('Prezzo2')"
           >
-            <label>€</label>
+            <label></label>
+            <span class="md-prefix">$</span>
             <md-input
               :placeholder="parseInt(params.Prezzo2).toString() + ' €'"
               name="prezzo-2"
@@ -76,6 +81,7 @@
               type="number"
               v-model="form.Prezzo2"
               :disabled="sending"
+              :class="errors"
             />
             <span class="md-error" v-if="!$v.form.Prezzo2.required"
               >Campo obbligatorio</span
@@ -103,6 +109,7 @@
               type="number"
               v-model="form.SR1"
               :disabled="sending"
+              :class="errors"
             />
             <span class="md-error" v-if="!$v.form.SR1.required"
               >Campo obbligatorio</span
@@ -129,6 +136,7 @@
               type="number"
               v-model="form.SR2"
               :disabled="sending"
+              :class="errors"
             />
             <span class="md-error" v-if="!$v.form.SR2.required"
               >Campo obbligatorio</span
@@ -151,10 +159,12 @@
             class="md-layout-item md-size-20"
             :class="getValidationClass('ListPriceUP')"
           >
-            <label>%</label>
+            <label></label>
+            <span class="md-prefix">%</span>
             <md-input
-              :placeholder="parseInt(params.ListPriceUP).toString() + ' %'"
+              :placeholder="parseInt(params.ListPriceUP).toString()"
               name="list-price-up"
+              :class="errors"
               id="list-price-up"
               type="number"
               v-model="form.ListPriceUP"
@@ -177,14 +187,16 @@
             class="md-layout-item md-size-20"
             :class="getValidationClass('ListPriceDOWN')"
           >
-            <label>%</label>
+            <label></label>
+            <span class="md-prefix">%</span>
             <md-input
-              :placeholder="parseInt(params.ListPriceDOWN).toString() + ' %'"
+              :placeholder="parseInt(params.ListPriceDOWN).toString()"
               name="list-price-down"
               id="list-price-down"
               type="number"
               v-model="form.ListPriceDOWN"
               :disabled="sending"
+              :class="errors"
             />
             <span class="md-error" v-if="!$v.form.ListPriceDOWN.required"
               >Campo obbligatorio</span
@@ -203,12 +215,14 @@
             class="md-layout-item md-size-20"
             :class="getValidationClass('PriceVariation')"
           >
-            <label>%</label>
+            <label></label>
+            <span class="md-prefix">%</span>
             <md-input
-              :placeholder="parseInt(params.PriceVariation).toString() + ' %'"
+              :placeholder="parseInt(params.PriceVariation).toString()"
               name="price-variation"
               id="price-variation"
               type="number"
+              :class="errors"
               v-model="form.PriceVariation"
               :disabled="sending"
             />
@@ -230,12 +244,14 @@
             :class="getValidationClass('TopAlertItems')"
           >
             <label></label>
+
             <md-input
               :placeholder="parseInt(params.ListPriceDOWN).toString()"
               name="top-alert-items"
               id="top-alert-items"
               type="number"
               v-model="form.TopAlertItems"
+              :class="errors"
               :disabled="sending"
             />
             <span class="md-error" v-if="!$v.form.TopAlertItems.required"
@@ -257,6 +273,7 @@
           >
             <label></label>
             <md-input
+              :class="errors"
               :placeholder="parseInt(params.TopInStockItems).toString()"
               name="top-instock-items"
               id="top-instock-items"
@@ -301,6 +318,7 @@ export default {
   name: "FormValidation",
   mixins: [validationMixin],
   data: () => ({
+    errors: "",
     form: {
       ArticoliTOP: null,
       Prezzo1: null,
@@ -322,6 +340,14 @@ export default {
       params: "params",
       save: "save",
     }),
+    minPrezzo1: {
+      get() {
+        return this.form.Prezzo1;
+      },
+      set(newValue) {
+        return newValue;
+      },
+    },
   },
   validations: {
     form: {
@@ -335,7 +361,7 @@ export default {
       },
       Prezzo2: {
         required,
-        minValue: minValue(1),
+        minValue: (value) => value > this.minPrezzo1,
       },
       SR1: {
         required,
@@ -407,6 +433,8 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveUser();
+      } else {
+        this.errors = "is-error";
       }
     },
   },

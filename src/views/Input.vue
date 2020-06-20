@@ -103,8 +103,11 @@ export default {
           : this.add
           ? (name = "ADD" + " " + nomeAzienda)
           : "";
-        fd.append("file", this.file, name);
+        let extension = this.file.name.split(".").pop();
+        console.log(extension);
+        fd.append("file", this.file, name + "." + extension);
         console.log(this.file);
+        console.log(fd.get("file"));
         let params = {
           CodiceClient: "reevolacerba2020",
           CodiceRichiesta: "Upload",
@@ -132,7 +135,7 @@ export default {
         //     console.log("FAILURE!!");
         //   });
         axios({
-          url: "/ReevoImport",
+          url: "/upload.aspx",
           method: "POST",
           headers: {
             "Content-Type": "multipart/form-data",
