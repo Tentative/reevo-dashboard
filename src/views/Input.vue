@@ -114,7 +114,7 @@ export default {
           VersioneClient: "0.9.8",
           Url: window.location.href,
           JsonRichiesta: JSON.stringify({
-            NomeFile: name,
+            NomeFile: name + "." + extension,
             Tipologia: this.all ? "ALL" : "ADD",
           }),
         };

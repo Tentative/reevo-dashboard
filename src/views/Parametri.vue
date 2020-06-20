@@ -1,5 +1,12 @@
 <template>
   <div class="md-layout md-alignment-center-center">
+    <md-dialog
+      :md-active.sync="loading"
+      class="graph md-scrollbar loading"
+      :md-backdrop="false"
+    >
+      <spinner />
+    </md-dialog>
     <div class="md-layout-item">
       <Form />
     </div>
@@ -7,11 +14,12 @@
 </template>
 
 <script>
-import { Form } from "@/components/Parametri/";
+import { Form, spinner } from "@/components/Parametri/";
 export default {
   name: "Parametri",
   components: {
     Form,
+    spinner,
   },
   data() {
     return {
