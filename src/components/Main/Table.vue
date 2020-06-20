@@ -33,7 +33,7 @@
         <md-table-cell>{{ riga.NonAcquistabili }}</md-table-cell>
         <md-table-cell
           ><span v-if="riga.PrezzoMedioAttuale != null"
-            >{{ riga.PrezzoMedioAttuale + "&nbsp;" }}€</span
+            >{{ riga.PrezzoMedioAttuale }}&nbsp;€</span
           >
           <span v-else
             ><i class="md-icon md-icon-font md-theme-default">remove</i></span

@@ -25,18 +25,25 @@
             <md-table-cell class="item">
               {{ item.NomeItem }}
             </md-table-cell>
-            <md-table-cell>
-              <span v-if="item.Prezzo != null"
-                >{{ item.Prezzo + "&nbsp;" }}€</span
-              >
+            <md-table-cell style="white-space: nowrap;">
+              <span v-if="item.Prezzo != null">{{
+                item.Prezzo + "&nbsp;€ "
+              }}</span>
               <span v-else class="unavailable"
                 ><i class="md-icon md-icon-font md-theme-default"
                   >remove</i
                 ></span
               >
             </md-table-cell>
-            <md-table-cell>
-              {{ item.Sconto + "&nbsp;" }}
+            <md-table-cell style="white-space: nowrap;">
+              <span v-if="item.Sconto != null">{{
+                item.Sconto + "&nbsp; "
+              }}</span>
+              <span v-else class="unavailable"
+                ><i class="md-icon md-icon-font md-theme-default"
+                  >remove</i
+                ></span
+              >
             </md-table-cell>
             <md-table-cell> {{ item.Retailer }} </md-table-cell>
             <md-table-cell> {{ item.SalesRank }} </md-table-cell>
