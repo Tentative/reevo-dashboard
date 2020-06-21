@@ -13,6 +13,18 @@
   transition: all 0.3s;
 }
 
+.md-toolbar,
+.md-toolbar-row {
+  width: 100%;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  transition: padding 0.4s !important;
+  transition-property: none !important;
+  will-change: padding !important;
+}
+
 a#drawer {
   display: inherit;
   color: rgba(0, 0, 0, 0.87);
@@ -85,7 +97,6 @@ a#drawers {
 .quick-navigation,
 .amz-active {
   padding-left: 15px !important;
-  margin-bottom: 50%;
 }
 
 .md-list.quick {
@@ -94,6 +105,9 @@ a#drawers {
 
 .md-list.main-navigation {
   margin: 0 !important;
+}
+.main-menu .md-list-item {
+  height: 35px;
 }
 
 .main-menu span {

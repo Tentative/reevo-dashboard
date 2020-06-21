@@ -9,6 +9,7 @@
         class="md-primary topbar md-elevation-1"
       >
         <md-button
+          :md-ripple="false"
           v-if="!menuVisible"
           class="md-icon-button"
           @click="toggleMenu"
@@ -32,12 +33,17 @@
         v-if="router != 'Login'"
         :md-active.sync="menuVisible"
         md-persistent="mini"
+        md-permanent="clipped"
       >
         <md-toolbar class="md-transparent" md-elevation="0">
           <span>Menu</span>
 
           <div class="md-toolbar-section-end">
-            <md-button class="md-icon-button md-dense" @click="toggleMenu">
+            <md-button
+              :md-ripple="false"
+              class="md-icon-button md-dense"
+              @click="toggleMenu"
+            >
               <md-icon>keyboard_arrow_left</md-icon>
             </md-button>
           </div>
@@ -139,12 +145,14 @@ import { mapGetters } from "vuex";
 export default {
   name: "App",
   data() {
-    return {};
+    return {
+      menuVisible: false,
+    };
   },
   computed: {
     ...mapGetters({
       isLoggedIn: "isLoggedIn",
-      menuVisible: "menuVisible",
+      // menuVisible: "menuVisible",
     }),
     isHome() {
       if (this.$route.name == "Amz" || this.$route.name == "Dashboard") {
@@ -180,7 +188,7 @@ export default {
       });
     },
     toggleMenu() {
-      this.$store.commit("toggleMenu");
+      this.menuVisible = !this.menuVisible;
     },
   },
 };
