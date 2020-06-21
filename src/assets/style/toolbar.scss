@@ -65,9 +65,14 @@ a#drawers {
   text-decoration: underline;
 }
 
-#nav .md-app-scroller.md-layout-column.md-flex.md-theme-default.md-scrollbar {
+.md-app-scroller.md-layout-column.md-flex.md-theme-default.md-scrollbar {
   padding-left: 0 !important;
   height: 100vh;
+  border: 0 !important;
+}
+
+.md-drawer.md-theme-default.md-persistent-mini.md-left {
+  border: 0 !important;
 }
 
 .md-list-item-text:hover {
