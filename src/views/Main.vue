@@ -8,13 +8,13 @@
 
     <md-dialog
       :md-active.sync="loading"
-      class="graph md-scrollbar loading"
+      class="graph loading"
       :md-backdrop="false"
     >
       <spinner />
     </md-dialog>
-    <Tables :maindata="maindata" />
-    <div class="alert-wrapper md-layout md-gutter">
+    <Tables v-if="loaded" :maindata="maindata" />
+    <div v-if="loaded" class="alert-wrapper md-layout md-gutter">
       <div class="md-layout-item">
         <div class="md-subheading">Andamento Prezzi Retailers</div>
       </div>
@@ -30,7 +30,7 @@
         <div class="md-subheading">Distribuzione Articoli</div>
       </div>
     </div>
-    <Table :maindata="maindata" />
+    <Table v-if="loaded" :maindata="maindata" />
   </div>
 </template>
 
