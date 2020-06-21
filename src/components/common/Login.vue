@@ -44,6 +44,7 @@
           <md-button
             class="md-raised login-button md-primary md-alignment-center-space-between"
             @click="login_request"
+            :md-ripple="false"
             >Log in</md-button
           >
         </div>
