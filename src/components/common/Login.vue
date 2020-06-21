@@ -19,6 +19,7 @@
           <md-field md-has-password>
             <label id="password" class="login-password">Password</label>
             <md-input
+              id="has-password"
               md-inline
               v-model="login.password"
               type="password"

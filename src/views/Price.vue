@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="alert-wrapper">
-      <div class="md-title">Price Graph</div>
+      <div class="md-title">Reevo | Price Graph</div>
       <Alerts @update-call="update_call" />
     </div>
     <md-dialog

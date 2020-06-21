@@ -4,6 +4,13 @@ $alert-color: #bf3f3f;
   color: $alert-color;
 }
 
+.md-field.md-has-password .md-toggle-password {
+  margin: 0 !important;
+  position: absolute !important;
+  right: 25px !important;
+  bottom: -2px !important;
+}
+
 .centered-container {
   display: flex;
   align-items: center;
