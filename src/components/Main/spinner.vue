@@ -1,10 +1,7 @@
 <template>
   <div class="loading-price">
     <div class="loading-overlay">
-      <md-progress-spinner
-        md-mode="indeterminate"
-        :md-stroke="2"
-      ></md-progress-spinner>
+      <md-progress-bar md-mode="indeterminate"></md-progress-bar>
     </div>
   </div>
 </template>

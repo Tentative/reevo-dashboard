@@ -2,8 +2,14 @@
   display: block;
 }
 
-.md-dialog.loading {
+.md-dialog.graph.loading .md-dialog-container.md-theme-default {
   background-color: transparent !important;
+  /* background-color: var(--md-theme-default-background, #fff); */
+  color: rgba(0, 0, 0, 0.87);
+  color: var(
+    --md-theme-default-text-primary-on-background,
+    rgba(0, 0, 0, 0.87)
+  );
   box-shadow: none !important;
 }
 
