@@ -12,6 +12,9 @@ export default {
       Url: window.location.href,
     },
     authdata: {},
+    nomeUtente:
+      localStorage.getItem("nome-utente") ||
+      sessionStorage.getItem("nome-utente"),
   },
 
   mutations: {
@@ -26,15 +29,18 @@ export default {
     auth_data(state, jsonRisposta) {
       state.authdata = jsonRisposta;
     },
-    auth_success(state, token) {
+    auth_success(state, { token, nomeUtente }) {
       state.status = "success";
       state.token = token;
+      state.nomeUtente = nomeUtente;
       if (state.login.IsMemorizzaPassword == false) {
         // console.log("Disconnesso al primo accesso");
         sessionStorage.setItem("token", token);
+        sessionStorage.setItem("nome-utente", nomeUtente);
         // state.token = token;
       } else {
         localStorage.setItem("token", token);
+        localStorage.setItem("nome-utente", nomeUtente);
       }
     },
     auth_error(state) {
@@ -43,8 +49,11 @@ export default {
     logout(state) {
       state.status = "";
       state.token = "";
+      state.nomeUtente = "";
       localStorage.removeItem("token");
+      localStorage.removeItem("nome-utente");
       sessionStorage.removeItem("token");
+      sessionStorage.removeItem("nome-utente");
     },
   },
   actions: {
@@ -61,9 +70,10 @@ export default {
           params: JSON.stringify(richiesta),
         })
           .then((res) => {
-            // console.log(res);
+            console.log(res);
             const jsonRisposta = JSON.parse(res.data.JsonRisposta);
             const token = jsonRisposta.JsonWebToken;
+            const nomeUtente = jsonRisposta.NomeAzienda;
             commit("auth_data", jsonRisposta);
             if (
               login.NomeUtente != "" &&
@@ -75,7 +85,7 @@ export default {
             }
 
             if (jsonRisposta.IsAutorizzato == true) {
-              commit("auth_success", token);
+              commit("auth_success", { token, nomeUtente });
               axios.defaults.headers.common["Authorization"] = token;
               console.log(token.exp);
               resolve(res);
@@ -100,5 +110,7 @@ export default {
       });
     },
   },
-  getters: {},
+  getters: {
+    nomeUtente: (state) => state.nomeUtente,
+  },
 };

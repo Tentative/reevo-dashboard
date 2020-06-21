@@ -4,6 +4,27 @@
   border: 1px solid rgba(#000, 0.12);
 }
 
+.md-menu {
+  // display: inline-flex !important;
+}
+
+.md-avatar {
+  width: 30px !important;
+  min-width: 30px !important;
+  height: 30px !important;
+}
+
+.avatar-placeholder {
+  display: flex;
+  align-self: center;
+}
+
+.avatar-name {
+  color: rgba(0, 0, 0, 0.87);
+  padding-left: 12px !important;
+  text-transform: none !important;
+}
+
 .md-drawer {
   width: 240px !important;
   max-width: calc(100vw - 125px);
@@ -69,6 +90,14 @@ a#drawers {
   padding-left: 0 !important;
   height: 100vh;
   border: 0 !important;
+}
+
+ul#sidebar {
+  margin-bottom: 40px !important;
+}
+
+.md-toolbar.md-theme-default.md-primary .md-icon {
+  color: rgba(0, 0, 0, 0.87) !important;
 }
 
 .md-drawer.md-theme-default.md-persistent-mini.md-left {
@@ -152,7 +181,7 @@ a:not(.md-button) {
 .login {
   flex: 1;
   text-align: right;
-  padding: 0 60px;
+  margin: 0 68px;
   & a {
     color: rgba(0, 0, 0, 0.87) !important;
     float: right;

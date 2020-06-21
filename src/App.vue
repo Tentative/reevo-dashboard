@@ -21,11 +21,21 @@
             ><img src="/assets/img/logo.png" alt="logo" /></router-link
         ></span>
         <div class="login">
-          <!-- <md-avatar>
-            <img src="/assets/img/avatar.png" alt="Avatar" />
-          </md-avatar> -->
-
-          <span v-if="isLoggedIn"><a @click="logout">Logout</a></span>
+          <md-menu md-size="medium" md-align-trigger>
+            <md-button v-if="router != 'Login'" md-menu-trigger
+              ><md-avatar class="md-avatar-icon md-primary"
+                ><span class="avatar-placeholder">{{
+                  avatarPlaceholder
+                }}</span></md-avatar
+              ><span class="avatar-name md-subheading">{{ nomeUtente }}</span>
+              <span><md-icon>keyboard_arrow_down</md-icon></span></md-button
+            >
+            <md-menu-content>
+              <md-menu-item
+                ><span v-if="isLoggedIn"><a @click="logout">Logout</a></span>
+              </md-menu-item>
+            </md-menu-content>
+          </md-menu>
         </div>
       </md-app-toolbar>
 
@@ -168,8 +178,11 @@ export default {
   computed: {
     ...mapGetters({
       isLoggedIn: "isLoggedIn",
-      // menuVisible: "menuVisible",
+      nomeUtente: "nomeUtente",
     }),
+    avatarPlaceholder() {
+      return this.nomeUtente.slice(0, 1);
+    },
     isHome() {
       if (this.$route.name == "Amz" || this.$route.name == "Dashboard") {
         return true;
