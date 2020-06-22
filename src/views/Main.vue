@@ -8,7 +8,7 @@
 
     <md-dialog
       :md-active.sync="loading"
-      class="graph loading"
+      class="spinner loading"
       :md-backdrop="false"
     >
       <spinner />

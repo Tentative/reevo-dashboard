@@ -363,6 +363,10 @@ main.md-scrollbar::-webkit-scrollbar {
   padding: 0 50px !important;
 }
 
+.md-dialog.spinner.loading .md-dialog.container {
+  width: auto !important;
+}
+
 .md-dialog-title.md-title.ftitle {
   margin: 0 70px !important;
   padding: 24px 18px 24px 0;
@@ -426,9 +430,8 @@ main.md-scrollbar::-webkit-scrollbar {
 }
 .md-dialog-container {
   max-width: 90% !important;
-  width: 90vw !important;
   max-height: 90% !important;
-  overflow: scroll !important;
+  overflow: none !important;
 }
 .md-scrollbar::-webkit-scrollbar {
   width: 8px;
