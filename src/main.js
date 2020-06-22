@@ -34,6 +34,19 @@ Vue.use(library);
 Vue.use(faUserSecret);
 Vue.use(FontAwesomeIcon);
 
+Vue.material = {
+  ...Vue.material,
+  ripple: false,
+  inkRipple: false,
+  locale: {
+    ...Vue.material.locale,
+    dateFormat: "dd/MM/yyyy",
+    firstDayOfAWeek: 1,
+  },
+};
+
+Vue.material.MdRipple = false;
+
 Vue.use("vue-moment");
 
 new Vue({

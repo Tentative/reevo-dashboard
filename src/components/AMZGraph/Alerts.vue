@@ -12,6 +12,7 @@
             <md-tab class="switches-wrapper">
               <md-checkbox
                 v-model="amz.FiltroAlert"
+                :md-ripple="false"
                 class="md-primary"
                 true-value="Si"
                 false-value="Tutti"
@@ -19,6 +20,7 @@
               </md-checkbox>
               <md-checkbox
                 v-model="amz.FiltroInStock"
+                :md-ripple="false"
                 class="md-primary"
                 true-value="No"
                 false-value="Tutti"
@@ -26,6 +28,7 @@
               >
               <md-checkbox
                 v-model="amz.FiltroFastTrack"
+                :md-ripple="false"
                 class="md-primary"
                 true-value="No"
                 false-value="Tutti"
@@ -33,6 +36,7 @@
               >
               <md-checkbox
                 v-model="amz.FiltroBuyBox"
+                :md-ripple="false"
                 class="md-primary"
                 true-value="No"
                 false-value="Tutti"
@@ -40,6 +44,7 @@
               >
               <md-checkbox
                 v-model="amz.FiltroNegativeReviews"
+                :md-ripple="false"
                 class="md-primary"
                 true-value="SoloNegative"
                 false-value="Tutti"
@@ -52,11 +57,13 @@
 
       <md-dialog-actions class="switches alert-title">
         <md-button
+          :md-ripple="false"
           class="md-raised md-dense md-primary apply-button"
           @click="saveDialog"
           >Applica</md-button
         >
         <md-button
+          :md-ripple="false"
           class="md-button md-secondary md-raised md-dense ignore-button md-theme-default"
           @click="ignoreDialog"
           >Ignora</md-button
@@ -64,7 +71,7 @@
       </md-dialog-actions>
     </md-dialog>
 
-    <md-button class="setting" @click="showDialog = true"
+    <md-button :md-ripple="false" class="setting" @click="showDialog = true"
       ><md-icon>settings</md-icon></md-button
     >
   </div>

@@ -208,6 +208,7 @@ export default {
         throw err;
       });
     });
+    this.$material.ripple = false;
   },
   methods: {
     logout: function () {
