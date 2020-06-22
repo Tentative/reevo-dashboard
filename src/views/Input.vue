@@ -23,8 +23,8 @@
       </div>
     </div>
     <form
-      class="md-layout"
       id="uploadForm"
+      class="md-layout"
       name="uploadForm"
       enctype="multipart/form-data"
     >

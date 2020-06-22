@@ -19,9 +19,9 @@
     <md-field @change="call_amz()">
       <label for="Items per pagina">Items per pagina</label>
       <md-select
+        id="ipp"
         v-model="itemsPerPage"
         name="ipp"
-        id="ipp"
         @md-selected="call_amz()"
       >
         <md-option value="20">20</md-option>

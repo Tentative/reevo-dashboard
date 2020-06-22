@@ -9,8 +9,8 @@
         class="md-primary topbar md-elevation-1"
       >
         <md-button
-          :md-ripple="false"
           v-if="!menuVisible"
+          :md-ripple="false"
           class="md-icon-button"
           @click="toggleMenu"
         >
@@ -101,9 +101,9 @@
             :class="router == 'Home' ? 'amz-active' : 'quick-navigation'"
             ><router-link id="drawer" to="/">
               <md-icon
-                @click.native="iconToggleMenu"
                 class="side"
                 md-src="/assets/img/home-solid.svg"
+                @click.native="iconToggleMenu"
               />
               <span class="md-list-item-text" @click="toggleMenu"
                 >Home</span
@@ -116,9 +116,9 @@
           >
             <router-link id="drawer" to="/amz">
               <md-icon
-                @click.native="iconToggleMenu"
                 class="side"
                 md-src="/assets/img/amazon-brands.svg"
+                @click.native="iconToggleMenu"
               />
 
               <span class="md-list-item-text" @click="toggleMenu"
@@ -133,9 +133,9 @@
           >
             <router-link id="drawer" to="/items">
               <md-icon
-                @click.native="iconToggleMenu"
                 class="side"
                 md-src="/assets/img/table-solid.svg"
+                @click.native="iconToggleMenu"
               />
               <span class="md-list-item-text" @click="toggleMenu"
                 >Items Dashboard</span
@@ -145,11 +145,11 @@
 
           <md-list-item
             :class="router == 'Price' ? 'amz-active' : 'quick-navigation'"
-            ><router-link to="/price" id="drawer">
+            ><router-link id="drawer" to="/price">
               <md-icon
-                @click.native="iconToggleMenu"
                 class="side"
                 md-src="/assets/img/chart-area-solid.svg"
+                @click.native="iconToggleMenu"
               />
               <span class="md-list-item-text" @click="toggleMenu"
                 >Price Graph</span

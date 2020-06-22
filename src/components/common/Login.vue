@@ -20,8 +20,8 @@
             <label id="password" class="login-password">Password</label>
             <md-input
               id="has-password"
-              md-inline
               v-model="login.password"
+              md-inline
               type="password"
               autocomplete="new-password"
             ></md-input>
@@ -43,8 +43,8 @@
 
           <md-button
             class="md-raised login-button md-primary md-alignment-center-space-between"
-            @click="login_request"
             :md-ripple="false"
+            @click="login_request"
             >Log in</md-button
           >
         </div>

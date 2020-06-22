@@ -17,18 +17,18 @@
             <label></label>
 
             <md-input
+              id="articoli-top"
+              v-model="form.ArticoliTOP"
               :placeholder="parseInt(params.ArticoliTOP).toString()"
               name="articoli-top"
-              id="articoli-top"
               type="number"
-              v-model="form.ArticoliTOP"
               :class="errors"
               :disabled="sending"
             />
-            <span class="md-error" v-if="!$v.form.ArticoliTOP.required"
+            <span v-if="!$v.form.ArticoliTOP.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span class="md-error" v-else-if="!$v.form.ArticoliTOP.minValue"
+            <span v-else-if="!$v.form.ArticoliTOP.minValue" class="md-error"
               >Inserire un valore valido (Valore minimo: 1)</span
             >
           </md-field>
@@ -46,18 +46,18 @@
             <label></label>
             <span class="md-prefix">€</span>
             <md-input
+              id="prezzo-1"
+              v-model="form.Prezzo1"
               :placeholder="parseInt(params.Prezzo1).toString() + ' €'"
               name="prezzo-1"
               :class="errors"
-              id="prezzo-1"
               type="number"
-              v-model="form.Prezzo1"
               :disabled="sending"
             />
-            <span class="md-error" v-if="!$v.form.Prezzo1.required"
+            <span v-if="!$v.form.Prezzo1.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span class="md-error" v-else-if="!$v.form.Prezzo1.minValue"
+            <span v-else-if="!$v.form.Prezzo1.minValue" class="md-error"
               >Inserire un valore valido (valore minimo: 1)</span
             >
           </md-field>
@@ -75,18 +75,18 @@
             <label></label>
             <span class="md-prefix">$</span>
             <md-input
+              id="prezzo-2"
+              v-model="form.Prezzo2"
               :placeholder="parseInt(params.Prezzo2).toString() + ' €'"
               name="prezzo-2"
-              id="prezzo-2"
               type="number"
-              v-model="form.Prezzo2"
               :disabled="sending"
               :class="errors"
             />
-            <span class="md-error" v-if="!$v.form.Prezzo2.required"
+            <span v-if="!$v.form.Prezzo2.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span class="md-error" v-else-if="!$v.form.Prezzo2.minValue"
+            <span v-else-if="!$v.form.Prezzo2.minValue" class="md-error"
               >Inserire un valore valido (valore minimo: 1)</span
             >
           </md-field>
@@ -103,18 +103,18 @@
           >
             <label></label>
             <md-input
+              id="sr-1"
+              v-model="form.SR1"
               :placeholder="parseInt(params.SR1).toString()"
               name="sr-1"
-              id="sr-1"
               type="number"
-              v-model="form.SR1"
               :disabled="sending"
               :class="errors"
             />
-            <span class="md-error" v-if="!$v.form.SR1.required"
+            <span v-if="!$v.form.SR1.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span class="md-error" v-else-if="!$v.form.SR1.minValue"
+            <span v-else-if="!$v.form.SR1.minValue" class="md-error"
               >Inserire un valore valido (valore minimo: 1)</span
             >
           </md-field>
@@ -130,18 +130,18 @@
           >
             <label></label>
             <md-input
+              id="sr-2"
+              v-model="form.SR2"
               :placeholder="parseInt(params.SR2).toString()"
               name="sr-2"
-              id="sr-2"
               type="number"
-              v-model="form.SR2"
               :disabled="sending"
               :class="errors"
             />
-            <span class="md-error" v-if="!$v.form.SR2.required"
+            <span v-if="!$v.form.SR2.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span class="md-error" v-else-if="!$v.form.SR2.minValue"
+            <span v-else-if="!$v.form.SR2.minValue" class="md-error"
               >Inserire un valore valido (valore minimo: 1)</span
             >
           </md-field>
@@ -162,18 +162,18 @@
             <label></label>
             <span class="md-prefix">%</span>
             <md-input
+              id="list-price-up"
+              v-model="form.ListPriceUP"
               :placeholder="parseInt(params.ListPriceUP).toString()"
               name="list-price-up"
               :class="errors"
-              id="list-price-up"
               type="number"
-              v-model="form.ListPriceUP"
               :disabled="sending"
             />
-            <span class="md-error" v-if="!$v.form.ListPriceUP.required"
+            <span v-if="!$v.form.ListPriceUP.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span class="md-error" v-else-if="!$v.form.ListPriceUP.minValue"
+            <span v-else-if="!$v.form.ListPriceUP.minValue" class="md-error"
               >Inserire un valore valido (valore minimo: 1)</span
             >
           </md-field>
@@ -190,18 +190,18 @@
             <label></label>
             <span class="md-prefix">%</span>
             <md-input
+              id="list-price-down"
+              v-model="form.ListPriceDOWN"
               :placeholder="parseInt(params.ListPriceDOWN).toString()"
               name="list-price-down"
-              id="list-price-down"
               type="number"
-              v-model="form.ListPriceDOWN"
               :disabled="sending"
               :class="errors"
             />
-            <span class="md-error" v-if="!$v.form.ListPriceDOWN.required"
+            <span v-if="!$v.form.ListPriceDOWN.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span class="md-error" v-else-if="!$v.form.ListPriceDOWN.minValue"
+            <span v-else-if="!$v.form.ListPriceDOWN.minValue" class="md-error"
               >Inserire un valore valido (valore minimo: 1)</span
             >
           </md-field>
@@ -218,18 +218,18 @@
             <label></label>
             <span class="md-prefix">%</span>
             <md-input
+              id="price-variation"
+              v-model="form.PriceVariation"
               :placeholder="parseInt(params.PriceVariation).toString()"
               name="price-variation"
-              id="price-variation"
               type="number"
               :class="errors"
-              v-model="form.PriceVariation"
               :disabled="sending"
             />
-            <span class="md-error" v-if="!$v.form.PriceVariation.required"
+            <span v-if="!$v.form.PriceVariation.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span class="md-error" v-else-if="!$v.form.PriceVariation.minValue"
+            <span v-else-if="!$v.form.PriceVariation.minValue" class="md-error"
               >Inserire un valore valido (valore minimo: 1)</span
             >
           </md-field>
@@ -246,18 +246,18 @@
             <label></label>
 
             <md-input
+              id="top-alert-items"
+              v-model="form.TopAlertItems"
               :placeholder="parseInt(params.ListPriceDOWN).toString()"
               name="top-alert-items"
-              id="top-alert-items"
               type="number"
-              v-model="form.TopAlertItems"
               :class="errors"
               :disabled="sending"
             />
-            <span class="md-error" v-if="!$v.form.TopAlertItems.required"
+            <span v-if="!$v.form.TopAlertItems.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span class="md-error" v-else-if="!$v.form.TopAlertItems.minValue"
+            <span v-else-if="!$v.form.TopAlertItems.minValue" class="md-error"
               >Inserire un valore valido (valore minimo: 1)</span
             >
           </md-field>
@@ -273,18 +273,18 @@
           >
             <label></label>
             <md-input
+              id="top-instock-items"
+              v-model="form.TopInStockItems"
               :class="errors"
               :placeholder="parseInt(params.TopInStockItems).toString()"
               name="top-instock-items"
-              id="top-instock-items"
               type="number"
-              v-model="form.TopInStockItems"
               :disabled="sending"
             />
-            <span class="md-error" v-if="!$v.form.TopInStockItems.required"
+            <span v-if="!$v.form.TopInStockItems.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span class="md-error" v-else-if="!$v.form.TopInStockItems.minValue"
+            <span v-else-if="!$v.form.TopInStockItems.minValue" class="md-error"
               >Inserire un valore valido (valore minimo: 1)</span
             >
           </md-field>
@@ -300,7 +300,7 @@
         </md-card-actions>
       </md-card-content>
 
-      <md-progress-bar md-mode="indeterminate" v-if="sending" />
+      <md-progress-bar v-if="sending" md-mode="indeterminate" />
 
       <md-snackbar :md-active.sync="userSaved"
         >I parametri sono stati salvati con successo</md-snackbar
