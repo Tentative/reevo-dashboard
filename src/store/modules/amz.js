@@ -83,5 +83,7 @@ export default {
       });
     },
   },
-  getters: {},
+  getters: {
+    amzStatus: (state) => state.status,
+  },
 };
