@@ -1,4 +1,4 @@
-.graph {
+.tablegraph {
   width: 100%;
   & .md-table .md-table-row:first-child {
     background-color: white !important;
@@ -8,6 +8,10 @@
     border-top: 2px solid #d4d4d4 !important;
   }
 }
+
+// tbody .graph .md-table-row:nth-child(odd) {
+//   background-color: rgba(0, 0, 0, 0.15) !important;
+// }
 
 .thumbnail {
   margin: auto;
@@ -44,7 +48,13 @@
   margin-top: 100px;
   align-items: center;
   & tr:nth-child(even) {
-    background-color: #f8f8f8;
+    background-color: #f8f8f8 !important;
+  }
+  & tr:first-child {
+    background-color: white !important;
+  }
+  & .md-table-cell {
+    padding: 10px;
   }
 }
 .first-table,
