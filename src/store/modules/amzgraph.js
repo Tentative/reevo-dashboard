@@ -39,7 +39,7 @@ export default {
           steppedLine: true,
           backgroundColor: "transparent",
           borderWidth: 2,
-          borderColor: "rgba(255,184,171)",
+          borderColor: "rgba(240,85,69, 0.70)",
           pointBorderWidth: 2,
           pointRadius: 0,
           pointBackgroundColor: "#191919",
