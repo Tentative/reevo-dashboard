@@ -218,8 +218,8 @@ export default {
         xAxes: [
           {
             offset: false,
-            bounds: "ticks",
-            distribution: "series",
+            // bounds: "ticks",
+            distribution: "linear",
             type: "time",
             autoSkip: false,
             time: {
@@ -231,16 +231,16 @@ export default {
               // stepSize: 3,
             },
             ticks: {
-              source: "data",
+              source: "labels",
               padding: 15,
               autoSkip: false,
               maxRotation: 0,
 
               // min: moment().subtract(29, "days").format(),
               // max: moment().format(),
-              // callback: function (item, index) {
-              //   if (!(index % 4)) return item;
-              // },
+              callback: function (item, index) {
+                if (!(index % 3)) return item;
+              },
               // },
               gridLines: {
                 drawTicks: false,
