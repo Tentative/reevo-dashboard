@@ -9,18 +9,20 @@
     </md-dialog>
     <md-dialog
       :md-active.sync="graph"
-      class="graph md-scrollbar"
+      class="md-scrollbar"
       @md-clicked-outside="toggleAmzGraph"
     >
       <Header />
       <md-divider></md-divider>
       <div class="md-layout">
         <Thumbnail />
-        <BarChart
-          :chartdata.sync="graphdata"
-          :options.sync="graphoptions"
-          style="width: 800px; margin: 30px auto;"
-        ></BarChart>
+        <div class="md-layout-item">
+          <BarChart
+            :chartdata.sync="graphdata"
+            :options.sync="graphoptions"
+            style="width: 700px; margin: 30px auto;"
+          ></BarChart>
+        </div>
       </div>
 
       <TableGraph />

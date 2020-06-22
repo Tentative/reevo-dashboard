@@ -1,13 +1,12 @@
 .screen-container {
   margin-top: 10px;
   margin-bottom: 10px;
-display: flex;
-justify-content: center;
-
+  display: flex;
+  justify-content: center;
+  padding: 20px;
 }
-.screen-container img{
+.screen-container img {
   object-fit: contain;
   align-self: center;
   -webkit-align-self: center;
 }
-

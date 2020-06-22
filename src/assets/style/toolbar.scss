@@ -363,7 +363,7 @@ main.md-scrollbar::-webkit-scrollbar {
   padding: 0 50px !important;
 }
 
-.md-dialog-title.md-title.alert-title {
+.md-dialog-title.md-title.ftitle {
   margin: 0 70px !important;
   padding: 24px 18px 24px 0;
 }
@@ -424,15 +424,10 @@ main.md-scrollbar::-webkit-scrollbar {
 .md-tabs.md-theme-default .md-tabs-navigation {
   display: none !important;
 }
-.md-dialog.graph {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  max-width: 80%;
-  max-height: 90%;
-  transform: translate(-50%, -50%);
+.md-dialog-container {
+  max-width: 90% !important;
+  max-height: 90% !important;
+  overflow: scroll !important;
 }
 .md-scrollbar::-webkit-scrollbar {
   width: 8px;
