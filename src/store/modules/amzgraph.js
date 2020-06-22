@@ -120,6 +120,60 @@ export default {
       maintainAspectRatio: false,
       legend: {
         display: true,
+        // onClick: function (e, legendItem) {
+        //   var chart = this.chart;
+        //   chart.options.scales.yAxes[0].ticks.display = false;
+        // },
+        // onClick: function (e, legendItem) {
+        //   var index = legendItem.datasetIndex;
+        //   var ci = this.chart;
+        //   var alreadyHidden =
+        //     ci.getDatasetMeta(index).hidden === null
+        //       ? false
+        //       : ci.getDatasetMeta(index).hidden;
+        //   var anyOthersAlreadyHidden = false;
+        //   var allOthersHidden = true;
+
+        //   // figure out the current state of the labels
+        //   ci.data.datasets.forEach(function (e, i) {
+        //     var meta = ci.getDatasetMeta(i);
+
+        //     if (i !== index) {
+        //       if (meta.hidden) {
+        //         anyOthersAlreadyHidden = true;
+        //       } else {
+        //         allOthersHidden = false;
+        //       }
+        //     }
+        //   });
+
+        //   // if the label we clicked is already hidden
+        //   // then we now want to unhide (with any others already unhidden)
+        //   if (alreadyHidden) {
+        //     ci.getDatasetMeta(index).hidden = null;
+        //   } else {
+        //     // otherwise, lets figure out how to toggle visibility based upon the current state
+        //     ci.data.datasets.forEach(function (e, i) {
+        //       var meta = ci.getDatasetMeta(i);
+
+        //       if (i !== index) {
+        //         // handles logic when we click on visible hidden label and there is currently at least
+        //         // one other label that is visible and at least one other label already hidden
+        //         // (we want to keep those already hidden still hidden)
+        //         if (anyOthersAlreadyHidden && !allOthersHidden) {
+        //           meta.hidden = true;
+        //         } else {
+        //           // toggle visibility
+        //           meta.hidden = meta.hidden === null ? !meta.hidden : null;
+        //         }
+        //       } else {
+        //         meta.hidden = null;
+        //       }
+        //     });
+        //   }
+
+        //   ci.update();
+        // },
         labels: {
           useLineStyle: true,
           filter: function (item, chart) {
@@ -176,6 +230,9 @@ export default {
               source: "data",
               precision: 0,
               beginAtZero: false,
+              callback: function (value, index, values) {
+                return value;
+              },
               // callback: function (value, index, values) {
               //   return value;
               // },
@@ -291,8 +348,11 @@ export default {
         labels,
         graph_data,
         max,
+        max_rank,
         min,
+        min_rank,
         scale,
+        scale_rank,
         // maxr,
         // minr,
         // perc,
@@ -312,7 +372,12 @@ export default {
       );
       state.options.scales.yAxes[0].ticks.suggestedMin =
         min != 0 ? Math.round(min - scale) : min;
-      console.log(min);
+      state.options.scales.yAxes[1].ticks.suggestedMax = Math.round(
+        max_rank + scale_rank
+      );
+      state.options.scales.yAxes[1].ticks.suggestedMin =
+        min_rank != 0 ? Math.round(min_rank - scale_rank) : min_rank;
+      console.log(min_rank);
 
       // state.options.scales.yAxes = scales;
       state.options.scales.xAxes[0].ticks.min = moment()
@@ -424,12 +489,22 @@ export default {
             pdata.map((y) => {
               price_values.push(y.y);
             });
+            sdata.map((y) => {
+              rank_values.push(y.y);
+            });
 
             console.log(price_values);
             let max = Math.max.apply(null, price_values);
             let min = Math.min.apply(null, price_values);
             console.log(max);
             console.log(min);
+            let max_rank = Math.max.apply(null, rank_values);
+            let min_rank = Math.min.apply(null, rank_values);
+            let scale_rank =
+              max_rank - min_rank != 0
+                ? (((max_rank - min_rank) * 20) / 100) * 10
+                : max_rank;
+            scale_rank = Math.round(scale_rank);
             let scale = max - min != 0 ? (((max - min) * 20) / 100) * 10 : max;
             scale = Math.round(scale);
             console.log(scale);
@@ -499,8 +574,11 @@ export default {
               idata,
               graph_data,
               max,
+              max_rank,
               min,
+              min_rank,
               scale,
+              scale_rank,
               // maxr,
               // minr,
               // perc,
