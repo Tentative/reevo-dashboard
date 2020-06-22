@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="md-layout md-gutter" style="margin-bottom: 10%;">
+    <div class="md-layout md-gutter" style="margin-bottom: 100px;">
       <div class="md-layout-item">
         <div class="alert-wrapper">
           <div class="md-subheading">Principali Alert di Prezzo</div>

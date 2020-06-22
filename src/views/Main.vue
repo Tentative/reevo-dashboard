@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="alert-wrapper">
-      <div class="md-title">
+      <span class="md-title">
         Home
-      </div>
+      </span>
     </div>
 
     <md-dialog
@@ -23,7 +23,7 @@
       v-if="loaded"
       :chartdata.sync="maindata_graph"
       :options.sync="mainoptions"
-      style="width: 100%; margin-top: 20px; margin-bottom: 10%;"
+      style="width: 100%; margin-top: 20px; margin-bottom: 100px;"
     ></LineChart>
     <div class="sub-wrapper md-layout md-gutter">
       <div class="md-layout-item">
