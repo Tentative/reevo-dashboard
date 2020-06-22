@@ -86,10 +86,15 @@ a#drawers {
   text-decoration: underline;
 }
 
+.md-app-container {
+  overflow: auto !important;
+}
+
 .md-app-scroller.md-layout-column.md-flex.md-theme-default.md-scrollbar {
   padding-left: 0 !important;
-  height: 100vh;
+  /* height: 100%; */
   border: 0 !important;
+  overflow: auto;
 }
 
 ul#sidebar {
@@ -102,6 +107,7 @@ ul#sidebar {
 
 .md-drawer.md-theme-default.md-persistent-mini.md-left {
   border: 0 !important;
+  height: 100vh !important;
 }
 
 .md-list-item-text:hover {
@@ -252,6 +258,10 @@ a:not(.md-button) {
 
 .main-container {
   border: none !important;
+  overflow: auto !important;
+}
+.page-container {
+  overflow: auto !important;
 }
 .login-container {
   padding: 0 !important;
@@ -294,9 +304,9 @@ a:not(.md-button) {
 //   text-overflow: ellipsis;
 // }
 
-main.md-scrollbar::-webkit-scrollbar {
-  display: none !important;
-}
+// main.md-scrollbar::-webkit-scrollbar {
+//   display: none !important;
+// }
 
 .amz {
   & .md-table-row:hover {
@@ -433,6 +443,7 @@ main.md-scrollbar::-webkit-scrollbar {
   max-height: 90% !important;
   overflow: none !important;
 }
+
 .md-scrollbar::-webkit-scrollbar {
   width: 8px;
   height: 8px;

@@ -132,6 +132,7 @@ export default {
       scales: {
         yAxes: [
           {
+            offset: false,
             id: "prices",
 
             position: "left",
@@ -139,7 +140,7 @@ export default {
               display: true,
               offsetGridLines: false,
               drawTicks: false,
-              drawBorder: true,
+              drawBorder: false,
             },
             ticks: {
               source: "auto",
@@ -158,20 +159,22 @@ export default {
             },
           },
           {
+            offset: false,
             id: "ranks",
             type: "linear",
-            position: "right",
+            position: "left",
             gridLines: {
               display: false,
               offsetGridLines: false,
               drawTicks: false,
-              drawBorder: true,
+              drawBorder: false,
             },
             ticks: {
               display: false,
-              padding: 15,
-              source: "auto",
+              padding: 0,
+              source: "data",
               precision: 0,
+              beginAtZero: false,
               // callback: function (value, index, values) {
               //   return value;
               // },
@@ -179,6 +182,7 @@ export default {
             },
           },
           {
+            offset: false,
             id: "stock",
             position: "right",
             gridLines: {
@@ -227,7 +231,7 @@ export default {
                 day: "DD MMM",
               },
               unit: "day",
-              unitStepSize: 3,
+              // unitStepSize: 3,
               // stepSize: 3,
             },
             ticks: {
@@ -235,6 +239,7 @@ export default {
               padding: 15,
               autoSkip: false,
               maxRotation: 0,
+              beginAtZero: true,
 
               // min: moment().subtract(29, "days").format(),
               // max: moment().format(),

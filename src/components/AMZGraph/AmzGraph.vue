@@ -16,11 +16,11 @@
       <md-divider></md-divider>
       <div class="md-layout">
         <Thumbnail />
-        <div class="md-layout-item">
+        <div class="md-layout-item screen-container">
           <BarChart
             :chartdata.sync="graphdata"
             :options.sync="graphoptions"
-            style="width: 700px; margin: 30px auto;"
+            style="width: 700px;"
           ></BarChart>
         </div>
       </div>

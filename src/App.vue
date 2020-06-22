@@ -59,7 +59,7 @@
           </div>
         </md-toolbar>
 
-        <md-content v-show="menuVisible" class="main-menu">
+        <md-content v-show="menuVisible" class="main-menu md-scrollbar">
           <md-list id="sidebar" class="main-navigation">
             <md-list-item
               ><a
