@@ -363,16 +363,19 @@ export default {
             let sdata = [];
             let idata = [];
             let duplicate = [];
+            let price_values = [];
+            let rank_values = [];
             console.log(graph_data);
             graph_data.ListaPrezzi.reverse();
             graph_data.ListaPrezzi.forEach((entry, idx, arr) => {
               pdata.push({
                 x: entry.DataPrezzo,
                 y:
-                  entry.PrezzoGiorno == null
-                    ? ""
+                  entry.PrezzoGiorno == null || entry.PrezzoGiorno == 0
+                    ? null
                     : parseFloat(entry.PrezzoGiorno.replace(",", ".")),
               });
+
               sdata.push({
                 x: entry.DataPrezzo,
                 y: entry.SalesRankGiorno,
@@ -410,6 +413,10 @@ export default {
               //   },
               // });
             });
+            pdata.map((y) => {
+              price_values.push(y.y);
+            });
+            console.log(price_values);
             let max = 0;
             // let maxr = 0;
             // let minr = null;
