@@ -25,11 +25,11 @@ export default {
           data: [],
           label: "Prezzi",
           steppedLine: true,
-          backgroundColor: "transparent",
+          backgroundColor: "rgba(29,47,175, 0.14)",
           borderWidth: 2,
           borderColor: "#1d2faf",
           pointBorderWidth: 2,
-          pointRadius: 2,
+          pointRadius: 0,
           pointBackgroundColor: "#191919",
         },
         {
@@ -39,9 +39,9 @@ export default {
           steppedLine: true,
           backgroundColor: "transparent",
           borderWidth: 2,
-          borderColor: "#c10000",
+          borderColor: "rgba(255,184,171)",
           pointBorderWidth: 2,
-          pointRadius: 2,
+          pointRadius: 0,
           pointBackgroundColor: "#191919",
         },
         {
@@ -120,6 +120,9 @@ export default {
       maintainAspectRatio: false,
       legend: {
         display: true,
+        onClick: function () {
+          return;
+        },
         // onClick: function (e, legendItem) {
         //   var chart = this.chart;
         //   chart.options.scales.yAxes[0].ticks.display = false;
@@ -231,6 +234,7 @@ export default {
               precision: 0,
               beginAtZero: false,
               callback: function (value, index, values) {
+                console.log(value);
                 return value;
               },
               // callback: function (value, index, values) {
