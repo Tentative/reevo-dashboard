@@ -146,6 +146,7 @@ export default {
               source: "auto",
               padding: 15,
               display: true,
+              // stepSize: 1,
               // eslint-disable-next-line no-unused-vars
               callback: function (value, index, values) {
                 return value + " €";
@@ -291,6 +292,7 @@ export default {
         graph_data,
         max,
         min,
+        scale,
         // maxr,
         // minr,
         // perc,
@@ -305,6 +307,12 @@ export default {
       state.chartdata.datasets[2].data = idata;
       state.options.annotation.annotations[0].value = min;
       state.options.annotation.annotations[1].value = max;
+      state.options.scales.yAxes[0].ticks.suggestedMax = Math.round(
+        max + scale
+      );
+      state.options.scales.yAxes[0].ticks.suggestedMin =
+        min != 0 ? Math.round(min - scale) : min;
+      console.log(min);
 
       // state.options.scales.yAxes = scales;
       state.options.scales.xAxes[0].ticks.min = moment()
@@ -416,11 +424,18 @@ export default {
             pdata.map((y) => {
               price_values.push(y.y);
             });
+
             console.log(price_values);
-            let max = 0;
+            let max = Math.max.apply(null, price_values);
+            let min = Math.min.apply(null, price_values);
+            console.log(max);
+            console.log(min);
+            let scale = max - min != 0 ? (((max - min) * 20) / 100) * 10 : max;
+            scale = Math.round(scale);
+            console.log(scale);
             // let maxr = 0;
             // let minr = null;
-            let min = null;
+            // let min = null;
             let maxs = [];
             // let maxrs = [];
             // let perc = 0;
@@ -429,11 +444,11 @@ export default {
             // let multiplier = 0;
             let lista_valori = [];
             // let lista_valori_rank = [];
-            pdata.forEach((item) => {
-              max = item.y > max ? item.y : max;
-              maxs.push(max);
-              lista_valori.push(item.y);
-            });
+            // pdata.forEach((item) => {
+            //   max = item.y > max ? item.y : max;
+            //   maxs.push(max);
+            //   lista_valori.push(item.y);
+            // });
             // sdata.forEach((item) => {
             //   maxr = item.y > max ? item.y : max;
             //   maxrs.push(max);
@@ -445,9 +460,6 @@ export default {
 
             // maxr = Math.max.apply(null, maxrs);
             // minr = Math.min.apply(null, lista_valori_rank);
-
-            max = Math.max.apply(null, maxs);
-            min = Math.min.apply(null, lista_valori);
 
             // Number.prototype.countDecimals = function () {
             //   if (Math.floor(this.valueOf()) === this.valueOf()) return 0;
@@ -488,6 +500,7 @@ export default {
               graph_data,
               max,
               min,
+              scale,
               // maxr,
               // minr,
               // perc,
