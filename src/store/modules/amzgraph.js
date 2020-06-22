@@ -23,18 +23,20 @@ export default {
         {
           yAxisID: "prices",
           data: [],
+          order: 1,
           label: "Prezzi",
           steppedLine: true,
           backgroundColor: "rgba(29,47,175, 0.14)",
           borderWidth: 2,
           borderColor: "#1d2faf",
           pointBorderWidth: 2,
-          pointRadius: 0,
+          pointRadius: 2,
           pointBackgroundColor: "#191919",
         },
         {
           yAxisID: "ranks",
           data: [],
+          order: 2,
           label: "S. Ranks",
           steppedLine: true,
           backgroundColor: "transparent",
@@ -47,6 +49,7 @@ export default {
         {
           yAxisID: "stock",
           data: [],
+          order: 3,
           label: "stock",
           type: "bar",
           steppedLine: true,
@@ -55,8 +58,8 @@ export default {
           borderColor: "red",
           pointRadius: 0,
 
-          // barPercentage: 1,
-          // categoryPercentage: 0.5,
+          // barPercentage: 1.8,
+          // categoryPercentage: 3,
         },
       ],
     },
@@ -191,7 +194,7 @@ export default {
           {
             offset: false,
             id: "prices",
-
+            stacked: false,
             position: "left",
             gridLines: {
               display: true,
@@ -218,6 +221,7 @@ export default {
           },
           {
             offset: false,
+            stacked: false,
             id: "ranks",
             type: "linear",
             position: "left",
@@ -228,11 +232,11 @@ export default {
               drawBorder: false,
             },
             ticks: {
-              display: false,
+              display: true,
               padding: 0,
               source: "data",
               precision: 0,
-              beginAtZero: false,
+              beginAtZero: true,
               callback: function (value, index, values) {
                 console.log(value);
                 return value;
@@ -246,7 +250,7 @@ export default {
           {
             offset: false,
             id: "stock",
-            position: "right",
+            position: "left",
             gridLines: {
               display: false,
               offsetGridLines: false,
@@ -255,13 +259,14 @@ export default {
             },
 
             ticks: {
-              display: false,
-              min: 0,
-              suggestedMin: 0,
+              display: true,
+              source: "data",
+              // min: 0,
+              // suggestedMin: 0,
               //   // callback: function (value, index, values) {
               //   //   return value;
               //   // },
-              beginAtZero: true,
+              beginAtZero: false,
               //   bounds: "auto",
               //   precision: 0,
               // },
@@ -283,6 +288,7 @@ export default {
         //     ],
         xAxes: [
           {
+            stacked: false,
             offset: false,
             // bounds: "ticks",
             distribution: "linear",
@@ -381,7 +387,12 @@ export default {
       );
       state.options.scales.yAxes[1].ticks.suggestedMin =
         min_rank != 0 ? Math.round(min_rank - scale_rank) : min_rank;
-      console.log(min_rank);
+      state.options.scales.yAxes[2].ticks.suggestedMax = Math.round(
+        max + scale
+      );
+      state.options.scales.yAxes[2].ticks.suggestedMin =
+        min != 0 ? Math.round(min - scale) : min;
+      // console.log(min_rank);
 
       // state.options.scales.yAxes = scales;
       state.options.scales.xAxes[0].ticks.min = moment()
@@ -457,21 +468,20 @@ export default {
                 x: entry.DataPrezzo,
                 y: entry.SalesRankGiorno,
               });
-              if (entry.InStockGiorno == "No") {
+              if (!entry.IsInStockGiorno) {
                 idata.push({
                   x: entry.DataPrezzo,
                   y:
-                    entry.PrezzoGiorno == null
-                      ? 0
-                      : parseFloat(entry.PrezzoGiorno.replace(",", ".")),
-                  z: entry.InStockGiorno,
+                    entry.PrezzoGiorno == null || entry.PrezzoGiorno == 0
+                      ? null
+                      : entry.SalesRankGiorno,
                 });
 
                 console.log(entry.InStockGiorno);
               } else {
                 idata.push({
                   x: entry.DataPrezzo,
-                  y: 0,
+                  y: null,
                 });
               }
 
