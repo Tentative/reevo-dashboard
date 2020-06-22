@@ -294,6 +294,10 @@ a:not(.md-button) {
 //   text-overflow: ellipsis;
 // }
 
+main.md-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+
 .amz {
   & .md-table-row:hover {
     transition: none;
