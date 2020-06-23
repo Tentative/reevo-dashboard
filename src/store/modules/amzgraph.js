@@ -52,14 +52,15 @@ export default {
           order: 3,
           label: "stock",
           type: "bar",
-          steppedLine: true,
+          steppedLine: false,
           backgroundColor: "rgba(255, 0, 0, 0.12)",
-          borderWidth: 0.3,
+          borderWidth: 0,
           borderColor: "red",
           pointRadius: 0,
+          barThickness: "flex",
 
-          // barPercentage: 1.8,
-          // categoryPercentage: 3,
+          barPercentage: 1.0,
+          categoryPercentage: 1.0,
         },
       ],
     },
@@ -201,6 +202,9 @@ export default {
               offsetGridLines: false,
               drawTicks: false,
               drawBorder: false,
+              tickMarkLength: 0,
+              zeroLineWidth: 0,
+              zeroLineColor: "red",
             },
             ticks: {
               source: "auto",
@@ -224,12 +228,13 @@ export default {
             stacked: false,
             id: "ranks",
             type: "linear",
-            position: "left",
+            position: "right",
             gridLines: {
               display: false,
               offsetGridLines: false,
               drawTicks: false,
               drawBorder: false,
+              tickMarkLength: 0,
             },
             ticks: {
               display: true,
@@ -238,7 +243,7 @@ export default {
               precision: 0,
               beginAtZero: true,
               callback: function (value, index, values) {
-                console.log(value);
+                // console.log(value);
                 return value;
               },
               // callback: function (value, index, values) {
@@ -250,12 +255,13 @@ export default {
           {
             offset: false,
             id: "stock",
-            position: "left",
+            position: "right",
             gridLines: {
+              tickMarkLength: 0,
               display: false,
               offsetGridLines: false,
               drawTicks: false,
-              drawBorder: true,
+              drawBorder: false,
             },
 
             ticks: {
@@ -270,7 +276,7 @@ export default {
               //   bounds: "auto",
               //   precision: 0,
               // },
-              stacked: true,
+              stacked: false,
             },
           },
         ],
@@ -318,6 +324,7 @@ export default {
               gridLines: {
                 drawTicks: false,
                 drawBorder: false,
+                tickMarkLength: 0,
               },
               // callback: function (value, index, values) {
               //   if (index == 1 || index == values.length) {
@@ -341,7 +348,7 @@ export default {
       state.currentItem.UrlImmagine = item.UrlImmagine;
       state.graph_params.EAN = item.EAN;
       state.graph_params.FiltroGiorni = "30";
-      console.log(item);
+      // console.log(item);
     },
     graph_request(state) {
       state.amzgraph_request.JsonRichiesta = JSON.stringify(state.graph_params);
@@ -359,6 +366,8 @@ export default {
         graph_data,
         max,
         max_rank,
+        max_stock,
+        min_stock,
         min,
         min_rank,
         scale,
@@ -386,13 +395,15 @@ export default {
         max_rank + scale_rank
       );
       state.options.scales.yAxes[1].ticks.suggestedMin =
-        min_rank != 0 ? Math.round(min_rank - scale_rank) : min_rank;
+        min_rank - scale_rank > 0
+          ? Math.round(min_rank - scale_rank)
+          : min_rank;
       state.options.scales.yAxes[2].ticks.suggestedMax = Math.round(
-        max + scale
+        state.options.scales.yAxes[1].ticks.suggestedMax
       );
+
       state.options.scales.yAxes[2].ticks.suggestedMin =
-        min != 0 ? Math.round(min - scale) : min;
-      // console.log(min_rank);
+        state.options.scales.yAxes[1].ticks.suggestedMin;
 
       // state.options.scales.yAxes = scales;
       state.options.scales.xAxes[0].ticks.min = moment()
@@ -450,7 +461,7 @@ export default {
             let pdata = [];
             let sdata = [];
             let idata = [];
-            let duplicate = [];
+            let stock_values = [];
             let price_values = [];
             let rank_values = [];
             console.log(graph_data);
@@ -471,10 +482,7 @@ export default {
               if (!entry.IsInStockGiorno) {
                 idata.push({
                   x: entry.DataPrezzo,
-                  y:
-                    entry.PrezzoGiorno == null || entry.PrezzoGiorno == 0
-                      ? null
-                      : entry.SalesRankGiorno,
+                  y: entry.SalesRankGiorno,
                 });
 
                 console.log(entry.InStockGiorno);
@@ -506,14 +514,19 @@ export default {
             sdata.map((y) => {
               rank_values.push(y.y);
             });
+            idata.map((y) => {
+              stock_values.push(y.y);
+            });
 
-            console.log(price_values);
+            // console.log(price_values);
             let max = Math.max.apply(null, price_values);
             let min = Math.min.apply(null, price_values);
-            console.log(max);
-            console.log(min);
+            // console.log(max);
+            // console.log(min);
             let max_rank = Math.max.apply(null, rank_values);
             let min_rank = Math.min.apply(null, rank_values);
+            let max_stock = Math.max.apply(max, stock_values);
+            let min_stock = Math.min.apply(min, stock_values);
             let scale_rank =
               max_rank - min_rank != 0
                 ? (((max_rank - min_rank) * 20) / 100) * 10
@@ -589,8 +602,10 @@ export default {
               graph_data,
               max,
               max_rank,
+              max_stock,
               min,
               min_rank,
+              min_stock,
               scale,
               scale_rank,
               // maxr,
