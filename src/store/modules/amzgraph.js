@@ -26,11 +26,11 @@ export default {
           order: 1,
           label: "Prezzi",
           steppedLine: true,
-          backgroundColor: "rgba(29,47,175, 0.14)",
+          backgroundColor: "transparent",
           borderWidth: 2,
           borderColor: "#1d2faf",
           pointBorderWidth: 2,
-          pointRadius: 2,
+          pointRadius: 0,
           pointBackgroundColor: "#191919",
         },
         {
@@ -386,24 +386,20 @@ export default {
       state.chartdata.datasets[2].data = idata;
       state.options.annotation.annotations[0].value = min;
       state.options.annotation.annotations[1].value = max;
-      state.options.scales.yAxes[0].ticks.suggestedMax = Math.round(
-        max + scale
-      );
+      state.options.scales.yAxes[0].ticks.suggestedMax =
+        min != 0 ? max + scale : max;
       state.options.scales.yAxes[0].ticks.suggestedMin =
-        min != 0 ? Math.round(min - scale) : min;
-      state.options.scales.yAxes[1].ticks.suggestedMax = Math.round(
-        max_rank + scale_rank
-      );
+        min != 0 ? min - scale : min;
+      state.options.scales.yAxes[1].ticks.suggestedMax =
+        min_rank != 0 ? max_rank + scale_rank : max;
+
       state.options.scales.yAxes[1].ticks.suggestedMin =
         min_rank - scale_rank > 0
           ? Math.round(min_rank - scale_rank)
           : min_rank;
-      state.options.scales.yAxes[2].ticks.suggestedMax = Math.round(
-        state.options.scales.yAxes[1].ticks.suggestedMax
-      );
+      state.options.scales.yAxes[2].ticks.max = 1;
 
-      state.options.scales.yAxes[2].ticks.suggestedMin =
-        state.options.scales.yAxes[1].ticks.suggestedMin;
+      state.options.scales.yAxes[2].ticks.min = 0;
 
       // state.options.scales.yAxes = scales;
       state.options.scales.xAxes[0].ticks.min = moment()
@@ -482,16 +478,17 @@ export default {
               if (!entry.IsInStockGiorno) {
                 idata.push({
                   x: entry.DataPrezzo,
-                  y: entry.SalesRankGiorno,
+                  y: 1,
                 });
-
-                console.log(entry.InStockGiorno);
               } else {
                 idata.push({
                   x: entry.DataPrezzo,
-                  y: null,
+                  y: 0,
                 });
               }
+              idata.forEach((y) => {
+                console.log(y);
+              });
 
               // scales.push({
               //   id: label.TestoLegenda,
@@ -529,11 +526,16 @@ export default {
             let min_stock = Math.min.apply(min, stock_values);
             let scale_rank =
               max_rank - min_rank != 0
-                ? (((max_rank - min_rank) * 20) / 100) * 10
+                ? (((max_rank - min_rank) * 10) / 100) * 10
                 : max_rank;
-            scale_rank = Math.round(scale_rank);
-            let scale = max - min != 0 ? (((max - min) * 20) / 100) * 10 : max;
-            scale = Math.round(scale);
+            scale_rank = Math.ceil(scale_rank);
+            let scale =
+              min != 0 && max - min != max
+                ? (((max - min) * 10) / 100) * 10
+                : max - 1;
+            scale = Math.ceil(scale);
+            console.log(max);
+            console.log(min);
             console.log(scale);
             // let maxr = 0;
             // let minr = null;
