@@ -1,12 +1,5 @@
 <template>
   <div class="md-layout md-alignment-center-center">
-    <md-dialog
-      :md-active.sync="loading"
-      class="graph md-scrollbar loading"
-      :md-backdrop="false"
-    >
-      <spinner />
-    </md-dialog>
     <div class="md-layout-item">
       <Form />
     </div>
@@ -23,6 +16,8 @@ export default {
   },
   data() {
     return {
+      loading: false,
+      loaded: false,
       parametri: {
         ArticoliTOP: "",
         Prezzo1: "",
@@ -40,11 +35,7 @@ export default {
   created() {
     this.parametri_call();
   },
-  methods: {
-    parametri_call() {
-      this.$store.dispatch("parametri_call");
-    },
-  },
+  methods: {},
 };
 </script>
 

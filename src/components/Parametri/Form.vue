@@ -3,8 +3,20 @@
     <div class="alert-wrapper">
       <div class="md-title">Impostazione Parametri</div>
     </div>
+    <md-dialog
+      :md-active.sync="loading"
+      class="graph md-scrollbar loading"
+      :md-backdrop="false"
+    >
+      <spinner />
+    </md-dialog>
 
-    <form novalidate class="md-layout" @submit.prevent="validateUser">
+    <form
+      v-if="loaded"
+      novalidate
+      class="md-layout"
+      @submit.prevent="validateUser"
+    >
       <md-card-content>
         <div class="alert-wrapper">
           <div class="md-subheading">Parametri PriceGraph</div>
@@ -304,15 +316,14 @@
 
       <md-progress-bar v-if="sending" md-mode="indeterminate" />
 
-      <md-snackbar :md-active.sync="userSaved"
-        >I parametri sono stati salvati con successo</md-snackbar
-      >
+      <md-snackbar :md-active.sync="userSaved">{{ result }}</md-snackbar>
     </form>
   </div>
 </template>
 
 <script>
 import { validationMixin } from "vuelidate";
+import spinner from "@/components/Parametri/spinner.vue";
 import {
   required,
   minValue,
@@ -323,9 +334,12 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "FormValidation",
+  components: { spinner },
   mixins: [validationMixin],
   data: () => ({
     errors: "",
+    loaded: false,
+    loading: false,
     form: {
       ArticoliTOP: null,
       Prezzo1: null,
@@ -341,6 +355,7 @@ export default {
     userSaved: false,
     sending: false,
     lastUser: null,
+    result: "",
   }),
   computed: {
     ...mapGetters({
@@ -355,6 +370,9 @@ export default {
         return newValue;
       },
     },
+  },
+  created() {
+    this.parametri_call();
   },
   validations: {
     form: {
@@ -402,6 +420,27 @@ export default {
     },
   },
   methods: {
+    parametri_call() {
+      this.loading = true;
+      this.$store.dispatch("parametri_call").then((res) => {
+        res = JSON.parse(res.data.JsonRisposta);
+
+        console.log(res);
+        this.form.ArticoliTOP = res.ArticoliTOP;
+        this.form.Prezzo1 = res.Prezzo1;
+        this.form.Prezzo2 = res.Prezzo2;
+        this.form.SR1 = res.SR1;
+        this.form.SR2 = res.SR2;
+        this.form.ListPriceUP = res.ListPriceUP;
+        this.form.ListPriceDOWN = res.ListPriceDOWN;
+        this.form.PriceVariation = res.PriceVariation;
+        this.form.TopAlertItems = res.TopAlertItems;
+        this.form.TopInStockItems = res.TopInStockItems;
+        this.loading = false;
+        this.loaded = true;
+      });
+    },
+
     getValidationClass(fieldName) {
       const field = this.$v.form[fieldName];
 
