@@ -40,7 +40,7 @@ export default {
           label: "S. Ranks",
           steppedLine: true,
           backgroundColor: "transparent",
-          borderWidth: 2,
+          borderWidth: 1,
           borderColor: "rgba(240,85,69, 0.70)",
           pointBorderWidth: 2,
           pointRadius: 0,
@@ -237,7 +237,7 @@ export default {
               tickMarkLength: 0,
             },
             ticks: {
-              display: true,
+              display: false,
               reverse: true,
               padding: 0,
               source: "data",
@@ -266,7 +266,7 @@ export default {
             },
 
             ticks: {
-              display: true,
+              display: false,
               source: "data",
               // min: 0,
               // suggestedMin: 0,
