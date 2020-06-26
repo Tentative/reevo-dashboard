@@ -10,7 +10,10 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
 .amz .md-table-head .md-table-head-container {
   padding: 16px 0 !important;
 }
-
+.md-menu-content {
+  box-shadow: none !important;
+  border: 2px solid rgba(0, 0, 0, 0.28);
+}
 .thumb img {
   // height: 54px;
   // max-width: inherit;

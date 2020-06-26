@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <!-- <div class="select">
+    <div class="select">
       <select
         v-model="itemsPerPage"
         class="select-text"
@@ -15,20 +15,21 @@
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
       <label class="select-label">Items per pagina</label>
-    </div> -->
-    <md-field @change="call_amz()">
+    </div>
+    <!-- <md-field id="iperpage" @change="call_amz()">
       <label for="Items per pagina">Items per pagina</label>
       <md-select
         id="ipp"
         v-model="itemsPerPage"
         name="ipp"
+        md-dense
         @md-selected="call_amz()"
       >
         <md-option value="20">20</md-option>
         <md-option value="50">50</md-option>
         <md-option value="100">100</md-option>
       </md-select>
-    </md-field>
+    </md-field> -->
   </div>
 </template>
 

@@ -2,6 +2,11 @@
   margin-right: 20px;
 }
 
+#iperpage
+  .md-select-menu.md-menu-content-bottom-start.md-menu-content-small.md-menu-content.md-theme-default {
+  width: 10% !important;
+}
+
 .jumper {
   margin: 0 80px;
   display: inline-block;
@@ -27,7 +32,7 @@
   font-family: "Open Sans", sans-serif;
   position: relative;
   width: 200px;
-  border: 1px solid #c0c4cc;
+  // border: 1px solid #c0c4cc;
   border-radius: 5px;
 }
 
@@ -36,7 +41,7 @@
   font-family: inherit;
   background-color: transparent;
   width: 200px;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 10px 0;
   font-size: 14px;
   border-radius: 0;
   border: none;
@@ -77,7 +82,7 @@
   font-weight: normal;
   position: absolute;
   pointer-events: none;
-  left: 10px;
+  // left: 10px;
   top: 10px;
   transition: 0.2s ease all;
 }
@@ -85,9 +90,9 @@
 /* active state */
 .select-text:focus ~ .select-label,
 .select-text:valid ~ .select-label {
-  color: #409eff;
+  color: rgba(0, 0, 0, 0.54);
   background-color: #f4f6fb;
-  padding-left: 10px;
+  // padding-left: 10px;
   padding-right: 10px;
   top: -9px;
   transition: 0.2s ease all;
@@ -124,6 +129,10 @@
 .select-text:focus ~ .select-bar:before,
 .select-text:focus ~ .select-bar:after {
   width: 50%;
+}
+
+.select:after {
+  border-top: 6px solid rgba(0, 0, 0, 0.54) !important;
 }
 
 /* HIGHLIGHTER ================================== */
