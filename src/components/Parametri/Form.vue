@@ -114,8 +114,8 @@
             <span v-if="!$v.form.SR1.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span v-else-if="!$v.form.SR1.minValue" class="md-error"
-              >Inserire un valore valido (valore minimo: 1)</span
+            <span v-else-if="!$v.form.SR1.between" class="md-error"
+              >Inserire un valore compreso tra 1 e 99</span
             >
           </md-field>
           <div class="md-body-1">
@@ -141,8 +141,10 @@
             <span v-if="!$v.form.SR2.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span v-else-if="!$v.form.SR2.minValue" class="md-error"
-              >Inserire un valore valido (valore minimo: 1)</span
+            <span
+              v-else-if="!$v.form.SR2.minValue || !$v.form.SR2.maxValue"
+              class="md-error"
+              >Inserire un valore compreso tra 1 e 100</span
             >
           </md-field>
           <div class="md-body-1">
@@ -257,8 +259,8 @@
             <span v-if="!$v.form.TopAlertItems.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span v-else-if="!$v.form.TopAlertItems.minValue" class="md-error"
-              >Inserire un valore valido (valore minimo: 1)</span
+            <span v-else-if="!$v.form.TopAlertItems.between" class="md-error"
+              >Inserire un valore compreso tra 1 e 100</span
             >
           </md-field>
           <div class="md-body-1">
@@ -284,8 +286,8 @@
             <span v-if="!$v.form.TopInStockItems.required" class="md-error"
               >Campo obbligatorio</span
             >
-            <span v-else-if="!$v.form.TopInStockItems.minValue" class="md-error"
-              >Inserire un valore valido (valore minimo: 1)</span
+            <span v-else-if="!$v.form.TopInStockItems.between" class="md-error"
+              >Inserire un valore compreso tra 1 e 100</span
             >
           </md-field>
           <div class="md-body-1">
@@ -311,7 +313,12 @@
 
 <script>
 import { validationMixin } from "vuelidate";
-import { required, minValue } from "vuelidate/lib/validators";
+import {
+  required,
+  minValue,
+  between,
+  maxValue,
+} from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
 
 export default {
@@ -361,15 +368,16 @@ export default {
       },
       Prezzo2: {
         required,
-        minValue: (value) => value > this.minPrezzo1,
+        minValue: minValue(1),
       },
       SR1: {
         required,
-        minLength: minValue(1),
+        between: between(1, 99),
       },
       SR2: {
         required,
         minLength: minValue(1),
+        maxLength: maxValue(100),
       },
       ListPriceUP: {
         required,
@@ -385,11 +393,11 @@ export default {
       },
       TopAlertItems: {
         required,
-        minValue: minValue(1),
+        between: between(1, 100),
       },
       TopInStockItems: {
         required,
-        minValue: minValue(1),
+        between: between(1, 100),
       },
     },
   },
