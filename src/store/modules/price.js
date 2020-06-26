@@ -83,13 +83,13 @@ export default {
               // stepSize: 3,
             },
             ticks: {
-              source: "data",
+              source: "labels",
               padding: 15,
               autoSkip: false,
               maxRotation: 0,
-              //   callback: function (item, index) {
-              //     if (!(index % 3)) return item;
-              //   },
+              callback: function (item, index) {
+                if (!(index % 3)) return item;
+              },
             },
             gridLines: {
               drawTicks: false,
