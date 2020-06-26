@@ -54,11 +54,11 @@ const routes = [
   },
   {
     path: "/price",
-    name: "Price Graph",
+    name: "Price",
     component: Price,
     meta: {
       requiresAuth: true,
-      title: "Price",
+      title: "Price Graph",
       metaTags: [
         {
           name: "Price",
