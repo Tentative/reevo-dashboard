@@ -8,7 +8,16 @@ $icon-size: 1rem;
 
 .price-settings .md-layout.md-gutter:not(:last-child) {
   margin-bottom: 10px;
-  padding: 24px 24px 0;
+  padding: 0px 24px 0;
+}
+
+#placeholder {
+  height: 24px;
+  background-color: white;
+  &:before {
+    content: "";
+    padding: 24px;
+  }
 }
 
 .amz .price-head .md-table-head-container {
@@ -39,8 +48,8 @@ $icon-size: 1rem;
 }
 
 #price-actions {
-  position: fixed;
-  bottom: 20px;
+  // position: fixed;
+  // bottom: 20px;
 }
 
 .price-settings .md-dialog-container {

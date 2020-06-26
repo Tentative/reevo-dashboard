@@ -136,9 +136,8 @@
           <span v-else-if="no_sr" class="error"
             >Selezionare almeno un valore Catalogo</span
           >
+          <span v-else id="placeholder"></span>
         </div>
-        <div class="md-layout-item md-size-33"></div>
-        <div class="md-layout-item md-size-33"></div>
       </div>
 
       <div class="md-layout md-gutter">
