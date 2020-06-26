@@ -107,7 +107,8 @@
 }
 
 .md-table-cell.thumb {
-  width: 174px !important;
+  min-width: 174px !important;
+  max-width: 174px !important;
 }
 
 .md-table-head .md-table-head-container {
