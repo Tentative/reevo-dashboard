@@ -1,5 +1,5 @@
 <template>
-  <div class="md-layout-item thumbnail screen-container">
+  <div class="md-layout-item md-size-20 thumbnail screen-container">
     <img :src="currentItem.UrlImmagine" />
   </div>
 </template>

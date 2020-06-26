@@ -8,6 +8,7 @@
       <spinner />
     </md-dialog>
     <md-dialog
+      id="dialog-amzgraph"
       :md-active.sync="graph"
       class="md-scrollbar"
       @md-clicked-outside="toggleAmzGraph"
@@ -16,11 +17,11 @@
       <md-divider></md-divider>
       <div class="md-layout">
         <Thumbnail />
-        <div class="md-layout-item screen-container">
+        <div class="md-layout-item md-size-80 screen-container">
           <BarChart
             :chartdata.sync="graphdata"
             :options.sync="graphoptions"
-            style="width: 700px;"
+            style="width: 100%;"
           ></BarChart>
         </div>
       </div>
