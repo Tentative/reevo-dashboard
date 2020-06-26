@@ -12,7 +12,7 @@ const routes = [
     name: "Amz",
     component: Amz,
     meta: {
-      title: "Homepage",
+      title: "Amazon",
       requiresAuth: true,
       metaTags: [
         {
@@ -54,7 +54,7 @@ const routes = [
   },
   {
     path: "/price",
-    name: "Price",
+    name: "Price Graph",
     component: Price,
     meta: {
       requiresAuth: true,
