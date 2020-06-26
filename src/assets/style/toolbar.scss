@@ -383,8 +383,14 @@ a:not(.md-button) {
 }
 
 .md-dialog-actions.alert-title {
-  margin: 0 72px !important;
+  margin: 0 24px !important;
   padding: 24px 18px 24px 0 !important;
+}
+
+.dialog-divider {
+  width: 70%;
+  margin-left: 24px !important;
+  margin-right: auto;
 }
 
 .setting {
