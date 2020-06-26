@@ -32,9 +32,7 @@ export default {
       },
     };
   },
-  created() {
-    this.parametri_call();
-  },
+
   methods: {},
 };
 </script>

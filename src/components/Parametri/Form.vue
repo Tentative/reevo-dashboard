@@ -13,6 +13,7 @@
 
     <form
       v-if="loaded"
+      id="form"
       novalidate
       class="md-layout"
       @submit.prevent="validateUser"
@@ -31,7 +32,7 @@
             <md-input
               id="articoli-top"
               v-model="form.ArticoliTOP"
-              :placeholder="parseInt(params.ArticoliTOP).toString()"
+              :placeholder="form.ArticoliTOP"
               name="articoli-top"
               type="number"
               :class="errors"
@@ -56,11 +57,11 @@
             :class="getValidationClass('Prezzo1')"
           >
             <label></label>
-            <span class="md-prefix">€</span>
+
             <md-input
               id="prezzo-1"
               v-model="form.Prezzo1"
-              :placeholder="parseInt(params.Prezzo1).toString() + ' €'"
+              :placeholder="form.Prezzo1"
               name="prezzo-1"
               :class="errors"
               type="number"
@@ -74,8 +75,8 @@
             >
           </md-field>
           <div class="md-body-1">
-            Limite inferiore sotto il quale vengono considerati articoli a
-            Prezzo Basso
+            € &nbsp; Limite inferiore sotto il quale vengono considerati
+            articoli a Prezzo Basso
           </div>
         </div>
 
@@ -85,11 +86,11 @@
             :class="getValidationClass('Prezzo2')"
           >
             <label></label>
-            <span class="md-prefix">$</span>
+
             <md-input
               id="prezzo-2"
               v-model="form.Prezzo2"
-              :placeholder="parseInt(params.Prezzo2).toString() + ' €'"
+              :placeholder="form.Prezzo2"
               name="prezzo-2"
               type="number"
               :disabled="sending"
@@ -117,7 +118,7 @@
             <md-input
               id="sr-1"
               v-model="form.SR1"
-              :placeholder="parseInt(params.SR1).toString()"
+              :placeholder="form.SR1"
               name="sr-1"
               type="number"
               :disabled="sending"
@@ -144,7 +145,7 @@
             <md-input
               id="sr-2"
               v-model="form.SR2"
-              :placeholder="parseInt(params.SR2).toString()"
+              :placeholder="form.SR2"
               name="sr-2"
               type="number"
               :disabled="sending"
@@ -174,11 +175,11 @@
             :class="getValidationClass('ListPriceUP')"
           >
             <label></label>
-            <span class="md-prefix">%</span>
+
             <md-input
               id="list-price-up"
               v-model="form.ListPriceUP"
-              :placeholder="parseInt(params.ListPriceUP).toString()"
+              :placeholder="form.ListPriceUP"
               name="list-price-up"
               :class="errors"
               type="number"
@@ -192,7 +193,8 @@
             >
           </md-field>
           <div class="md-body-1">
-            Percentuale sopra il Prezzo di Listino per attivare un Alert Prezzo
+            <span class="sign">% </span> sopra il Prezzo di Listino per attivare
+            un Alert Prezzo
           </div>
         </div>
 
@@ -202,11 +204,11 @@
             :class="getValidationClass('ListPriceDOWN')"
           >
             <label></label>
-            <span class="md-prefix">%</span>
+
             <md-input
               id="list-price-down"
               v-model="form.ListPriceDOWN"
-              :placeholder="parseInt(params.ListPriceDOWN).toString()"
+              :placeholder="form.ListPriceDOWN"
               name="list-price-down"
               type="number"
               :disabled="sending"
@@ -220,7 +222,8 @@
             >
           </md-field>
           <div class="md-body-1">
-            Percentuale sotto il Prezzo di Listino per attivare un Alert Prezzo
+            <span class="sign"> % </span> sotto il Prezzo di Listino per
+            attivare un Alert Prezzo
           </div>
         </div>
 
@@ -230,11 +233,11 @@
             :class="getValidationClass('PriceVariation')"
           >
             <label></label>
-            <span class="md-prefix">%</span>
+
             <md-input
               id="price-variation"
               v-model="form.PriceVariation"
-              :placeholder="parseInt(params.PriceVariation).toString()"
+              :placeholder="form.PriceVariation"
               name="price-variation"
               type="number"
               :class="errors"
@@ -248,7 +251,8 @@
             >
           </md-field>
           <div class="md-body-1">
-            Variazione percentuale di prezzo per attivare un Alert Prezzo
+            <span class="sign">% </span>Variazione percentuale di prezzo per
+            attivare un Alert Prezzo
           </div>
         </div>
 
@@ -262,7 +266,7 @@
             <md-input
               id="top-alert-items"
               v-model="form.TopAlertItems"
-              :placeholder="parseInt(params.ListPriceDOWN).toString()"
+              :placeholder="form.ListPriceDOWN"
               name="top-alert-items"
               type="number"
               :class="errors"
@@ -290,7 +294,7 @@
               id="top-instock-items"
               v-model="form.TopInStockItems"
               :class="errors"
-              :placeholder="parseInt(params.TopInStockItems).toString()"
+              :placeholder="form.TopInStockItems"
               name="top-instock-items"
               type="number"
               :disabled="sending"
@@ -308,7 +312,10 @@
         </div>
 
         <md-card-actions class="md-alignment-left">
-          <md-button type="submit" class="md-primary" :disabled="sending"
+          <md-button
+            type="submit"
+            class="md-raised md-dense md-primary apply-button"
+            :disabled="sending"
             >Salva parametri</md-button
           >
         </md-card-actions>
@@ -316,7 +323,9 @@
 
       <md-progress-bar v-if="sending" md-mode="indeterminate" />
 
-      <md-snackbar :md-active.sync="userSaved">{{ result }}</md-snackbar>
+      <md-snackbar :md-active.sync="userSaved" :style="style">{{
+        result
+      }}</md-snackbar>
     </form>
   </div>
 </template>
@@ -337,9 +346,11 @@ export default {
   components: { spinner },
   mixins: [validationMixin],
   data: () => ({
+    lista_errori: [],
     errors: "",
     loaded: false,
     loading: false,
+    style: "",
     form: {
       ArticoliTOP: null,
       Prezzo1: null,
@@ -469,10 +480,27 @@ export default {
       window.setTimeout(() => {
         let form = this.form;
         this.lastUser = `${this.form.firstName} ${this.form.lastName}`;
-        this.$store.dispatch("parametri_save_call", form);
+        this.$store.dispatch("parametri_save_call", form).then((res) => {
+          res = JSON.parse(res.data.JsonRisposta);
+          console.log(res);
+          this.result = res.Messaggio;
+          let lista_errori = [];
+          if (res.ListaErrori.length != 0) {
+            res.ListaErrori.forEach((err) => {
+              lista_errori.push(err);
+              this.style = "background-color: red";
+            });
+            // lista_errori.forEach((err) => {
+            //   switch(err) {
+            //     case
+            //   }
+            // })
+          }
+        });
+        this.style = "background-color: green";
         this.userSaved = true;
         this.sending = false;
-        this.clearForm();
+        // this.clearForm();
       }, 2000);
     },
     validateUser() {
