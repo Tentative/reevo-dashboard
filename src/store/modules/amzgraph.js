@@ -238,6 +238,7 @@ export default {
             },
             ticks: {
               display: true,
+              reverse: true,
               padding: 0,
               source: "data",
               precision: 0,
@@ -387,16 +388,13 @@ export default {
       state.options.annotation.annotations[0].value = min;
       state.options.annotation.annotations[1].value = max;
       state.options.scales.yAxes[0].ticks.suggestedMax =
-        min != 0 ? max + scale : max;
+        min != 0 ? max + scale : max + scale;
       state.options.scales.yAxes[0].ticks.suggestedMin =
         min != 0 ? min - scale : min;
       state.options.scales.yAxes[1].ticks.suggestedMax =
         min_rank != 0 ? max_rank + scale_rank : max;
 
-      state.options.scales.yAxes[1].ticks.suggestedMin =
-        min_rank - scale_rank > 0
-          ? Math.round(min_rank - scale_rank)
-          : min_rank;
+      state.options.scales.yAxes[1].ticks.suggestedMin = min_rank - scale_rank;
       state.options.scales.yAxes[2].ticks.max = 1;
 
       state.options.scales.yAxes[2].ticks.min = 0;
@@ -463,13 +461,14 @@ export default {
             console.log(graph_data);
             graph_data.ListaPrezzi.reverse();
             graph_data.ListaPrezzi.forEach((entry, idx, arr) => {
-              pdata.push({
-                x: entry.DataPrezzo,
-                y:
-                  entry.PrezzoGiorno == null || entry.PrezzoGiorno == 0
-                    ? null
-                    : parseFloat(entry.PrezzoGiorno.replace(",", ".")),
-              });
+              if (entry.PrezzoGiorno != null) {
+                pdata.push({
+                  x: entry.DataPrezzo,
+                  y: parseFloat(entry.PrezzoGiorno.replace(",", ".")),
+                });
+              } else {
+                return;
+              }
 
               sdata.push({
                 x: entry.DataPrezzo,
@@ -486,9 +485,6 @@ export default {
                   y: 0,
                 });
               }
-              idata.forEach((y) => {
-                console.log(y);
-              });
 
               // scales.push({
               //   id: label.TestoLegenda,
@@ -515,6 +511,11 @@ export default {
               stock_values.push(y.y);
             });
 
+            pdata.forEach((y) => {
+              console.log(y);
+            });
+            console.log("valori rank " + rank_values);
+
             // console.log(price_values);
             let max = Math.max.apply(null, price_values);
             let min = Math.min.apply(null, price_values);
@@ -526,7 +527,7 @@ export default {
             let min_stock = Math.min.apply(min, stock_values);
             let scale_rank =
               max_rank - min_rank != 0
-                ? (((max_rank - min_rank) * 10) / 100) * 10
+                ? (((max_rank - min_rank) * 5) / 100) * 10
                 : max_rank;
             scale_rank = Math.ceil(scale_rank);
             let scale =
