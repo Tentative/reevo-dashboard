@@ -186,7 +186,7 @@ export default {
 </script>
 
 <style lang="scss">
-// @import "src/assets/style/price.scss";
+@import "src/assets/style/main.scss";
 @import "src/assets/style/table.scss";
 @import "src/assets/style/toolbar.scss";
 </style>

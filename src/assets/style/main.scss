@@ -74,7 +74,7 @@
   & .md-table-row {
     background-color: white !important;
     border-bottom: 10px solid #f4f6fb;
-    height: 62px !important;
+    height: 74px !important;
   }
 }
 
@@ -104,6 +104,10 @@
 
 .md-table-cell-container {
   padding: 0 32px 0 0 !important;
+}
+
+.md-table-cell.thumb {
+  width: 174px !important;
 }
 
 .md-table-head .md-table-head-container {
