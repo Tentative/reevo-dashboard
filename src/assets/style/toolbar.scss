@@ -388,9 +388,10 @@ a:not(.md-button) {
 }
 
 .dialog-divider {
-  width: 70%;
+  width: 90% !important;
   margin-left: 24px !important;
-  margin-right: auto;
+
+  margin-right: 20px !important;
 }
 
 .setting {
