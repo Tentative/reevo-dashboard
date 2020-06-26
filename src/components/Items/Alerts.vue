@@ -2,12 +2,10 @@
   <div class="md-alignment-center-center settings">
     <md-dialog class="filter" :md-active.sync="showDialog">
       <md-dialog-title class="alert-title">Filtri</md-dialog-title>
-      <md-divider
-        style="width: 70%; margin-left: auto; margin-right: auto;"
-      ></md-divider>
+      <md-divider class="dialog-divider"></md-divider>
       <div class="md-layout md-gutter">
-        <div class="md-layout-item md-size-75">
-          <md-tabs md-dynamic-height>
+        <div class="md-layout-item" style="margin-left: 24px;">
+          <md-tabs>
             <md-tab class="switches-wrapper">
               <md-checkbox
                 v-model="itm.FiltroAlert"

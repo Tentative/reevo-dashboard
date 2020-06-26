@@ -6,9 +6,7 @@
       @md-clicked-outside="showPriceAlerts"
     >
       <md-dialog-title class="">Filtri</md-dialog-title>
-      <md-divider
-        style="width:70%; margin-left: auto, margin-right: auto"
-      ></md-divider>
+      <md-divider class="dialog-divider"></md-divider>
       <div class="md-layout md-gutter">
         <div class="md-layout-item md-size-100">
           <md-checkbox
@@ -129,20 +127,18 @@
       </div>
       <div class="md-layout md-gutter">
         <div class="md-layout-item md-size-33">
-          <span v-show="no_selected" class="error"
+          <span v-if="no_selected" class="error"
             >Selezionare almeno un retailer</span
           >
-        </div>
-        <div class="md-layout-item md-size-33">
-          <span v-show="no_price" class="error"
+          <span v-else-if="no_price" class="error"
             >Selezionare almeno un valore Prezzo</span
           >
-        </div>
-        <div class="md-layout-item md-size-33">
-          <span v-show="no_sr" class="error"
+          <span v-else-if="no_sr" class="error"
             >Selezionare almeno un valore Catalogo</span
           >
         </div>
+        <div class="md-layout-item md-size-33"></div>
+        <div class="md-layout-item md-size-33"></div>
       </div>
 
       <div class="md-layout md-gutter">

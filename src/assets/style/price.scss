@@ -43,10 +43,14 @@ $icon-size: 1rem;
   bottom: 20px;
 }
 
-.md-dialog.price-alert {
-  height: 60% !important;
+.price-settings .md-dialog-container {
   width: 80%;
-  overflow-y: auto;
+}
+
+.md-dialog.price-alert {
+  height: 80% !important;
+  width: 80%;
+  margin: auto;
   & .md-checkbox {
     display: flex;
   }

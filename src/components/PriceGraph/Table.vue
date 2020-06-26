@@ -2,6 +2,7 @@
   <div>
     <md-table class="amz">
       <md-table-row>
+        <md-table-head></md-table-head>
         <md-table-head class="price-head">Retailer / Curva</md-table-head>
         <md-table-head>Articoli</md-table-head>
         <md-table-head>Media attuale</md-table-head>
@@ -16,6 +17,9 @@
         :key="riga.id"
         class="price-table"
       >
+        <md-table-cell class="thumb"
+          ><img :src="riga.UrlLogoRetailer" />
+        </md-table-cell>
         <md-table-cell class="price-head">{{ riga.NomeRiga }}</md-table-cell>
         <md-table-cell
           ><span v-if="riga.NumeroItems != 0">{{ riga.NumeroItems }}</span

@@ -121,11 +121,12 @@ export default {
       // state.options.scales.xAxes[0].ticks.max = moment().format();
       scales.forEach((scale) => {
         scale.ticks.suggestedMax = max;
-        if (state.price_graph.FiltroIndex == "Si") {
-          scale.ticks.min = 100;
-        } else {
-          scale.ticks.suggestedMin = min;
-        }
+        // if (state.price_graph.FiltroIndex == "Si") {
+        //   scale.ticks.min = min;
+        // } else {
+        //   scale.ticks.suggestedMin = min;
+        // }
+        scale.ticks.suggestedMin = min;
       });
       state.retailers = prcdata.ListaRetailers;
       state.listaRigheTabella = prcdata.ListaRigheTabella;
