@@ -1,6 +1,6 @@
 <template>
   <div class="wrap">
-    <!-- <div class="select">
+    <div class="select">
       <select
         v-model="itemsPerPage"
         class="select-text"
@@ -15,8 +15,8 @@
       <span class="select-highlight"></span>
       <span class="select-bar"></span>
       <label class="select-label">Items per pagina</label>
-    </div> -->
-    <div class="md-layout-item">
+    </div>
+    <!-- <div class="md-layout-item">
       <md-field>
         <label for="movie">Items per pagina</label>
         <md-select
@@ -30,7 +30,7 @@
           <md-option value="100">100</md-option>
         </md-select>
       </md-field>
-    </div>
+    </div> -->
   </div>
 </template>
 

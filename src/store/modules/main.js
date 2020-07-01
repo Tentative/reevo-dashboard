@@ -33,8 +33,8 @@ export default {
         xAxes: [
           {
             offset: false,
-            bounds: "data",
-            // distribution: "linear",
+            bounds: "ticks",
+            distribution: "linear",
             type: "time",
             autoSkip: false,
             time: {
@@ -46,7 +46,7 @@ export default {
               // stepSize: 3,
             },
             ticks: {
-              source: "data",
+              source: "labels",
               padding: 15,
               autoSkip: false,
               maxRotation: 0,
@@ -76,10 +76,10 @@ export default {
       state.chartdata.datasets = maindata.pdata;
       state.status = "Success";
       state.options.scales.yAxes = maindata.scales;
-      maindata.scales.forEach((scale) => {
-        scale.ticks.suggestedMax = maindata.max + 4;
-        scale.ticks.suggestedMin = maindata.min - 4;
-      });
+      // maindata.scales.forEach((scale) => {
+      //   scale.ticks.suggestedMax = maindata.max + 4;
+      //   scale.ticks.suggestedMin = maindata.min - 4;
+      // });
       state.listaRigheTabella = maindata.ListaRigheTabella;
     },
     main_error(state, err) {
@@ -107,7 +107,7 @@ export default {
                 .startOf("day")
                 .subtract(idx, "days")
                 .utcOffset(1)
-                .format()
+                .format("YYYY-MM-DD")
             );
             labels.reverse();
             let pdata = [];
@@ -124,7 +124,7 @@ export default {
 
                   return {
                     x: date.DataValore,
-                    y: date.Valore,
+                    y: parseFloat(date.Valore.replace(",", ".")),
                   };
                 }).reverse(),
                 backgroundColor: "transparent",
@@ -146,7 +146,7 @@ export default {
                   },
                 },
                 gridLines: {
-                  display: idx == 0 || idx == 1 ? true : false,
+                  display: idx == 0 ? true : false,
                   drawTicks: false,
                   offsetGridLines: false,
                   drawBorder: true,
@@ -159,12 +159,10 @@ export default {
             let lista_valori = [];
             pdata.forEach((data) => {
               data.data.forEach((item) => {
-                max = item.y > max ? item.y : max;
-                maxs.push(max);
                 lista_valori.push(item.y);
               });
             });
-            max = Math.max.apply(null, maxs);
+            max = Math.max.apply(null, lista_valori);
             min = Math.min.apply(null, lista_valori);
             // console.log(min);
 

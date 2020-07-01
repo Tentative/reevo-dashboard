@@ -529,13 +529,11 @@ export default {
             let min_stock = Math.min.apply(min, stock_values);
             let scale_rank =
               max_rank - min_rank != 0
-                ? (((max_rank - min_rank) * 5) / 100) * 10
+                ? ((max_rank - min_rank) * 5) / 100
                 : max_rank;
             scale_rank = Math.ceil(scale_rank);
             let scale =
-              min != 0 && max - min != max
-                ? (((max - min) * 10) / 100) * 10
-                : max - 1;
+              min != 0 && max - min != max ? ((max - min) * 10) / 100 : max - 1;
             scale = Math.ceil(scale);
             console.log(max);
             console.log(min);
