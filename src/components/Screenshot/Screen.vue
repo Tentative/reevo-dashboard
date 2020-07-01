@@ -1,6 +1,7 @@
 <template>
   <div>
     <md-dialog
+      id="screenshot"
       :md-active.sync="screenshot"
       class="graph md-scrollbar"
       @md-clicked-outside="toggleScreenshot"

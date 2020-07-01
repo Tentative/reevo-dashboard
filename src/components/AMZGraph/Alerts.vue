@@ -5,51 +5,50 @@
       <md-divider class="dialog-divider"></md-divider>
 
       <div class="md-layout md-gutter">
-        <div class="md-layout-item" style="margin-left: 24px;">
-          <md-tabs md-dynamic-height>
-            <md-tab class="switches-wrapper">
-              <md-checkbox
-                v-model="amz.FiltroAlert"
-                :md-ripple="false"
-                class="md-primary"
-                true-value="Si"
-                false-value="Tutti"
-                >Mostra solo articoli con Alert
-              </md-checkbox>
-              <md-checkbox
-                v-model="amz.FiltroInStock"
-                :md-ripple="false"
-                class="md-primary"
-                true-value="No"
-                false-value="Tutti"
-                >Mostra solo articoli Fuori Stock</md-checkbox
-              >
-              <md-checkbox
-                v-model="amz.FiltroFastTrack"
-                :md-ripple="false"
-                class="md-primary"
-                true-value="No"
-                false-value="Tutti"
-                >Mostra solo articoli non Fast Track</md-checkbox
-              >
-              <md-checkbox
-                v-model="amz.FiltroBuyBox"
-                :md-ripple="false"
-                class="md-primary"
-                true-value="No"
-                false-value="Tutti"
-                >Mostra solo articoli senza BuyBox</md-checkbox
-              >
-              <md-checkbox
-                v-model="amz.FiltroNegativeReviews"
-                :md-ripple="false"
-                class="md-primary"
-                true-value="SoloNegative"
-                false-value="Tutti"
-                >Mostra solo articoli con recensioni negative maggiori del 20%
-              </md-checkbox>
-            </md-tab></md-tabs
+        <div
+          class="md-layout-item"
+          style="margin-left: 24px; display: flex; flex-direction: column;"
+        >
+          <md-checkbox
+            v-model="amz.FiltroAlert"
+            :md-ripple="false"
+            class="md-primary"
+            true-value="Si"
+            false-value="Tutti"
+            >Mostra solo articoli con Alert
+          </md-checkbox>
+          <md-checkbox
+            v-model="amz.FiltroInStock"
+            :md-ripple="false"
+            class="md-primary"
+            true-value="No"
+            false-value="Tutti"
+            >Mostra solo articoli Fuori Stock</md-checkbox
           >
+          <md-checkbox
+            v-model="amz.FiltroFastTrack"
+            :md-ripple="false"
+            class="md-primary"
+            true-value="No"
+            false-value="Tutti"
+            >Mostra solo articoli non Fast Track</md-checkbox
+          >
+          <md-checkbox
+            v-model="amz.FiltroBuyBox"
+            :md-ripple="false"
+            class="md-primary"
+            true-value="No"
+            false-value="Tutti"
+            >Mostra solo articoli senza BuyBox</md-checkbox
+          >
+          <md-checkbox
+            v-model="amz.FiltroNegativeReviews"
+            :md-ripple="false"
+            class="md-primary"
+            true-value="SoloNegative"
+            false-value="Tutti"
+            >Mostra solo articoli con recensioni negative maggiori del 20%
+          </md-checkbox>
         </div>
       </div>
 

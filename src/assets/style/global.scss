@@ -8,6 +8,13 @@ body {
   color: white !important;
 }
 
+.md-app-scroller.md-layout-column.md-flex.md-theme-default.md-scrollbar {
+  padding-left: 0 !important;
+  /* height: 100%; */
+  border: 0 !important;
+  overflow: initial;
+}
+
 a.router-link-active.router-link-exact-active {
   display: inherit;
   vertical-align: middle;

@@ -5,4 +5,21 @@
 #dialog-amzgraph > .md-dialog-container.md-dialog-fullscreen.md-theme-default {
   width: 90% !important;
   max-width: 90% !important;
+  overflow-y: auto;
+}
+
+@media (max-width: 1200px) {
+  #chart {
+    width: 75% !important;
+  }
+
+  #amzthumbnail {
+    padding: 20px;
+  }
+
+  .md-layout-item.thumbnail.screen-container {
+    display: -webkit-box;
+
+    display: block;
+  }
 }

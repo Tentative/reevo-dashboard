@@ -17,8 +17,9 @@
       <md-divider></md-divider>
       <div class="md-layout">
         <Thumbnail />
-        <div class="md-layout-item md-size-80 screen-container">
+        <div class="md-layout-item md-size-70 screen-container">
           <BarChart
+            id="chart"
             :chartdata.sync="graphdata"
             :options.sync="graphoptions"
             style="width: 100%;"

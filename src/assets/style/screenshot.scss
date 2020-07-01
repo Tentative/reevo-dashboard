@@ -5,3 +5,17 @@
 .graph .md-layout {
   flex-wrap: nowrap !important;
 }
+
+.graph .md-dialog-container.md-dialog-fullscreen.md-theme-default {
+  overflow-y: scroll !important;
+}
+
+div#screenshot {
+  width: 80%;
+  height: 100%;
+  max-height: 100%;
+}
+
+.md-dialog.graph {
+  display: flex;
+}

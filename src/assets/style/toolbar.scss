@@ -234,6 +234,13 @@ a:not(.md-button) {
   }
 }
 
+.md-app-scroller.md-layout-column.md-flex.md-theme-default.md-scrollbar {
+  padding-left: 0 !important;
+  /* height: 100%; */
+  border: 0 !important;
+  overflow: initial;
+}
+
 .md-tab.switches-wrapper {
   padding: 0 !important;
 }
