@@ -31,6 +31,7 @@ export default {
           borderColor: "#1d2faf",
           pointBorderWidth: 2,
           pointRadius: 0,
+          hitRadius: 14,
           pointBackgroundColor: "#191919",
         },
         {
@@ -44,6 +45,7 @@ export default {
           borderColor: "rgba(240,85,69, 0.70)",
           pointBorderWidth: 2,
           pointRadius: 0,
+          hitRadius: 14,
           pointBackgroundColor: "#191919",
         },
         {
