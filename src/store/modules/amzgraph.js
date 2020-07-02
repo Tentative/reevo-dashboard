@@ -200,13 +200,10 @@ export default {
             stacked: false,
             position: "left",
             gridLines: {
-              display: true,
-              offsetGridLines: false,
               drawTicks: false,
-              drawBorder: false,
-              tickMarkLength: 0,
-              zeroLineWidth: 0,
-              zeroLineColor: "red",
+              offsetGridLines: false,
+              drawBorder: true,
+              display: true,
             },
             ticks: {
               source: "auto",
@@ -232,11 +229,10 @@ export default {
             type: "linear",
             position: "right",
             gridLines: {
-              display: false,
-              offsetGridLines: false,
               drawTicks: false,
-              drawBorder: false,
-              tickMarkLength: 0,
+              offsetGridLines: false,
+              drawBorder: true,
+              display: false,
             },
             ticks: {
               display: false,
@@ -260,11 +256,10 @@ export default {
             id: "stock",
             position: "right",
             gridLines: {
-              tickMarkLength: 0,
-              display: false,
-              offsetGridLines: false,
               drawTicks: false,
-              drawBorder: false,
+              offsetGridLines: false,
+              drawBorder: true,
+              display: false,
             },
 
             ticks: {
@@ -316,25 +311,25 @@ export default {
               padding: 15,
               autoSkip: false,
               maxRotation: 0,
-              beginAtZero: true,
+              beginAtZero: false,
 
               // min: moment().subtract(29, "days").format(),
               // max: moment().format(),
               callback: function (item, index) {
                 if (!(index % 3)) return item;
               },
-              // },
-              gridLines: {
-                drawTicks: false,
-                drawBorder: false,
-                tickMarkLength: 0,
-              },
-              // callback: function (value, index, values) {
-              //   if (index == 1 || index == values.length) {
-              //     return value;
-              //   }
-              // },
             },
+            // },
+            gridLines: {
+              drawTicks: false,
+              drawBorder: true,
+              offsetGridLines: true,
+            },
+            // callback: function (value, index, values) {
+            //   if (index == 1 || index == values.length) {
+            //     return value;
+            //   }
+            // },
           },
         ],
       },

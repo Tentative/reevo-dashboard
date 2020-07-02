@@ -135,6 +135,7 @@ export default {
                 borderColor: "#" + label.Colore.toString().slice(2),
                 pointBorderWidth: 1,
                 pointRadius: 2,
+                hitRadius: 14,
                 pointBackgroundColor: "#" + label.Colore.toString().slice(2),
               });
               scales.push({
