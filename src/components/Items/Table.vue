@@ -5,7 +5,7 @@
       <Alerts v-if="router == 'Items'" />
     </div>
     <div class="md-alignment-center-center item-dashboard">
-      <md-table class="amz">
+      <md-table id="itemtable" class="amz">
         <md-table-row>
           <md-table-head></md-table-head>
           <md-table-head class="name">Articolo</md-table-head>

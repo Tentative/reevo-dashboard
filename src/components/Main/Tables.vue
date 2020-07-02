@@ -5,7 +5,7 @@
         <div class="alert-wrapper">
           <div class="md-subheading">Principali Alert di Prezzo</div>
         </div>
-        <md-table>
+        <md-table id="maindash-left">
           <md-table-row>
             <md-table-head></md-table-head>
             <md-table-head class="name">Articolo</md-table-head>
@@ -54,7 +54,7 @@
         <div class="alert-wrapper">
           <div class="md-subheading">Principali Alert Fuori Stock</div>
         </div>
-        <md-table>
+        <md-table id="maindash-right">
           <md-table-row>
             <md-table-head></md-table-head>
             <md-table-head class="name">Articolo</md-table-head>
@@ -95,6 +95,6 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "@/assets/style/main.scss";
 </style>
