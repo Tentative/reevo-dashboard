@@ -70,16 +70,19 @@ export default {
       state.status = "loading";
       state.main_params.JsonRichiesta = JSON.stringify(state.main);
     },
-    main_success(state, maindata) {
+    main_success(state, maindata, min, max) {
+      console.log(max);
+      console.log(min);
       state.maindata = maindata;
       state.chartdata.labels = maindata.labels;
       state.chartdata.datasets = maindata.pdata;
       state.status = "Success";
       state.options.scales.yAxes = maindata.scales;
-      // maindata.scales.forEach((scale) => {
-      //   scale.ticks.suggestedMax = maindata.max + 4;
-      //   scale.ticks.suggestedMin = maindata.min - 4;
-      // });
+      maindata.scales.forEach((scale) => {
+        scale.ticks.suggestedMax = maindata.max;
+        scale.ticks.suggestedMin = maindata.min;
+      });
+
       state.listaRigheTabella = maindata.ListaRigheTabella;
     },
     main_error(state, err) {
@@ -153,7 +156,7 @@ export default {
                 },
               });
             });
-            let max = 0;
+            let max = null;
             let min = null;
             let maxs = [];
             let lista_valori = [];
@@ -164,7 +167,12 @@ export default {
             });
             max = Math.max.apply(null, lista_valori);
             min = Math.min.apply(null, lista_valori);
-            // console.log(min);
+            console.log(lista_valori);
+
+            max = Math.ceil(max);
+            min = Math.round(min);
+            console.log(max);
+            console.log(min);
 
             commit("main_success", {
               maindata,
