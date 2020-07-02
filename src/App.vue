@@ -21,10 +21,10 @@
             ><img src="/assets/img/logo.png" alt="logo" /></router-link
         ></span>
         <div class="login">
+          
           <md-menu md-size="medium" md-align-trigger>
             <md-button v-if="router != 'Login'" md-menu-trigger
-              ><md-avatar class="md-avatar-icon md-primary"
-                ><span class="avatar-placeholder">{{
+              ><span class="avatar-placeholder">{{
                   avatarPlaceholder
                 }}</span></md-avatar
               ><span class="avatar-name md-subheading">{{ nomeUtente }}</span>
