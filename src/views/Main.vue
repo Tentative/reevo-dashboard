@@ -25,7 +25,7 @@
       :options.sync="mainoptions"
       style="width: 100%; margin-top: 20px; margin-bottom: 100px;"
     ></LineChart>
-    <div class="sub-wrapper md-layout md-gutter">
+    <div v-if="loaded" class="sub-wrapper md-layout md-gutter">
       <div class="md-layout-item">
         <div class="md-subheading">Distribuzione Articoli</div>
       </div>
