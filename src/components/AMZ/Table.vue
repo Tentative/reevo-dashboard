@@ -9,7 +9,7 @@
       <span class="md-title">Amazon</span>
       <Alerts v-if="router == 'Dashboard' || 'Amz'" />
     </div>
-    <md-table class="amz">
+    <md-table v-if="loaded" class="amz">
       <md-table-row>
         <md-table-head></md-table-head>
         <md-table-head class="name">
@@ -123,6 +123,12 @@ import Screen from "@/components/Screenshot/Screen.vue";
 export default {
   name: "Table",
   components: { Alerts, AmzGraph, Screen },
+  props: {
+    loaded: {
+      type: Boolean,
+      required: true,
+    },
+  },
   data() {
     return {
       dialogVisible: false,

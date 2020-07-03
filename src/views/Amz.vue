@@ -7,7 +7,12 @@
     >
       <spinner />
     </md-dialog>
-    <Table v-if="loaded" :items="items" :amzdata="amzdata" :loading="loading" />
+    <Table
+      :loaded="loaded"
+      :items="items"
+      :amzdata="amzdata"
+      :loading="loading"
+    />
     <div v-if="loaded" class="pagination-nav">
       <Pagination />
       <Jumper />
