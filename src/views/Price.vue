@@ -19,7 +19,7 @@
         style="width: 100%; margin-top: 20px;"
       ></LineChart>
     </div>
-    <Table :lista-righe-tabella="listaRigheTabella" />
+    <Table v-if="loaded" :lista-righe-tabella="listaRigheTabella" />
   </div>
 </template>
 
