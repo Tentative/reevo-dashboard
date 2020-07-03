@@ -2,10 +2,10 @@
   <div>
     <div class="alert-wrapper">
       <div class="md-title">Items Dashboard</div>
-      <Alerts v-if="router == 'Items'" />
+      <Alerts v-if="router == 'Items' && loaded" />
     </div>
     <div class="md-alignment-center-center item-dashboard">
-      <md-table id="itemtable" class="amz">
+      <md-table v-if="loaded" id="itemtable" class="amz">
         <md-table-row>
           <md-table-head></md-table-head>
           <md-table-head class="name">Articolo</md-table-head>
@@ -197,6 +197,12 @@ import Alerts from "./Alerts";
 export default {
   name: "Table",
   components: { Alerts },
+  props: {
+    loaded: {
+      type: Boolean,
+      required: true,
+    },
+  },
 
   data() {
     return {
