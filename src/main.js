@@ -1,17 +1,18 @@
+import "babel-polyfill";
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import Axios from "axios";
-import VueMaterial from "vue-material";
+import VueMaterial, { polyfill } from "vue-material";
 import { Pagination } from "element-ui";
-import vueFilePond from "vue-filepond";
+// import vueFilePond from "vue-filepond";
 import "filepond/dist/filepond.min.css";
 // import moment from "moment";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
 import "@/assets/style/global.scss";
-
+// import polyfill from "babel-polyfill"
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
@@ -54,7 +55,7 @@ new Vue({
   router,
   store,
   render: (h) => h(App),
-  components: {
-    FilePond: vueFilePond(),
-  },
+  // components: {
+  //   FilePond: vueFilePond(),
+  // },
 }).$mount("#app");

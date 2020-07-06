@@ -8,7 +8,8 @@
     >
       <Header />
       <md-divider></md-divider>
-      <Container :message="message" />
+
+      <Container v-if="loaded" :loaded="loaded" :message="message" />
       <md-divider></md-divider>
       <Actions :message="message" />
     </md-dialog>
@@ -23,6 +24,7 @@ export default {
   components: { Header, Container, Actions },
   data: () => ({
     message: "Screenshot non disponibile",
+    loaded: false,
   }),
   computed: {
     ...mapGetters({
@@ -47,8 +49,17 @@ export default {
     },
   },
   methods: {
-    toggleScreenshot() {
-      this.$store.commit("clear_screenshot");
+    async toggleScreenshot() {
+      this.loading = true;
+      this.loaded = false;
+      try {
+        const { res } = await this.$store.commit("clear_screenshot");
+        this.loaded = true;
+        this.loading = false;
+      } catch (e) {
+        this.loading = false;
+        // console.log(e);
+      }
     },
   },
 };
