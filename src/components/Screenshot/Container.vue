@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loaded" class="md-layout">
+  <div class="md-layout">
     <div class="md-layout-item screen-container md-alignment-center-center">
       <img v-if="url" :src="url" alt="Screenshot" />
       <h1 v-if="url == '' || Object.keys(screen).length == 0">{{ message }}</h1>

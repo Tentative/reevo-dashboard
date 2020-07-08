@@ -9,7 +9,7 @@
       <Header />
       <md-divider></md-divider>
 
-      <Container v-if="loaded" :loaded="loaded" :message="message" />
+      <Container :message="message" />
       <md-divider></md-divider>
       <Actions :message="message" />
     </md-dialog>
@@ -18,10 +18,10 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { Header, Container, Actions } from "@/components/Screenshot/";
+import { Header, Container, Actions, spinner } from "@/components/Screenshot/";
 export default {
   name: "Screenshot",
-  components: { Header, Container, Actions },
+  components: { Header, Container, Actions, spinner },
   data: () => ({
     message: "Screenshot non disponibile",
     loaded: false,
@@ -47,6 +47,18 @@ export default {
         },
       },
     },
+    loadedScreen: {
+      get() {
+        return this.loaded;
+      },
+      set(newValue) {
+        return newValue;
+      },
+    },
+  },
+  created() {
+    // this.toggleScreenshot();
+    // this.duration();
   },
   methods: {
     async toggleScreenshot() {
@@ -55,12 +67,15 @@ export default {
       try {
         const { res } = await this.$store.commit("clear_screenshot");
         this.loaded = true;
-        this.loading = false;
+        setTimeout(() => (this.loading = false), 2000);
       } catch (e) {
         this.loading = false;
         // console.log(e);
       }
     },
+    // duration() {
+    //   setTimeout(() => (this.loading = false), 2000);
+    // },
   },
 };
 </script>

@@ -132,7 +132,7 @@ export default {
   data() {
     return {
       dialogVisible: false,
-      loaded: false,
+      // loaded: false,
       // amzGraphVisible: false
     };
   },
