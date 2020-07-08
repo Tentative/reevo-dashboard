@@ -21,16 +21,20 @@
             ><img src="/assets/img/logo.png" alt="logo" /></router-link
         ></span>
         <div class="login">
-          
-          <md-menu md-size="medium" md-align-trigger>
+          <md-menu
+            id="avatar"
+            md-size="medium"
+            md-align-trigger
+            :md-offset-x="-68"
+            :md-offset-y="11"
+            md-direction="bottom-start"
+          >
             <md-button v-if="router != 'Login'" md-menu-trigger
-              ><span class="avatar-placeholder">{{
-                  avatarPlaceholder
-                }}</span></md-avatar
+              ><span class="avatar-placeholder">{{ avatarPlaceholder }}</span
               ><span class="avatar-name md-subheading">{{ nomeUtente }}</span>
               <span><md-icon>keyboard_arrow_down</md-icon></span></md-button
             >
-            <md-menu-content>
+            <md-menu-content id="avatar" class="avatar">
               <md-menu-item
                 ><span v-if="isLoggedIn"><a @click="logout">Logout</a></span>
               </md-menu-item>
