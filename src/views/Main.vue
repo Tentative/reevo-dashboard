@@ -30,7 +30,7 @@
         <div class="md-subheading">Distribuzione Articoli</div>
       </div>
     </div>
-    <Table v-if="loaded" :maindata="maindata" />
+    <Table v-if="loaded" :maindata="maindata" style="margin-bottom: 100px;" />
   </div>
 </template>
 
