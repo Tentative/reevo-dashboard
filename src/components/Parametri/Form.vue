@@ -67,6 +67,7 @@
               type="number"
               :disabled="sending"
             />
+            <span class="md-suffix">€</span>
             <span v-if="!$v.form.Prezzo1.required" class="md-error"
               >Campo obbligatorio</span
             >
@@ -75,8 +76,8 @@
             >
           </md-field>
           <div class="md-body-1">
-            € &nbsp; Limite inferiore sotto il quale vengono considerati
-            articoli a Prezzo Basso
+            &nbsp; Limite inferiore sotto il quale vengono considerati articoli
+            a Prezzo Basso
           </div>
         </div>
 
@@ -96,6 +97,7 @@
               :disabled="sending"
               :class="errors"
             />
+            <span class="md-suffix">€</span>
             <span v-if="!$v.form.Prezzo2.required" class="md-error"
               >Campo obbligatorio</span
             >
@@ -104,7 +106,7 @@
             >
           </md-field>
           <div class="md-body-1">
-            € Limite superiore sopra il quale vengono considerati articoli a
+            Limite superiore sopra il quale vengono considerati articoli a
             Prezzo Alto
           </div>
         </div>
@@ -185,6 +187,7 @@
               type="number"
               :disabled="sending"
             />
+            <span class="md-suffix">%</span>
             <span v-if="!$v.form.ListPriceUP.required" class="md-error"
               >Campo obbligatorio</span
             >
@@ -193,8 +196,7 @@
             >
           </md-field>
           <div class="md-body-1">
-            <span class="sign">% </span> sopra il Prezzo di Listino per attivare
-            un Alert Prezzo
+            Percentuale sopra il Prezzo di Listino per attivare un Alert Prezzo
           </div>
         </div>
 
@@ -214,6 +216,7 @@
               :disabled="sending"
               :class="errors"
             />
+            <span class="md-suffix">%</span>
             <span v-if="!$v.form.ListPriceDOWN.required" class="md-error"
               >Campo obbligatorio</span
             >
@@ -222,8 +225,7 @@
             >
           </md-field>
           <div class="md-body-1">
-            <span class="sign"> % </span> sotto il Prezzo di Listino per
-            attivare un Alert Prezzo
+            Percentuale sotto il Prezzo di Listino per attivare un Alert Prezzo
           </div>
         </div>
 
@@ -243,6 +245,7 @@
               :class="errors"
               :disabled="sending"
             />
+            <span class="md-suffix">%</span>
             <span v-if="!$v.form.PriceVariation.required" class="md-error"
               >Campo obbligatorio</span
             >
@@ -251,8 +254,7 @@
             >
           </md-field>
           <div class="md-body-1">
-            <span class="sign">% </span>Variazione percentuale di prezzo per
-            attivare un Alert Prezzo
+            Variazione percentuale di prezzo per attivare un Alert Prezzo
           </div>
         </div>
 
@@ -311,7 +313,10 @@
           </div>
         </div>
 
-        <md-card-actions class="md-alignment-left">
+        <md-card-actions
+          class="md-alignment-left"
+          style="margin-bottom: 100px;"
+        >
           <md-button
             type="submit"
             class="md-raised md-dense md-primary apply-button"
