@@ -8,8 +8,8 @@
         <md-table-head>Non Presenti</md-table-head>
         <md-table-head>Non Acquistabili </md-table-head>
         <md-table-head>Prezzo Medio</md-table-head>
-        <md-table-head># Diminuzioni </md-table-head>
-        <md-table-head># Aumenti</md-table-head>
+        <md-table-head> Diminuzioni </md-table-head>
+        <md-table-head> Aumenti</md-table-head>
         <md-table-head>% Fuori stock</md-table-head>
       </md-table-row>
       <md-table-row

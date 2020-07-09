@@ -6,7 +6,7 @@
     />
     <Screen :screenshot-visible="screenshotVisible" />
     <div class="alert-wrapper">
-      <span class="md-title">Amazon</span>
+      <span class="md-title">Amazon Dashboard</span>
       <Alerts v-if="router == 'Dashboard' || 'Amz'" />
     </div>
     <md-table v-if="loaded" class="amz">
