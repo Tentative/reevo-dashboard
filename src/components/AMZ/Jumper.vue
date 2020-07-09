@@ -40,17 +40,27 @@ export default {
   data() {
     return {
       itemsPerPage: "20",
+      currentPage: 1,
     };
   },
   computed: {
     ...mapGetters({
       amz: "amz",
     }),
+    // ipp: {
+    //   get() {
+    //     return localStorage.getItem("items-per-page");
+    //   },
+    //   set(newValue) {
+    //     return (this.ipp = newValue);
+    //   },
+    // },
   },
   methods: {
     call_amz() {
+      localStorage.setItem("items-per-page", this.itemsPerPage);
       let amz = {
-        NumeroPagina: this.currentPage,
+        NumeroPagina: 1,
         ItemsPerPagina: this.itemsPerPage,
         Categoria: null,
         FiltroAlert: "Tutti",

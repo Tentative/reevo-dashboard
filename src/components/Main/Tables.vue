@@ -58,7 +58,7 @@
           <md-table-row>
             <md-table-head></md-table-head>
             <md-table-head class="name">Articolo</md-table-head>
-            <md-table-head>InStock</md-table-head>
+            <md-table-head>Stock</md-table-head>
             <md-table-head>Retailer</md-table-head>
             <md-table-head>SR</md-table-head>
           </md-table-row>

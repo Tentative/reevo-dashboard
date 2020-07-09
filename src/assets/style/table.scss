@@ -49,6 +49,10 @@ $filtro-alert: rgba(255, 0, 0, 0.12);
   color: $alert-status;
   font-size: $icon-size !important;
 }
+.md-icon.md-theme-default.md-icon-font.preorder {
+  color: $alert-status;
+  font-size: $icon-size !important;
+}
 
 .filtro-alert {
   background-color: $filtro-alert !important;

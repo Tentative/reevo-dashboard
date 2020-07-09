@@ -83,6 +83,9 @@
           <span v-if="item.InStock == 'Limitata'"
             ><md-icon class="alert-status">warning</md-icon></span
           >
+          <span v-if="item.InStock == 'Preordine'"
+            ><md-icon class="preorder">local_parking </md-icon></span
+          >
         </md-table-cell>
         <md-table-cell class="rank">
           <span>{{ item.SalesRank }}</span>

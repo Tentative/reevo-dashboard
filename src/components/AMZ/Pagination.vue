@@ -3,10 +3,10 @@
     <el-pagination
       background
       layout="prev, pager, next"
-      :page-size="itemsPerPage"
+      :page-size.sync="ipp"
       :pager-count="5"
       :page-count="parseInt(amzdata.QtaPagine)"
-      :current-page.sync="currentPage"
+      :current-page.sync="cp"
       :total="totalPages"
       @prev-click="prevPage()"
       @next-click="nextPage()"
@@ -22,7 +22,8 @@ export default {
   name: "Paginate",
   data() {
     return {
-      currentPage: 1,
+      currentPage: null,
+      itemsPerPage: null,
     };
   },
   computed: {
@@ -32,10 +33,36 @@ export default {
       thisPage: "thisPage",
       totalPages: "totalPages",
     }),
+    cp: {
+      get() {
+        return localStorage.getItem("current-page");
+      },
+      set(newValue) {
+        return (this.currentPage = newValue);
+      },
+    },
+    ipp: {
+      get() {
+        return localStorage.getItem("items-per-page");
+      },
+      set(newValue) {
+        return (this.itemsPerPage = newValue);
+      },
+    },
+  },
+  created() {
+    localStorage.getItem("current-page")
+      ? (this.currentPage = localStorage.getItem("current-page"))
+      : (this.currentPage = 1);
+    localStorage.getItem("items-per-page")
+      ? (this.itemsPerPage = localStorage.getItem("items-per-page"))
+      : (this.itemsPerPage = 20);
   },
 
   methods: {
     call_amz() {
+      localStorage.setItem("current-page", this.currentPage);
+      localStorage.setItem("items-per-page", this.itemsPerPage);
       let amz = {
         NumeroPagina: this.currentPage,
         ItemsPerPagina: this.itemsPerPage,

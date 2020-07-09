@@ -38,7 +38,7 @@ export default {
           yAxisID: "ranks",
           data: [],
           order: 2,
-          label: "S. Ranks",
+          label: "Sales Rank",
           steppedLine: true,
           backgroundColor: "transparent",
           borderWidth: 1,

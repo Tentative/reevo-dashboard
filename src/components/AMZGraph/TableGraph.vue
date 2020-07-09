@@ -5,12 +5,17 @@
         <md-table-row>
           <md-table-cell><span>Prezzo attuale</span></md-table-cell>
           <md-table-cell
-            ><span v-if="currentItem.InStock == 'No'">-</span
-            ><span v-else>{{ currentItem.Prezzo }} €</span></md-table-cell
+            ><span v-if="currentItem.Prezzo != null"
+              >{{ currentItem.Prezzo }} €</span
+            ><span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+            ></md-table-cell
           >
           <md-table-cell
-            ><span v-if="currentItem.InStock == 'No'">-</span
-            ><span v-else>{{ dataLast }}</span></md-table-cell
+            ><span v-if="currentItem.InStock != null">{{ dataLast }}</span
+            ><span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+            ></md-table-cell
           >
         </md-table-row>
         <md-table-row>
@@ -18,12 +23,18 @@
             ><span class="highest-price">Prezzo massimo</span></md-table-cell
           >
           <md-table-cell
-            ><span class="highest-price"
+            ><span v-if="currentItem.PrezzoMax != null" class="highest-price"
               >{{ currentItem.PrezzoMax }} €</span
+            ><span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
             ></md-table-cell
           >
           <md-table-cell
-            ><span class="highest-price">{{ dataMax }} </span></md-table-cell
+            ><span v-if="dataMax != null" class="highest-price"
+              >{{ dataMax }} </span
+            ><span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+            ></md-table-cell
           >
         </md-table-row>
         <md-table-row>
@@ -31,8 +42,10 @@
             ><span class="lowest-price">Prezzo minimo</span></md-table-cell
           >
           <md-table-cell
-            ><span class="lowest-price"
+            ><span v-if="currentItem.PrezzoMin != null" class="lowest-price"
               >{{ currentItem.PrezzoMin }} €</span
+            ><span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
             ></md-table-cell
           >
           <md-table-cell
@@ -46,8 +59,10 @@
             ><span class="average-price">Media prezzo</span></md-table-cell
           >
           <md-table-cell
-            ><span class="average-price"
+            ><span v-if="currentItem.PrezzoMedio != null" class="average-price"
               >{{ currentItem.PrezzoMedio }} €</span
+            ><span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
             ></md-table-cell
           >
           <md-table-cell><span>-</span></md-table-cell>
@@ -63,7 +78,12 @@
         <md-table-row
           ><md-table-cell>Prezzo di listino</md-table-cell
           ><md-table-cell
-            >{{ currentItem.Prezzo }} €</md-table-cell
+            ><span v-if="currentItem.PrezzoListino != null"
+              >{{ currentItem.PrezzoListino }} €</span
+            >
+            <span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+            ></md-table-cell
           ></md-table-row
         >
 
@@ -75,7 +95,12 @@
         >
         <md-table-row
           ><md-table-cell>Ultimo scan</md-table-cell
-          ><md-table-cell>{{ dataLast }}</md-table-cell></md-table-row
+          ><md-table-cell
+            ><span v-if="dataLast != null">{{ dataLast }}</span
+            ><span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+            ></md-table-cell
+          ></md-table-row
         >
       </md-table>
     </div>
