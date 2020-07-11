@@ -1,7 +1,17 @@
 <template>
   <div>
     <div class="alert-wrapper">
-      <div class="md-title">Gestione articoli</div>
+      <div class="md-title">I miei articoli</div>
+    </div>
+    <div class="alert-wrapper">
+      <div class="links">
+        <a :href="ref">Scarica la lista completa dei miei articoli</a>
+      </div>
+      <div>
+        <a href="http://data.reevo.io/reevoimport/template.xlsx"
+          >Scarica il template per il caricamento</a
+        >
+      </div>
     </div>
     <div class="alert-wrapper">
       <div class="md-subheading">Tipologia di caricamento:</div>
@@ -67,6 +77,7 @@ export default {
       file: null,
       isValid: null,
       message: "",
+      ref: "",
       path: `https://data.reevo.io/`,
     };
   },
@@ -78,6 +89,7 @@ export default {
   },
   created() {
     this.input();
+    this.ref = "https://data.reevo.io/" + this.$store.$getters.linkFile;
   },
 
   methods: {
