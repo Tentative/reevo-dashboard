@@ -323,15 +323,11 @@
             :disabled="sending"
             >Salva parametri</md-button
           >
-          <p id="esito" :class="style">{{ esito }}</p>
+          <p :md-active.sync="userSaved" :style="style">{{ result }}</p>
         </md-card-actions>
       </md-card-content>
 
       <md-progress-bar v-if="sending" md-mode="indeterminate" />
-
-      <md-snackbar :md-active.sync="userSaved" :style="style">{{
-        result
-      }}</md-snackbar>
     </form>
   </div>
 </template>
@@ -499,7 +495,7 @@ export default {
           if (res.ListaErrori.length != 0) {
             res.ListaErrori.forEach((err) => {
               lista_errori.push(err);
-              this.style = "background-color: red";
+              this.style = "color: red";
             });
             // lista_errori.forEach((err) => {
             //   switch(err) {
@@ -508,7 +504,7 @@ export default {
             // })
           }
         });
-        this.style = "background-color: green";
+        this.style = "color: green";
         this.userSaved = true;
 
         this.sending = false;
