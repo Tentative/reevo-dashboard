@@ -32,7 +32,7 @@
             <md-input
               id="articoli-top"
               v-model="form.ArticoliTOP"
-              :placeholder="form.ArticoliTOP"
+              :placeholder="form.ArticoliTOP.toString()"
               name="articoli-top"
               type="number"
               :class="errors"
@@ -61,7 +61,7 @@
             <md-input
               id="prezzo-1"
               v-model="form.Prezzo1"
-              :placeholder="form.Prezzo1"
+              :placeholder="form.Prezzo1.toString()"
               name="prezzo-1"
               :class="errors"
               type="number"
@@ -91,7 +91,7 @@
             <md-input
               id="prezzo-2"
               v-model="form.Prezzo2"
-              :placeholder="form.Prezzo2"
+              :placeholder="form.Prezzo2.toString()"
               name="prezzo-2"
               type="number"
               :disabled="sending"
@@ -120,7 +120,7 @@
             <md-input
               id="sr-1"
               v-model="form.SR1"
-              :placeholder="form.SR1"
+              :placeholder="form.SR1.toString()"
               name="sr-1"
               type="number"
               :disabled="sending"
@@ -147,7 +147,7 @@
             <md-input
               id="sr-2"
               v-model="form.SR2"
-              :placeholder="form.SR2"
+              :placeholder="form.SR2.toString()"
               name="sr-2"
               type="number"
               :disabled="sending"
@@ -181,7 +181,7 @@
             <md-input
               id="list-price-up"
               v-model="form.ListPriceUP"
-              :placeholder="form.ListPriceUP"
+              :placeholder="form.ListPriceUP.toString()"
               name="list-price-up"
               :class="errors"
               type="number"
@@ -210,7 +210,7 @@
             <md-input
               id="list-price-down"
               v-model="form.ListPriceDOWN"
-              :placeholder="form.ListPriceDOWN"
+              :placeholder="form.ListPriceDOWN.toString()"
               name="list-price-down"
               type="number"
               :disabled="sending"
@@ -239,7 +239,7 @@
             <md-input
               id="price-variation"
               v-model="form.PriceVariation"
-              :placeholder="form.PriceVariation"
+              :placeholder="form.PriceVariation.toString()"
               name="price-variation"
               type="number"
               :class="errors"
@@ -268,7 +268,7 @@
             <md-input
               id="top-alert-items"
               v-model="form.TopAlertItems"
-              :placeholder="form.ListPriceDOWN"
+              :placeholder="form.ListPriceDOWN.toString()"
               name="top-alert-items"
               type="number"
               :class="errors"
@@ -296,7 +296,7 @@
               id="top-instock-items"
               v-model="form.TopInStockItems"
               :class="errors"
-              :placeholder="form.TopInStockItems"
+              :placeholder="form.TopInStockItems.toString()"
               name="top-instock-items"
               type="number"
               :disabled="sending"
@@ -315,7 +315,7 @@
 
         <md-card-actions
           class="md-alignment-left"
-          style="margin-bottom: 100px;"
+          style="margin-bottom: 100px; display: block;"
         >
           <md-button
             type="submit"
@@ -323,6 +323,7 @@
             :disabled="sending"
             >Salva parametri</md-button
           >
+          <p id="esito" :class="style">{{ esito }}</p>
         </md-card-actions>
       </md-card-content>
 
@@ -352,6 +353,7 @@ export default {
   mixins: [validationMixin],
   data: () => ({
     lista_errori: [],
+    esito: "",
     errors: "",
     loaded: false,
     loading: false,
@@ -378,6 +380,9 @@ export default {
       params: "params",
       save: "save",
     }),
+    articoliTop() {
+      return parseInt(this.form.ArticoliTOP);
+    },
     minPrezzo1: {
       get() {
         return this.form.Prezzo1;
@@ -440,6 +445,7 @@ export default {
       this.loading = true;
       this.$store.dispatch("parametri_call").then((res) => {
         res = JSON.parse(res.data.JsonRisposta);
+        this.esito = res.Messaggio;
 
         console.log(res);
         this.form.ArticoliTOP = res.ArticoliTOP;
@@ -504,6 +510,7 @@ export default {
         });
         this.style = "background-color: green";
         this.userSaved = true;
+
         this.sending = false;
         // this.clearForm();
       }, 2000);

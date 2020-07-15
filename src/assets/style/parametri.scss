@@ -9,6 +9,14 @@ input:-internal-autofill-previewed {
   margin: 5px;
 }
 
+div#labels {
+  padding-bottom: 20px;
+}
+
+span.md-error {
+  width: 500px;
+}
+
 #labels .md-field .md-input,
 .md-field .md-textarea {
   width: 50px;
