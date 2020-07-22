@@ -3,7 +3,7 @@
     <div class="alert-wrapper">
       <div class="md-title">I miei articoli</div>
     </div>
-    <div class="alert-wrapper">
+    <div>
       <div class="links">
         <a :href="ref">Scarica la lista completa dei miei articoli</a>
       </div>
@@ -14,17 +14,25 @@
       </div>
     </div>
     <div class="alert-wrapper">
-      <div class="md-subheading">Tipologia di caricamento:</div>
+      <div class="md-subheading">Caricamento articoli:</div>
     </div>
-    <div class="alert-wrapper">
-      <md-checkbox v-model="add" class="md-primary" :disabled="all"
+    <div class="alert-wrapper md-layout">
+      <md-checkbox
+        v-model="add"
+        class="md-primary md-layout-item"
+        :disabled="all"
         >Aggiungi alla mia lista di articoli</md-checkbox
       >
-      <md-checkbox v-model="all" class="md-primary" :disabled="add"
+    </div>
+    <div class="alert-wrapper md-layout">
+      <md-checkbox
+        v-model="all"
+        class="md-primary md-layout-item"
+        :disabled="add"
         >Sostituisci la mia lista con gli articoli caricati</md-checkbox
       >
-      <p class="md-error">{{ message }}</p>
     </div>
+    <p class="md-error">{{ message }}</p>
     <div class="md-layout">
       <div class="md-layout-item">
         <div class="alert-wrapper">
@@ -45,14 +53,12 @@
         </label>
       </md-field>
     </form>
-    <p>
-      oppure
-      <a href="http://data.reevo.io/reevoimport/template.xlsx"
-        >Scarica il Template</a
-      >
-    </p>
-
-    <input type="button" value="Upload" @click="submitFile" />
+    <md-button
+      class="md-raised md-dense md-primary apply-button"
+      @click="submitFile"
+      >Carica File</md-button
+    >
+    <!-- <input type="button" value="Upload" @click="submitFile" /> -->
 
     <!-- FilePond
       ref="pond"
