@@ -13,13 +13,17 @@ div#labels {
   padding-bottom: 20px;
 }
 
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 span.md-error {
   width: 500px;
 }
 
 #labels .md-field .md-input,
 .md-field .md-textarea {
-  width: 50px;
+  max-width: 50px;
   padding-left: 5px;
 }
 

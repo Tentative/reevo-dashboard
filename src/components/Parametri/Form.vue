@@ -102,7 +102,7 @@
               >Campo obbligatorio</span
             >
             <span v-else-if="!$v.form.Prezzo2.minValue" class="md-error"
-              >Inserire un valore valido (valore minimo: 1)</span
+              >Inserire un valore superiore al prezzo minimo</span
             >
           </md-field>
           <div class="md-body-1">
@@ -391,50 +391,52 @@ export default {
   created() {
     this.parametri_call();
   },
-  validations: {
-    form: {
-      ArticoliTOP: {
-        required,
-        minValue: minValue(1),
+  validations() {
+    return {
+      form: {
+        ArticoliTOP: {
+          required,
+          minValue: minValue(1),
+        },
+        Prezzo1: {
+          required,
+          minValue: minValue(1),
+        },
+        Prezzo2: {
+          required,
+          minValue: minValue(this.Prezzo1),
+        },
+        SR1: {
+          required,
+          between: between(1, 99),
+        },
+        SR2: {
+          required,
+          minLength: minValue(1),
+          maxLength: maxValue(100),
+        },
+        ListPriceUP: {
+          required,
+          minValue: minValue(1),
+        },
+        ListPriceDOWN: {
+          required,
+          minValue: minValue(1),
+        },
+        PriceVariation: {
+          required,
+          minValue: minValue(1),
+        },
+        TopAlertItems: {
+          required,
+          between: between(1, 100),
+        },
+        TopInStockItems: {
+          required,
+          between: between(1, 100),
+        },
       },
-      Prezzo1: {
-        required,
-        minValue: minValue(1),
-      },
-      Prezzo2: {
-        required,
-        minValue: minValue(1),
-      },
-      SR1: {
-        required,
-        between: between(1, 99),
-      },
-      SR2: {
-        required,
-        minLength: minValue(1),
-        maxLength: maxValue(100),
-      },
-      ListPriceUP: {
-        required,
-        minValue: minValue(1),
-      },
-      ListPriceDOWN: {
-        required,
-        minValue: minValue(1),
-      },
-      PriceVariation: {
-        required,
-        minValue: minValue(1),
-      },
-      TopAlertItems: {
-        required,
-        between: between(1, 100),
-      },
-      TopInStockItems: {
-        required,
-        between: between(1, 100),
-      },
-    },
+    };
   },
   methods: {
     parametri_call() {
@@ -516,8 +518,6 @@ export default {
 
       if (!this.$v.$invalid) {
         this.saveUser();
-      } else {
-        this.errors = "is-error";
       }
     },
   },
