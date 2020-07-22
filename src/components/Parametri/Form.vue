@@ -44,6 +44,10 @@
             <span v-else-if="!$v.form.ArticoliTOP.minValue" class="md-error"
               >Inserire un valore valido (Valore minimo: 1)</span
             >
+
+            <span v-else-if="!$v.form.ArticoliTOP.integer" class="md-error"
+              >Inserire un valore valido (Solo numeri)</span
+            >
           </md-field>
           <div class="md-body-1">
             Numero di articoli Alto Vendenti da includere nel grafico Prezzi
@@ -340,6 +344,7 @@ import {
   minValue,
   between,
   maxValue,
+  integer,
 } from "vuelidate/lib/validators";
 import { mapGetters } from "vuex";
 
@@ -376,6 +381,7 @@ export default {
       params: "params",
       save: "save",
     }),
+
     articoliTop() {
       return parseInt(this.form.ArticoliTOP);
     },
@@ -396,43 +402,53 @@ export default {
       form: {
         ArticoliTOP: {
           required,
+          integer,
           minValue: minValue(1),
         },
         Prezzo1: {
           required,
+          integer,
           minValue: minValue(1),
         },
         Prezzo2: {
           required,
-          minValue: minValue(this.Prezzo1),
+          integer,
+          minValue: minValue(this.form.Prezzo1),
         },
         SR1: {
           required,
+          integer,
           between: between(1, 99),
         },
         SR2: {
           required,
+          integer,
           minLength: minValue(1),
           maxLength: maxValue(100),
         },
         ListPriceUP: {
           required,
+          integer,
           minValue: minValue(1),
         },
         ListPriceDOWN: {
           required,
+          integer,
           minValue: minValue(1),
         },
         PriceVariation: {
           required,
+          integer,
           minValue: minValue(1),
         },
         TopAlertItems: {
           required,
+          integer,
           between: between(1, 100),
         },
         TopInStockItems: {
           required,
+          integer,
           between: between(1, 100),
         },
       },
