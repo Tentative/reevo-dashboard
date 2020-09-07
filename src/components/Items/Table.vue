@@ -71,7 +71,11 @@
                 ? 'filtro-alert'
                 : 'price'
             "
-            ><span v-if="item.ListaInfo[1] != undefined"
+            ><span
+              v-if="
+                item.ListaInfo[1] != undefined &&
+                item.ListaInfo[1].Prezzo != null
+              "
               >{{ item.ListaInfo[1].Prezzo + "&nbsp;" }}€</span
             >
             <span v-else class="unavailable"

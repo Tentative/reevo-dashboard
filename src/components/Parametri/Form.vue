@@ -286,7 +286,7 @@
             >
           </md-field>
           <div class="md-body-1">
-            Percentuale sotto il Prezzo di Listino per attivare un Alert Prezzo
+            Numero di articoli Alto Vendenti su cui inviare Alert Prezzo
           </div>
         </div>
 

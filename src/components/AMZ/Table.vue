@@ -64,7 +64,7 @@
         <md-table-cell
           class="fix"
           :class="item.IsAlert ? 'filtro-alert' : 'discount'"
-          @click.native="store.dispatch('amz_graph', { item })"
+          @click.native="store.dispatch('amz_graph', item)"
         >
           <a>
             <span v-if="item.Sconto != null">{{ item.Sconto + "&nbsp;" }}</span>

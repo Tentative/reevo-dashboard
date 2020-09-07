@@ -9,8 +9,12 @@ input:-internal-autofill-previewed {
   margin: 5px;
 }
 
+.md-field {
+  padding-top: 10px !important;
+}
+
 div#labels {
-  padding-bottom: 20px;
+  padding-bottom: 0;
 }
 
 input[type="number"] {
