@@ -78,8 +78,8 @@
         <md-table-row
           ><md-table-cell>Prezzo di listino</md-table-cell
           ><md-table-cell
-            ><span v-if="currentItem.PrezzoListino != null"
-              >{{ currentItem.PrezzoListino }} €</span
+            ><span v-if="currentItem.ListPriceItem != null"
+              >{{ currentItem.ListPriceItem }} €</span
             >
             <span v-else class="unavailable"
               ><i class="md-icon md-icon-font md-theme-default">remove</i></span
