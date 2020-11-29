@@ -5,7 +5,7 @@
     </div>
     <div>
       <div class="links">
-        <a :href="ref">Scarica la lista completa dei miei articoli</a>
+        <a :href="url">Scarica la lista completa dei miei articoli</a>
       </div>
       <div>
         <a href="http://data.reevo.io/reevoimport/template.xlsx"
@@ -58,16 +58,7 @@
       @click="submitFile"
       >Carica File</md-button
     >
-    <!-- <input type="button" value="Upload" @click="submitFile" /> -->
 
-    <!-- FilePond
-      ref="pond"
-      name="upload"
-      :server="path"
-      :files="filess"
-      @init="handleFilePondInit"
-      @change="handleFilePondInit"
-    / -->
   </div>
 </template>
 
@@ -92,6 +83,9 @@ export default {
       nomeAzienda: "nomeAzienda",
       linkFile: "linkFile",
     }),
+    url() {
+      return "https://data.reevo.io/" + this.linkFile;
+    },
   },
   created() {
     this.input();
