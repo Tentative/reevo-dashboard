@@ -71,6 +71,7 @@ export default {
     return {
       add: false,
       all: false,
+      link: '',
       file: null,
       isValid: null,
       message: "",
@@ -84,13 +85,12 @@ export default {
       linkFile: "linkFile",
     }),
     url() {
-      return "https://data.reevo.io/" + this.linkFile;
+      return this.path + this.link;
     },
   },
-  created() {
-    this.input();
-    this.ref = "https://data.reevo.io/" + this.$store.$getters.linkFile;
-  },
+  // async mounted() {
+  //   await this.input();
+  // },
 
   methods: {
     handleFileUpload(event) {
@@ -177,9 +177,15 @@ export default {
         this.message = "";
       }
     },
-    input() {
-      this.$store.dispatch("input_call");
+    async input() {
+      await this.$store.dispatch("input_call");
     },
+  },
+  async mounted() {
+    let cristodio = await this.$store.dispatch("input_call");
+    let porcodio = JSON.parse(cristodio.data.JsonRisposta);
+    this.link = porcodio.LinkListaArticoli;
+    console.log(porcodio, 'porcodio')
   },
 };
 </script>
