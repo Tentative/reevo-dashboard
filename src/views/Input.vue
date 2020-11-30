@@ -182,10 +182,10 @@ export default {
     },
   },
   async mounted() {
-    let cristodio = await this.$store.dispatch("input_call");
-    let porcodio = JSON.parse(cristodio.data.JsonRisposta);
-    this.link = porcodio.LinkListaArticoli;
-    console.log(porcodio, 'porcodio')
+    let dispatch = await this.$store.dispatch("input_call");
+    let ress = JSON.parse(dispatch.data.JsonRisposta);
+    this.link = ress.LinkListaArticoli;
+    console.log(ress);
   },
 };
 </script>
