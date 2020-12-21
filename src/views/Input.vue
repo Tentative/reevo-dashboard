@@ -99,7 +99,7 @@ export default {
       console.log(this.file.name);
     },
 
-    submitFile() {
+    async submitFile() {
       if (!this.all && !this.add) {
         this.message = "Selezionare almeno un opzione";
         return;
@@ -146,7 +146,7 @@ export default {
         //   .catch(function () {
         //     console.log("FAILURE!!");
         //   });
-        axios({
+        await axios({
           url: "/upload.aspx",
           method: "POST",
           headers: {
@@ -171,8 +171,11 @@ export default {
               });
             console.log(res);
           })
-          .catch(function () {
+            this.$toast.success('File caricato con successo')
+            setTimeout(() => this.$router.go(), 2000)
+            .catch(function () {
             console.log("fail");
+            this.$toast.error('Si è verificato un errore')
           });
         this.message = "";
       }

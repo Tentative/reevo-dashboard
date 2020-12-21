@@ -5,6 +5,8 @@ import router from "./router";
 import store from "./store";
 import Axios from "axios";
 import VueMaterial, { polyfill } from "vue-material";
+import VueToast from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-sugar.css';
 import { Pagination } from "element-ui";
 // import vueFilePond from "vue-filepond";
 import "filepond/dist/filepond.min.css";
@@ -16,6 +18,7 @@ import "@/assets/style/global.scss";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faUserSecret } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import ToastPlugin from "vue-toast-notification";
 
 library.add(faUserSecret);
 
@@ -35,6 +38,9 @@ Vue.use(Pagination);
 Vue.use(library);
 Vue.use(faUserSecret);
 Vue.use(FontAwesomeIcon);
+Vue.use(VueToast, {
+  position: "top"
+});
 
 Vue.material = {
   ...Vue.material,
