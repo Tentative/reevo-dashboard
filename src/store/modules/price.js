@@ -175,6 +175,7 @@ export default {
                   date.DataValore = moment
                     .utc(date.DataValore)
                     .format("YYYY-MM-DD");
+                  date.Valore = date.Valore.replace(",", ".");
 
                   return {
                     x: date.DataValore,
