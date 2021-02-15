@@ -12,62 +12,46 @@
           <md-table-head
             v-for="(item, index) in table_items.ListaRetailers"
             :key="index"
-            class="retailer"
-            colspan="3"
           >
-            <span v-if="index <= '3'">{{ item }}</span></md-table-head
+            <span>{{ item }}</span></md-table-head
           >
         </md-table-row>
         <!-- first retailer -->
-        <md-table-row
-          v-for="(item, index) in lista_items"
-          v-show="lista_items[index]"
-          :key="index"
-          ><md-table-cell class="thumb"
+        <md-table-row v-for="(item, index) in lista_items" :key="index">
+          <md-table-cell class="thumb"
             ><a><img :src="item.UrlImmagine" /></a></md-table-cell
           ><md-table-cell class="item is-dashboard"
             ><span>{{ item.NomeItem }}</span></md-table-cell
-          ><md-table-cell
-            v-show="first_exist"
-            class="fix is-dashboard"
-            :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'price'"
-            ><span
-              v-if="
-                index < lista_items.length && item.ListaInfo[0].Prezzo != null
-              "
-              >{{ item.ListaInfo[0].Prezzo + "&nbsp;" }}€</span
-            >
-            <span v-else class="unavailable"
-              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
-            ></md-table-cell
           >
+          <td v-for="(info, index) in item.ListaInfo" :key="index" id="container">
+            <span class="fix is-dashboard" v-if="info.Prezzo != null" :class="info.IsAlert ? 'filtro-alert' : 'price'"
+                >{{ info.Prezzo + "&nbsp;" }}€</span
+              >
+              <span v-else class="unavailable"
+                ><i class="md-icon md-icon-font md-theme-default"
+                  >remove</i
+                ></span
+              >
+              <span class="is-dashboard" v-if="info.Sconto != null" :class="info.IsAlert ? 'filtro-alert' : 'discount'"
+                >{{ info.Sconto + "&nbsp;" }} </span
+              ><span v-else class="unavailable"
+                ><i class="md-icon md-icon-font md-theme-default"
+                  >remove</i
+                ></span
+              >
+              <span v-if="info.InStock === 'No'" class="stock-item is-dashboard"
+                ><md-icon class="no-status">cancel</md-icon></span
+              ><span v-else class="unavailable"
+                ><i class="md-icon md-icon-font md-theme-default"
+                  >remove</i
+                ></span
+              >
+          </td>
+          <!--
+          <-- second retailer >
           <md-table-cell
-            v-show="first_exist"
-            class="is-dashboard"
-            :class="item.ListaInfo[0].IsAlert ? 'filtro-alert' : 'discount'"
-            ><span
-              v-if="
-                index < lista_items.length && item.ListaInfo[0].Sconto != null
-              "
-              >{{ item.ListaInfo[0].Sconto + "&nbsp;" }} </span
-            ><span v-else class="unavailable"
-              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
-            ></md-table-cell
-          >
-          <md-table-cell v-show="first_exist" class="stock-item is-dashboard"
-            ><span
-              v-if="
-                index < lista_items.length && item.ListaInfo[0].InStock == 'No'
-              "
-              ><md-icon class="no-status">cancel</md-icon></span
-            ><span v-else></span
-          ></md-table-cell>
-          <!-- second retailer -->
-          <md-table-cell
-            v-show="second_exist"
             class="fix is-dashboard"
-            :class="
-              item.ListaInfo[1] != undefined && item.ListaInfo[1].IsAlert
+            :class="item.ListaInfo.IsAlert
                 ? 'filtro-alert'
                 : 'price'
             "
@@ -109,7 +93,7 @@
               ><md-icon class="no-status">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
-          <!-- third retailer -->
+          <! third retailer >
           <md-table-cell
             v-show="third_exist"
             class="fix is-dashboard"
@@ -152,7 +136,7 @@
               ><md-icon class="no-status">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
-          <!-- fourth retailer -->
+          <! fourth retailer >
           <md-table-cell
             v-show="fourth_exist"
             class="fix is-dashboard"
@@ -189,6 +173,7 @@
               ><md-icon class="no-status">cancel</md-icon></span
             ><span v-else></span
           ></md-table-cell>
+          < -->
         </md-table-row>
       </md-table>
     </div>
@@ -266,4 +251,8 @@ export default {
 @import "@/assets/style/toolbar.scss";
 @import "@/assets/style/table.scss";
 @import "@/assets/style/main.scss";
+
+.md-table-cell-container {
+  border-right: 5px solid #f4f6fb !important;
+}
 </style>

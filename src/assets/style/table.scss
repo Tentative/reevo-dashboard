@@ -235,6 +235,22 @@ tbody .md-table-row td {
   // width: 55px !important;
 }
 
+#container .md-table-cell-container {
+  border-right: 5px solid #f4f6fb !important;
+  margin-right: 20px !important;
+  & td {
+    padding: 0 10px 0 0 !important;
+  }
+}
+
+td#container {
+  text-align: center;
+  border-right: 5px solid #f4f6fb !important;
+  & span {
+    padding: 0 20px;
+  }
+}
+
 .md-table-cell.stock.is-dashboard {
   padding-right: 32px;
 }
