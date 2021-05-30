@@ -14,7 +14,7 @@
       :loading="loading"
     />
     <div v-if="loaded" class="pagination-nav">
-      <Pagination />
+      <Pagination v-model="pagination" @change-page="onChangePage($event)" />
       <Jumper />
     </div>
   </div>
@@ -28,6 +28,11 @@ export default {
   components: { Table, Pagination, Jumper, spinner },
   data() {
     return {
+      pagination: {
+        itemsPerPage: 20,
+        currentPage: 1,
+        totalPages: '',
+      },
       // items: [],
       amzdata: {},
       loading: false,
@@ -48,13 +53,21 @@ export default {
   },
 
   methods: {
+    onChangePage(v) {
+      this.pagination = v;
+      this.table_request();
+    },
     async table_request() {
       this.loading = true;
       this.loaded = false;
       let amz = this.amz;
+      amz.ItemsPerPagina = this.pagination.itemsPerPage;
+      amz.NumeroPagina = this.pagination.currentPage;
       try {
-        const { res } = await this.$store.dispatch("amz_request", { amz });
-        this.amzdata = res;
+        const res = await this.$store.dispatch("amz_request", { amz });
+        let params = JSON.parse(res.data.JsonRisposta);
+        this.pagination.itemsPerPage = params.ItemsPerPagina;
+        this.pagination.totalPages = params.QtaPagine;
         this.loaded = true;
         this.loading = false;
       } catch (e) {

@@ -74,6 +74,7 @@ export default {
             commit("amz_success", { items, amzdata });
             // console.log(amzdata);
             resolve(res);
+            return res;
           })
           .catch((err) => {
             commit("amz_error", err);

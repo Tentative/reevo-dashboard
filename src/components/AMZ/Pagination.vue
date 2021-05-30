@@ -3,14 +3,14 @@
     <el-pagination
       background
       layout="prev, pager, next"
-      :page-size.sync="ipp"
       :pager-count="5"
-      :page-count="parseInt(amzdata.QtaPagine)"
-      :current-page.sync="cp"
-      :total="totalPages"
+      :page-size.sync="pagination.itemsPerPage"
+      :page-count="pagination.totalPages"
+      :current-page.sync="pagination.currentPage"
+      :total="pagination.totalPages"
       @prev-click="prevPage()"
       @next-click="nextPage()"
-      @current-change="call_amz()"
+      @current-change="onChange"
     >
     </el-pagination>
   </div>
@@ -20,18 +20,36 @@
 import { mapGetters } from "vuex";
 export default {
   name: "Paginate",
+  props: {
+    value: {
+      type: Object,
+      required: false,
+      default: () => {},
+    },
+  },
   data() {
     return {
-      currentPage: null,
-      itemsPerPage: null,
+      pagination: {
+        currentPage: this.value.currentPage,
+        totalPages: this.value.totalPages,
+        itemsPerPage: this.value.itemsPerPage,
+      },
     };
   },
+  watch: {
+    pagination: {
+      deep: true,
+      handler(v) {
+        this.$emit("change-page", v);
+      },
+    },
+  },
+  // eslint-disable-next-line vue/order-in-components
   computed: {
     ...mapGetters({
       amzdata: "amzdata",
       itemsPerPage: "itemsPerPage",
       thisPage: "thisPage",
-      totalPages: "totalPages",
     }),
     cp: {
       get() {
@@ -60,6 +78,9 @@ export default {
   },
 
   methods: {
+    onChange(v) {
+      this.pagination.currentPage = v;
+    },
     call_amz() {
       localStorage.setItem("current-page", this.currentPage);
       localStorage.setItem("items-per-page", this.itemsPerPage);
@@ -76,12 +97,12 @@ export default {
       this.$store.dispatch("amz_request", { amz });
     },
     nextPage() {
-      if (this.currentPage != this.totalPages) {
-        this.currentPage = this.currentPage + 1;
+      if (this.pagination.currentPage !== this.pagination.totalPages) {
+        this.pagination.currentPage++;
       }
     },
     prevPage() {
-      if (this.currentPage != 1) this.currentPage--;
+      if (this.pagination.currentPage !== 1) this.pagination.currentPage--;
     },
   },
 };
