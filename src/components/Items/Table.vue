@@ -23,157 +23,33 @@
           ><md-table-cell class="item is-dashboard"
             ><span>{{ item.NomeItem }}</span></md-table-cell
           >
-          <td v-for="(info, index) in item.ListaInfo" :key="index" id="container">
-            <span class="fix is-dashboard" v-if="info.Prezzo != null" :class="info.IsAlert ? 'filtro-alert' : 'price'"
-                >{{ info.Prezzo + "&nbsp;" }}€</span
-              >
-              <span v-else class="unavailable"
-                ><i class="md-icon md-icon-font md-theme-default"
-                  >remove</i
-                ></span
-              >
-              <span class="is-dashboard" v-if="info.Sconto != null" :class="info.IsAlert ? 'filtro-alert' : 'discount'"
-                >{{ info.Sconto + "&nbsp;" }} </span
-              ><span v-else class="unavailable"
-                ><i class="md-icon md-icon-font md-theme-default"
-                  >remove</i
-                ></span
-              >
-              <span v-if="info.InStock === 'No'" class="stock-item is-dashboard"
-                ><md-icon class="no-status">cancel</md-icon></span
-              ><span v-else class="unavailable"
-                ><i class="md-icon md-icon-font md-theme-default"
-                  >remove</i
-                ></span
-              >
+          <td v-for="(n, i) of 4" id="container" :key="i">
+            <span
+              v-if="item.ListaInfo[i] && item.ListaInfo[i].Prezzo"
+              class="fix is-dashboard"
+              :class="item.ListaInfo[i].IsAlert ? 'filtro-alert' : 'price'"
+            >
+              {{ item.ListaInfo[i].Prezzo }}</span
+            >
+            <span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+            >
+            <span
+              v-if="item.ListaInfo[i] && item.ListaInfo[i].Isalert"
+              class="is-dashboard"
+              :class="item.ListaInfo[i].IsAlert ? 'filtro-alert' : 'discount'"
+              >{{ item.ListaInfo[i].Sconto + "&nbsp;" }} </span
+            ><span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+            >
+            <span
+              v-if="item.ListaInfo[i] && item.ListaInfo[i].InStock === 'No'"
+              class="stock-item is-dashboard"
+              ><md-icon class="no-status">cancel</md-icon></span
+            ><span v-else class="unavailable"
+              ><i class="md-icon md-icon-font md-theme-default">remove</i></span
+            >
           </td>
-          <!--
-          <-- second retailer >
-          <md-table-cell
-            class="fix is-dashboard"
-            :class="item.ListaInfo.IsAlert
-                ? 'filtro-alert'
-                : 'price'
-            "
-            ><span
-              v-if="
-                item.ListaInfo[1] != undefined &&
-                item.ListaInfo[1].Prezzo != null
-              "
-              >{{ item.ListaInfo[1].Prezzo + "&nbsp;" }}€</span
-            >
-            <span v-else class="unavailable"
-              ><md-icon>remove</md-icon></span
-            ></md-table-cell
-          >
-          <md-table-cell
-            v-show="second_exist"
-            class="cheap is-dashboard"
-            :class="
-              item.ListaInfo[1] != undefined && item.ListaInfo[1].IsAlert
-                ? 'filtro-alert'
-                : 'discount'
-            "
-            ><span
-              v-if="
-                item.ListaInfo[1] != undefined &&
-                item.ListaInfo[1].Sconto != null
-              "
-              >{{ item.ListaInfo[1].Sconto + "&nbsp;" }} </span
-            ><span v-else class="unavailable"
-              ><md-icon>remove</md-icon></span
-            ></md-table-cell
-          >
-          <md-table-cell v-show="second_exist" class="stock-item is-dashboard"
-            ><span
-              v-if="
-                item.ListaInfo[1] &&
-                lista_items[index].ListaInfo[1].InStock == 'No'
-              "
-              ><md-icon class="no-status">cancel</md-icon></span
-            ><span v-else></span
-          ></md-table-cell>
-          <! third retailer >
-          <md-table-cell
-            v-show="third_exist"
-            class="fix is-dashboard"
-            :class="
-              item.ListaInfo[2] != undefined && item.ListaInfo[2].IsAlert
-                ? 'filtro-alert'
-                : 'price'
-            "
-            ><span
-              v-if="
-                item.ListaInfo[2] != undefined &&
-                item.ListaInfo[2].Prezzo != null
-              "
-              >{{ lista_items[index].ListaInfo[2].Prezzo + "&nbsp;" }}€</span
-            >
-            <span v-else class="unavailable"
-              ><md-icon>remove</md-icon></span
-            ></md-table-cell
-          >
-          <md-table-cell
-            v-show="third_exist"
-            class="cheap is-dashboard"
-            :class="
-              item.ListaInfo[2] != undefined && item.ListaInfo[2].IsAlert
-                ? 'filtro-alert'
-                : 'discount'
-            "
-            ><span v-if="item.ListaInfo[2] && item.ListaInfo[2].Sconto != null"
-              >{{ item.ListaInfo[2].Sconto + "&nbsp;" }} </span
-            ><span v-else class="unavailable"
-              ><md-icon>remove</md-icon></span
-            ></md-table-cell
-          >
-          <md-table-cell v-show="third_exist" class="stock-item is-dashboard"
-            ><span
-              v-if="
-                item.ListaInfo[2] &&
-                lista_items[index].ListaInfo[2].InStock == 'No'
-              "
-              ><md-icon class="no-status">cancel</md-icon></span
-            ><span v-else></span
-          ></md-table-cell>
-          <! fourth retailer >
-          <md-table-cell
-            v-show="fourth_exist"
-            class="fix is-dashboard"
-            :class="
-              item.ListaInfo[3] != undefined && item.ListaInfo[3].IsAlert
-                ? 'filtro-alert'
-                : 'price'
-            "
-            ><span v-if="item.ListaInfo[3]"
-              >{{ item.ListaInfo[3].Prezzo + "&nbsp;" }}€</span
-            >
-            <span v-else class="unavailable"
-              ><md-icon>remove</md-icon></span
-            ></md-table-cell
-          >
-          <md-table-cell
-            v-show="fourth_exist"
-            class="discount is-dashboard"
-            :class="
-              item.ListaInfo[3] != undefined && item.ListaInfo[3].IsAlert
-                ? 'filtro-alert'
-                : 'price'
-            "
-            ><span v-if="item.ListaInfo[3] && item.ListaInfo[3].Sconto != null"
-              >{{ item.ListaInfo[3].Sconto + "&nbsp;" }} </span
-            ><span v-else class="unavailable"
-              ><md-icon>remove</md-icon></span
-            ></md-table-cell
-          >
-          <md-table-cell
-            v-show="fourth_exist"
-            class="last stock-item is-dashboard"
-            ><span v-if="item.ListaInfo[3] && item.ListaInfo[3].InStock == 'No'"
-              ><md-icon class="no-status">cancel</md-icon></span
-            ><span v-else></span
-          ></md-table-cell>
-          < -->
         </md-table-row>
       </md-table>
     </div>
