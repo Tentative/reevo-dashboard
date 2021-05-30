@@ -51,50 +51,10 @@ export default {
       itemsPerPage: "itemsPerPage",
       thisPage: "thisPage",
     }),
-    cp: {
-      get() {
-        return localStorage.getItem("current-page");
-      },
-      set(newValue) {
-        return (this.currentPage = newValue);
-      },
-    },
-    ipp: {
-      get() {
-        return localStorage.getItem("items-per-page");
-      },
-      set(newValue) {
-        return (this.itemsPerPage = newValue);
-      },
-    },
   },
-  created() {
-    localStorage.getItem("current-page")
-      ? (this.currentPage = localStorage.getItem("current-page"))
-      : (this.currentPage = 1);
-    localStorage.getItem("items-per-page")
-      ? (this.itemsPerPage = localStorage.getItem("items-per-page"))
-      : (this.itemsPerPage = 20);
-  },
-
   methods: {
     onChange(v) {
       this.pagination.currentPage = v;
-    },
-    call_amz() {
-      localStorage.setItem("current-page", this.currentPage);
-      localStorage.setItem("items-per-page", this.itemsPerPage);
-      let amz = {
-        NumeroPagina: this.currentPage,
-        ItemsPerPagina: this.itemsPerPage,
-        Categoria: null,
-        FiltroAlert: "Tutti",
-        FiltroInStock: "Tutti",
-        FiltroFastTrack: "Tutti",
-        FiltroBuyBox: "Tutti",
-        FiltroNegativeReviews: "Tutti",
-      };
-      this.$store.dispatch("amz_request", { amz });
     },
     nextPage() {
       if (this.pagination.currentPage !== this.pagination.totalPages) {
@@ -104,7 +64,7 @@ export default {
     prevPage() {
       if (this.pagination.currentPage !== 1) this.pagination.currentPage--;
     },
-  },
+  }
 };
 </script>
 

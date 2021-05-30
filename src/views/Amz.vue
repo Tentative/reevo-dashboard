@@ -72,24 +72,8 @@ export default {
         this.loading = false;
       } catch (e) {
         this.loading = false;
-        // console.log(e);
       }
     },
-    // table_request() {
-    //   this.loading = true;
-    //   let amz = this.amz;
-    //   this.$store
-    //     .dispatch("amz_request", { amz })
-
-    //     // eslint-disable-next-line no-unused-vars
-    //     .then((res) => {
-    //       // console.log("check su amz" + { amz });
-    //       // console.log(res);
-    //       this.loading = false;
-    //       this.items = this.$store.getters.amz;
-    //     });
-    //   // .catch(err => console.log(err));
-    // },
   },
 };
 </script>
